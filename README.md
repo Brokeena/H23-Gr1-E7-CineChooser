@@ -1,1 +1,1 @@
-# H23-Gr1-E7-MovieBuddies
+# H23-Gr1-E7-CineChooser
