@@ -6,6 +6,9 @@
       <excludeFolder url="file://$MODULE_DIR$/tmdbAPI/build" />
       <excludeFolder url="file://$MODULE_DIR$/tmdbAPI/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/tmdbAPI/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/app/cinechooser/test_application1/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/app/cinechooser/test_application1/build" />
+      <excludeFolder url="file://$MODULE_DIR$/app/cinechooser/test_application1/.dart_tool" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
