@@ -3,8 +3,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:test_application1/setup_utilisateur.dart';
+import 'package:test_application1/utils/app_styles.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatefulWidget
+{
   const LoginPage({Key? key}) : super(key: key);
 
   @override
@@ -21,11 +24,17 @@ class _LoginPageState extends State<LoginPage>
     'https://image.tmdb.org/t/p/original/74xTEgt7R36Fpooo50r9T25onhq.jpg',
     'https://image.tmdb.org/t/p/original/fZPSd91yGE9fCcCe6OoQr6E3Bev.jpg',
   ];
+  
+  void _navigateToNextScreen(BuildContext context)
+  {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => SetupUtilisateur()));
+  }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)
+  {
     return Scaffold(
-      backgroundColor: Colors.black87,
+      backgroundColor: Styles.bgColor,
       body: SafeArea(
         child: Center(
           child: Container(
@@ -46,7 +55,7 @@ class _LoginPageState extends State<LoginPage>
                       ),
                     )).toList(),
                     options: CarouselOptions(
-                      autoPlay: true,
+                      autoPlay: false,
                       enlargeCenterPage: true,
                       reverse: true,
                       autoPlayAnimationDuration: Duration(seconds: 2),
@@ -93,30 +102,34 @@ class _LoginPageState extends State<LoginPage>
                   ),),
                ),
 
-              //continue button
+                // Boutton Commencer
                  Padding(
                    padding: const EdgeInsets.symmetric(horizontal: 25),
-                   child: Container(
-                     padding: EdgeInsets.all(15),
-                    decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(12)),
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(CupertinoIcons.arrow_right, color: Colors.white),
-                          const SizedBox(width: 8,),
-                          const Text(
-                            'Continuer',
-                            style: TextStyle(
-                              fontWeight:  FontWeight.w800,
-                              fontSize: 20,
-                              color: Colors.white,),
-                            ),
-                        ],
+                   child: GestureDetector(
+                     onTap: (){_navigateToNextScreen(context);},
+                       child: Container(
+                           padding: EdgeInsets.all(15),
+                           decoration: BoxDecoration(
+                               color: Colors.red,
+                               borderRadius: BorderRadius.circular(12)),
+                           child: Center(
+                           child: Row(
+                           mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                           const Icon(CupertinoIcons.arrow_right, color: Colors.white),
+                       const SizedBox(width: 8,),
+                       const Text(
+                       'Continuer',
+                       style: TextStyle(
+                       fontWeight:  FontWeight.w800,
+                       fontSize: 20,
+                       color:
+                       Colors.white,),
+                              ),
+                          ],
+                        ),
                       ),
-                    ),
+                     ),
                    ),
                  )
             ],),
