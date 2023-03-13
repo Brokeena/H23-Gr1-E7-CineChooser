@@ -84,7 +84,7 @@ class _LoginPageState extends State<LoginPage>
                   'CineChooser recommande des films en fonction de vos '
                       'critères et aide vos amis à trouver un film qui plait à '
                       'tous. Découvrez de nouveaux films passionnants à '
-                      'regarder ensemble ! prout',
+                      'regarder ensemble !',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight: FontWeight.normal,
