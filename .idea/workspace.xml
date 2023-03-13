@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="Test github push">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmdbAPI/lib/movie.dart" beforeDir="false" afterPath="$PROJECT_DIR$/tmdbAPI/lib/movie.dart" afterDir="false" />
-    </list>
+    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="Re organize classes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,8 +24,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
     "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "D:/Users/2154470/Documents/GitHub/H23-Gr1-E7-CineChooser/tmdbAPI"
+    "last_opened_file_path": "D:/Users/2154470/Documents/GitHub/H23-Gr1-E7-CineChooser/tmdbAPI",
+    "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -68,6 +67,7 @@
       <workItem from="1678730389732" duration="447000" />
       <workItem from="1678730912967" duration="946000" />
       <workItem from="1678733032167" duration="36000" />
+      <workItem from="1678743451600" duration="129000" />
     </task>
     <task id="LOCAL-00001" summary="lmao">
       <created>1678127081138</created>
@@ -104,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678732101337</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Re organize classes">
+      <created>1678743476809</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1678743476809</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,7 +134,8 @@
     </ignored-roots>
     <MESSAGE value="lmao" />
     <MESSAGE value="Test github push" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test github push" />
+    <MESSAGE value="Re organize classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Re organize classes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
