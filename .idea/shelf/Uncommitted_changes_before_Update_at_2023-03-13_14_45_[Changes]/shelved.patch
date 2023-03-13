@@ -1,0 +1,61 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"bb9f1478-fd18-4c0e-9c02-516156691799\" name=\"Changes\" comment=\"Test github push\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/tmdbAPI\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2MeSsUTOxeKipzj1VqM4dUHIGpF\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;D:/Users/2154470/Documents/GitHub/H23-Gr1-E7-CineChooser/tmdbAPI&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;dart.settings&quot;,\r\n    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\Users\\2154470\\Documents\\GitHub\\H23-Gr1-E7-CineChooser\\DartAPI\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"bb9f1478-fd18-4c0e-9c02-516156691799\" name=\"Changes\" comment=\"\" />\r\n      <created>1678126761433</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1678126761433</updated>\r\n      <workItem from=\"1678126763134\" duration=\"662000\" />\r\n      <workItem from=\"1678127570876\" duration=\"98000\" />\r\n      <workItem from=\"1678127712164\" duration=\"8000\" />\r\n      <workItem from=\"1678729975756\" duration=\"144000\" />\r\n      <workItem from=\"1678730131459\" duration=\"102000\" />\r\n      <workItem from=\"1678730244369\" duration=\"127000\" />\r\n      <workItem from=\"1678730389732\" duration=\"447000\" />\r\n      <workItem from=\"1678730912967\" duration=\"324000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"lmao\">\r\n      <created>1678127081138</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1678127081138</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"lmao\">\r\n      <created>1678731111778</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1678731111778</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Test github push\">\r\n      <created>1678731228277</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1678731228277</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <ignored-roots>\r\n      <path value=\"$PROJECT_DIR$/DartAPI/untitled - Copie\" />\r\n    </ignored-roots>\r\n    <MESSAGE value=\"lmao\" />\r\n    <MESSAGE value=\"Test github push\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Test github push\" />\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 1bbe2912660e1962913a0580a8b90d878f49b565)
++++ b/.idea/workspace.xml	(date 1678733068399)
+@@ -35,6 +35,21 @@
+       <recent name="D:\Users\2154470\Documents\GitHub\H23-Gr1-E7-CineChooser\DartAPI" />
+     </key>
+   </component>
++  <component name="RunManager">
++    <configuration default="true" type="JetRunConfigurationType">
++      <module name="H23-Gr1-E7-CineChooser" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
++      <module name="H23-Gr1-E7-CineChooser" />
++      <option name="filePath" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++  </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+@@ -50,7 +65,8 @@
+       <workItem from="1678730131459" duration="102000" />
+       <workItem from="1678730244369" duration="127000" />
+       <workItem from="1678730389732" duration="447000" />
+-      <workItem from="1678730912967" duration="324000" />
++      <workItem from="1678730912967" duration="946000" />
++      <workItem from="1678733032167" duration="36000" />
+     </task>
+     <task id="LOCAL-00001" summary="lmao">
+       <created>1678127081138</created>
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"VcsDirectoryMappings\">\r\n    <mapping directory=\"$PROJECT_DIR$/tmdbAPI\" vcs=\"Git\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+--- a/.idea/vcs.xml	(revision 1bbe2912660e1962913a0580a8b90d878f49b565)
++++ b/.idea/vcs.xml	(date 1678733100316)
+@@ -1,6 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+     <mapping directory="$PROJECT_DIR$/tmdbAPI" vcs="Git" />
+   </component>
+ </project>
+\ No newline at end of file
