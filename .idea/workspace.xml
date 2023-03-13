@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="lmao" />
+    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="Test github push" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,17 +19,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "D:/Users/2154470/Documents/GitHub/H23-Gr1-E7-CineChooser/tmdbAPI",
-    "settings.editor.selected.configurable": "dart.settings",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Users/2154470/Documents/GitHub/H23-Gr1-E7-CineChooser/tmdbAPI&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;dart.settings&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Users\2154470\Documents\GitHub\H23-Gr1-E7-CineChooser\DartAPI" />
@@ -50,6 +50,7 @@
       <workItem from="1678730131459" duration="102000" />
       <workItem from="1678730244369" duration="127000" />
       <workItem from="1678730389732" duration="447000" />
+      <workItem from="1678730912967" duration="324000" />
     </task>
     <task id="LOCAL-00001" summary="lmao">
       <created>1678127081138</created>
@@ -58,7 +59,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678127081138</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="lmao">
+      <created>1678731111778</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1678731111778</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Test github push">
+      <created>1678731228277</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1678731228277</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -80,7 +95,8 @@
       <path value="$PROJECT_DIR$/DartAPI/untitled - Copie" />
     </ignored-roots>
     <MESSAGE value="lmao" />
-    <option name="LAST_COMMIT_MESSAGE" value="lmao" />
+    <MESSAGE value="Test github push" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test github push" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

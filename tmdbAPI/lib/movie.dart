@@ -54,7 +54,7 @@ Future<void> main(List<String> arguments) async {
 
   
   //Research
-  Map search = await tmdb.v3.search.queryMovies("The social network");
+  Map search = await tmdb.v3.search.queryMovies("Zombieland");
   List<dynamic> result = search['results'];
   Map movie = await tmdb.v3.movies.getDetails(result.elementAt(0)['id']);
   
