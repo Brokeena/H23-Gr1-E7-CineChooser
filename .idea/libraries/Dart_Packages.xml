@@ -26,8 +26,8 @@
         <entry key="async">
           <value>
             <list>
-              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/async-2.11.0/lib" />
               <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/async-2.10.0/lib" />
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/async-2.11.0/lib" />
             </list>
           </value>
         </entry>
@@ -62,8 +62,8 @@
         <entry key="collection">
           <value>
             <list>
-              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/collection-1.17.1/lib" />
               <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/collection-1.17.0/lib" />
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/collection-1.17.1/lib" />
             </list>
           </value>
         </entry>
@@ -126,7 +126,7 @@
         <entry key="flutter">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../../flutter/packages/flutter/lib" />
+              <option value="$PROJECT_DIR$/../../../../../Program Files/Android/flutter/packages/flutter/lib" />
             </list>
           </value>
         </entry>
@@ -140,7 +140,7 @@
         <entry key="flutter_test">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../../flutter/packages/flutter_test/lib" />
+              <option value="$PROJECT_DIR$/../../../../../Program Files/Android/flutter/packages/flutter_test/lib" />
             </list>
           </value>
         </entry>
@@ -182,8 +182,8 @@
         <entry key="js">
           <value>
             <list>
-              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/js-0.6.7/lib" />
               <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/js-0.6.5/lib" />
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/js-0.6.7/lib" />
             </list>
           </value>
         </entry>
@@ -204,8 +204,8 @@
         <entry key="matcher">
           <value>
             <list>
-              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/matcher-0.12.14/lib" />
               <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/matcher-0.12.13/lib" />
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/matcher-0.12.14/lib" />
             </list>
           </value>
         </entry>
@@ -219,8 +219,8 @@
         <entry key="meta">
           <value>
             <list>
-              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.9.0/lib" />
               <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.8.0/lib" />
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.9.0/lib" />
             </list>
           </value>
         </entry>
@@ -248,8 +248,8 @@
         <entry key="path">
           <value>
             <list>
-              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/path-1.8.3/lib" />
               <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/path-1.8.2/lib" />
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/path-1.8.3/lib" />
             </list>
           </value>
         </entry>
@@ -298,7 +298,7 @@
         <entry key="sky_engine">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../../flutter/bin/cache/pkg/sky_engine/lib" />
+              <option value="$PROJECT_DIR$/../../../../../Program Files/Android/flutter/bin/cache/pkg/sky_engine/lib" />
             </list>
           </value>
         </entry>
@@ -361,8 +361,8 @@
         <entry key="test_api">
           <value>
             <list>
-              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/test_api-0.4.18/lib" />
               <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/test_api-0.4.16/lib" />
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/test_api-0.4.18/lib" />
             </list>
           </value>
         </entry>
@@ -432,6 +432,9 @@
       </option>
     </properties>
     <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../../../../Program Files/Android/flutter/bin/cache/pkg/sky_engine/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../../Program Files/Android/flutter/packages/flutter/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../../Program Files/Android/flutter/packages/flutter_test/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/_fe_analyzer_shared-55.0.0/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/analyzer-5.7.1/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/args-2.4.0/lib" />
@@ -496,9 +499,6 @@
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/web_socket_channel-2.3.0/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/webkit_inspection_protocol-1.2.0/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/yaml-3.1.1/lib" />
-      <root url="file://$PROJECT_DIR$/../../flutter/bin/cache/pkg/sky_engine/lib" />
-      <root url="file://$PROJECT_DIR$/../../flutter/packages/flutter/lib" />
-      <root url="file://$PROJECT_DIR$/../../flutter/packages/flutter_test/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
