@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_application1/login_page.dart';
-//putain
+import 'package:test_application1/pages/login_page.dart';
 
 void main()
 {

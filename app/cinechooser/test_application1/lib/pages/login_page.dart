@@ -3,7 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:test_application1/setup_utilisateur.dart';
+import 'package:test_application1/pages/setup_utilisateur.dart';
 import 'package:test_application1/utils/app_styles.dart';
 
 class LoginPage extends StatefulWidget
@@ -30,6 +30,20 @@ class _LoginPageState extends State<LoginPage>
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => SetupUtilisateur()));
   }
 
+  bool isButtonPressed = false;
+  void buttonPressed()
+  {
+    setState(() {
+      if(isButtonPressed == false)
+      {
+        isButtonPressed = true;
+        Future.delayed(const Duration(milliseconds: 100), () {
+          _navigateToNextScreen(context);
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context)
   {
@@ -46,7 +60,7 @@ class _LoginPageState extends State<LoginPage>
                     items: urlImages.map((item) => Container(
                       child: Center(
                         child: ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          borderRadius: const BorderRadius.all(Radius.circular(20)),
                           child: Image.network(
                             item,
                             fit: BoxFit.cover,
@@ -59,7 +73,7 @@ class _LoginPageState extends State<LoginPage>
                       enlargeCenterPage: true,
                       reverse: true,
                       autoPlayAnimationDuration: Duration(seconds: 2),
-                      aspectRatio: 1.0
+                      aspectRatio: 1,
                     )),
 
                 SizedBox(height: MediaQuery.of(context).size.height * 0.03), //s'adapte a differentes tailles
@@ -77,7 +91,7 @@ class _LoginPageState extends State<LoginPage>
               style:  TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 36,
-                color: Colors.red,
+                color: Styles.red2,
               ),),
 
                 const Icon(
@@ -87,11 +101,12 @@ class _LoginPageState extends State<LoginPage>
                 ),
 
               SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+               //texte de bienvenue
                const Padding(
                  padding:  EdgeInsets.symmetric(horizontal: 25, vertical: 15),
                  child: Text(
                   'CineChooser recommande des films en fonction de vos '
-                      'critères et aide vos amis à trouver un film qui plait à '
+                      'critères et aide votre groupe à trouver un film qui plait à '
                       'tous. Découvrez de nouveaux films passionnants à '
                       'regarder ensemble !',
                   textAlign: TextAlign.center,
@@ -101,31 +116,51 @@ class _LoginPageState extends State<LoginPage>
                     color: Colors.white38,
                   ),),
                ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
 
                 // Boutton Commencer
                  Padding(
                    padding: const EdgeInsets.symmetric(horizontal: 25),
                    child: GestureDetector(
-                     onTap: (){_navigateToNextScreen(context);},
-                       child: Container(
+                     onTap: buttonPressed,
+                         //(){_navigateToNextScreen(context);},
+                       child: AnimatedContainer(
+                         duration: Duration(milliseconds: 50),
                            padding: EdgeInsets.all(15),
                            decoration: BoxDecoration(
-                               color: Colors.red,
-                               borderRadius: BorderRadius.circular(12)),
+                               color: Styles.bgColor,
+                               borderRadius: BorderRadius.circular(12),
+                               boxShadow: isButtonPressed ?
+                               [
+                                 //aucune ombre
+                                ]:
+                               [
+                             const BoxShadow(
+                               color: Colors.black,
+                               offset: Offset(4, 4),
+                               blurRadius: 10,
+                               spreadRadius: 1,
+                             ),
+                             const BoxShadow(
+                               color: Color(0xff1C1825),
+                               offset: Offset(-4, -4),
+                               blurRadius: 10,
+                               spreadRadius: 1,
+                             )
+                           ]),
                            child: Center(
                            child: Row(
                            mainAxisAlignment: MainAxisAlignment.center,
                            children: [
-                           const Icon(CupertinoIcons.arrow_right, color: Colors.white),
+                           //const Icon(CupertinoIcons.arrow_right, color: Color(0xffC4C0CA)),
                        const SizedBox(width: 8,),
                        const Text(
-                       'Continuer',
+                       'Commencer',
                        style: TextStyle(
                        fontWeight:  FontWeight.w800,
                        fontSize: 20,
-                       color:
-                       Colors.white,),
-                              ),
+                       color: Styles.red1,),
+                       ),
                           ],
                         ),
                       ),

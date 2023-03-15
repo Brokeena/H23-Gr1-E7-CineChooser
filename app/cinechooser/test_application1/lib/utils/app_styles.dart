@@ -1,14 +1,11 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-Color primary = const Color(0xFF686daf);
-
 class Styles
 {
-  static Color primaryColor = primary;
-  static Color bgColor = const Color(0xffb101119);
-  static Color white1 = const Color(0xffbEDF2F4);
-  static Color grey1 = const Color(0xffb8D99AE);
-  static Color red1 = const Color(0xffbEF233C);
-  static Color red2 = const Color(0xffbD90429);
+  static const Color bgColor =  Color(0xff09080C);
+  static const Color white1 =  Color(0xffEDF2F4);
+  static const Color grey1 =  Color(0xff8D99AE);
+  static const Color red1 =  Color(0xffCF313A);
+  static const Color red2 =  Color(0xffFC171F);
 }

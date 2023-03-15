@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:test_application1/login_page.dart';
+import 'package:test_application1/components/textField.dart';
+import 'package:test_application1/pages/login_page.dart';
 
 
 class SetupUtilisateur extends StatefulWidget {
@@ -12,11 +13,12 @@ class SetupUtilisateur extends StatefulWidget {
 
 class _SetupUtilisateurState extends State<SetupUtilisateur>
 {
-
   void _navigateToPreviousScreen(BuildContext context)
   {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginPage()));
   }
+  //controller
+  final usernameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -40,17 +42,22 @@ class _SetupUtilisateurState extends State<SetupUtilisateur>
             end: Alignment.bottomLeft,
             colors: [
               Colors.black,
-              Colors.black87,
+              Colors.black,
             ],
           )
         ),
         child: SafeArea(
           child: Center(
-            child: Container(
-              child: Column(
-                children: const [
-                ],
-              ),
+            child: Column(
+              children: [
+                SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+
+                MyTextField(
+                  controller: usernameController,
+                  hintText: 'Username',
+                  obscureText: false,
+                ),
+              ],
             ),
           ),
         ),
