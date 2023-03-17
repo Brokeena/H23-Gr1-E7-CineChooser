@@ -11,16 +11,24 @@ import 'api.dart';
   double? score;
   int id;
   int? runtime;
-  List<int> genresId = [];
   List<Genre> genres = [];
 
 
-  Movie(this.id) {
-    setDetails(id);
-    attribuerGenre();
-    setDirector(id);
-    setActors(id);
-    setWatchProviders(id);
+
+  Movie._create(this.id){
+  }
+
+  static Future<Movie> create(int id) async{
+    var movie = Movie._create(id);
+    await movie._complexAsyncInit();
+    return movie;
+  }
+
+  _complexAsyncInit() async{
+    await setBasicsDetails(id);
+    await setDirector(id);
+    await setActors(id);
+    await setWatchProviders(id);
   }
 
 
@@ -38,16 +46,25 @@ import 'api.dart';
     return int.parse(dateF);
   }
 
-  void setDetails(int id) async {
+  Future<void> setBasicsDetails(int id) async {
     Map movieRaw = await tmdb.v3.movies.getDetails(id);
     nom = movieRaw['title'];
     dateDeSortie = formatDate(movieRaw['release_date']);
     runtime = movieRaw['runtime'];
     score = movieRaw['vote_average'];
+    overview = movieRaw['overview'];
     poster = "https://image.tmdb.org/t/p/original"  + movieRaw['poster_path'];
+
+    List<dynamic> genresList = movieRaw['genres'];
+    List<int> genresId = [];
+    for(int i = 0; i < genresList.length; i++){
+      genresId.add(genresList.elementAt(i)['id']);
+    }
+    await attribuerGenre(genresId);
+
   }
 
-  void setDirector(int id) async {
+  Future<void> setDirector(int id) async {
     Map creditsDetails = await tmdb.v3.movies.getCredits(id);
     List crew = creditsDetails['crew'];
     List<String> directorsFound = ["unknown"];
@@ -64,7 +81,7 @@ import 'api.dart';
 
   }
 
-  void setActors(int id) async {
+  Future<void> setActors(int id) async {
     Map creditsDetails = await tmdb.v3.movies.getCredits(id);
     List cast = creditsDetails['cast'];
     List<String> actorsFound = ["unknown"];
@@ -78,7 +95,7 @@ import 'api.dart';
     actors = actorsFound;
   }
 
-  void setWatchProviders(int id) async {
+  Future<void> setWatchProviders(int id) async {
     Map searchWatchProviders = await tmdb.v3.movies.getWatchProviders(id);
     List providersFound = searchWatchProviders['results'][country]['flatrate'];
     List<String> providersNames = [];
@@ -89,10 +106,9 @@ import 'api.dart';
 
   }
 
-
-  void attribuerGenre(){
+  Future<void> attribuerGenre(List<int> genresId) async{
     for(var value in Genre.values ){
-      for(int id in genresId){
+      for(var id in genresId){
         if(value.id == id){
           genres.add(value);
         }
@@ -100,17 +116,18 @@ import 'api.dart';
     }
   }
 
-  Future<bool> check() async{
-    if(nom!=null){
-      return true;
-    } else{
-      return false;
-    }
-  }
-
-
   @override
-  String toString() => 'Film trouvée: \n nom: $nom, \n dateDeSortie: $dateDeSortie, \n director: $directors, \n actors: $actors, \n runtime: $runtime, \n synopsis: $overview, \n score/10: $score, \n genres: $genres, \n watch on: $providers, \n poster: $poster \n id TMDB: $id ';
+  String toString() => 'Film : \n nom: $nom'
+      ' \n dateDeSortie: $dateDeSortie'
+      ' \n director: $directors'
+      ' \n actors: $actors'
+      ' \n runtime: $runtime'
+      ' \n synopsis: $overview'
+      ' \n score/10: $score'
+      ' \n genres: $genres'
+      ' \n watch on: $providers'
+      ' \n poster: $poster'
+      ' \n id TMDB: $id ';
 
 
 }

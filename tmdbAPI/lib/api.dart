@@ -40,7 +40,7 @@ String language_country(){
   List<Movie>? trendingMovies = [];
   for(int i = 0; i < results.length; i++){
     int id = results.elementAt(i)['id'];
-    Movie movie = new Movie(id);
+    Movie movie = await Movie.create(id);
     trendingMovies.add(movie);
   }
   return trendingMovies;
