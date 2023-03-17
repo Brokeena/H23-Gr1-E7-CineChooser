@@ -125,7 +125,7 @@ class _LoginPageState extends State<LoginPage>
                      onTap: buttonPressed,
                          //(){_navigateToNextScreen(context);},
                        child: AnimatedContainer(
-                         duration: Duration(milliseconds: 50),
+                         duration: Duration(milliseconds: 100),
                            padding: EdgeInsets.all(15),
                            decoration: BoxDecoration(
                                color: Styles.bgColor,
