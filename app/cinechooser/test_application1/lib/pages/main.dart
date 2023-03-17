@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:test_application1/pages/login_page.dart';
+import 'package:test_application1/api/movie.dart';
+import 'package:test_application1/api/api.dart';
 
-void main()
+void main() async
 {
   runApp(const MyApp());
+
 }
+
+
 
 class MyApp extends StatelessWidget
 {
+
   const MyApp({super.key});
 
   // This widget is the root of your application.
@@ -19,4 +25,13 @@ class MyApp extends StatelessWidget
       home: LoginPage(),
     );
   }
+}
+
+Future<List<String>> getImages() async{
+  List<Movie> trendingMovies = await getTrendingMovies();
+  List<String> url = [];
+  for(var value in trendingMovies){
+    url.add(value.poster);
+  }
+  return url;
 }
