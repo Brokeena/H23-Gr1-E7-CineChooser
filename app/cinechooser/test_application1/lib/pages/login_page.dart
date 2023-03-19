@@ -32,8 +32,6 @@ class _LoginPageState extends State<LoginPage>
     'https://image.tmdb.org/t/p/original/fZPSd91yGE9fCcCe6OoQr6E3Bev.jpg',
   ];
 
-
-
   void _navigateToNextScreen(BuildContext context)
   {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => SetupUtilisateur()));
@@ -87,21 +85,11 @@ class _LoginPageState extends State<LoginPage>
 
                 SizedBox(height: MediaQuery.of(context).size.height * 0.03), //s'adapte a differentes tailles
                 const Text(
-                  'Bienvenue sur',
-                  style: TextStyle(
-                    fontWeight: FontWeight.normal,
-                    fontSize: 20,
-                    color: Colors.white,
-                  ),
-                ),
+                  'Bienvenue sur', style: Styles.preTitre,),
 
                const Text(
                   'CineChooser',
-              style:  TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 36,
-                color: Styles.red2,
-              ),),
+              style: Styles.titre),
 
                 const Icon(
                   Icons.live_tv,
@@ -119,11 +107,7 @@ class _LoginPageState extends State<LoginPage>
                       'tous. Découvrez de nouveaux films passionnants à '
                       'regarder ensemble !',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontWeight: FontWeight.normal,
-                    fontSize: 15,
-                    color: Colors.white38,
-                  ),),
+                  style: Styles.informations),
                ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.01),
 
@@ -134,8 +118,8 @@ class _LoginPageState extends State<LoginPage>
                      onTap: buttonPressed,
                          //(){_navigateToNextScreen(context);},
                        child: AnimatedContainer(
-                         duration: Duration(milliseconds: 100),
-                           padding: EdgeInsets.all(15),
+                         duration:  Duration(milliseconds: 100),
+                           padding:  EdgeInsets.all(15),
                            decoration: BoxDecoration(
                                color: Styles.bgColor,
                                borderRadius: BorderRadius.circular(12),
@@ -163,13 +147,7 @@ class _LoginPageState extends State<LoginPage>
                            children: [
                            //const Icon(CupertinoIcons.arrow_right, color: Color(0xffC4C0CA)),
                        const SizedBox(width: 8,),
-                       const Text(
-                       'Commencer',
-                       style: TextStyle(
-                       fontWeight:  FontWeight.w800,
-                       fontSize: 20,
-                       color: Styles.red1,),
-                       ),
+                       const Text('Commencer', style: Styles.bouton),
                           ],
                         ),
                       ),
