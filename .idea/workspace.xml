@@ -4,20 +4,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="Merge api and app">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-03-13_14_45__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-03-13_14_45__Changes_.xml" afterDir="false" />
-    </list>
+    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="encore un commit fait par Marius... Ca fait beaucoup quand meme." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Dart File" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -31,24 +22,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/15146/Documents/GitHub/H23-Gr1-E7-CineChooser/app/cinechooser&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/cinechooser" />
+    <property name="settings.editor.selected.configurable" value="dart.settings" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\chobs\Documents\GitHub\H23-Gr1-E7-CineChooser\app\cinechooser\test_application1\lib\api" />
-      <recent name="C:\Users\15146\Documents\GitHub\H23-Gr1-E7-CineChooser\app\cinechooser\test_application1\lib\pages" />
       <recent name="D:\Users\2154470\Documents\GitHub\H23-Gr1-E7-CineChooser\DartAPI" />
     </key>
   </component>
@@ -73,11 +59,7 @@
       <workItem from="1678730131459" duration="102000" />
       <workItem from="1678730244369" duration="127000" />
       <workItem from="1678730389732" duration="447000" />
-      <workItem from="1678730912967" duration="946000" />
-      <workItem from="1678733032167" duration="36000" />
-      <workItem from="1678743451600" duration="129000" />
-      <workItem from="1679016820323" duration="1749000" />
-      <workItem from="1679255868678" duration="414000" />
+      <workItem from="1678730912967" duration="324000" />
     </task>
     <task id="LOCAL-00001" summary="lmao">
       <created>1678127081138</created>
@@ -114,35 +96,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678732101337</updated>
     </task>
-    <task id="LOCAL-00006" summary="Re organize classes">
-      <created>1678743476809</created>
+    <task id="LOCAL-00006" summary="Test github push puch">
+      <created>1678732960736</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1678743476809</updated>
+      <updated>1678732960736</updated>
     </task>
-    <task id="LOCAL-00007" summary="putain">
-      <created>1678830291913</created>
+    <task id="LOCAL-00007" summary="encore un commit fait par Marius... Ca fait beaucoup quand meme.">
+      <created>1679344248030</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1678830291913</updated>
+      <updated>1679344248031</updated>
     </task>
-    <task id="LOCAL-00008" summary="pas putain">
-      <created>1678830685393</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1678830685393</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Merge api and app">
-      <created>1679018580733</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1679018580733</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +126,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -165,11 +134,9 @@
     </ignored-roots>
     <MESSAGE value="lmao" />
     <MESSAGE value="Test github push" />
-    <MESSAGE value="Re organize classes" />
-    <MESSAGE value="putain" />
-    <MESSAGE value="pas putain" />
-    <MESSAGE value="Merge api and app" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge api and app" />
+    <MESSAGE value="Test github push puch" />
+    <MESSAGE value="encore un commit fait par Marius... Ca fait beaucoup quand meme." />
+    <option name="LAST_COMMIT_MESSAGE" value="encore un commit fait par Marius... Ca fait beaucoup quand meme." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

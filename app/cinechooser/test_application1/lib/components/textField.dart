@@ -14,32 +14,29 @@ class MyTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25),
-        child: TextField(
-          controller: controller,
-          style: TextStyle(
-            color: Colors.white,
-          ),
-          obscureText: obscureText,
-          decoration: InputDecoration(
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: Colors.transparent), //couleur contour
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: Colors.grey.shade600), //couleur contour
-            ),
-            fillColor: Colors.grey.shade900,//couleur interieur
-            filled: true,
-            hintText: hintText,
-            hintStyle: TextStyle(
-              color: Colors.grey.shade700
-            ),
-            contentPadding: EdgeInsets.all(16)
-          ),
+    return TextField(
+      controller: controller,
+      style: TextStyle(
+        color: Colors.white,
+      ),
+      obscureText: obscureText,
+      decoration: InputDecoration(
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Colors.transparent), //couleur contour
         ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Colors.grey.shade600), //couleur contour
+        ),
+        fillColor: Colors.grey.shade900,//couleur interieur
+        filled: true,
+        hintText: hintText,
+        hintStyle: TextStyle(
+          color: Colors.grey.shade700
+        ),
+        contentPadding: EdgeInsets.all(16)
+      ),
     );
   }
 }

@@ -58,104 +58,102 @@ class _LoginPageState extends State<LoginPage>
       backgroundColor: Styles.bgColor,
       body: SafeArea(
         child: Center(
-          child: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                
-                CarouselSlider(
-                    items: url.map((item) => Container(
-                      child: Center(
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.all(Radius.circular(20)),
-                          child: Image.network(
-                            item,
-                            fit: BoxFit.cover,
-                            ),
-                        )
-                      ),
-                    )).toList(),
-                    options: CarouselOptions(
-                      autoPlay: false,
-                      enlargeCenterPage: true,
-                      reverse: true,
-                      autoPlayAnimationDuration: Duration(seconds: 2),
-                      aspectRatio: 1,
-                    )),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.03), //s'adapte a differentes tailles
-                const Text(
-                  'Bienvenue sur', style: Styles.preTitre,),
+              CarouselSlider(
+                  items: url.map((item) => Container(
+                    child: Center(
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                        child: Image.network(
+                          item,
+                          fit: BoxFit.cover,
+                          ),
+                      )
+                    ),
+                  )).toList(),
+                  options: CarouselOptions(
+                    autoPlay: false,
+                    enlargeCenterPage: true,
+                    reverse: true,
+                    autoPlayAnimationDuration: Duration(seconds: 2),
+                    aspectRatio: 1,
+                  )),
 
-               const Text(
-                  'CineChooser',
-              style: Styles.titre),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.03), //s'adapte a differentes tailles
+              const Text(
+                'Bienvenue sur', style: Styles.preTitre,),
 
-                const Icon(
-                  Icons.live_tv,
-                  size: 100,
-                  color: Colors.white,
-                ),
+             const Text(
+                'CineChooser',
+            style: Styles.titre),
 
+              const Icon(
+                Icons.live_tv,
+                size: 100,
+                color: Colors.white,
+              ),
+
+            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+             //texte de bienvenue
+             const Padding(
+               padding:  EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+               child: Text(
+                'CineChooser recommande des films en fonction de vos '
+                    'critères et aide votre groupe à trouver un film qui plait à '
+                    'tous. Découvrez de nouveaux films passionnants à '
+                    'regarder ensemble !',
+                textAlign: TextAlign.center,
+                style: Styles.informations),
+             ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-               //texte de bienvenue
-               const Padding(
-                 padding:  EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-                 child: Text(
-                  'CineChooser recommande des films en fonction de vos '
-                      'critères et aide votre groupe à trouver un film qui plait à '
-                      'tous. Découvrez de nouveaux films passionnants à '
-                      'regarder ensemble !',
-                  textAlign: TextAlign.center,
-                  style: Styles.informations),
-               ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
 
-                // Boutton Commencer
-                 Padding(
-                   padding: const EdgeInsets.symmetric(horizontal: 25),
-                   child: GestureDetector(
-                     onTap: buttonPressed,
-                         //(){_navigateToNextScreen(context);},
-                       child: AnimatedContainer(
-                         duration:  Duration(milliseconds: 100),
-                           padding:  EdgeInsets.all(15),
-                           decoration: BoxDecoration(
-                               color: Styles.bgColor,
-                               borderRadius: BorderRadius.circular(12),
-                               boxShadow: isButtonPressed ?
-                               [
-                                 //aucune ombre
-                                ]:
-                               [
-                             const BoxShadow(
-                               color: Colors.black,
-                               offset: Offset(4, 4),
-                               blurRadius: 10,
-                               spreadRadius: 1,
-                             ),
-                             const BoxShadow(
-                               color: Color(0xff1C1825),
-                               offset: Offset(-4, -4),
-                               blurRadius: 10,
-                               spreadRadius: 1,
-                             )
-                           ]),
-                           child: Center(
-                           child: Row(
-                           mainAxisAlignment: MainAxisAlignment.center,
-                           children: [
-                           //const Icon(CupertinoIcons.arrow_right, color: Color(0xffC4C0CA)),
-                       const SizedBox(width: 8,),
-                       const Text('Commencer', style: Styles.bouton),
-                          ],
-                        ),
+              // Boutton Commencer
+               Padding(
+                 padding: const EdgeInsets.symmetric(horizontal: 25),
+                 child: GestureDetector(
+                   onTap: buttonPressed,
+                       //(){_navigateToNextScreen(context);},
+                     child: AnimatedContainer(
+                       duration:  Duration(milliseconds: 100),
+                         padding:  EdgeInsets.all(15),
+                         decoration: BoxDecoration(
+                             color: Styles.bgColor,
+                             borderRadius: BorderRadius.circular(12),
+                             boxShadow: isButtonPressed ?
+                             [
+                               //aucune ombre
+                              ]:
+                             [
+                           const BoxShadow(
+                             color: Colors.black,
+                             offset: Offset(4, 4),
+                             blurRadius: 10,
+                             spreadRadius: 1,
+                           ),
+                           const BoxShadow(
+                             color: Color(0xff1C1825),
+                             offset: Offset(-4, -4),
+                             blurRadius: 10,
+                             spreadRadius: 1,
+                           )
+                         ]),
+                         child: Center(
+                         child: Row(
+                         mainAxisAlignment: MainAxisAlignment.center,
+                         children: [
+                         //const Icon(CupertinoIcons.arrow_right, color: Color(0xffC4C0CA)),
+                     const SizedBox(width: 8,),
+                     const Text('Commencer', style: Styles.bouton),
+                        ],
                       ),
-                     ),
+                    ),
                    ),
-                 )
-            ],),
-          ),
+                 ),
+               )
+          ],),
         ),
       )
     );
