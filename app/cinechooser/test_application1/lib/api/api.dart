@@ -19,12 +19,6 @@ String language_country(){
 
 
 
-
-
-
-
-
-
 /// Récuperer listes de films
 /// *********************************
 /// *********************************
@@ -35,14 +29,12 @@ String language_country(){
 
   Future<List<String>> getTrendingMoviesImages() async{
   var searchTrending = await tmdb.v3.trending.getTrending(mediaType: MediaType.movie,timeWindow: TimeWindow.day);
-  print(searchTrending);
   List<dynamic> results = searchTrending['results'];
   List<String> trendingMoviesImages = [];
   for(int i = 0; i < results.length; i++){
     String poster_path = 'https://image.tmdb.org/t/p/original'+results.elementAt(i)['poster_path'];
     trendingMoviesImages.add(poster_path);
   }
-  print('returned');
   return trendingMoviesImages;
 }
 

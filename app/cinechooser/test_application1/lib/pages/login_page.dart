@@ -60,7 +60,7 @@ class _LoginPageState extends State<LoginPage>
                 builder: (context,snapshot) {
                   if(snapshot.hasData){
                     urls = snapshot.data!;
-
+                    urls?.add(poster);
                     return  CarouselSlider(
                         items: urls?.map((item) => Container(
                           child: Center(
