@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:test_application1/api/api.dart';
 import 'package:test_application1/pages/setup_utilisateur.dart';
 import 'package:test_application1/pages/main.dart';
 import 'package:test_application1/utils/app_styles.dart';
@@ -19,18 +20,8 @@ class LoginPage extends StatefulWidget
 class _LoginPageState extends State<LoginPage>
 {
 
-  List<String> url = [];
-  void main() async{
-    url = await getImages();
-  }
+  List<String>? urls = [];
 
-  final List<String> urlImages = [
-    'https://image.tmdb.org/t/p/original/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg',
-    'https://image.tmdb.org/t/p/original/rtGDOeG9LzoerkDGZF9dnVeLppL.jpg',
-    'https://image.tmdb.org/t/p/original/kve20tXwUZpu4GUX8l6X7Z4jmL6.jpg',
-    'https://image.tmdb.org/t/p/original/74xTEgt7R36Fpooo50r9T25onhq.jpg',
-    'https://image.tmdb.org/t/p/original/fZPSd91yGE9fCcCe6OoQr6E3Bev.jpg',
-  ];
 
   void _navigateToNextScreen(BuildContext context)
   {
@@ -59,28 +50,44 @@ class _LoginPageState extends State<LoginPage>
       body: SafeArea(
         child: Center(
           child: Column(
+
+
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
 
-              CarouselSlider(
-                  items: url.map((item) => Container(
-                    child: Center(
-                      child: ClipRRect(
-                        borderRadius: const BorderRadius.all(Radius.circular(20)),
-                        child: Image.network(
-                          item,
-                          fit: BoxFit.cover,
+              FutureBuilder<List<String>?>(
+                future: getTrendingMoviesImages(),
+                builder: (context,snapshot) {
+                  if(snapshot.hasData){
+                    urls = snapshot.data!;
+                    urls?.add(poster);
+                    return  CarouselSlider(
+                        items: urls?.map((item) => Container(
+                          child: Center(
+                              child: ClipRRect(
+                                borderRadius: const BorderRadius.all(Radius.circular(20)),
+                                child: Image.network(
+                                  item,
+                                  fit: BoxFit.cover,
+                                ),
+                              )
                           ),
-                      )
-                    ),
-                  )).toList(),
-                  options: CarouselOptions(
-                    autoPlay: false,
-                    enlargeCenterPage: true,
-                    reverse: true,
-                    autoPlayAnimationDuration: Duration(seconds: 2),
-                    aspectRatio: 1,
-                  )),
+                        )).toList(),
+                        options: CarouselOptions(
+                          autoPlay: true,
+                          enlargeCenterPage: true,
+                          reverse: false,
+                          autoPlayAnimationDuration: Duration(seconds: 1),
+                          aspectRatio: 1,
+                        ));
+
+                  } else{
+                    return const CircularProgressIndicator();
+                  }
+
+                  }
+              ),
+
 
               SizedBox(height: MediaQuery.of(context).size.height * 0.03), //s'adapte a differentes tailles
               const Text(
