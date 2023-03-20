@@ -33,15 +33,16 @@ String language_country(){
 
 
 
-  Future<List<Movie>> getTrendingMovies() async{
+  Future<List<String>> getTrendingMoviesImages() async{
   var searchTrending = await tmdb.v3.trending.getTrending(mediaType: MediaType.movie,timeWindow: TimeWindow.day);
-  var results = searchTrending['results'];
-  List<Movie>? trendingMovies = [];
+  print(searchTrending);
+  List<dynamic> results = searchTrending['results'];
+  List<String> trendingMoviesImages = [];
   for(int i = 0; i < results.length; i++){
-    int id = results.elementAt(i)['id'];
-    Movie movie = await Movie.create(id);
-    trendingMovies.add(movie);
+    String poster_path = 'https://image.tmdb.org/t/p/original'+results.elementAt(i)['poster_path'];
+    trendingMoviesImages.add(poster_path);
   }
-  return trendingMovies;
+  print('returned');
+  return trendingMoviesImages;
 }
 

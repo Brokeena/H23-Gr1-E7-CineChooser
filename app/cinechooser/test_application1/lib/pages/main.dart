@@ -27,11 +27,3 @@ class MyApp extends StatelessWidget
   }
 }
 
-Future<List<String>> getImages() async{
-  List<Movie> trendingMovies = await getTrendingMovies();
-  List<String> url = [];
-  for(var value in trendingMovies){
-    url.add(value.poster);
-  }
-  return url;
-}
