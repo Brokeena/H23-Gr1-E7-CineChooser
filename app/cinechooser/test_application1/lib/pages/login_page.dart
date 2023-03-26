@@ -20,7 +20,7 @@ class LoginPage extends StatefulWidget
 class _LoginPageState extends State<LoginPage>
 {
 
-  List<String>? urls = [];
+  List<String> urls = [];
 
 
   void _navigateToNextScreen(BuildContext context)
@@ -60,26 +60,27 @@ class _LoginPageState extends State<LoginPage>
                 builder: (context,snapshot) {
                   if(snapshot.hasData){
                     urls = snapshot.data!;
-                    urls?.add(poster);
+                    urls.add(poster);
                     return  CarouselSlider(
-                        items: urls?.map((item) => Container(
-                          child: Center(
-                              child: ClipRRect(
-                                borderRadius: const BorderRadius.all(Radius.circular(20)),
-                                child: Image.network(
-                                  item,
-                                  fit: BoxFit.cover,
-                                ),
-                              )
-                          ),
+                        items: urls.map((item) => Center(
+                            child: ClipRRect(
+                              borderRadius: const BorderRadius.all(Radius.circular(20)),
+                              child: Image.network(
+                                item,
+                                fit: BoxFit.cover,
+                              ),
+                            )
                         )).toList(),
                         options: CarouselOptions(
+                          scrollPhysics: NeverScrollableScrollPhysics(),
                           autoPlay: true,
                           enlargeCenterPage: true,
                           reverse: false,
-                          autoPlayAnimationDuration: Duration(seconds: 1),
+                          autoPlayInterval: Duration(seconds: 3, milliseconds: 500),
+                          autoPlayAnimationDuration: Duration(milliseconds: 800),
                           aspectRatio: 1,
-                        ));
+                        )
+                    );
 
                   } else{
                     return const CircularProgressIndicator();
@@ -135,7 +136,7 @@ class _LoginPageState extends State<LoginPage>
                               ]:
                              [
                            const BoxShadow(
-                             color: Colors.black,
+                             color: Color(0xff1C1825),
                              offset: Offset(4, 4),
                              blurRadius: 10,
                              spreadRadius: 1,

@@ -11,7 +11,10 @@ String poster = '';
 
 void main() async
 {
+  Movie movie = await Movie.create(18491);
+  poster = movie.poster;
   runApp(const MyApp());
+
 }
 
 
