@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:test_application1/pages/pagePrincipale.dart';
+import 'package:test_application1/trashTinder/homepage.dart';
 import 'package:test_application1/pages/login_page.dart';
 import 'package:test_application1/api/movie.dart';
 import 'package:test_application1/api/api.dart';
+
+import '../trashTinder/CardProvider.dart';
 String poster = '';
 
 void main() async
 {
   runApp(const MyApp());
-  Movie movie = await Movie.create(18491);
-  poster = movie.poster;
 }
 
 
@@ -22,10 +25,15 @@ class MyApp extends StatelessWidget
   @override
   Widget build(BuildContext context)
   {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+    return ChangeNotifierProvider(
+      create: (context) => CardProvider(),
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: LoginPage(),
+      ),
     );
   }
 }
+
+
 
