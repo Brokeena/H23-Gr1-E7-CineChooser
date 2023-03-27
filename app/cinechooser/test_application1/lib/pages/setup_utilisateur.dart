@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:test_application1/components/textField.dart';
-import 'package:test_application1/pages/login_page.dart';
-import 'package:test_application1/utils/app_styles.dart';
+import 'package:cinechooser/components/textField.dart';
+import 'package:cinechooser/pages/login_page.dart';
+import 'package:cinechooser/utils/app_styles.dart';
 
 
 class SetupUtilisateur extends StatefulWidget {
@@ -20,6 +20,7 @@ class _SetupUtilisateurState extends State<SetupUtilisateur>
   }
   //controller
   final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
 
   dynamic dropdownvalues = "item1";
   List listItemPays = ["item1", "item2", "item3", "item4", "item5", "item6", "item7", "item8", ];
@@ -38,11 +39,11 @@ class _SetupUtilisateurState extends State<SetupUtilisateur>
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
             colors: [
               Colors.black,
-              Colors.white,
+              Styles.red2,
             ],
           )
         ),
@@ -59,6 +60,12 @@ class _SetupUtilisateurState extends State<SetupUtilisateur>
                     hintText: 'Username',
                     obscureText: false,
                   ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+
+                  MyTextField(
+                      controller: passwordController,
+                      hintText: "Password",
+                      obscureText: true),
 
                   SizedBox(height: MediaQuery.of(context).size.height * 0.03),
 

@@ -1,6 +1,6 @@
 import 'dart:math' as math;
 
-import 'package:test_application1/utils/card_label.dart';
+import 'package:cinechooser/utils/card_label.dart';
 import 'package:flutter/material.dart';
 import 'package:swipable_stack/swipable_stack.dart';
 

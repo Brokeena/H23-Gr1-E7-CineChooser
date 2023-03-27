@@ -4,32 +4,33 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="encore un commit fait par Marius... Ca fait beaucoup quand meme.">
-      <change afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/utils/bottom_buttons_row.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/utils/card_label.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/utils/card_overlay.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="Re organize classes for real">
+      <change beforePath="$PROJECT_DIR$/.idea/H23-Gr1-E7-CineChooser.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/H23-Gr1-E7-CineChooser.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-03-26_18_14__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-03-26_18_14__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/api/api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/api/api.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/android/app/src/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/android/app/src/main/kotlin/com/example/test_application1/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/android/app/src/main/kotlin/com/example/test_application1/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/android/app/src/profile/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/android/app/src/profile/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/ios/Runner/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/login_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/pagePrincipale.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/pagePrincipale.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/utils/movie_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/utils/movie_card.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/setup_utilisateur.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/setup_utilisateur.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/trashTinder/homepage.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/trashTinder/moviecard.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/test/widget_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/web/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/web/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/web/manifest.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Dart File" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -38,23 +39,13 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2MeSsUTOxeKipzj1VqM4dUHIGpF" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
-    <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Flutter/flutter/bin/cache/dart-sdk" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -66,11 +57,6 @@
       <option name="filePath" value="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/main.dart" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Flutter.main.dart" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

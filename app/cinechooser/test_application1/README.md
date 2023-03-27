@@ -1,4 +1,4 @@
-# test_application1
+# cinechooser
 
 A new Flutter project.
 

@@ -1,11 +1,11 @@
-import 'package:test_application1/api/api.dart';
-import 'package:test_application1/api/movie.dart';
+import 'package:cinechooser/api/api.dart';
+import 'package:cinechooser/api/movie.dart';
 import 'package:flutter/material.dart';
 import 'package:swipable_stack/swipable_stack.dart';
 import 'package:flutter/foundation.dart';
-import 'package:test_application1/utils/movie_card.dart';
-import 'package:test_application1/utils/card_overlay.dart';
-import 'package:test_application1/utils/bottom_buttons_row.dart';
+import 'package:cinechooser/utils/movie_card.dart';
+import 'package:cinechooser/utils/card_overlay.dart';
+import 'package:cinechooser/utils/bottom_buttons_row.dart';
 
 
 class PagePrincipale extends StatefulWidget {

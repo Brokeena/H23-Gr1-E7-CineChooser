@@ -1,4 +1,4 @@
-import 'package:test_application1/utils/app_styles.dart';
+import 'package:cinechooser/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:swipable_stack/swipable_stack.dart';
 

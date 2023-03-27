@@ -1,4 +1,4 @@
-import 'package:test_application1/utils/bottom_buttons_row.dart';
+import 'package:cinechooser/utils/bottom_buttons_row.dart';
 import 'package:flutter/material.dart';
 
 class ExampleCard extends StatelessWidget {

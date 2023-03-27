@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1026537403163",
+    "project_id": "cinechooser-eva01",
+    "storage_bucket": "cinechooser-eva01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1026537403163:android:20994b2f5d7038bfe7d9be",
+        "android_client_info": {
+          "package_name": "com.example.cinechooser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1026537403163-6tjkhtei6vq2dfom3j2s92jb6hvqvqs9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAf7-d8wh14Q0-Yjju-beR2mVHpzeOP2ns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1026537403163-6tjkhtei6vq2dfom3j2s92jb6hvqvqs9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

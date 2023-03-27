@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:test_application1/pages/pagePrincipale.dart';
-import 'package:test_application1/trashTinder/homepage.dart';
-import 'package:test_application1/pages/login_page.dart';
-import 'package:test_application1/api/movie.dart';
-import 'package:test_application1/api/api.dart';
+import 'package:cinechooser/pages/pagePrincipale.dart';
+import 'package:cinechooser/pages/login_page.dart';
+import 'package:cinechooser/api/movie.dart';
+import 'package:cinechooser/api/api.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import '../trashTinder/CardProvider.dart';
 String poster = '';
@@ -14,6 +13,8 @@ void main() async
   var liste  = getTrendingMovies();
   Movie movie = await Movie.create(18491);
   poster = movie.poster;
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: FirebaseOptions(apiKey: "AIzaSyAf7-d8wh14Q0-Yjju-beR2mVHpzeOP2ns", appId: 'cinechooser', messagingSenderId: '1026537403163', projectId: 'cinechooser-eva01') );
   runApp(const MyApp());
 
 }
@@ -29,12 +30,10 @@ class MyApp extends StatelessWidget
   @override
   Widget build(BuildContext context)
   {
-    return ChangeNotifierProvider(
-      create: (context) => CardProvider(),
-      child: const MaterialApp(
+    return   const MaterialApp(
         debugShowCheckedModeBanner: false,
         home: LoginPage(),
-      ),
+
     );
   }
 }
