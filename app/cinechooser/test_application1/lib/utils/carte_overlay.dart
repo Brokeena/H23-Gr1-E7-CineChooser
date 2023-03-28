@@ -1,15 +1,15 @@
 import 'dart:math' as math;
-
-import 'package:cinechooser/utils/card_label.dart';
+import 'package:cinechooser/utils/type_carte.dart';
 import 'package:flutter/material.dart';
 import 'package:swipable_stack/swipable_stack.dart';
 
-class CardOverlay extends StatelessWidget {
-  const CardOverlay({
+class OverlayCarte extends StatelessWidget {
+  const OverlayCarte({
     required this.direction,
     required this.swipeProgress,
     super.key,
   });
+
   final SwipeDirection direction;
   final double swipeProgress;
 
@@ -19,8 +19,7 @@ class CardOverlay extends StatelessWidget {
 
     final isRight = direction == SwipeDirection.right;
     final isLeft = direction == SwipeDirection.left;
-    final isUp = direction == SwipeDirection.up;
-    final isDown = direction == SwipeDirection.down;
+
     return Stack(
       children: [
         Opacity(
@@ -30,14 +29,6 @@ class CardOverlay extends StatelessWidget {
         Opacity(
           opacity: isLeft ? opacity : 0,
           child: CardLabel.left(),
-        ),
-        Opacity(
-          opacity: isUp ? opacity : 0,
-          child: CardLabel.up(),
-        ),
-        Opacity(
-          opacity: isDown ? opacity : 0,
-          child: CardLabel.down(),
         ),
       ],
     );

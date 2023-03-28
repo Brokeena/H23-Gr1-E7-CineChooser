@@ -28,37 +28,23 @@ class BottomButtonsRow extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               _BottomButton(
-                color: canRewind ? Colors.amberAccent : Colors.grey,
+                color: canRewind ? Colors.white : Colors.grey,
                 onPressed: canRewind ? onRewindTap : null,
-                child: const Icon(Icons.refresh),
+                child: const Icon(Icons.refresh, color: Styles.red1),
               ),
               _BottomButton(
-                color: Color.fromRGBO(220, 90, 108, 1),
-                child: const Icon(Icons.arrow_back),
+                color: Colors.white,
+                child: const Icon(Icons.clear, color: Styles.red1),
                 onPressed: () {
                   onSwipe(SwipeDirection.left);
                 },
               ),
               _BottomButton(
-                color: Color.fromRGBO(83, 170, 232, 1),
-                onPressed: () {
-                  onSwipe(SwipeDirection.up);
-                },
-                child: const Icon(Icons.arrow_upward),
-              ),
-              _BottomButton(
-                color: Color.fromRGBO(70, 195, 120, 1),
+                color: Colors.white,
                 onPressed: () {
                   onSwipe(SwipeDirection.right);
                 },
-                child: const Icon(Icons.arrow_forward),
-              ),
-              _BottomButton(
-                color: Color.fromRGBO(154, 85, 215, 1),
-                onPressed: () {
-                  onSwipe(SwipeDirection.down);
-                },
-                child: const Icon(Icons.arrow_downward),
+                child: const Icon(Icons.star, color: Styles.red1),
               ),
             ],
           ),
@@ -87,12 +73,12 @@ class _BottomButton extends StatelessWidget {
       child: ElevatedButton(
         style: ButtonStyle(
           shape: MaterialStateProperty.resolveWith(
-                (states) => RoundedRectangleBorder(
+            (states) => RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(100),
             ),
           ),
           backgroundColor: MaterialStateProperty.resolveWith(
-                (states) => color,
+            (states) => color,
           ),
         ),
         onPressed: onPressed,

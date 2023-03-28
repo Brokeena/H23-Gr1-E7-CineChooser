@@ -1,34 +1,28 @@
 import 'package:cinechooser/api/api.dart';
 import 'package:cinechooser/api/movie.dart';
+import 'package:cinechooser/pages/login_page.dart';
+import 'package:cinechooser/utils/top_buttons_row.dart';
 import 'package:flutter/material.dart';
 import 'package:swipable_stack/swipable_stack.dart';
 import 'package:flutter/foundation.dart';
-import 'package:cinechooser/utils/movie_card.dart';
-import 'package:cinechooser/utils/card_overlay.dart';
+import 'package:cinechooser/utils/movie_carte.dart';
+import 'package:cinechooser/utils/carte_overlay.dart';
 import 'package:cinechooser/utils/bottom_buttons_row.dart';
 
+import '../utils/app_styles.dart';
 
 class PagePrincipale extends StatefulWidget {
-
-
-
   const PagePrincipale({Key? key}) : super(key: key);
-
-
 
   @override
   State<PagePrincipale> createState() => _PagePrincipaleState();
 }
 
 class _PagePrincipaleState extends State<PagePrincipale> {
-
   static const imageList = [
-    'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.movieposters.com%2F&psig=AOvVaw3r-YMW8GklSzFDkujSHEN7&ust=1680031409599000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCPj6ufXq_P0CFQAAAAAdAAAAABAE',
-    'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.movieposters.com%2F&psig=AOvVaw3r-YMW8GklSzFDkujSHEN7&ust=1680031409599000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCPj6ufXq_P0CFQAAAAAdAAAAABAJ',
-    'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.ebay.fr%2Fitm%2F115504916055&psig=AOvVaw3r-YMW8GklSzFDkujSHEN7&ust=1680031409599000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCPj6ufXq_P0CFQAAAAAdAAAAABAT'
+    'https://m.media-amazon.com/images/I/71xefrbhS8S._AC_SL1500_.jpg',
+    'https://marketplace.canva.com/EAFH3gODxw4/1/0/1131w/canva-black-%26-white-modern-mystery-forest-movie-poster-rLty9dwhGG4.jpg'
   ];
-
-
 
   final controller = SwipableStackController();
 
@@ -53,8 +47,9 @@ class _PagePrincipaleState extends State<PagePrincipale> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Styles.bgColor,
       body: SafeArea(
-        top: false,
+        top: true,
         child: Stack(
           children: [
             Positioned.fill(
@@ -75,18 +70,24 @@ class _PagePrincipaleState extends State<PagePrincipale> {
                   horizontalSwipeThreshold: 0.8,
                   verticalSwipeThreshold: 0.8,
                   builder: (context, properties) {
-                    final itemIndex = properties.index % 3;
+                    final itemIndex = properties.index % imageList.length;
 
                     return Stack(
                       children: [
-                        ExampleCard(
-                          name: 'Sample No.${itemIndex + 1}',
-                          assetPath: imageList[itemIndex],
+                        Center(
+                          child: SizedBox(
+                            height: 650,
+                            width: 500,
+                            child: Cartes(
+                              name: 'Carte numéro ${itemIndex + 1}',
+                              synopsis: 'histoire du film ${itemIndex + 1}',
+                              poster: imageList[itemIndex],
+                            ),
+                          ),
                         ),
-                        // more custom overlay possible than with overlayBuilder
                         if (properties.stackIndex == 0 &&
                             properties.direction != null)
-                          CardOverlay(
+                          OverlayCarte(
                             swipeProgress: properties.swipeProgress,
                             direction: properties.direction!,
                           )
@@ -103,13 +104,10 @@ class _PagePrincipaleState extends State<PagePrincipale> {
               onRewindTap: _controller.rewind,
               canRewind: _controller.canRewind,
             ),
+            const TopButtonsRow()
           ],
         ),
       ),
     );
   }
 }
-
-
-
-

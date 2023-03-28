@@ -1,15 +1,18 @@
 import 'package:cinechooser/utils/bottom_buttons_row.dart';
+import 'package:cinechooser/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
-class ExampleCard extends StatelessWidget {
-  const ExampleCard({
+class Cartes extends StatelessWidget {
+  const Cartes({
     required this.name,
-    required this.assetPath,
+    required this.poster,
+    required this.synopsis,
     super.key,
   });
 
+  final String synopsis;
   final String name;
-  final String assetPath;
+  final String poster;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +25,9 @@ class ExampleCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
                 image: DecorationImage(
-                  image: AssetImage(assetPath),
-                  fit: BoxFit.cover,
-                ),
+                    image: NetworkImage(poster),
+                    fit: BoxFit.fill),
+
                 boxShadow: [
                   BoxShadow(
                     offset: const Offset(0, 2),
@@ -64,9 +67,11 @@ class ExampleCard extends StatelessWidget {
               children: [
                 Text(
                   name,
-                  style: theme.textTheme.headline6!.copyWith(
-                    color: Colors.white,
-                  ),
+                  style: Styles.preTitre,
+                ),
+                Text(
+                  synopsis,
+                  style: Styles.informations,
                 ),
                 const SizedBox(height: BottomButtonsRow.height)
               ],
@@ -77,33 +82,3 @@ class ExampleCard extends StatelessWidget {
     );
   }
 }
-
-
-
-/*
-import 'package:flutter/material.dart';
-import 'package:flutter_swipable/flutter_swipable.dart';
-
-class MovieCard extends StatelessWidget {
-  final color;
-  MovieCard({required this.color});
-
-  @override
-  Widget build(BuildContext context) {
-
-    return Swipable(
-      onSwipeRight: (finalPosition){
-        print('right');
-      },
-      onSwipeLeft: (finalPosition){
-        print('left');
-      },
-      child: Container(
-        color: color,
-      ),
-    );
-  }
-}
- */
-
-
