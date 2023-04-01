@@ -1,4 +1,5 @@
 import 'package:cinechooser/pages/pagePrincipale.dart';
+import 'package:cinechooser/widget/button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/components/textField.dart';
@@ -53,14 +54,15 @@ class _SetupUtilisateurState extends State<SetupUtilisateur> {
       ),
       body: Container(
         decoration: const BoxDecoration(
-            gradient: LinearGradient(
+            /* gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
             Colors.black,
             Styles.red2,
           ],
-        )),
+        )*/
+            color: Styles.bgColor),
         child: SafeArea(
           child: Center(
             child: Container(
@@ -92,7 +94,7 @@ class _SetupUtilisateurState extends State<SetupUtilisateur> {
                     child: DropdownButton(
                         value: dropdownvalues,
                         dropdownColor: Colors.grey.shade600,
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.arrow_drop_down,
                           color: Colors.white,
                         ),
@@ -111,7 +113,7 @@ class _SetupUtilisateurState extends State<SetupUtilisateur> {
                                   value: value,
                                   child: Text(
                                     value,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white),
                                   ),
@@ -124,19 +126,7 @@ class _SetupUtilisateurState extends State<SetupUtilisateur> {
                         }),
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-                  SizedBox(
-                    height: 64,
-                    width: 64,
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(Colors.white),
-                        shape: MaterialStateProperty.resolveWith(
-                          (states) => RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14),
-                          ),
-                        ),
-                      ),
+                  Button(
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -144,10 +134,10 @@ class _SetupUtilisateurState extends State<SetupUtilisateur> {
                               builder: (context) => const PagePrincipale()),
                         );
                       },
-                      child: const Icon(Icons.arrow_forward_ios,
-                          color: Styles.red1),
-                    ),
-                  ),
+                      icone: const Icon(Icons.arrow_forward_ios, color: Styles.red1),
+                      color: Colors.white,
+                      taille: 64,
+                      borderRadius: 14),
                 ],
               ),
             ),

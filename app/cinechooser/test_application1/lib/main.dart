@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
-import 'package:cinechooser/pages/login_page.dart';
 import 'package:cinechooser/api/movie.dart';
 import 'package:cinechooser/api/api.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -13,7 +12,7 @@ void main() async {
   poster = movie.poster;
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-      options: FirebaseOptions(
+      options: const FirebaseOptions(
           apiKey: "AIzaSyAf7-d8wh14Q0-Yjju-beR2mVHpzeOP2ns",
           appId: 'cinechooser',
           messagingSenderId: '1026537403163',
