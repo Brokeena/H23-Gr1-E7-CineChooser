@@ -26,7 +26,7 @@ class TopButtonsRow extends StatelessWidget {
               icone: const Icon(Icons.arrow_back_ios_new_outlined, color: Styles.red1),
               color: Colors.white,
               taille: 64,
-              borderRadius: 14),
+              borderRadius: 15),
           Button(
               onPressed: () {
                 Navigator.push(
@@ -37,7 +37,7 @@ class TopButtonsRow extends StatelessWidget {
               icone: const Icon(Icons.menu, color: Styles.red1),
               color: Colors.white,
               taille: 64,
-              borderRadius: 14),
+              borderRadius: 15),
         ],
       ),
     );

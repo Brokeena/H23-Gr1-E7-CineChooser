@@ -137,7 +137,7 @@ class _SetupUtilisateurState extends State<SetupUtilisateur> {
                       icone: const Icon(Icons.arrow_forward_ios, color: Styles.red1),
                       color: Colors.white,
                       taille: 64,
-                      borderRadius: 14),
+                      borderRadius: 15),
                 ],
               ),
             ),

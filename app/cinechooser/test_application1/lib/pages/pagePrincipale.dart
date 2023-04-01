@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:swipable_stack/swipable_stack.dart';
 import 'package:flutter/foundation.dart';
 import 'package:cinechooser/utils/movie_carte.dart';
-import 'package:cinechooser/utils/carte_overlay.dart';
 import 'package:cinechooser/utils/bottom_buttons_row.dart';
-import 'package:cinechooser/pages/login_page.dart';
 import '../utils/app_styles.dart';
-import 'package:cinechooser/widget/button.dart';
+
 
 class PagePrincipale extends StatefulWidget {
   const PagePrincipale({Key? key}) : super(key: key);
@@ -85,7 +83,9 @@ class _PagePrincipaleState extends State<PagePrincipale> {
                         swipeProgress: properties.swipeProgress,
                         direction: properties.direction!,
                       )
-                     */ // box avec oui/non
+
+                     */
+                      // box avec oui/non
                   ],
                 );
               },

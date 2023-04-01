@@ -14,7 +14,7 @@ class CardLabel extends StatelessWidget {
   factory CardLabel.right() {
     return const CardLabel._(
       color: Colors.green,
-      label: 'Oui',
+      label: '+',
       angle: -_angle,
       alignment: Alignment.topLeft,
     );
@@ -23,7 +23,7 @@ class CardLabel extends StatelessWidget {
   factory CardLabel.left() {
     return const CardLabel._(
       color: Colors.red,
-      label: 'Non',
+      label: '-',
       angle: _angle,
       alignment: Alignment.topRight,
     );

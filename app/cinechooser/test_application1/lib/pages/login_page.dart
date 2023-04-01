@@ -80,8 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                     }),
 
                 SizedBox(
-                    height: MediaQuery.of(context).size.height *
-                        0.03), //s'adapte a differentes tailles
+                    height: MediaQuery.of(context).size.height * 0.03), //s'adapte a differentes tailles
                 const Text(
                   'Bienvenue sur',
                   style: Styles.preTitre,
@@ -108,7 +107,6 @@ class _LoginPageState extends State<LoginPage> {
                       style: Styles.informations),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-
                 // Boutton Commencer
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),

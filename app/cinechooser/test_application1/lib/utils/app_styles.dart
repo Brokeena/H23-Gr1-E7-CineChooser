@@ -8,6 +8,7 @@ class Styles
   static const Color grey1 =  Color(0xff8D99AE);
   static const Color red1 =  Color(0xffCF313A);
   static const Color red2 =  Color(0xffFC171F);
+  static const Color green = Colors.green;
   static const TextStyle entete = TextStyle(color: Colors.white,fontWeight: FontWeight.normal);
   static const TextStyle preTitre = TextStyle(fontWeight: FontWeight.normal, fontSize: 20, color: Colors.white);
   static const TextStyle titre = TextStyle(fontWeight: FontWeight.bold, fontSize: 36, color: Styles.red2);
