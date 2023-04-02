@@ -16,7 +16,6 @@ class Cartes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return ClipRRect(
       child: Stack(
         children: [
