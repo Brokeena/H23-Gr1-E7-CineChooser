@@ -2,7 +2,7 @@ import 'package:cinechooser/pages/pagePrincipale.dart';
 import 'package:cinechooser/widget/button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:cinechooser/components/textField.dart';
+import 'package:cinechooser/widget/textField.dart';
 import 'package:cinechooser/pages/login_page.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 

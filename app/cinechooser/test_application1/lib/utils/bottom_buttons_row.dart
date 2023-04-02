@@ -32,7 +32,7 @@ class BottomButtonsRow extends StatelessWidget {
                 color: canRewind ? Colors.white : Colors.grey,
                 onPressed: canRewind ? onRewindTap : null,
                 icone: const Icon(Icons.refresh, color: Styles.red1),
-                taille: 96,
+                taille: 64,
                 borderRadius: 100,
               ),
               Button(
@@ -41,7 +41,7 @@ class BottomButtonsRow extends StatelessWidget {
                 onPressed: () {
                   onSwipe(SwipeDirection.left);
                 },
-                taille: 64,
+                taille: 96,
                 borderRadius: 100,
               ),
               Button(
@@ -50,7 +50,7 @@ class BottomButtonsRow extends StatelessWidget {
                   onSwipe(SwipeDirection.right);
                 },
                 icone: const Icon(Icons.star, color: Styles.red1),
-                taille: 64,
+                taille: 96,
                 borderRadius: 100,
               ),
             ],

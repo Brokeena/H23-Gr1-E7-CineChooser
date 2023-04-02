@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:cinechooser/utils/movie_carte.dart';
 import 'package:cinechooser/utils/bottom_buttons_row.dart';
 import '../utils/app_styles.dart';
+import '../utils/carte_overlay.dart';
 
 
 class PagePrincipale extends StatefulWidget {
@@ -84,8 +85,7 @@ class _PagePrincipaleState extends State<PagePrincipale> {
                         direction: properties.direction!,
                       )
 
-                     */
-                      // box avec oui/non
+                     */ // box avec oui/non
                   ],
                 );
               },

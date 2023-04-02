@@ -25,11 +25,19 @@ class Button extends StatelessWidget {
           shape: MaterialStateProperty.resolveWith(
                 (states) => RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(borderRadius),
+
             ),
           ),
           backgroundColor: MaterialStateProperty.resolveWith(
                 (states) => color,
           ),
+          overlayColor: MaterialStateProperty.resolveWith(
+                (states) => Colors.transparent,
+          ),
+          elevation: MaterialStateProperty.resolveWith(
+                (states) => 0.0,
+          ),
+
         ),
         onPressed: onPressed,
         child: icone,
