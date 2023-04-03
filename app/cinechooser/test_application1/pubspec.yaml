@@ -40,6 +40,7 @@ dependencies:
   swipable_stack: any
 
 
+
 dev_dependencies:
   tmdb_api: ^2.1.4
   carousel_slider: ^4.2.1

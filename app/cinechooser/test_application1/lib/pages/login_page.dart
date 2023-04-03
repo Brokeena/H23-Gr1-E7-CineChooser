@@ -8,6 +8,8 @@ import 'package:cinechooser/pages/setup_utilisateur.dart';
 import 'package:cinechooser/main.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 
+import 'choix.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -20,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
 
   void _navigateToNextScreen(BuildContext context) {
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => SetupUtilisateur()));
+        .push(MaterialPageRoute(builder: (context) => Choix()));
   }
 
   bool isButtonPressed = false;
