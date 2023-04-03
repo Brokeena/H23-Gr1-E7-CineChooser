@@ -11,7 +11,7 @@ class Reglages extends StatefulWidget {
 }
 
 class _ReglagesState extends State<Reglages> {
-  List<String> _selectedItems = [];
+
   dynamic dropdownvalues;
 
   List<String> pays = [
@@ -54,7 +54,7 @@ class _ReglagesState extends State<Reglages> {
                   Wrap(
                       spacing: 5,
                       direction: Axis.horizontal,
-                      children: _selectedItems
+                      children: selectedItems
                           .map((e) => Chip(label: Text(e)))
                           .toList())
                 ],
@@ -147,7 +147,7 @@ class _ReglagesState extends State<Reglages> {
 
     if (results != null) {
       setState(() {
-        _selectedItems = results;
+        selectedItems = results;
       });
     }
   }

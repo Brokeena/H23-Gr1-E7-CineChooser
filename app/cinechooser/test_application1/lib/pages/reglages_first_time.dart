@@ -3,9 +3,8 @@ import 'package:cinechooser/pages/pagePrincipale.dart';
 import 'package:cinechooser/widget/button.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
-
 String paysSelectionne = 'Choisissez votre pays ...';
-
+List<String> selectedItems = [];
 
 class ReglagesFirstTime extends StatefulWidget {
 
@@ -18,7 +17,7 @@ class ReglagesFirstTime extends StatefulWidget {
 bool isButtonPressed = false;
 
 class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
-  List<String> _selectedItems = [];
+
   dynamic dropdownvalues;
 
   List<String> pays = [
@@ -142,7 +141,7 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                         spacing: 5,
                         runSpacing: 5,
                         direction: Axis.horizontal,
-                        children: _selectedItems
+                        children: selectedItems
                             .map((e) => Chip(label: Text(e)))
                             .toList()),
                   )
@@ -247,7 +246,7 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
 
     if (results != null) {
       setState(() {
-        _selectedItems = results;
+        selectedItems = results;
       });
     }
   }
@@ -263,14 +262,14 @@ class MultiSelect extends StatefulWidget {
 }
 
 class _MultiSelectState extends State<MultiSelect> {
-  final List<String> _selectedItems = [];
+
 
   void _itemChange(String itemValue, bool isSelected) {
     setState(() {
       if (isSelected) {
-        _selectedItems.add(itemValue);
+        selectedItems.add(itemValue);
       } else {
-        _selectedItems.remove(itemValue);
+        selectedItems.remove(itemValue);
       }
     });
   }
@@ -280,7 +279,7 @@ class _MultiSelectState extends State<MultiSelect> {
   }
 
   void _submit() {
-    Navigator.pop(context, _selectedItems);
+    Navigator.pop(context, selectedItems);
   }
 
   @override
@@ -296,7 +295,7 @@ class _MultiSelectState extends State<MultiSelect> {
           children: widget.items
               .map((item) => CheckboxListTile(
                     activeColor: Styles.red1,
-                    value: _selectedItems.contains(item),
+                    value: selectedItems.contains(item),
                     title: Text(item,
                         style: const TextStyle(
                             fontWeight: FontWeight.normal,
