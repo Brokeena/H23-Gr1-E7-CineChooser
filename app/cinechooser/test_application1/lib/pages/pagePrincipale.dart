@@ -33,7 +33,7 @@ class _PagePrincipaleState extends State<PagePrincipale> {
     _controller = SwipableStackController()..addListener(_listenController);
   }
 
-  @override //lsuihfsioghoiseg
+  @override
   void dispose() {
     super.dispose();
     _controller
@@ -43,8 +43,6 @@ class _PagePrincipaleState extends State<PagePrincipale> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double heigth = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Styles.bgColor,
       body: SafeArea(
@@ -69,20 +67,25 @@ class _PagePrincipaleState extends State<PagePrincipale> {
 
                 return Stack(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 25),
-                      child: Center(
-                        child: SizedBox(
-                          height: heigth*0.65,
-                          width: width*0.9,
-                          child: Cartes(
-                            name: 'Film ${itemIndex + 1}',
-                            genres: 'Genre du film ${itemIndex + 1}',
-                            poster: imageList[itemIndex],
-                          ),
+                    Center(
+                      child: SizedBox(
+                        height: 700,
+                        width: 450,
+                        child: Cartes(
+                          name: 'Film ${itemIndex + 1}',
+                          genres: 'Genre du film ${itemIndex + 1}',
+                          poster: imageList[itemIndex],
                         ),
                       ),
                     ),
+                    /*if (properties.stackIndex == 0 &&
+                        properties.direction != null)
+                      OverlayCarte(
+                        swipeProgress: properties.swipeProgress,
+                        direction: properties.direction!,
+                      )
+
+                     */ // box avec oui/non
                   ],
                 );
               },

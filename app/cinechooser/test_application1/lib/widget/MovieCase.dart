@@ -33,7 +33,10 @@ class MovieCase extends StatelessWidget {
             ),
           ),
 
-        Text(nom, style: Styles.preTitre),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal : 10.0),
+          child: Text(nom, style: Styles.preTitre),
+        ),
         Button(onPressed: onPressed, icone: const Icon(
           Icons.arrow_drop_down,
           color: Colors.transparent,

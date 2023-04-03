@@ -24,7 +24,7 @@ class Cartes extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(
-                    image: NetworkImage(poster), fit: BoxFit.cover),//cover bb
+                    image: NetworkImage(poster), fit: BoxFit.fill),
               ),
             ),
           ),

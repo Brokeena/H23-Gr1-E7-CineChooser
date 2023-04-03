@@ -4,7 +4,11 @@ import 'package:cinechooser/widget/button.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 
+String paysSelectionne = 'Choisissez votre pays ...';
+
+
 class ReglagesFirstTime extends StatefulWidget {
+
   const ReglagesFirstTime({Key? key}) : super(key: key);
 
   @override
@@ -16,6 +20,7 @@ bool isButtonPressed = false;
 class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
   List<String> _selectedItems = [];
   dynamic dropdownvalues;
+
   List<String> pays = [
     'Canada',
     'États-unis',
@@ -90,8 +95,8 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                     padding: const EdgeInsets.all(10.0),
                     child: DropdownButton(
                         borderRadius: BorderRadius.circular(7),
-                        hint: const Text('Choisissez votre pays ...',
-                            style: TextStyle(
+                        hint:  Text(paysSelectionne,
+                            style: const TextStyle(
                                 fontWeight: FontWeight.normal,
                                 fontSize: 15,
                                 color: Colors.black87)),
@@ -114,6 +119,7 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                             .toList(),
                         onChanged: (newItem) {
                           setState(() {
+                            paysSelectionne = newItem.toString();
                             dropdownvalues = newItem!;
                           });
                         }),
