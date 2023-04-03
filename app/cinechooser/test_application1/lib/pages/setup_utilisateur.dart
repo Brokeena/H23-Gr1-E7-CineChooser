@@ -6,6 +6,8 @@ import 'package:cinechooser/widget/textField.dart';
 import 'package:cinechooser/pages/login_page.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 
+import 'choix.dart';
+
 class SetupUtilisateur extends StatefulWidget {
   const SetupUtilisateur({Key? key}) : super(key: key);
 
@@ -131,7 +133,7 @@ class _SetupUtilisateurState extends State<SetupUtilisateur> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const PagePrincipale()),
+                              builder: (context) => const Choix()),
                         );
                       },
                       icone: const Icon(Icons.arrow_forward_ios, color: Styles.red1),

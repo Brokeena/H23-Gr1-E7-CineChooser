@@ -1,5 +1,8 @@
+import 'package:cinechooser/pages/login_page.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
 import 'package:cinechooser/pages/reglages.dart';
+import 'package:cinechooser/pages/reglages_first_time.dart';
+import 'package:cinechooser/pages/setup_utilisateur.dart';
 import 'package:cinechooser/widget/button.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
@@ -28,7 +31,7 @@ class _ChoixState extends State<Choix> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const PagePrincipale()),
+              MaterialPageRoute(builder: (context) => const LoginPage()),
             );
           },
           icon: const Icon(Icons.arrow_back_ios_new_outlined,
@@ -48,7 +51,7 @@ class _ChoixState extends State<Choix> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Reglages()),
+                    MaterialPageRoute(builder: (context) => const ReglagesFirstTime()),
                   );
                 },
               ),
