@@ -32,7 +32,7 @@ class Button extends StatelessWidget {
                 (states) => color,
           ),
           overlayColor: MaterialStateProperty.resolveWith(
-                (states) => Colors.transparent,
+                (states) => Colors.red,
           ),
           elevation: MaterialStateProperty.resolveWith(
                 (states) => 0.0,

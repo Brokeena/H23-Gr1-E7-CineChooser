@@ -3,11 +3,11 @@ import 'package:cinechooser/pages/pagePrincipale.dart';
 import 'package:cinechooser/widget/button.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
-String paysSelectionne = 'Choisissez votre pays ...';
+
+String paysSelectionne = 'Pays';
 List<String> selectedItems = [];
 
 class ReglagesFirstTime extends StatefulWidget {
-
   const ReglagesFirstTime({Key? key}) : super(key: key);
 
   @override
@@ -17,7 +17,6 @@ class ReglagesFirstTime extends StatefulWidget {
 bool isButtonPressed = false;
 
 class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
-
   dynamic dropdownvalues;
 
   List<String> pays = [
@@ -78,42 +77,62 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
       body: SafeArea(
         top: true,
         child: Padding(
-          padding:  EdgeInsets.all(width/15),
+          padding: EdgeInsets.all(width / 15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Divider(height: height / 25),
-              const Text('Votre pays :', style: Styles.petittitres),
+              //Divider(height: height / 25),
+              //const Text('Votre pays :', style: Styles.petittitres),
               Divider(height: height / 40),
               Container(
+                height: height * 0.06,
+                width: width * 0.9,
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(14)),
+                    borderRadius: BorderRadius.circular(12)),
                 child: DropdownButtonHideUnderline(
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: DropdownButton(
                         borderRadius: BorderRadius.circular(7),
-                        hint:  Text(paysSelectionne,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.normal,
-                                fontSize: 15,
-                                color: Colors.black87)),
+                        hint: Text(
+                          paysSelectionne,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 16,
+                            color: Colors.black87,
+                            shadows: [
+                              BoxShadow(
+                                color: Colors.black,
+                                blurRadius: 15,
+                                spreadRadius: 10,
+                              )
+                            ],
+                          ),
+                        ),
                         value: dropdownvalues,
                         dropdownColor: Colors.white,
                         elevation: 0,
                         icon: const Icon(
-                          Icons.arrow_drop_down,
-                          color: Colors.transparent,
+                          Icons.expand_more,
+                          color: Colors.black,
                         ),
                         items: pays
                             .map((dynamic value) => DropdownMenuItem(
                                   value: value,
                                   child: Text(value,
                                       style: const TextStyle(
-                                          fontWeight: FontWeight.normal,
-                                          fontSize: 15,
-                                          color: Colors.black87)),
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 16,
+                                        color: Colors.black87,
+                                        shadows: [
+                                          BoxShadow(
+                                            color: Styles.grey1,
+                                            blurRadius: 5,
+                                            spreadRadius: 0,
+                                          )
+                                        ],
+                                      )),
                                 ))
                             .toList(),
                         onChanged: (newItem) {
@@ -132,7 +151,6 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
                   const Text('Platformes selectionnées : ',
                       style: Styles.informations),
                   Padding(
@@ -262,8 +280,6 @@ class MultiSelect extends StatefulWidget {
 }
 
 class _MultiSelectState extends State<MultiSelect> {
-
-
   void _itemChange(String itemValue, bool isSelected) {
     setState(() {
       if (isSelected) {
