@@ -27,7 +27,6 @@ class _LoginPageState extends State<LoginPage> {
 
   bool isButtonPressed = false;
 
-
   void buttonPressed() {
     setState(() {
       if (isButtonPressed == false) {
@@ -41,6 +40,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
         backgroundColor: Styles.bgColor,
         body: SafeArea(
@@ -83,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                     }),
 
                 SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.03), //s'adapte a differentes tailles
+                    height: height * 0.03), //s'adapte a differentes tailles
                 const Text(
                   'Bienvenue sur',
                   style: Styles.preTitre,
@@ -97,11 +98,12 @@ class _LoginPageState extends State<LoginPage> {
                   color: Colors.white,
                 ),
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                SizedBox(height: height * 0.01),
                 //texte de bienvenue
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-                  child: Text(
+                 Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: width*0.05, vertical: height*0.01),
+                  child: const Text(
                       'CineChooser recommande des films en fonction de vos '
                       'critères et aide votre groupe à trouver un film qui plait à '
                       'tous. Découvrez de nouveaux films passionnants à '
@@ -109,16 +111,16 @@ class _LoginPageState extends State<LoginPage> {
                       textAlign: TextAlign.center,
                       style: Styles.informations),
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                SizedBox(height: height * 0.01),
                 // Boutton Commencer
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  padding:  EdgeInsets.symmetric(horizontal: width*0.05),
                   child: GestureDetector(
                     onTap: buttonPressed,
                     //(){_navigateToNextScreen(context);},
                     child: AnimatedContainer(
-                      duration: Duration(milliseconds: 100),
-                      padding: EdgeInsets.all(15),
+                      duration: const Duration(milliseconds: 100),
+                      padding: EdgeInsets.all(width*0.04),
                       decoration: BoxDecoration(
                           color: Styles.bgColor,
                           borderRadius: BorderRadius.circular(12),
