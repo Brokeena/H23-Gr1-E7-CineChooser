@@ -15,7 +15,7 @@ class ReglagesFirstTime extends StatefulWidget {
 }
 
 bool isButtonPressed = false;
-
+//yo
 class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
   dynamic dropdownvalues;
 
