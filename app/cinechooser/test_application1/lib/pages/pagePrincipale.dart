@@ -33,7 +33,7 @@ class _PagePrincipaleState extends State<PagePrincipale> {
     _controller = SwipableStackController()..addListener(_listenController);
   }
 
-  @override
+  @override //lsuihfsioghoiseg
   void dispose() {
     super.dispose();
     _controller
