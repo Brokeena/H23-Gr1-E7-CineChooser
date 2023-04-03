@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="Swipe !!!! ^^">
+    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="responsive v1">
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/pagePrincipale.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/pagePrincipale.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/reglages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/reglages.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/reglages_first_time.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/reglages_first_time.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/utils/movie_carte.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/utils/movie_carte.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/widget/MovieCase.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/widget/MovieCase.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +160,35 @@
       <option name="project" value="LOCAL" />
       <updated>1680550629675</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="MEEEEEMOIRRRREEEEE">
+      <created>1680553350474</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1680553350474</updated>
+    </task>
+    <task id="LOCAL-00014" summary="pagePrincipale.dart">
+      <created>1680553951704</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1680553951704</updated>
+    </task>
+    <task id="LOCAL-00015" summary="memoire 2">
+      <created>1680554506149</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1680554506149</updated>
+    </task>
+    <task id="LOCAL-00016" summary="responsive v1">
+      <created>1680555641377</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1680555641377</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,7 +218,11 @@
     <MESSAGE value="+" />
     <MESSAGE value="réglages" />
     <MESSAGE value="Swipe !!!! ^^" />
-    <option name="LAST_COMMIT_MESSAGE" value="Swipe !!!! ^^" />
+    <MESSAGE value="MEEEEEMOIRRRREEEEE" />
+    <MESSAGE value="pagePrincipale.dart" />
+    <MESSAGE value="memoire 2" />
+    <MESSAGE value="responsive v1" />
+    <option name="LAST_COMMIT_MESSAGE" value="responsive v1" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

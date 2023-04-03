@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cinechooser/api/api.dart';
 import 'package:cinechooser/pages/setup_utilisateur.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cinechooser/main.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 
@@ -85,16 +86,17 @@ class _LoginPageState extends State<LoginPage> {
 
                 SizedBox(
                     height: height * 0.03), //s'adapte a differentes tailles
-                const Text(
+                const AutoSizeText(
                   'Bienvenue sur',
                   style: Styles.preTitre,
+                  maxLines: 1,
                 ),
 
-                const Text('CineChooser', style: Styles.titre),
+                const AutoSizeText('CineChooser', style: Styles.titre,maxLines: 1,),
 
-                const Icon(
+                 Icon(
                   Icons.live_tv,
-                  size: 100,
+                  size: height*0.1,
                   color: Colors.white,
                 ),
 
@@ -103,11 +105,12 @@ class _LoginPageState extends State<LoginPage> {
                  Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: width*0.05, vertical: height*0.01),
-                  child: const Text(
+                  child: const AutoSizeText (
                       'CineChooser recommande des films en fonction de vos '
                       'critères et aide votre groupe à trouver un film qui plait à '
                       'tous. Découvrez de nouveaux films passionnants à '
                       'regarder ensemble !',
+                      maxLines: 3,
                       textAlign: TextAlign.center,
                       style: Styles.informations),
                 ),
