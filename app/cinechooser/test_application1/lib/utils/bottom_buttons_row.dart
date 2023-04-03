@@ -35,21 +35,33 @@ class BottomButtonsRow extends StatelessWidget {
                 taille: 64,
                 borderRadius: 100,
               ),
+
+              Button(
+                color: Styles.red1,
+                onPressed: () {
+                  onSwipe(SwipeDirection.right);
+                },
+                icone: const Icon(
+                  Icons.favorite,
+                  color: Styles.white1,
+                  size: 45,
+                  shadows: [
+                    BoxShadow(
+                    color: Styles.grey1,
+                    blurRadius: 15,
+                    spreadRadius: 10,
+                  )
+                ],
+                ),
+                taille: 96,
+                borderRadius: 100,
+              ),
               Button(
                 color: Colors.white,
                 icone: const Icon(Icons.clear, color: Styles.red1),
                 onPressed: () {
                   onSwipe(SwipeDirection.left);
                 },
-                taille: 96,
-                borderRadius: 100,
-              ),
-              Button(
-                color: Colors.white,
-                onPressed: () {
-                  onSwipe(SwipeDirection.right);
-                },
-                icone: const Icon(Icons.star, color: Styles.red1),
                 taille: 96,
                 borderRadius: 100,
               ),
