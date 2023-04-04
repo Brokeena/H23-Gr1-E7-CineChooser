@@ -38,7 +38,7 @@ String language_country(){
   return trendingMoviesImages;
 }
 
-Future<List<Movie>> getTrendingMovies() async{
+  Future<List<Movie>> getTrendingMovies() async{
   List<Movie> trendingMovies = [];
   var searchTrending = await tmdb.v3.trending.getTrending(mediaType: MediaType.movie,timeWindow: TimeWindow.day);
   List<dynamic> results = searchTrending['results'];
@@ -46,14 +46,22 @@ Future<List<Movie>> getTrendingMovies() async{
   for(int i = 0; i < results.length; i++){
     trendingMoviesId.add(results.elementAt(i)['id']);
   }
-  
-  trendingMovies.add(await Movie.create(18491));
-  List<int> size = [];
-  for(int j = 0; j < trendingMoviesId.length; j++){
-    size.add(j+1);
+
+
+  /*await Future.wait(trendingMoviesId.map((item) async {
+    var movie = await Movie.create(item);
+    print(movie.id);
+    trendingMovies.add(movie);
+    Future.delayed(Duration(seconds:1));
+  }).toList());*/
+
+  for(int i = 0; i < trendingMoviesId.length; i++){
+    trendingMovies.add(await Movie.create(trendingMoviesId.elementAt(i)));
   }
 
   return trendingMovies;
 
 }
+
+
 

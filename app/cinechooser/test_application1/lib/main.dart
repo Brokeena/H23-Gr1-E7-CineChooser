@@ -10,7 +10,9 @@ import 'package:cinechooser/pages/choix.dart';
 String poster = '';
 
 void main() async {
-  var liste = getTrendingMovies();
+  var liste =  await getTrendingMovies();
+  Future.delayed(Duration(seconds: 1));
+  print(liste);
   Movie movie = await Movie.create(18491);
   poster = movie.poster;
   WidgetsFlutterBinding.ensureInitialized();

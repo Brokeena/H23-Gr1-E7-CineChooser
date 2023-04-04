@@ -7,13 +7,23 @@ import 'api.dart';
   late String overview;
   late List<String> directors;
   late List<String> actors;
-  late List<String> providers;
+  late List<String> providers = ["none"];
   late double score;
   int id;
   late int runtime;
   List<Genre> genres = [];
 
 
+  static Future<List<Movie>> createList (List<int> idList) async{
+    List<Movie> movies = [];
+    for(int i in idList){
+      var movie = Movie._create(i);
+      await movie._complexAsyncInit();
+      movies.add(movie);
+    }
+
+    return movies;
+  }
 
   Movie._create(this.id);
 
@@ -27,7 +37,7 @@ import 'api.dart';
     await setBasicsDetails(id);
     await setDirector(id);
     await setActors(id);
-    await setWatchProviders(id);
+    //await setWatchProviders(id);
   }
 
 
@@ -97,11 +107,17 @@ import 'api.dart';
   Future<void> setWatchProviders(int id) async {
     Map searchWatchProviders = await tmdb.v3.movies.getWatchProviders(id);
     List providersFound = searchWatchProviders['results'][country]['flatrate'];
-    List<String> providersNames = [];
-    for( var value in providersFound){
-      providersNames.add(value['provider_name']);
+    if(providersFound != Null){
+      List<String> providersNames = [];
+      for( var value in providersFound){
+        providersNames.add(value['provider_name']);
+      }
+      providers = providersNames;
+    } else {
+      List<String> none = ["None"];
+      providers = none;
     }
-    providers = providersNames;
+
 
   }
 
