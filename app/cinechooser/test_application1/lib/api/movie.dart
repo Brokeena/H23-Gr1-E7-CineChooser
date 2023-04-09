@@ -7,11 +7,12 @@ import 'api.dart';
   late String overview;
   late List<String> directors;
   late List<String> actors;
-  late List<String> providers = ["none"];
+  late List<String> providers;
   late double score;
   int id;
   late int runtime;
   List<Genre> genres = [];
+  late bool inCinema = false;
 
 
   static Future<List<Movie>> createList (List<int> idList) async{
@@ -37,7 +38,7 @@ import 'api.dart';
     await setBasicsDetails(id);
     await setDirector(id);
     await setActors(id);
-    //await setWatchProviders(id);
+    await setWatchProviders(id);
   }
 
 
@@ -93,28 +94,43 @@ import 'api.dart';
   Future<void> setActors(int id) async {
     Map creditsDetails = await tmdb.v3.movies.getCredits(id);
     List cast = creditsDetails['cast'];
-    List<String> actorsFound = ["unknown"];
-    for(int i = 0; i < 3; i++){
-      if(actorsFound.elementAt(0) == "unknown"){
-        actorsFound.clear();
+    List<String> actorsFound = ["Unknown"];
+    if(cast.isNotEmpty){
+      for(int i = 0; i < 3; i++){
+        if(actorsFound.elementAt(0) == "unknown"){
+          actorsFound.clear();
+        }
+        actorsFound.add(cast.elementAt(i)['name']);
       }
-      actorsFound.add(cast.elementAt(i)['name']);
     }
+
 
     actors = actorsFound;
   }
 
   Future<void> setWatchProviders(int id) async {
     Map searchWatchProviders = await tmdb.v3.movies.getWatchProviders(id);
-    List providersFound = searchWatchProviders['results'][country]['flatrate'];
-    if(providersFound != Null){
+    List<dynamic> providersFound = [];
+    if(searchWatchProviders['results'][country] == Null || searchWatchProviders['results'][country] == null){
+      providers = ["Unavailable"];
+    } else {
+      if(searchWatchProviders['results'][country]['flatrate'] == Null || searchWatchProviders['results'][country]['flatrate'] == null){
+        providersFound = [];
+      } else {
+        providersFound = searchWatchProviders['results'][country]['flatrate'];
+      }
+    }
+
+
+
+    if(providersFound.isNotEmpty){
       List<String> providersNames = [];
       for( var value in providersFound){
         providersNames.add(value['provider_name']);
       }
       providers = providersNames;
     } else {
-      List<String> none = ["None"];
+      List<String> none = ["In theatres now"];
       providers = none;
     }
 
