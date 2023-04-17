@@ -8,6 +8,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cinechooser/pages/choix.dart';
 
 String poster = '';
+List<Movie> displayedMovies = [];
 
 void main() async {
   var liste =  await getTrendingMovies();
@@ -22,6 +23,7 @@ void main() async {
           appId: 'cinechooser',
           messagingSenderId: '1026537403163',
           projectId: 'cinechooser-eva01'));
+  displayedMovies = await getTrendingMovies();
   runApp(const MyApp());
 }
 

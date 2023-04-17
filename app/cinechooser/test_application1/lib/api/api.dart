@@ -46,15 +46,6 @@ String language_country(){
   for(int i = 0; i < results.length; i++){
     trendingMoviesId.add(results.elementAt(i)['id']);
   }
-
-
-  /*await Future.wait(trendingMoviesId.map((item) async {
-    var movie = await Movie.create(item);
-    print(movie.id);
-    trendingMovies.add(movie);
-    Future.delayed(Duration(seconds:1));
-  }).toList());*/
-
   for(int i = 0; i < trendingMoviesId.length; i++){
     trendingMovies.add(await Movie.create(trendingMoviesId.elementAt(i)));
   }
