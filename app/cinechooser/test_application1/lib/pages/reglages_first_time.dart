@@ -3,8 +3,13 @@ import 'package:cinechooser/pages/pagePrincipale.dart';
 import 'package:cinechooser/widget/button.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
+import 'package:cinechooser/api/api.dart';
+import 'package:cinechooser/utils/pays_nom.dart';
+import 'package:cinechooser/utils/pays_iso.dart';
 
 String paysSelectionne = 'Pays';
+String paysISO = 'CA';
+
 List<String> selectedItems = [];
 
 class ReglagesFirstTime extends StatefulWidget {
@@ -15,47 +20,22 @@ class ReglagesFirstTime extends StatefulWidget {
 }
 
 bool isButtonPressed = false;
-//yo
 class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
   dynamic dropdownvalues;
-
-  List<String> pays = [
-    'Canada',
-    'États-unis',
-    'France',
-    'Australie',
-    'Japon',
-    'Austria',
-    'Belgium',
-    'Bulgaria',
-    'Cyprus',
-    'Czech Republic',
-    'Denmark',
-    'Estonia',
-    'Finland',
-    'Germany',
-    'Greece',
-    'Hungary',
-    'Ireland',
-    'Italy',
-    'Latvia',
-    'Lithuania',
-    'Luxembourg',
-    'Malta',
-    'Netherlands',
-    'Poland',
-    'Portugal',
-    'Romania',
-    'Slovakia',
-    'Slovenia',
-    'Spain',
-    'Sweden,United Kingdom'
-  ];
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
+    int index = listPaysNom.indexOf(paysSelectionne);
+    if (index >= 0 && index < listPaysISO.length)
+    {
+      paysISO = listPaysISO[index];
+      country = paysISO;
+      print(country);
+    }
+
     return Scaffold(
       backgroundColor: Styles.bgColor,
       appBar: AppBar(
@@ -101,13 +81,6 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                             fontWeight: FontWeight.normal,
                             fontSize: 16,
                             color: Colors.black87,
-                            shadows: [
-                              BoxShadow(
-                                color: Colors.black,
-                                blurRadius: 15,
-                                spreadRadius: 10,
-                              )
-                            ],
                           ),
                         ),
                         value: dropdownvalues,
@@ -117,7 +90,7 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                           Icons.expand_more,
                           color: Colors.black,
                         ),
-                        items: pays
+                        items: listPaysNom
                             .map((dynamic value) => DropdownMenuItem(
                                   value: value,
                                   child: Text(value,
@@ -125,13 +98,6 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                                         fontWeight: FontWeight.normal,
                                         fontSize: 16,
                                         color: Colors.black87,
-                                        shadows: [
-                                          BoxShadow(
-                                            color: Styles.grey1,
-                                            blurRadius: 5,
-                                            spreadRadius: 0,
-                                          )
-                                        ],
                                       )),
                                 ))
                             .toList(),

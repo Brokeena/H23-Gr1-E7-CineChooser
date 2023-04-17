@@ -1,4 +1,5 @@
 import 'package:cinechooser/pages/pagePrincipale.dart';
+import 'package:cinechooser/utils/pays_nom.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:cinechooser/pages/reglages_first_time.dart';
@@ -13,10 +14,6 @@ class Reglages extends StatefulWidget {
 class _ReglagesState extends State<Reglages> {
 
   dynamic dropdownvalues;
-
-  List<String> pays = [
-    'Canada','États-unis','France','Australie','Japon','Austria','Belgium','Bulgaria','Cyprus','Czech Republic','Denmark','Estonia','Finland','Germany','Greece','Hungary','Ireland','Italy','Latvia','Lithuania','Luxembourg','Malta','Netherlands','Poland','Portugal','Romania','Slovakia','Slovenia','Spain','Sweden,United Kingdom'
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +100,7 @@ class _ReglagesState extends State<Reglages> {
                             color: Colors.transparent,
                           ),
 
-                          items: pays.map((dynamic value) => DropdownMenuItem(
+                          items: listPaysNom.map((dynamic value) => DropdownMenuItem(
                             value: value,
                             child: Text(value, style : const TextStyle(
                                 fontWeight: FontWeight.normal,

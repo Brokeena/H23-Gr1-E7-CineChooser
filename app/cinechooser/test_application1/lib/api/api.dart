@@ -2,7 +2,7 @@ import 'package:tmdb_api/tmdb_api.dart';
 import 'movie.dart';
 
 const String language = 'en-';
-const String country = 'CA';
+String country = 'CA';
 
 final tmdb = TMDB( //TMDB instance
   ApiKeys('e99858b3004ef91a1e786cc7f99fde94', 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlOTk4NThiMzAwNGVmOTFhMWU3ODZjYzdmOTlmZGU5NCIsInN1YiI6IjYzZWE5OTRmOGU4NzAyMDBkYzdiN2FlMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qOpj0nwkYQhC-8nubR4b-gT2qyJLPA65kCvWVl69ZkE'),
