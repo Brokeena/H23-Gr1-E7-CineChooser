@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cinechooser/utils/app_styles.dart';
 
 class Button extends StatelessWidget {
   const Button({super.key,

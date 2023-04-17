@@ -18,6 +18,10 @@ class PagePrincipale extends StatefulWidget {
 }
 
 class _PagePrincipaleState extends State<PagePrincipale> {
+  static const imageList = [
+    'https://image.tmdb.org/t/p/original/74xTEgt7R36Fpooo50r9T25onhq.jpg',
+    'https://image.tmdb.org/t/p/original/fZPSd91yGE9fCcCe6OoQr6E3Bev.jpg'
+  ];
 
   final controller = SwipableStackController();
 
@@ -47,7 +51,6 @@ class _PagePrincipaleState extends State<PagePrincipale> {
 
   @override
   Widget build(BuildContext context) {
-    print("here");
     double width = MediaQuery.of(context).size.width;
     double heigth = MediaQuery.of(context).size.height;
     return Scaffold(

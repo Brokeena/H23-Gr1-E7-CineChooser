@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cinechooser/widget/button.dart';
 import 'package:flutter/material.dart';
 
@@ -21,29 +22,35 @@ class MovieCase extends StatelessWidget {
 
     return ClipRRect(
       child: Stack(children: [
-          SizedBox(
-            height: width/4,
-            width: width/4,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                image: DecorationImage(
-                    image: NetworkImage(image), fit: BoxFit.cover),
-              ),
+        SizedBox(
+          height: width / 4,
+          width: width / 4,
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              image: DecorationImage(
+                  image: NetworkImage(image), fit: BoxFit.cover),
             ),
           ),
-
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal : 10.0),
-          child: Text(nom, style: Styles.preTitre),
         ),
-        Button(onPressed: onPressed, icone: const Icon(
-          Icons.arrow_drop_down,
-          color: Colors.transparent,
-        ), color: Colors.transparent, taille: width/4, borderRadius: 20)
+        Center(
+            child: Padding(
+              padding: EdgeInsets.only(top: width / 5),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: AutoSizeText(nom, style: Styles.informations),
+          ),
+        )),
+        Button(
+            onPressed: onPressed,
+            icone: const Icon(
+              Icons.arrow_drop_down,
+              color: Colors.transparent,
+            ),
+            color: Colors.transparent,
+            taille: width / 4,
+            borderRadius: 20)
       ]),
     );
-
-
   }
 }

@@ -62,8 +62,6 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              //Divider(height: height / 25),
-              //const Text('Votre pays :', style: Styles.petittitres),
               Divider(height: height / 40),
               Container(
                 height: height * 0.06,
@@ -105,6 +103,7 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                         onChanged: (newItem) {
                           setState(() {
                             paysSelectionne = newItem.toString();
+
                             dropdownvalues = newItem!;
                           });
                         }),
@@ -215,11 +214,7 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
       'Netflix',
       'Disney+',
       'PrimeVideo',
-      'Crave3',
-      'Netfli23',
-      'Disney3+',
-      'Prim2eVideo',
-      'C4rave'
+      'Apple TV Plus'
     ];
 
     final List<String>? results = await showDialog(

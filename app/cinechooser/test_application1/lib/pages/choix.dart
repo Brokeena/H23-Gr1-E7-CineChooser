@@ -17,10 +17,11 @@ class Choix extends StatefulWidget {
 }
 
 class _ChoixState extends State<Choix> {
-  List<String> listGenre = [];
+  List<int> listGenre = [];
 
   @override
   Widget build(BuildContext context) {
+    print(listGenre);
     print("choiz page");
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -30,10 +31,12 @@ class _ChoixState extends State<Choix> {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const LoginPage()),
-            );
+            if (listGenre.length >= 5) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginPage()),
+              );
+            }
           },
           icon: const Icon(Icons.arrow_back_ios_new_outlined,
               color: Colors.white),
@@ -43,17 +46,22 @@ class _ChoixState extends State<Choix> {
             padding: const EdgeInsets.all(14.0),
             child: Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
+                borderRadius: BorderRadius.circular(100),
               ),
               child: TextButton(
                 style: TextButton.styleFrom(
-                    backgroundColor: Styles.red1,),
-                child: const Text('Suivant', style: TextStyle(color: Colors.white)),
+                  backgroundColor: Styles.red1,
+                ),
+                child: const Text('Suivant',
+                    style: TextStyle(color: Colors.white)),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const ReglagesFirstTime()),
-                  );
+                  if (listGenre.length >= 3) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ReglagesFirstTime()),
+                    );
+                  }
                 },
               ),
             ),
@@ -72,7 +80,7 @@ class _ChoixState extends State<Choix> {
                 const Text('Bienvenue sur CineChooser',
                     style: Styles.nom_de_pages),
                 const Divider(height: 10),
-                const Text('Choisissez 5 genres ou plus ',
+                const Text('Choisissez 3 genres ou plus ',
                     style: Styles.informations),
                 const Divider(height: 25),
                 Row(
@@ -82,27 +90,26 @@ class _ChoixState extends State<Choix> {
                         image:
                             'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/keanu-reeves-john-wick-4-1668099111.jpg?crop=0.716xw:1.00xh;0.284xw,0&resize=1200:*',
                         onPressed: () {
-                          listGenre.add('Action');
-                          print('action');
+                          listGenre.add(28);
                         }),
                     Padding(
                       padding: EdgeInsets.only(left: width / 16),
                       child: MovieCase(
-                          nom: 'Aventure',
+                          nom: 'Adventure',
                           image:
                               'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/keanu-reeves-john-wick-4-1668099111.jpg?crop=0.716xw:1.00xh;0.284xw,0&resize=1200:*',
                           onPressed: () {
-                            listGenre.add('Aventure');
+                            listGenre.add(12);
                           }),
                     ),
                     Padding(
                       padding: EdgeInsets.only(left: width / 16),
                       child: MovieCase(
-                          nom: 'Comédie',
+                          nom: 'Animation',
                           image:
                               'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/keanu-reeves-john-wick-4-1668099111.jpg?crop=0.716xw:1.00xh;0.284xw,0&resize=1200:*',
                           onPressed: () {
-                            listGenre.add('Comédie');
+                            listGenre.add(16);
                           }),
                     ),
                   ],
@@ -111,31 +118,30 @@ class _ChoixState extends State<Choix> {
                 Row(
                   children: [
                     MovieCase(
-                        nom: 'Action',
+                        nom: 'Comedy',
                         image:
                             'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/keanu-reeves-john-wick-4-1668099111.jpg?crop=0.716xw:1.00xh;0.284xw,0&resize=1200:*',
                         onPressed: () {
-                          listGenre.add('Action');
-                          print('action');
+                          listGenre.add(35);
                         }),
                     Padding(
                       padding: EdgeInsets.only(left: width / 16),
                       child: MovieCase(
-                          nom: 'Aventure',
+                          nom: 'Crime',
                           image:
                               'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/keanu-reeves-john-wick-4-1668099111.jpg?crop=0.716xw:1.00xh;0.284xw,0&resize=1200:*',
                           onPressed: () {
-                            listGenre.add('Aventure');
+                            listGenre.add(80);
                           }),
                     ),
                     Padding(
                       padding: EdgeInsets.only(left: width / 16),
                       child: MovieCase(
-                          nom: 'Comédie',
+                          nom: 'Documentary',
                           image:
                               'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/keanu-reeves-john-wick-4-1668099111.jpg?crop=0.716xw:1.00xh;0.284xw,0&resize=1200:*',
                           onPressed: () {
-                            listGenre.add('Comédie');
+                            listGenre.add(99);
                           }),
                     ),
                   ],
@@ -144,31 +150,30 @@ class _ChoixState extends State<Choix> {
                 Row(
                   children: [
                     MovieCase(
-                        nom: 'Action',
+                        nom: 'Drama',
                         image:
                             'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/keanu-reeves-john-wick-4-1668099111.jpg?crop=0.716xw:1.00xh;0.284xw,0&resize=1200:*',
                         onPressed: () {
-                          listGenre.add('Action');
-                          print('action');
+                          listGenre.add(18);
                         }),
                     Padding(
                       padding: EdgeInsets.only(left: width / 16),
                       child: MovieCase(
-                          nom: 'Aventure',
+                          nom: 'Family',
                           image:
                               'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/keanu-reeves-john-wick-4-1668099111.jpg?crop=0.716xw:1.00xh;0.284xw,0&resize=1200:*',
                           onPressed: () {
-                            listGenre.add('Aventure');
+                            listGenre.add(10751);
                           }),
                     ),
                     Padding(
                       padding: EdgeInsets.only(left: width / 16),
                       child: MovieCase(
-                          nom: 'Comédie',
+                          nom: 'Fantasy',
                           image:
                               'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/keanu-reeves-john-wick-4-1668099111.jpg?crop=0.716xw:1.00xh;0.284xw,0&resize=1200:*',
                           onPressed: () {
-                            listGenre.add('Comédie');
+                            listGenre.add(14);
                           }),
                     ),
                   ],
@@ -177,31 +182,30 @@ class _ChoixState extends State<Choix> {
                 Row(
                   children: [
                     MovieCase(
-                        nom: 'Action',
+                        nom: 'History',
                         image:
                             'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/keanu-reeves-john-wick-4-1668099111.jpg?crop=0.716xw:1.00xh;0.284xw,0&resize=1200:*',
                         onPressed: () {
-                          listGenre.add('Action');
-                          print('action');
+                          listGenre.add(36);
                         }),
                     Padding(
                       padding: EdgeInsets.only(left: width / 16),
                       child: MovieCase(
-                          nom: 'Aventure',
+                          nom: 'Horror',
                           image:
                               'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/keanu-reeves-john-wick-4-1668099111.jpg?crop=0.716xw:1.00xh;0.284xw,0&resize=1200:*',
                           onPressed: () {
-                            listGenre.add('Aventure');
+                            listGenre.add(27);
                           }),
                     ),
                     Padding(
                       padding: EdgeInsets.only(left: width / 16),
                       child: MovieCase(
-                          nom: 'Comédie',
+                          nom: 'Music',
                           image:
                               'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/keanu-reeves-john-wick-4-1668099111.jpg?crop=0.716xw:1.00xh;0.284xw,0&resize=1200:*',
                           onPressed: () {
-                            listGenre.add('Comédie');
+                            listGenre.add(10402);
                           }),
                     ),
                   ],
@@ -210,31 +214,30 @@ class _ChoixState extends State<Choix> {
                 Row(
                   children: [
                     MovieCase(
-                        nom: 'Action',
+                        nom: 'Mystery',
                         image:
                             'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/keanu-reeves-john-wick-4-1668099111.jpg?crop=0.716xw:1.00xh;0.284xw,0&resize=1200:*',
                         onPressed: () {
-                          listGenre.add('Action');
-                          print('action');
+                          listGenre.add(9648);
                         }),
                     Padding(
                       padding: EdgeInsets.only(left: width / 16),
                       child: MovieCase(
-                          nom: 'Aventure',
+                          nom: 'Romance',
                           image:
                               'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/keanu-reeves-john-wick-4-1668099111.jpg?crop=0.716xw:1.00xh;0.284xw,0&resize=1200:*',
                           onPressed: () {
-                            listGenre.add('Aventure');
+                            listGenre.add(10749);
                           }),
                     ),
                     Padding(
                       padding: EdgeInsets.only(left: width / 16),
                       child: MovieCase(
-                          nom: 'Comédie',
+                          nom: 'Science fiction',
                           image:
                               'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/keanu-reeves-john-wick-4-1668099111.jpg?crop=0.716xw:1.00xh;0.284xw,0&resize=1200:*',
                           onPressed: () {
-                            listGenre.add('Comédie');
+                            listGenre.add(878);
                           }),
                     ),
                   ],
@@ -243,31 +246,30 @@ class _ChoixState extends State<Choix> {
                 Row(
                   children: [
                     MovieCase(
-                        nom: 'Action',
+                        nom: 'Thriller',
                         image:
                             'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/keanu-reeves-john-wick-4-1668099111.jpg?crop=0.716xw:1.00xh;0.284xw,0&resize=1200:*',
                         onPressed: () {
-                          listGenre.add('Action');
-                          print('action');
+                          listGenre.add(53);
                         }),
                     Padding(
                       padding: EdgeInsets.only(left: width / 16),
                       child: MovieCase(
-                          nom: 'Aventure',
+                          nom: 'War',
                           image:
                               'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/keanu-reeves-john-wick-4-1668099111.jpg?crop=0.716xw:1.00xh;0.284xw,0&resize=1200:*',
                           onPressed: () {
-                            listGenre.add('Aventure');
+                            listGenre.add(10752);
                           }),
                     ),
                     Padding(
                       padding: EdgeInsets.only(left: width / 16),
                       child: MovieCase(
-                          nom: 'Comédie',
+                          nom: 'Western',
                           image:
                               'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/keanu-reeves-john-wick-4-1668099111.jpg?crop=0.716xw:1.00xh;0.284xw,0&resize=1200:*',
                           onPressed: () {
-                            listGenre.add('Comédie');
+                            listGenre.add(37);
                           }),
                     ),
                   ],

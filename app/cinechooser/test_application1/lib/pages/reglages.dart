@@ -3,6 +3,7 @@ import 'package:cinechooser/utils/pays_nom.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:cinechooser/pages/reglages_first_time.dart';
+import 'package:cinechooser/api/api.dart';
 
 class Reglages extends StatefulWidget {
   const Reglages({Key? key}) : super(key: key);
@@ -125,16 +126,7 @@ class _ReglagesState extends State<Reglages> {
   }
 
   void _showMultiSelect() async {
-    final List<String> items = [
-      'Netflix',
-      'Disney+',
-      'PrimeVideo',
-      'Crave3',
-      'Netfli23',
-      'Disney3+',
-      'Prim2eVideo',
-      'C4rave'
-    ];
+    final List<String> items = selectedItems;
 
     final List<String>? results = await showDialog(
       context: context,
