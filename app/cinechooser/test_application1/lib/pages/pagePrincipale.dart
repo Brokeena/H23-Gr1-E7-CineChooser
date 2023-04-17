@@ -6,7 +6,9 @@ import 'package:cinechooser/utils/movie_carte.dart';
 import 'package:cinechooser/utils/bottom_buttons_row.dart';
 import '../utils/app_styles.dart';
 import '../utils/carte_overlay.dart';
-
+import 'package:cinechooser/api/movie.dart';
+import 'package:cinechooser/api/api.dart';
+import 'package:cinechooser/main.dart';
 
 class PagePrincipale extends StatefulWidget {
   const PagePrincipale({Key? key}) : super(key: key);
@@ -16,10 +18,6 @@ class PagePrincipale extends StatefulWidget {
 }
 
 class _PagePrincipaleState extends State<PagePrincipale> {
-  static const imageList = [
-    'https://image.tmdb.org/t/p/original/74xTEgt7R36Fpooo50r9T25onhq.jpg',
-    'https://image.tmdb.org/t/p/original/fZPSd91yGE9fCcCe6OoQr6E3Bev.jpg'
-  ];
 
   final controller = SwipableStackController();
 
@@ -30,7 +28,13 @@ class _PagePrincipaleState extends State<PagePrincipale> {
   @override
   void initState() {
     super.initState();
+
     _controller = SwipableStackController()..addListener(_listenController);
+    _asyncMethod();
+  }
+
+  _asyncMethod() async {
+    displayedMovies = await getTrendingMovies();
   }
 
   @override
@@ -40,8 +44,10 @@ class _PagePrincipaleState extends State<PagePrincipale> {
       ..removeListener(_listenController)
       ..dispose();
   }
+
   @override
   Widget build(BuildContext context) {
+    print("here");
     double width = MediaQuery.of(context).size.width;
     double heigth = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -64,19 +70,24 @@ class _PagePrincipaleState extends State<PagePrincipale> {
                 }
               },
               builder: (context, properties) {
-                final itemIndex = properties.index % imageList.length;
+                final indexMovie = properties.index % (displayedMovies.length+1);
+
                 return Stack(
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 25),
                       child: Center(
                         child: SizedBox(
-                          height: heigth*0.65,
-                          width: width*0.9,
+                          height: heigth * 0.65,
+                          width: width * 0.9,
                           child: Cartes(
-                            name: 'Film ${itemIndex + 1}',
-                            genres: 'Genre du film ${itemIndex + 1}',
-                            poster: imageList[itemIndex],
+                            name: displayedMovies.elementAt(indexMovie).nom,
+                            genres: displayedMovies
+                                .elementAt(indexMovie)
+                                .genres
+                                .toString(),
+                            poster:
+                                displayedMovies.elementAt(indexMovie).poster,
                           ),
                         ),
                       ),
