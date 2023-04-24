@@ -1,7 +1,7 @@
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:swipable_stack/swipable_stack.dart';
-import 'package:cinechooser/widget/button.dart';
+import 'package:cinechooser/widget/button_carre.dart';
 
 class BottomButtonsRow extends StatelessWidget {
   const BottomButtonsRow({

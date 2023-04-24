@@ -1,6 +1,6 @@
 import 'package:cinechooser/pages/choix.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
-import 'package:cinechooser/widget/button.dart';
+import 'package:cinechooser/widget/button_carre.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:cinechooser/api/api.dart';

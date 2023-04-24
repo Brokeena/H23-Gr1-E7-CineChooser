@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
+import 'package:cinechooser/widget/button_carre.dart';
+import 'package:cinechooser/widget/textField.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -21,6 +23,9 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   List<String> urls = [];
 
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
   void _navigateToNextScreen(BuildContext context) {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => Choix()));
@@ -41,7 +46,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -79,12 +83,14 @@ class _LoginPageState extends State<LoginPage> {
                               autoPlayAnimationDuration:
                                   Duration(milliseconds: 800),
                               aspectRatio: 1,
+                              height: height*0.4
                             ));
                       } else {
                         return const CircularProgressIndicator();
                       }
                     }),
 
+                /*
                 SizedBox(
                     height: height * 0.03), //s'adapte a differentes tailles
                 const AutoSizeText(
@@ -155,6 +161,57 @@ class _LoginPageState extends State<LoginPage> {
                               width: 8,
                             ),
                             const Text('Commencer', style: Styles.bouton),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+                 */
+
+                SizedBox(height: height * 0.05),
+
+                MyTextField(
+                    controller: _emailController,
+                    hintText: "Email",
+                    obscureText: false),
+
+                SizedBox(height: height * 0.01),
+
+                MyTextField(
+                      controller: _passwordController,
+                      hintText: "Password",
+                      obscureText: true),
+
+                SizedBox(height: height * 0.01),
+
+                // Boutton Commencer
+                Padding(
+                  padding:  EdgeInsets.symmetric(horizontal: width*0.05),
+                  child: GestureDetector(
+                    onTap: buttonPressed,
+                    //(){_navigateToNextScreen(context);},
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 100),
+                      padding: EdgeInsets.all(width*0.04),
+                      decoration: BoxDecoration(
+                          color: Styles.red2,
+                          borderRadius: BorderRadius.circular(12),
+                          ),
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            //const Icon(CupertinoIcons.arrow_right, color: Color(0xffC4C0CA)),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            const Text('Sign In', style: TextStyle(
+                              color: Styles.white1,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),)
+
                           ],
                         ),
                       ),
