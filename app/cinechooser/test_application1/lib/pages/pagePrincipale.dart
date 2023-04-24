@@ -73,7 +73,8 @@ class _PagePrincipaleState extends State<PagePrincipale> {
                 }
               },
               builder: (context, properties) {
-                final indexMovie = properties.index % (displayedMovies.length+1);
+                final indexMovie =
+                    properties.index % (displayedMovies.length + 1);
 
                 return Stack(
                   children: [
