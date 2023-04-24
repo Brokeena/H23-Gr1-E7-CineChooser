@@ -9,6 +9,7 @@ import 'package:cinechooser/utils/app_styles.dart';
 import 'choix.dart';
 
 class SetupUtilisateur extends StatefulWidget {
+
   const SetupUtilisateur({Key? key}) : super(key: key);
 
   @override

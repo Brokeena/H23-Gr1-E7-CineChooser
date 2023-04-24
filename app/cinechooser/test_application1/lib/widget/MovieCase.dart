@@ -20,6 +20,7 @@ class MovieCase extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
 
+
     return ClipRRect(
       child: Stack(children: [
         SizedBox(

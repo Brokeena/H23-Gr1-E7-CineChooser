@@ -34,6 +34,7 @@ class BottomButtonsRow extends StatelessWidget {
                 icone: const Icon(Icons.refresh, color: Styles.red1),
                 taille: 64,
                 borderRadius: 100,
+
               ),
 
               Button(

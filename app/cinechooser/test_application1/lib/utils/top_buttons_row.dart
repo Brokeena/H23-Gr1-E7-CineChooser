@@ -21,6 +21,7 @@ class TopButtonsRow extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const LoginPage()),
+
                 );
               },
               icone: const Icon(Icons.arrow_back_ios_new_outlined, color: Styles.red1),
