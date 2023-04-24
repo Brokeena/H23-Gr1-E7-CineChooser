@@ -37,10 +37,9 @@ class MovieCase extends StatelessWidget {
         Center(
             child: Padding(
               padding: EdgeInsets.only(top: width / 5),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5),
-                child: AutoSizeText(nom, style: Styles.informations),
-          ),
+              child: AutoSizeText(nom, style: TextStyle(
+                color: Styles.white1
+              )),
         )),
         Button(
             onPressed: onPressed,
