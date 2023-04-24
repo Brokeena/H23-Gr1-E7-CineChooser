@@ -14,15 +14,16 @@ import 'package:cinechooser/utils/app_styles.dart';
 
 import 'choix.dart';
 
-class LoginPage extends StatefulWidget {
-  final VoidCallback showRegisterPage;
-  const LoginPage({Key? key, required this.showRegisterPage}) : super(key: key);
+class RegisterPage extends StatefulWidget {
+
+  final VoidCallback showLoginPage;
+  const RegisterPage({Key? key, required this.showLoginPage}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   List<String> urls = [];
 
   final _emailController = TextEditingController();
@@ -53,6 +54,9 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
+
+  void signUp
+
   @override
   void dispose()
   {
@@ -82,26 +86,26 @@ class _LoginPageState extends State<LoginPage> {
                           return CarouselSlider(
                               items: urls
                                   .map((item) => Center(
-                                          child: ClipRRect(
-                                        borderRadius: const BorderRadius.all(
-                                            Radius.circular(20)),
-                                        child: Image.network(
-                                          item,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      )))
+                                  child: ClipRRect(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(20)),
+                                    child: Image.network(
+                                      item,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  )))
                                   .toList(),
                               options: CarouselOptions(
-                                scrollPhysics: NeverScrollableScrollPhysics(),
-                                autoPlay: true,
-                                enlargeCenterPage: true,
-                                reverse: false,
-                                autoPlayInterval:
-                                    const Duration(seconds: 3, milliseconds: 500),
-                                autoPlayAnimationDuration:
-                                    const Duration(milliseconds: 800),
-                                aspectRatio: 1,
-                                height: height*0.4
+                                  scrollPhysics: NeverScrollableScrollPhysics(),
+                                  autoPlay: true,
+                                  enlargeCenterPage: true,
+                                  reverse: false,
+                                  autoPlayInterval:
+                                  Duration(seconds: 3, milliseconds: 500),
+                                  autoPlayAnimationDuration:
+                                  Duration(milliseconds: 800),
+                                  aspectRatio: 1,
+                                  height: height*0.4
                               ));
                         } else {
                           return const CircularProgressIndicator();
@@ -197,9 +201,9 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(height: height * 0.01),
 
                   MyTextField(
-                        controller: _passwordController,
-                        hintText: "Password",
-                        obscureText: true),
+                      controller: _passwordController,
+                      hintText: "Password",
+                      obscureText: true),
 
                   SizedBox(height: height * 0.01),
 
@@ -207,15 +211,15 @@ class _LoginPageState extends State<LoginPage> {
                   Padding(
                     padding:  EdgeInsets.symmetric(horizontal: width*0.05),
                     child: GestureDetector(
-                      onTap: signin,
+                      onTap: signUp,
                       //(){_navigateToNextScreen(context);},
                       child: AnimatedContainer(
                         duration: const Duration(milliseconds: 100),
                         padding: EdgeInsets.all(width*0.04),
                         decoration: BoxDecoration(
-                            color: Styles.red2,
-                            borderRadius: BorderRadius.circular(12),
-                            ),
+                          color: Styles.red2,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                         child: Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -224,7 +228,7 @@ class _LoginPageState extends State<LoginPage> {
                               const SizedBox(
                                 width: 8,
                               ),
-                              const Text('Sign In', style: TextStyle(
+                              const Text('Sign Up', style: TextStyle(
                                 color: Styles.white1,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -240,8 +244,8 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('Not a member ?', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                      GestureDetector(onTap: widget.showRegisterPage,child: const Text(' Register now', style: TextStyle( color: Colors.blue, fontWeight: FontWeight.bold), ))
+                      const Text('Already a member ?', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                      const Text(' login now', style: TextStyle( color: Colors.blue, fontWeight: FontWeight.bold), )
                     ],
                   ),
                 ],

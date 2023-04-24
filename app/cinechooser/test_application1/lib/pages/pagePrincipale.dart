@@ -1,4 +1,5 @@
 import 'package:cinechooser/utils/top_buttons_row.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:swipable_stack/swipable_stack.dart';
 import 'package:flutter/foundation.dart';
@@ -18,11 +19,9 @@ class PagePrincipale extends StatefulWidget {
 }
 
 class _PagePrincipaleState extends State<PagePrincipale> {
-  static const imageList = [
-    'https://image.tmdb.org/t/p/original/74xTEgt7R36Fpooo50r9T25onhq.jpg',
-    'https://image.tmdb.org/t/p/original/fZPSd91yGE9fCcCe6OoQr6E3Bev.jpg'
-  ];
 
+  final user = FirebaseAuth.instance.currentUser!;
+  
   final controller = SwipableStackController();
 
   late final SwipableStackController _controller;
