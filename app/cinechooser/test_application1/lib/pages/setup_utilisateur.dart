@@ -1,3 +1,4 @@
+import 'package:cinechooser/pages/main_page.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
 import 'package:cinechooser/widget/button_carre.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,7 +20,7 @@ class SetupUtilisateur extends StatefulWidget {
 class _SetupUtilisateurState extends State<SetupUtilisateur> {
   void _navigateToPreviousScreen(BuildContext context) {
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => LoginPage()));
+        .push(MaterialPageRoute(builder: (context) => MainPage()));
   }
 
   //controller

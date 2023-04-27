@@ -1,21 +1,18 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables
-
-import 'package:cinechooser/widget/button_carre.dart';
+import 'package:cinechooser/pages/pagePrincipale.dart';
 import 'package:cinechooser/widget/textField.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cinechooser/api/api.dart';
-import 'package:cinechooser/pages/setup_utilisateur.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cinechooser/main.dart';
 import 'package:cinechooser/utils/app_styles.dart';
-
-import 'choix.dart';
+import 'forgotPassewordPage.dart';
 
 class LoginPage extends StatefulWidget {
   final VoidCallback showRegisterPage;
+
   const LoginPage({Key? key, required this.showRegisterPage}) : super(key: key);
 
   @override
@@ -29,33 +26,25 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
 
   Future signin() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailController.text.trim(), password: _passwordController.text.trim());
-    buttonPressed();
-  }
-
-
-
-  void _navigateToNextScreen(BuildContext context) {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => Choix()));
-  }
-
-  bool isButtonPressed = false;
-
-  void buttonPressed() {
-    setState(() {
-      if (isButtonPressed == false) {
-        isButtonPressed = true;
-        Future.delayed(const Duration(milliseconds: 100), () {
-          _navigateToNextScreen(context);
-        });
-      }
-    });
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim());
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => PagePrincipale()));
+    } on FirebaseAuthException catch (e) {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return const AlertDialog(
+              title: Text('The password or the email is incorrect'),
+            );
+          });
+    }
   }
 
   @override
-  void dispose()
-  {
+  void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
@@ -92,21 +81,32 @@ class _LoginPageState extends State<LoginPage> {
                                       )))
                                   .toList(),
                               options: CarouselOptions(
-                                scrollPhysics: NeverScrollableScrollPhysics(),
-                                autoPlay: true,
-                                enlargeCenterPage: true,
-                                reverse: false,
-                                autoPlayInterval:
-                                    const Duration(seconds: 3, milliseconds: 500),
-                                autoPlayAnimationDuration:
-                                    const Duration(milliseconds: 800),
-                                aspectRatio: 1,
-                                height: height*0.4
-                              ));
+                                  scrollPhysics: NeverScrollableScrollPhysics(),
+                                  autoPlay: true,
+                                  enlargeCenterPage: true,
+                                  reverse: false,
+                                  autoPlayInterval: const Duration(
+                                      seconds: 3, milliseconds: 500),
+                                  autoPlayAnimationDuration:
+                                      const Duration(milliseconds: 800),
+                                  aspectRatio: 1,
+                                  height: height * 0.4));
                         } else {
                           return const CircularProgressIndicator();
                         }
                       }),
+                  SizedBox(height: height * 0.03),
+                  //s'adapte a differentes tailles
+                  const AutoSizeText(
+                    'Welcome to',
+                    style: Styles.preTitre,
+                    maxLines: 1,
+                  ),
+
+                  const AutoSizeText('CineChooser',
+                      style: Styles.titre, maxLines: 1),
+
+                  SizedBox(height: height * 0.01),
 
                   /*
                   SizedBox(
@@ -197,39 +197,63 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(height: height * 0.01),
 
                   MyTextField(
-                        controller: _passwordController,
-                        hintText: "Password",
-                        obscureText: true),
+                      controller: _passwordController,
+                      hintText: "Password",
+                      obscureText: true),
+                  SizedBox(height: height * 0.01),
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        GestureDetector(
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return ForgotPasswordPage();
+                              }));
+                            },
+                            child: const Text(
+                              'Forgot Password ?',
+                              style: TextStyle(
+                                  color: Colors.blue,
+                                  fontWeight: FontWeight.bold),
+                            )),
+                      ],
+                    ),
+                  ),
 
                   SizedBox(height: height * 0.01),
 
                   // Boutton Commencer
                   Padding(
-                    padding:  EdgeInsets.symmetric(horizontal: width*0.05),
+                    padding: EdgeInsets.symmetric(horizontal: width * 0.05),
                     child: GestureDetector(
                       onTap: signin,
                       //(){_navigateToNextScreen(context);},
                       child: AnimatedContainer(
                         duration: const Duration(milliseconds: 100),
-                        padding: EdgeInsets.all(width*0.04),
+                        padding: EdgeInsets.all(width * 0.04),
                         decoration: BoxDecoration(
-                            color: Styles.red2,
-                            borderRadius: BorderRadius.circular(12),
-                            ),
+                          color: Styles.red2,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                         child: Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              //const Icon(CupertinoIcons.arrow_right, color: Color(0xffC4C0CA)),
-                              const SizedBox(
+                            children: const [
+                              SizedBox(
                                 width: 8,
                               ),
-                              const Text('Sign In', style: TextStyle(
-                                color: Styles.white1,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),)
-
+                              Text(
+                                'Sign In',
+                                style: TextStyle(
+                                  color: Styles.white1,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )
                             ],
                           ),
                         ),
@@ -240,8 +264,18 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('Not a member ?', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                      GestureDetector(onTap: widget.showRegisterPage,child: const Text(' Register now', style: TextStyle( color: Colors.blue, fontWeight: FontWeight.bold), ))
+                      const Text('Not a member ?',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                      GestureDetector(
+                          onTap: widget.showRegisterPage,
+                          child: const Text(
+                            ' Register now',
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold),
+                          ))
                     ],
                   ),
                 ],

@@ -1,4 +1,5 @@
 import 'package:cinechooser/pages/login_page.dart';
+import 'package:cinechooser/pages/main_page.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
 import 'package:cinechooser/pages/reglages.dart';
 import 'package:cinechooser/pages/reglages_first_time.dart';
@@ -35,7 +36,7 @@ class _ChoixState extends State<Choix> {
             if (listGenre.length >= 5) {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const LoginPage()),
+                MaterialPageRoute(builder: (context) => const MainPage()),
               );
             }
           },

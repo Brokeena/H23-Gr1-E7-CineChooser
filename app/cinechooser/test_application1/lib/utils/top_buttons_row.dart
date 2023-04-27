@@ -1,4 +1,5 @@
 import 'package:cinechooser/pages/login_page.dart';
+import 'package:cinechooser/pages/main_page.dart';
 import 'package:cinechooser/pages/reglages.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class TopButtonsRow extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const LoginPage()),
+                  MaterialPageRoute(builder: (context) => const MainPage()),
 
                 );
               },
