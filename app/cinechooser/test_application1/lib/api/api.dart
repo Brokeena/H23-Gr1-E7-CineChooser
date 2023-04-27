@@ -54,5 +54,47 @@ String language_country(){
 
 }
 
+Future<List<Movie>> getTopRatedMoviesByGenres(List<Genre> genres, int range) async{
+  List<Movie> listMovies = [];
+  for(int r = 1; r <= range; r++){
+    var searchTopRated = await tmdb.v3.movies.getTopRated(language: language+country, page: r);
+    List<dynamic> results = searchTopRated['results'];
+    List<int> topRatedMoviesId = [];
+    for(int i = 0; i < results.length; i++){
+      for(int k = 0; k < genres.length; k++){
+        for(int j = 0; j < results.elementAt(i)['genre_ids'].length; j++){
+          if(genres.elementAt(k).id == results.elementAt(i)['genre_ids'].elementAt(j)){
+            topRatedMoviesId.add(results.elementAt(i)['id']);
+            k = genres.length;
+            j = results.elementAt(i)['genre_ids'].length;
+          }
+        }
+      }
+    }
+
+
+    for(int x = 0; x < topRatedMoviesId.length; x++){
+      listMovies.add(await Movie.create(topRatedMoviesId.elementAt(x)));
+    }
+  }
+  return listMovies;
+}
+
+Future<List<Movie>> getRecommendedMovies(int id) async{
+  List<Movie> listMovies = [];
+  var searchSimilar = await tmdb.v3.movies.getRecommended(id);
+  List<dynamic> results = searchSimilar['results'];
+  List<int> similarMoviesId = [];
+  for(int n = 0; n < results.length; n++){
+    similarMoviesId.add(results.elementAt(n)['id']);
+  }
+  for(int x = 0; x < similarMoviesId.length; x++){
+    listMovies.add(await Movie.create(similarMoviesId.elementAt(x)));
+  }
+  print(results);
+  print(listMovies);
+
+  return listMovies;
+}
 
 

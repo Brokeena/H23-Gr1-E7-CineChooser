@@ -34,8 +34,9 @@ class Cartes extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(name, style: Styles.preTitre),
-                Text(genres, style: Styles.informations),
+                Text(name, style: Styles.nom),
+                Divider(height: 35),
+                Text(genres, style: Styles.genres),
                 const SizedBox(height: BottomButtonsRow.height)
               ],
             ),

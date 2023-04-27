@@ -14,6 +14,7 @@ import 'package:cinechooser/main.dart';
 class PagePrincipale extends StatefulWidget {
   const PagePrincipale({Key? key}) : super(key: key);
 
+
   @override
   State<PagePrincipale> createState() => _PagePrincipaleState();
 }
@@ -21,8 +22,10 @@ class PagePrincipale extends StatefulWidget {
 class _PagePrincipaleState extends State<PagePrincipale> {
 
   final user = FirebaseAuth.instance.currentUser!;
-  
+
   final controller = SwipableStackController();
+
+  List<int> likedMovies = [];
 
   late final SwipableStackController _controller;
 
@@ -31,13 +34,32 @@ class _PagePrincipaleState extends State<PagePrincipale> {
   @override
   void initState() {
     super.initState();
-
     _controller = SwipableStackController()..addListener(_listenController);
-    _asyncMethod();
   }
 
-  _asyncMethod() async {
-    displayedMovies = await getTrendingMovies();
+  _addRecommendedMovies(int id, int numberOfRecommendation) async {
+    var similarMovies = await getRecommendedMovies(id);
+    int r = similarMovies.length;
+    if(numberOfRecommendation <= r){
+      r = numberOfRecommendation;
+    }
+
+    for(int x = 0; x < r; x++){
+      bool alreadyHere = false;
+      for(int d = 0; d < displayedMovies.length; d++){
+        if(displayedMovies.elementAt(d).id == similarMovies.elementAt(x).id){
+          alreadyHere = true;
+        }
+      }
+
+      if(!alreadyHere){
+        displayedMovies.add(similarMovies.elementAt(x));
+      } else  {
+        if(r+1 <= similarMovies.length){
+          r+=1;
+        }
+      }
+    }
   }
 
   @override
@@ -67,14 +89,21 @@ class _PagePrincipaleState extends State<PagePrincipale> {
               controller: _controller,
               stackClipBehaviour: Clip.none,
               onSwipeCompleted: (index, direction) {
+                if(direction == SwipeDirection.right){
+                  likedMovies.add(displayedMovies.elementAt(index).id);
+                  _addRecommendedMovies(displayedMovies.elementAt(index).id, 3);
+                }
+                print(likedMovies);
                 if (kDebugMode) {
                   print('$index, $direction'); //debug
                 }
               },
               builder: (context, properties) {
-                final indexMovie =
-                    properties.index % (displayedMovies.length + 1);
-
+                final indexMovie = properties.index % (displayedMovies.length);
+                List<String> genreNames = [];
+                for(int i = 0; i < displayedMovies.elementAt(indexMovie).genres.length; i++){
+                  genreNames.add(displayedMovies.elementAt(indexMovie).genres.elementAt(i).name);
+                }
                 return Stack(
                   children: [
                     Padding(
@@ -85,10 +114,7 @@ class _PagePrincipaleState extends State<PagePrincipale> {
                           width: width * 0.9,
                           child: Cartes(
                             name: displayedMovies.elementAt(indexMovie).nom,
-                            genres: displayedMovies
-                                .elementAt(indexMovie)
-                                .genres
-                                .toString(),
+                            genres: genreNames.join(", "),
                             poster:
                                 displayedMovies.elementAt(indexMovie).poster,
                           ),

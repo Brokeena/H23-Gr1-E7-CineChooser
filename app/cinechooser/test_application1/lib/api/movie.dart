@@ -96,8 +96,12 @@ import 'api.dart';
     List cast = creditsDetails['cast'];
     List<String> actorsFound = ["Unknown"];
     if(cast.isNotEmpty){
-      for(int i = 0; i < 3; i++){
-        if(actorsFound.elementAt(0) == "unknown"){
+      int x = 3;
+      if(cast.length < 3){
+        x = cast.length;
+      }
+      for(int i = 0; i < x; i++){
+        if(actorsFound.elementAt(0) == "Unknown"){
           actorsFound.clear();
         }
         actorsFound.add(cast.elementAt(i)['name']);
@@ -145,6 +149,7 @@ import 'api.dart';
         }
       }
     }
+
   }
 
   @override
@@ -164,28 +169,25 @@ import 'api.dart';
 }
 
 enum Genre {
-  Action(id: 28, name: 'action'),
-  Adventure(id: 12, name: 'adventure'),
-  Animation(id: 16, name:'animation'),
-  Comedy(id: 35, name:'comedy'),
-  Crime(id: 80, name: 'crime'),
-  Documentary(id: 99, name: 'documentary'),
-  Drama(id: 18, name: 'drama'),
-  Family(id: 10751, name: 'family'),
-  Fantasy(id: 14, name: 'fantasy'),
-  History(id: 36, name: 'history'),
-  Horror(id: 27, name: 'horror'),
-  Music(id: 10402, name: 'music'),
-  Mystery(id: 9648, name: 'mystery'),
-  Romance(id: 10749, name: 'romance'),
-  ScienceFiction(id: 878, name: 'science fiction'),
-  TVMovie(id: 10770, name: 'tv movie'),
-  Thriller(id: 53, name: 'thriller'),
-  War(id: 10752, name:'war'),
-  Western(id: 37, name: 'western');
-
-
-
+  Action(id: 28, name: 'Action'),
+  Adventure(id: 12, name: 'Adventure'),
+  Animation(id: 16, name:'Animation'),
+  Comedy(id: 35, name:'Comedy'),
+  Crime(id: 80, name: 'Crime'),
+  Documentary(id: 99, name: 'Documentary'),
+  Drama(id: 18, name: 'Drama'),
+  Family(id: 10751, name: 'Family'),
+  Fantasy(id: 14, name: 'Fantasy'),
+  History(id: 36, name: 'History'),
+  Horror(id: 27, name: 'Horror'),
+  Music(id: 10402, name: 'Music'),
+  Mystery(id: 9648, name: 'Mystery'),
+  Romance(id: 10749, name: 'Romance'),
+  ScienceFiction(id: 878, name: 'Science fiction'),
+  TVMovie(id: 10770, name: 'Tv movie'),
+  Thriller(id: 53, name: 'Thriller'),
+  War(id: 10752, name:'War'),
+  Western(id: 37, name: 'Western');
 
 
   const Genre({
@@ -195,6 +197,8 @@ enum Genre {
 
   final int id;
   final String name;
+
+
 }
 
 

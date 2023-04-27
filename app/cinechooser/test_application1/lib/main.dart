@@ -10,6 +10,8 @@ import 'package:cinechooser/pages/choix.dart';
 
 String poster = '';
 List<Movie> displayedMovies = [];
+List<Movie> testMovies = [];
+List<Genre> genres = [Genre.Action, Genre.Adventure, Genre.Animation];
 
 List<String> imageGenre = [
   'https://cdn.vox-cdn.com/thumbor/fzd6PmGPMSwSDWaqS7ZH-V9Mo5Q=/165x0:2880x1189/1200x800/filters:focal(810x26:1270x486)/cdn.vox-cdn.com/uploads/chorus_image/image/70298838/Screen_Shot_2021_12_20_at_2.40.13_PM.0.png',
@@ -33,10 +35,8 @@ List<String> imageGenre = [
 ];
 
 void main() async {
-  var liste =  await getTrendingMovies();
-  Future.delayed(Duration(seconds: 1));
-  print(liste);
   Movie movie = await Movie.create(18491);
+  displayedMovies = await getTopRatedMoviesByGenres(genres, 2);
   poster = movie.poster;
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -45,7 +45,6 @@ void main() async {
           appId: 'cinechooser',
           messagingSenderId: '1026537403163',
           projectId: 'cinechooser-eva01'));
-  displayedMovies = await getTrendingMovies();
   runApp(const MyApp());
 }
 
