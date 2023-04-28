@@ -4,8 +4,9 @@ Cinechooser est une application mobile vous recommandant des films à vous et vo
 
 ## Capture d'écrans
 
-![Login](https://user-images.githubusercontent.com/62453047/235269665-b0466c86-ffa1-4293-bbb7-f474ce4f7266.png)
-![Create](https://user-images.githubusercontent.com/62453047/235269696-a031485b-0849-4fb0-b8b4-b84dd2a5549a.png)
+![Login](https://user-images.githubusercontent.com/62453047/235269801-b43ae15a-2e81-466e-b5d6-9207cefc3398.png)<br />
+<br />
+![Create](https://user-images.githubusercontent.com/62453047/235269820-f6c47e78-3153-4926-98c1-98a3af3a0016.png)
 
 
 ## À noter
