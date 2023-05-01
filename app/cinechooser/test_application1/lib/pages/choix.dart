@@ -19,6 +19,7 @@ class Choix extends StatefulWidget {
 }
 
 class _ChoixState extends State<Choix> {
+
   List<int> listGenre = [];
   double tailleBordure = 0;
 

@@ -15,6 +15,7 @@ class BottomButtonsRow extends StatelessWidget {
   final VoidCallback onRewindTap;
   final ValueChanged<SwipeDirection> onSwipe;
 
+
   static const double height = 100;
 
   @override
