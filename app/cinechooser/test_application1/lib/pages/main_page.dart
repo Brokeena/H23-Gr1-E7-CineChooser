@@ -1,4 +1,5 @@
 import 'package:cinechooser/pages/auth_page.dart';
+import 'package:cinechooser/pages/choix.dart';
 import 'package:cinechooser/pages/login_page.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -16,7 +17,7 @@ class MainPage extends StatelessWidget {
         if (snapshot.hasData){
           return PagePrincipale();
         } else {
-          return AuthPage();
+          return Choix();
         }
       },)
     );

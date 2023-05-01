@@ -66,9 +66,9 @@ class _RegisterPageState extends State<RegisterPage> {
       'first name': lastName,
       'last name': firstName,
       'age': age,
-      'email': email
+      'email': email,
+      'genres': []
     });
-    print("POOP FART");
   }
 
 
