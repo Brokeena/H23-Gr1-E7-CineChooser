@@ -20,11 +20,11 @@ class Choix extends StatefulWidget {
 
 class _ChoixState extends State<Choix> {
   List<int> listGenre = [];
+  double tailleBordure = 0;
+
 
   @override
   Widget build(BuildContext context) {
-    print(listGenre);
-    print("choiz page");
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Styles.bgColor,
