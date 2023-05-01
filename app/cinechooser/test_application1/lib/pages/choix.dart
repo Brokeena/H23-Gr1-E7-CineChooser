@@ -33,7 +33,8 @@ class _ChoixState extends State<Choix> {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            if (listGenre.length >= 5) {
+            if (listGenre.length >= 3) {
+
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const MainPage()),
