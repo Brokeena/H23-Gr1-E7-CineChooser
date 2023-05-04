@@ -15,7 +15,6 @@ class BottomButtonsRow extends StatelessWidget {
   final VoidCallback onRewindTap;
   final ValueChanged<SwipeDirection> onSwipe;
 
-
   static const double height = 100;
 
   @override
@@ -35,7 +34,6 @@ class BottomButtonsRow extends StatelessWidget {
                 icone: const Icon(Icons.refresh, color: Styles.red1),
                 taille: 64,
                 borderRadius: 100,
-
               ),
 
               Button(
@@ -49,11 +47,11 @@ class BottomButtonsRow extends StatelessWidget {
                   size: 45,
                   shadows: [
                     BoxShadow(
-                    color: Styles.grey1,
-                    blurRadius: 15,
-                    spreadRadius: 10,
-                  )
-                ],
+                      color: Styles.grey1,
+                      blurRadius: 15,
+                      spreadRadius: 10,
+                    )
+                  ],
                 ),
                 taille: 96,
                 borderRadius: 100,

@@ -1,4 +1,3 @@
-import 'package:cinechooser/utils/bottom_buttons_row.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -27,9 +26,7 @@ class Cartes extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(
                     image: NetworkImage(poster), fit: BoxFit.cover),
-
               ),
-
             ),
           ),
           Align(

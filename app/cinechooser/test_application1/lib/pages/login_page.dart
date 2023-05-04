@@ -31,7 +31,6 @@ class _LoginPageState extends State<LoginPage> {
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
       Navigator.of(context)
-
           .push(MaterialPageRoute(builder: (context) => PagePrincipale()));
     } on FirebaseAuthException catch (e) {
       showDialog(

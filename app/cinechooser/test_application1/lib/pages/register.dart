@@ -26,18 +26,29 @@ class _RegisterPageState extends State<RegisterPage> {
   final _latNameController = TextEditingController();
   final _ageController = TextEditingController();
 
-
   Future signUp() async {
     if (passwordValide() && ageValide()) {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: _emailController.text.trim(),
-          password: _passwordController.text.trim());
+      try {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            email: _emailController.text.trim(),
+            password: _passwordController.text.trim());
+      } on FirebaseAuthException catch (e) {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                content: Text(e.message.toString()),
+              );
+            });
+      }
+
       addUserDetails(
           _nameController.text.trim(),
           _latNameController.text.trim(),
           _emailController.text.trim(),
           int.parse(_ageController.text.trim()));
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Choix()));
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => const Choix()));
     } else {
       if (!passwordValide()) {
         showDialog(
@@ -60,8 +71,8 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
-  Future addUserDetails(String firstName, String lastName, String email,
-      int age) async {
+  Future addUserDetails(
+      String firstName, String lastName, String email, int age) async {
     await FirebaseFirestore.instance.collection('users').add({
       'first name': lastName,
       'last name': firstName,
@@ -70,7 +81,6 @@ class _RegisterPageState extends State<RegisterPage> {
       'genres': []
     });
   }
-
 
   bool passwordValide() {
     if (_passwordController.text.trim() ==
@@ -103,14 +113,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery
-        .of(context)
-        .size
-        .height;
-    double width = MediaQuery
-        .of(context)
-        .size
-        .width;
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
         backgroundColor: Styles.bgColor,
         body: SafeArea(
@@ -136,9 +140,9 @@ class _RegisterPageState extends State<RegisterPage> {
                         horizontal: width * 0.05, vertical: height * 0.01),
                     child: const AutoSizeText(
                         'CineChooser recommends movies based on your criteria '
-                            'and helps your group find a film that everyone will'
-                            ' enjoy. Discover new and exciting movies '
-                            'to watch together!',
+                        'and helps your group find a film that everyone will'
+                        ' enjoy. Discover new and exciting movies '
+                        'to watch together!',
                         maxLines: 3,
                         textAlign: TextAlign.center,
                         style: Styles.informations),

@@ -6,21 +6,17 @@ import 'package:flutter/foundation.dart';
 import 'package:cinechooser/utils/movie_carte.dart';
 import 'package:cinechooser/utils/bottom_buttons_row.dart';
 import '../utils/app_styles.dart';
-import '../utils/carte_overlay.dart';
-import 'package:cinechooser/api/movie.dart';
 import 'package:cinechooser/api/api.dart';
 import 'package:cinechooser/main.dart';
 
 class PagePrincipale extends StatefulWidget {
   const PagePrincipale({Key? key}) : super(key: key);
 
-
   @override
   State<PagePrincipale> createState() => _PagePrincipaleState();
 }
 
 class _PagePrincipaleState extends State<PagePrincipale> {
-
   final user = FirebaseAuth.instance.currentUser!;
 
   final controller = SwipableStackController();
@@ -40,23 +36,23 @@ class _PagePrincipaleState extends State<PagePrincipale> {
   _addRecommendedMovies(int id, int numberOfRecommendation) async {
     var similarMovies = await getRecommendedMovies(id);
     int r = similarMovies.length;
-    if(numberOfRecommendation <= r){
+    if (numberOfRecommendation <= r) {
       r = numberOfRecommendation;
     }
 
-    for(int x = 0; x < r; x++){
+    for (int x = 0; x < r; x++) {
       bool alreadyHere = false;
-      for(int d = 0; d < displayedMovies.length; d++){
-        if(displayedMovies.elementAt(d).id == similarMovies.elementAt(x).id){
+      for (int d = 0; d < displayedMovies.length; d++) {
+        if (displayedMovies.elementAt(d).id == similarMovies.elementAt(x).id) {
           alreadyHere = true;
         }
       }
 
-      if(!alreadyHere){
+      if (!alreadyHere) {
         displayedMovies.add(similarMovies.elementAt(x));
-      } else  {
-        if(r+1 <= similarMovies.length){
-          r+=1;
+      } else {
+        if (r + 1 <= similarMovies.length) {
+          r += 1;
         }
       }
     }
@@ -89,7 +85,7 @@ class _PagePrincipaleState extends State<PagePrincipale> {
               controller: _controller,
               stackClipBehaviour: Clip.none,
               onSwipeCompleted: (index, direction) {
-                if(direction == SwipeDirection.right){
+                if (direction == SwipeDirection.right) {
                   likedMovies.add(displayedMovies.elementAt(index).id);
                   _addRecommendedMovies(displayedMovies.elementAt(index).id, 2);
                 }
@@ -101,8 +97,14 @@ class _PagePrincipaleState extends State<PagePrincipale> {
               builder: (context, properties) {
                 final indexMovie = properties.index % (displayedMovies.length);
                 List<String> genreNames = [];
-                for(int i = 0; i < displayedMovies.elementAt(indexMovie).genres.length; i++){
-                  genreNames.add(displayedMovies.elementAt(indexMovie).genres.elementAt(i).name);
+                for (int i = 0;
+                    i < displayedMovies.elementAt(indexMovie).genres.length;
+                    i++) {
+                  genreNames.add(displayedMovies
+                      .elementAt(indexMovie)
+                      .genres
+                      .elementAt(i)
+                      .name);
                 }
                 return Stack(
                   children: [

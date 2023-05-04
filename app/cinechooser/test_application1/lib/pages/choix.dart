@@ -1,15 +1,15 @@
-import 'package:cinechooser/pages/login_page.dart';
 import 'package:cinechooser/pages/main_page.dart';
-import 'package:cinechooser/pages/pagePrincipale.dart';
-import 'package:cinechooser/pages/reglages.dart';
 import 'package:cinechooser/pages/reglages_first_time.dart';
-import 'package:cinechooser/pages/setup_utilisateur.dart';
-import 'package:cinechooser/widget/button_carre.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:cinechooser/main.dart';
 
 import '../widget/MovieCase.dart';
+
+final FirebaseAuth auth = FirebaseAuth.instance;
+List<int> listGenre = [];
 
 class Choix extends StatefulWidget {
   const Choix({Key? key}) : super(key: key);
@@ -18,12 +18,18 @@ class Choix extends StatefulWidget {
   State<Choix> createState() => _ChoixState();
 }
 
+updateUserDetails(List<int> genres) async {
+  var db = await FirebaseFirestore.instance;
+
+  db
+      .collection("users")
+      .doc('ZqMQ8bMY0L1uZvsV9rIW')
+      .update({'genres ': listGenre});
+
+  print('update');
+}
+
 class _ChoixState extends State<Choix> {
-
-  List<int> listGenre = [];
-  double tailleBordure = 0;
-
-
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -35,7 +41,6 @@ class _ChoixState extends State<Choix> {
         leading: IconButton(
           onPressed: () {
             if (listGenre.length >= 3) {
-
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const MainPage()),
@@ -60,6 +65,8 @@ class _ChoixState extends State<Choix> {
                     style: TextStyle(color: Colors.white)),
                 onPressed: () {
                   if (listGenre.length >= 3) {
+                    print(listGenre);
+                    updateUserDetails(listGenre);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -102,14 +109,15 @@ class _ChoixState extends State<Choix> {
                           image: imageGenre.elementAt(1),
                           onPressed: () {
                             listGenre.add(12);
+                            print(listGenre);
                           }),
                     ),
                     Padding(
                       padding: EdgeInsets.only(left: width / 16),
                       child: MovieCase(
                           nom: 'Animation',
-                          image:  imageGenre.elementAt(2),
-                              onPressed: () {
+                          image: imageGenre.elementAt(2),
+                          onPressed: () {
                             listGenre.add(16);
                           }),
                     ),
@@ -129,7 +137,7 @@ class _ChoixState extends State<Choix> {
                       child: MovieCase(
                           nom: 'Crime',
                           image: imageGenre.elementAt(4),
-                              onPressed: () {
+                          onPressed: () {
                             listGenre.add(80);
                           }),
                     ),

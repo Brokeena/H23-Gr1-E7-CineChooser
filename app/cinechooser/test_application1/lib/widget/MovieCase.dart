@@ -1,8 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cinechooser/widget/button_carre.dart';
 import 'package:flutter/material.dart';
-import 'package:cinechooser/pages/choix.dart';
-import '../utils/app_styles.dart';
 
 class MovieCase extends StatelessWidget {
   const MovieCase({
@@ -16,11 +14,9 @@ class MovieCase extends StatelessWidget {
   final String nom;
   final String image;
 
-
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-
 
     return ClipRRect(
       child: Stack(children: [
@@ -35,9 +31,7 @@ class MovieCase extends StatelessWidget {
                     color: Colors.transparent,
                     image: DecorationImage(
                         image: NetworkImage(image), fit: BoxFit.cover),
-                    border: Border.all(
-                        color: Colors.transparent,
-                        width: 1.5)),
+                    border: Border.all(color: Colors.transparent, width: 1.5)),
               ),
             ),
             Positioned(

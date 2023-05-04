@@ -3,7 +3,6 @@ import 'package:cinechooser/utils/pays_nom.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:cinechooser/pages/reglages_first_time.dart';
-import 'package:cinechooser/api/api.dart';
 
 class Reglages extends StatefulWidget {
   const Reglages({Key? key}) : super(key: key);
@@ -13,8 +12,6 @@ class Reglages extends StatefulWidget {
 }
 
 class _ReglagesState extends State<Reglages> {
-
-
   dynamic dropdownvalues;
 
   @override
@@ -48,8 +45,7 @@ class _ReglagesState extends State<Reglages> {
               const Divider(height: 15),
               Row(
                 children: [
-                  const Text('Your services: ',
-                      style: Styles.informations),
+                  const Text('Your services: ', style: Styles.informations),
                   Wrap(
                       spacing: 5,
                       direction: Axis.horizontal,
@@ -72,8 +68,7 @@ class _ReglagesState extends State<Reglages> {
                     ),
                   ),
                   onPressed: _showMultiSelect,
-                  child: const Text(
-                      'Choose your streaming services',
+                  child: const Text('Choose your streaming services',
                       style: TextStyle(
                           fontWeight: FontWeight.normal,
                           fontSize: 15,
@@ -82,39 +77,41 @@ class _ReglagesState extends State<Reglages> {
               const Text('Country :', style: Styles.petittitres),
               const Divider(height: 15),
               Container(
-                decoration:  BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(14)),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(14)),
                 child: DropdownButtonHideUnderline(
                   child: Padding(
-                    padding: const EdgeInsets.only(left : 10.0),
+                    padding: const EdgeInsets.only(left: 10.0),
                     child: DropdownButton(
-                          borderRadius: BorderRadius.circular(7),
-                          hint:  Text(paysSelectionne,
-                              style: const TextStyle(
-                              fontWeight: FontWeight.normal,
-                              fontSize: 15,
-                              color: Colors.black87)),
-                          value: dropdownvalues,
-
-                          dropdownColor: Colors.white,
-                          elevation: 0,
-                          icon: const Icon(
-                            Icons.arrow_drop_down,
-                            color: Colors.transparent,
-                          ),
-
-                          items: listPaysNom.map((dynamic value) => DropdownMenuItem(
-                            value: value,
-                            child: Text(value, style : const TextStyle(
+                        borderRadius: BorderRadius.circular(7),
+                        hint: Text(paysSelectionne,
+                            style: const TextStyle(
                                 fontWeight: FontWeight.normal,
                                 fontSize: 15,
-                                color: Colors.black87)
-                            ),
-                          )).toList(),
-                          onChanged: (newItem) {
-                            setState(() {
-                              dropdownvalues = newItem!;
-                            });
-                          }),
+                                color: Colors.black87)),
+                        value: dropdownvalues,
+                        dropdownColor: Colors.white,
+                        elevation: 0,
+                        icon: const Icon(
+                          Icons.arrow_drop_down,
+                          color: Colors.transparent,
+                        ),
+                        items: listPaysNom
+                            .map((dynamic value) => DropdownMenuItem(
+                                  value: value,
+                                  child: Text(value,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.normal,
+                                          fontSize: 15,
+                                          color: Colors.black87)),
+                                ))
+                            .toList(),
+                        onChanged: (newItem) {
+                          setState(() {
+                            dropdownvalues = newItem!;
+                          });
+                        }),
                   ),
                 ),
               ),

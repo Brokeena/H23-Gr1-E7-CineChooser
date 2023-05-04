@@ -1,16 +1,12 @@
 import 'package:cinechooser/pages/main_page.dart';
-import 'package:cinechooser/pages/pagePrincipale.dart';
 import 'package:cinechooser/widget/button_carre.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/widget/textField.dart';
-import 'package:cinechooser/pages/login_page.dart';
 import 'package:cinechooser/utils/app_styles.dart';
-
 import 'choix.dart';
 
 class SetupUtilisateur extends StatefulWidget {
-
   const SetupUtilisateur({Key? key}) : super(key: key);
 
   @override
@@ -19,7 +15,6 @@ class SetupUtilisateur extends StatefulWidget {
 
 class _SetupUtilisateurState extends State<SetupUtilisateur> {
   void _navigateToPreviousScreen(BuildContext context) {
-
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => MainPage()));
   }
@@ -139,7 +134,8 @@ class _SetupUtilisateurState extends State<SetupUtilisateur> {
                               builder: (context) => const Choix()),
                         );
                       },
-                      icone: const Icon(Icons.arrow_forward_ios, color: Styles.red1),
+                      icone: const Icon(Icons.arrow_forward_ios,
+                          color: Styles.red1),
                       color: Colors.white,
                       taille: 64,
                       borderRadius: 15),

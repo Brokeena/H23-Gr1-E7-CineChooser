@@ -1,6 +1,5 @@
 import 'package:cinechooser/pages/choix.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
-import 'package:cinechooser/widget/button_carre.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:cinechooser/api/api.dart';
@@ -13,15 +12,14 @@ String paysISO = 'CA';
 List<String> selectedItems = [];
 
 class ReglagesFirstTime extends StatefulWidget {
-
   const ReglagesFirstTime({Key? key}) : super(key: key);
 
   @override
   State<ReglagesFirstTime> createState() => _ReglagesFirstTimeState();
 }
 
-
 bool isButtonPressed = false;
+
 class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
   dynamic dropdownvalues;
 
@@ -31,8 +29,7 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
     double height = MediaQuery.of(context).size.height;
 
     int index = listPaysNom.indexOf(paysSelectionne);
-    if (index >= 0 && index < listPaysISO.length)
-    {
+    if (index >= 0 && index < listPaysISO.length) {
       paysISO = listPaysISO[index];
       country = paysISO;
       print(country);
@@ -43,8 +40,7 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('Set your account detail',
-            style: Styles.entete),
+        title: const Text('Set your account detail', style: Styles.entete),
         leading: IconButton(
           onPressed: () {
             Navigator.push(
@@ -112,14 +108,12 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                 ),
               ),
               Divider(height: height / 20),
-              const Text('Streaming services :',
-                  style: Styles.petittitres),
+              const Text('Streaming services :', style: Styles.petittitres),
               Divider(height: height / 40),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('Your services : ',
-                      style: Styles.informations),
+                  const Text('Your services : ', style: Styles.informations),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Wrap(
@@ -146,8 +140,7 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                     ),
                   ),
                   onPressed: _showMultiSelect,
-                  child: const Text(
-                      'Choose your streaming services',
+                  child: const Text('Choose your streaming services',
                       style: TextStyle(
                           fontWeight: FontWeight.normal,
                           fontSize: 15,
