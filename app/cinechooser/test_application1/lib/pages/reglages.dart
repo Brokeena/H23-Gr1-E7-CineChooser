@@ -24,7 +24,7 @@ class _ReglagesState extends State<Reglages> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('Reglages de votre compte', style: Styles.entete),
+        title: const Text('Account Settings', style: Styles.entete),
         leading: IconButton(
           onPressed: () {
             Navigator.push(
@@ -44,11 +44,11 @@ class _ReglagesState extends State<Reglages> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Divider(height: 25),
-              const Text('Vos platformes de streaming :', style: Styles.petittitres),
+              const Text('Streaming services :', style: Styles.petittitres),
               const Divider(height: 15),
               Row(
                 children: [
-                  const Text('Platformes selectionnées : ',
+                  const Text('Your services: ',
                       style: Styles.informations),
                   Wrap(
                       spacing: 5,
@@ -73,13 +73,13 @@ class _ReglagesState extends State<Reglages> {
                   ),
                   onPressed: _showMultiSelect,
                   child: const Text(
-                      'selectionner vos platformes de streaming ...',
+                      'Choose your streaming services',
                       style: TextStyle(
                           fontWeight: FontWeight.normal,
                           fontSize: 15,
                           color: Colors.black87))),
               const Divider(height: 25),
-              const Text('Votre pays :', style: Styles.petittitres),
+              const Text('Country :', style: Styles.petittitres),
               const Divider(height: 15),
               Container(
                 decoration:  BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(14)),
@@ -176,7 +176,7 @@ class _MultiSelectState extends State<MultiSelect> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('selectionner vos platformes de streaming',
+      title: const Text('Choose your streaming services',
           style: TextStyle(
               fontWeight: FontWeight.normal,
               fontSize: 20,
@@ -209,7 +209,7 @@ class _MultiSelectState extends State<MultiSelect> {
               (states) => Styles.red1,
             ),
           ),
-          child: const Text('Confirmer', style: TextStyle(color: Colors.black)),
+          child: const Text('Continue', style: TextStyle(color: Colors.black)),
         )
       ],
     );

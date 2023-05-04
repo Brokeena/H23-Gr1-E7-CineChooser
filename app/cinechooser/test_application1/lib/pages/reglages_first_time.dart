@@ -7,7 +7,7 @@ import 'package:cinechooser/api/api.dart';
 import 'package:cinechooser/utils/pays_nom.dart';
 import 'package:cinechooser/utils/pays_iso.dart';
 
-String paysSelectionne = 'Pays';
+String paysSelectionne = 'Country';
 String paysISO = 'CA';
 
 List<String> selectedItems = [];
@@ -42,7 +42,7 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('Initialiser les paramètres de votre compte',
+        title: const Text('Set your account detail',
             style: Styles.entete),
         leading: IconButton(
           onPressed: () {
@@ -111,13 +111,13 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                 ),
               ),
               Divider(height: height / 20),
-              const Text('Vos platformes de streaming :',
+              const Text('Streaming services :',
                   style: Styles.petittitres),
               Divider(height: height / 40),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('Platformes selectionnées : ',
+                  const Text('Your services : ',
                       style: Styles.informations),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -146,7 +146,7 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                   ),
                   onPressed: _showMultiSelect,
                   child: const Text(
-                      'selectionner vos platformes de streaming ...',
+                      'Choose your streaming services',
                       style: TextStyle(
                           fontWeight: FontWeight.normal,
                           fontSize: 15,
@@ -196,7 +196,7 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                         SizedBox(
                           width: 8,
                         ),
-                        Text('Commencer', style: Styles.bouton),
+                        Text('Start choosing !', style: Styles.bouton),
                       ],
                     ),
                   ),
@@ -263,7 +263,7 @@ class _MultiSelectState extends State<MultiSelect> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('selectionner vos platformes de streaming',
+      title: const Text('Choose your streaming services',
           style: TextStyle(
               fontWeight: FontWeight.normal,
               fontSize: 20,
@@ -296,7 +296,7 @@ class _MultiSelectState extends State<MultiSelect> {
               (states) => Styles.red1,
             ),
           ),
-          child: const Text('Confirmer', style: TextStyle(color: Colors.black)),
+          child: const Text('Continue', style: TextStyle(color: Colors.black)),
         )
       ],
     );

@@ -1,6 +1,7 @@
 import 'package:cinechooser/pages/choix.dart';
 import 'package:cinechooser/pages/login_page.dart';
 import 'package:cinechooser/pages/main_page.dart';
+import 'package:cinechooser/pages/reglages_first_time.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
 import 'package:cinechooser/api/movie.dart';
@@ -11,7 +12,7 @@ import 'package:cinechooser/pages/choix.dart';
 String poster = '';
 List<Movie> displayedMovies = [];
 List<Movie> testMovies = [];
-List<Genre> genres = [Genre.Action, Genre.Adventure, Genre.Animation];
+List<Genre> genres = [Genre.Western, Genre.ScienceFiction, Genre.Animation];
 
 List<String> imageGenre = [
   'https://cdn.vox-cdn.com/thumbor/fzd6PmGPMSwSDWaqS7ZH-V9Mo5Q=/165x0:2880x1189/1200x800/filters:focal(810x26:1270x486)/cdn.vox-cdn.com/uploads/chorus_image/image/70298838/Screen_Shot_2021_12_20_at_2.40.13_PM.0.png',
@@ -55,7 +56,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MainPage(),
+      home: ReglagesFirstTime(),
     );
   }
 }

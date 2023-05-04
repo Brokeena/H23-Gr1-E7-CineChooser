@@ -16,7 +16,7 @@ class Styles
   static const TextStyle titre = TextStyle(fontWeight: FontWeight.bold, fontSize: 36, color: Styles.red2);
   static const TextStyle informations = TextStyle(fontWeight: FontWeight.normal, fontSize: 15, color: Colors.white38);
   static const TextStyle bouton = TextStyle(fontWeight:  FontWeight.w800, fontSize: 20, color: Styles.red1);
-  static TextStyle nom = const TextStyle(fontWeight: FontWeight.w600, fontSize: 20, color: white1, backgroundColor: red1 );
-  static TextStyle genres = const TextStyle(fontWeight: FontWeight.w600, fontSize: 15, color: white1, backgroundColor: bgColor);
+  static TextStyle nom = const TextStyle(fontWeight: FontWeight.w600, fontSize: 20, color: white1);
+  static TextStyle genres = const TextStyle(fontWeight: FontWeight.w600, fontSize: 15, color: red1);
 
 }

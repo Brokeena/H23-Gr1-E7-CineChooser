@@ -91,7 +91,7 @@ class _PagePrincipaleState extends State<PagePrincipale> {
               onSwipeCompleted: (index, direction) {
                 if(direction == SwipeDirection.right){
                   likedMovies.add(displayedMovies.elementAt(index).id);
-                  _addRecommendedMovies(displayedMovies.elementAt(index).id, 3);
+                  _addRecommendedMovies(displayedMovies.elementAt(index).id, 2);
                 }
                 print(likedMovies);
                 if (kDebugMode) {

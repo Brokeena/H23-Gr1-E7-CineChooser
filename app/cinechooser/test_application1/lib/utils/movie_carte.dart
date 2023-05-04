@@ -16,6 +16,8 @@ class Cartes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return ClipRRect(
       child: Stack(
         children: [
@@ -25,6 +27,30 @@ class Cartes extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(
                     image: NetworkImage(poster), fit: BoxFit.cover),
+
+              ),
+
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: 300,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.vertical(
+                  bottom: Radius.circular(14),
+                ),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: <Color>[
+                    Colors.black12.withOpacity(0),
+                    Colors.black12.withOpacity(.4),
+                    Colors.black12.withOpacity(.6),
+                    Colors.black12.withOpacity(.82),
+                  ],
+                ),
               ),
             ),
           ),
@@ -35,9 +61,9 @@ class Cartes extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(name, style: Styles.nom),
-                Divider(height: 35),
+                SizedBox(height: height * 0.01),
                 Text(genres, style: Styles.genres),
-                const SizedBox(height: BottomButtonsRow.height)
+                SizedBox(height: height * 0.03)
               ],
             ),
           ),
