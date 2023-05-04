@@ -6,11 +6,11 @@ class Cartes extends StatelessWidget {
   const Cartes({
     required this.name,
     required this.poster,
-    required this.genres,
+    required this.infos,
     super.key,
   });
 
-  final String genres;
+  final String infos;
   final String name;
   final String poster;
 
@@ -62,7 +62,7 @@ class Cartes extends StatelessWidget {
               children: [
                 Text(name, style: Styles.nom),
                 SizedBox(height: height * 0.01),
-                Text(genres, style: Styles.genres),
+                Text(infos, style: Styles.genres),
                 SizedBox(height: height * 0.03)
               ],
             ),
