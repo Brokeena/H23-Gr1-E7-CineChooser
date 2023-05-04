@@ -40,7 +40,7 @@ String language_country(){
 
   Future<List<Movie>> getTrendingMovies() async{
   List<Movie> trendingMovies = [];
-  var searchTrending = await tmdb.v3.trending.getTrending(mediaType: MediaType.movie,timeWindow: TimeWindow.day);
+  var searchTrending = await tmdb.v3.trending.getTrending(mediaType: MediaType.movie,timeWindow: TimeWindow.week);
   List<dynamic> results = searchTrending['results'];
   List<int> trendingMoviesId = [];
   for(int i = 0; i < results.length; i++){
@@ -53,6 +53,31 @@ String language_country(){
   return trendingMovies;
 
 }
+
+  Future<List<Movie>> getTrendingMoviesByGenres(List<Genre> genres) async{
+    List<Movie> trendingMovies = [];
+    var searchTrending = await tmdb.v3.trending.getTrending(mediaType: MediaType.movie,timeWindow: TimeWindow.week);
+    List<dynamic> results = searchTrending['results'];
+    List<int> trendingMoviesId = [];
+    for(int i = 0; i < results.length; i++){
+      for(int g = 0; g < genres.length; g++){
+        for(int j = 0; j < results.elementAt(i)['genre_ids'].length; j++){
+          if(genres.elementAt(g).id == results.elementAt(i)['genre_ids'].elementAt(j)){
+            trendingMoviesId.add(results.elementAt(i)['id']);
+            g = genres.length;
+            j = results.elementAt(i)['genre_ids'].length;
+          }
+        }
+      }
+      trendingMoviesId.add(results.elementAt(i)['id']);
+    }
+
+    for(int t = 0; t < trendingMoviesId.length; t++){
+      trendingMovies.add(await Movie.create(trendingMoviesId.elementAt(t)));
+    }
+
+    return trendingMovies;
+  }
 
 Future<List<Movie>> getTopRatedMoviesByGenres(List<Genre> genres, int range) async{
   List<Movie> listMovies = [];
@@ -91,9 +116,6 @@ Future<List<Movie>> getRecommendedMovies(int id) async{
   for(int x = 0; x < similarMoviesId.length; x++){
     listMovies.add(await Movie.create(similarMoviesId.elementAt(x)));
   }
-  print(results);
-  print(listMovies);
-
   return listMovies;
 }
 

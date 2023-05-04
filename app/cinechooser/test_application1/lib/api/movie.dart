@@ -134,7 +134,7 @@ import 'api.dart';
       }
       providers = providersNames;
     } else {
-      List<String> none = ["In theatres now"];
+      List<String> none = ["Not available on streaming"];
       providers = none;
     }
 

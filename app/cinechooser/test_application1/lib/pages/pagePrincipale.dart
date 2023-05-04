@@ -6,6 +6,8 @@ import 'package:flutter/foundation.dart';
 import 'package:cinechooser/utils/movie_carte.dart';
 import 'package:cinechooser/utils/bottom_buttons_row.dart';
 import '../utils/app_styles.dart';
+import '../utils/carte_overlay.dart';
+import 'package:cinechooser/api/movie.dart';
 import 'package:cinechooser/api/api.dart';
 import 'package:cinechooser/main.dart';
 
@@ -21,7 +23,11 @@ class _PagePrincipaleState extends State<PagePrincipale> {
 
   final controller = SwipableStackController();
 
+  /// À bouger dans les infos du comptes
   List<int> likedMovies = [];
+  List<int> refusedMovies = [];
+
+  ///
 
   late final SwipableStackController _controller;
 
@@ -88,6 +94,8 @@ class _PagePrincipaleState extends State<PagePrincipale> {
                 if (direction == SwipeDirection.right) {
                   likedMovies.add(displayedMovies.elementAt(index).id);
                   _addRecommendedMovies(displayedMovies.elementAt(index).id, 2);
+                } else if (direction == SwipeDirection.left) {
+                  refusedMovies.add(displayedMovies.elementAt(index).id);
                 }
                 print(likedMovies);
                 if (kDebugMode) {
@@ -96,7 +104,18 @@ class _PagePrincipaleState extends State<PagePrincipale> {
               },
               builder: (context, properties) {
                 final indexMovie = properties.index % (displayedMovies.length);
+                // Créer un String de genre
                 List<String> genreNames = [];
+                for (int i = 0;
+                    i < displayedMovies.elementAt(indexMovie).genres.length;
+                    i++) {
+                  genreNames.add(displayedMovies
+                      .elementAt(indexMovie)
+                      .genres
+                      .elementAt(i)
+                      .name);
+                } //
+
                 for (int i = 0;
                     i < displayedMovies.elementAt(indexMovie).genres.length;
                     i++) {
@@ -116,7 +135,8 @@ class _PagePrincipaleState extends State<PagePrincipale> {
                           width: width * 0.9,
                           child: Cartes(
                             name: displayedMovies.elementAt(indexMovie).nom,
-                            genres: genreNames.join(", "),
+                            infos:
+                                "${displayedMovies.elementAt(indexMovie).dateDeSortie} - ${displayedMovies.elementAt(indexMovie).directors.elementAt(0)}" /*genreNames.join(", ")*/,
                             poster:
                                 displayedMovies.elementAt(indexMovie).poster,
                           ),
