@@ -22,6 +22,7 @@ class TopButtonsRow extends StatelessWidget {
           Button(
               onPressed: () {
                 Navigator.push(
+
                   context,
                   MaterialPageRoute(builder: (context) => const MainPage()),
 

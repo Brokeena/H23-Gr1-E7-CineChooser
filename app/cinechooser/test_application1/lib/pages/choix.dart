@@ -19,7 +19,10 @@ class Choix extends StatefulWidget {
 }
 
 class _ChoixState extends State<Choix> {
+
   List<int> listGenre = [];
+  double tailleBordure = 0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,8 @@ class _ChoixState extends State<Choix> {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            if (listGenre.length >= 5) {
+            if (listGenre.length >= 3) {
+
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const MainPage()),

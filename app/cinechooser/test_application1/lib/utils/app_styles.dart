@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class Styles
+
 {
   static const Color bgColor =  Color(0xff09080C);
   static const Color white1 =  Color(0xffEDF2F4);

@@ -19,6 +19,7 @@ class SetupUtilisateur extends StatefulWidget {
 
 class _SetupUtilisateurState extends State<SetupUtilisateur> {
   void _navigateToPreviousScreen(BuildContext context) {
+
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => MainPage()));
   }
