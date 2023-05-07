@@ -1,3 +1,4 @@
+import 'package:cinechooser/pages/login_page.dart';
 import 'package:cinechooser/pages/main_page.dart';
 import 'package:cinechooser/pages/reglages.dart';
 import 'package:cinechooser/utils/app_styles.dart';
@@ -22,18 +23,6 @@ class TopButtonsRow extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const MainPage()),
-                );
-              },
-              icone: const Icon(Icons.arrow_back_ios_new_outlined,
-                  color: Styles.red1),
-              color: Colors.white,
-              taille: 64,
-              borderRadius: 15),
-          Button(
-              onPressed: () {
-                Navigator.push(
-                  context,
                   MaterialPageRoute(builder: (context) => const Profile()),
                 );
               },
@@ -43,6 +32,7 @@ class TopButtonsRow extends StatelessWidget {
               borderRadius: 100),
           Button(
               onPressed: () {
+                var x = goodID;
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const Reglages()),

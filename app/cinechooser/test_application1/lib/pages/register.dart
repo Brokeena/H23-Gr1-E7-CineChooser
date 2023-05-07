@@ -32,6 +32,13 @@ class _RegisterPageState extends State<RegisterPage> {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
             email: _emailController.text.trim(),
             password: _passwordController.text.trim());
+        addUserDetails(
+            _nameController.text.trim(),
+            _latNameController.text.trim(),
+            _emailController.text.trim(),
+            int.parse(_ageController.text.trim()));
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => const Choix()));
       } on FirebaseAuthException catch (e) {
         showDialog(
             context: context,
@@ -42,13 +49,7 @@ class _RegisterPageState extends State<RegisterPage> {
             });
       }
 
-      addUserDetails(
-          _nameController.text.trim(),
-          _latNameController.text.trim(),
-          _emailController.text.trim(),
-          int.parse(_ageController.text.trim()));
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => const Choix()));
+
     } else {
       if (!passwordValide()) {
         showDialog(
@@ -103,12 +104,17 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   bool ageValide() {
-    if (int.parse(_ageController.text.trim()) < 100 &&
-        int.parse(_ageController.text.trim()) > 0) {
-      return true;
-    } else {
+    try {
+      if (int.parse(_ageController.text.trim()) < 100 &&
+          int.parse(_ageController.text.trim()) > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e){
       return false;
     }
+
   }
 
   @override

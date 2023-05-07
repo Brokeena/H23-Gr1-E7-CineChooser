@@ -1,8 +1,19 @@
+import 'package:cinechooser/pages/choix.dart';
+import 'package:cinechooser/pages/login_page.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
-import 'package:cinechooser/utils/pays_nom.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
-import 'package:cinechooser/pages/reglages_first_time.dart';
+import 'package:cinechooser/api/api.dart';
+import 'package:cinechooser/utils/pays_nom.dart';
+import 'package:cinechooser/utils/pays_iso.dart';
+
+import 'auth_page.dart';
+String paysSelectionne = 'Country';
+String paysISO = 'CA';
+
+List<String> selectedItems = [];
+List<String>? results = [];
 
 class Reglages extends StatefulWidget {
   const Reglages({Key? key}) : super(key: key);
@@ -11,17 +22,29 @@ class Reglages extends StatefulWidget {
   State<Reglages> createState() => _ReglagesState();
 }
 
+bool isButtonPressed = false;
+
 class _ReglagesState extends State<Reglages> {
   dynamic dropdownvalues;
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
+    int index = listPaysNom.indexOf(paysSelectionne);
+    if (index >= 0 && index < listPaysISO.length) {
+      paysISO = listPaysISO[index];
+      country = paysISO;
+    }
+
     return Scaffold(
       backgroundColor: Styles.bgColor,
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('Account Settings', style: Styles.entete),
+        title: const Text('Set your account detail', style: Styles.entete),
         leading: IconButton(
           onPressed: () {
             Navigator.push(
@@ -36,35 +59,92 @@ class _ReglagesState extends State<Reglages> {
       body: SafeArea(
         top: true,
         child: Padding(
-          padding: const EdgeInsets.only(left: 20.0),
+          padding: EdgeInsets.all(width / 15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Divider(height: 25),
+              Divider(height: height / 40),
+              Container(
+                height: height * 0.06,
+                width: width * 0.9,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12)),
+                child: DropdownButtonHideUnderline(
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: DropdownButton(
+                        borderRadius: BorderRadius.circular(7),
+                        hint: Text(
+                          paysSelectionne,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 16,
+                            color: Colors.black87,
+                          ),
+                        ),
+                        value: dropdownvalues,
+                        dropdownColor: Colors.white,
+                        elevation: 0,
+                        icon: const Icon(
+                          Icons.expand_more,
+                          color: Colors.black,
+                        ),
+                        items: listPaysNom
+                            .map((dynamic value) => DropdownMenuItem(
+                          value: value,
+                          child: Text(value,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontSize: 16,
+                                color: Colors.black87,
+                              )),
+                        ))
+                            .toList(),
+                        onChanged: (newItem) async {
+                          setState(()  {
+
+                            paysSelectionne = newItem.toString();
+
+                            dropdownvalues = newItem!;
+
+                          });
+                          db.doc(await goodID).update({'pays': paysSelectionne});
+
+                        }),
+                  ),
+                ),
+              ),
+              Divider(height: height / 20),
               const Text('Streaming services :', style: Styles.petittitres),
-              const Divider(height: 15),
-              Row(
+              Divider(height: height / 40),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('Your services: ', style: Styles.informations),
-                  Wrap(
-                      spacing: 5,
-                      direction: Axis.horizontal,
-                      children: selectedItems
-                          .map((e) => Chip(label: Text(e)))
-                          .toList())
+                  const Text('Your services : ', style: Styles.informations),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Wrap(
+                        spacing: 5,
+                        runSpacing: 5,
+                        direction: Axis.horizontal,
+                        children: selectedItems
+                            .map((e) => Chip(label: Text(e)))
+                            .toList()),
+                  )
                 ],
               ),
-              const Divider(height: 15),
+              Divider(height: height / 40),
               ElevatedButton(
                   style: ButtonStyle(
                     alignment: Alignment.center,
                     shape: MaterialStateProperty.resolveWith(
-                      (states) => RoundedRectangleBorder(
+                          (states) => RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(7),
                       ),
                     ),
                     backgroundColor: MaterialStateProperty.resolveWith(
-                      (states) => Colors.white,
+                          (states) => Colors.white,
                     ),
                   ),
                   onPressed: _showMultiSelect,
@@ -73,48 +153,18 @@ class _ReglagesState extends State<Reglages> {
                           fontWeight: FontWeight.normal,
                           fontSize: 15,
                           color: Colors.black87))),
-              const Divider(height: 25),
-              const Text('Country :', style: Styles.petittitres),
-              const Divider(height: 15),
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(14)),
-                child: DropdownButtonHideUnderline(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: DropdownButton(
-                        borderRadius: BorderRadius.circular(7),
-                        hint: Text(paysSelectionne,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.normal,
-                                fontSize: 15,
-                                color: Colors.black87)),
-                        value: dropdownvalues,
-                        dropdownColor: Colors.white,
-                        elevation: 0,
-                        icon: const Icon(
-                          Icons.arrow_drop_down,
-                          color: Colors.transparent,
-                        ),
-                        items: listPaysNom
-                            .map((dynamic value) => DropdownMenuItem(
-                                  value: value,
-                                  child: Text(value,
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.normal,
-                                          fontSize: 15,
-                                          color: Colors.black87)),
-                                ))
-                            .toList(),
-                        onChanged: (newItem) {
-                          setState(() {
-                            dropdownvalues = newItem!;
-                          });
-                        }),
-                  ),
-                ),
-              ),
+              Divider(height: height / 25),
+              MaterialButton(
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const AuthPage()),
+                  );
+                },
+                color: Colors.red,
+                child: const Text('sign out'),
+              )
             ],
           ),
         ),
@@ -123,19 +173,28 @@ class _ReglagesState extends State<Reglages> {
   }
 
   void _showMultiSelect() async {
-    final List<String> items = selectedItems;
+    final List<String> items = [
+      'Netflix',
+      'Disney+',
+      'PrimeVideo',
+      'Apple TV Plus'
+    ];
 
-    final List<String>? results = await showDialog(
+
+    results = await showDialog(
       context: context,
       builder: (BuildContext context) {
         return MultiSelect(items: items);
       },
     );
 
+
     if (results != null) {
       setState(() {
-        selectedItems = results;
+        selectedItems = results!;
       });
+
+      db.doc(await goodID).update({'providers': results!});
     }
   }
 }
@@ -150,14 +209,12 @@ class MultiSelect extends StatefulWidget {
 }
 
 class _MultiSelectState extends State<MultiSelect> {
-  final List<String> _selectedItems = [];
-
   void _itemChange(String itemValue, bool isSelected) {
     setState(() {
       if (isSelected) {
-        _selectedItems.add(itemValue);
+        selectedItems.add(itemValue);
       } else {
-        _selectedItems.remove(itemValue);
+        selectedItems.remove(itemValue);
       }
     });
   }
@@ -167,7 +224,7 @@ class _MultiSelectState extends State<MultiSelect> {
   }
 
   void _submit() {
-    Navigator.pop(context, _selectedItems);
+    Navigator.pop(context, selectedItems);
   }
 
   @override
@@ -182,16 +239,16 @@ class _MultiSelectState extends State<MultiSelect> {
         child: ListBody(
           children: widget.items
               .map((item) => CheckboxListTile(
-                    activeColor: Styles.red1,
-                    value: _selectedItems.contains(item),
-                    title: Text(item,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.normal,
-                            fontSize: 15,
-                            color: Colors.black87)),
-                    controlAffinity: ListTileControlAffinity.leading,
-                    onChanged: (isChecked) => _itemChange(item, isChecked!),
-                  ))
+            activeColor: Styles.red1,
+            value: selectedItems.contains(item),
+            title: Text(item,
+                style: const TextStyle(
+                    fontWeight: FontWeight.normal,
+                    fontSize: 15,
+                    color: Colors.black87)),
+            controlAffinity: ListTileControlAffinity.leading,
+            onChanged: (isChecked) => _itemChange(item, isChecked!),
+          ))
               .toList(),
         ),
       ),
@@ -203,7 +260,7 @@ class _MultiSelectState extends State<MultiSelect> {
           onPressed: _submit,
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.resolveWith(
-              (states) => Styles.red1,
+                  (states) => Styles.red1,
             ),
           ),
           child: const Text('Continue', style: TextStyle(color: Colors.black)),

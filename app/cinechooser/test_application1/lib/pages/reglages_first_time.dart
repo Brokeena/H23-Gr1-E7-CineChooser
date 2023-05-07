@@ -1,15 +1,13 @@
 import 'package:cinechooser/pages/choix.dart';
+import 'package:cinechooser/pages/login_page.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
+import 'package:cinechooser/pages/reglages.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:cinechooser/api/api.dart';
 import 'package:cinechooser/utils/pays_nom.dart';
 import 'package:cinechooser/utils/pays_iso.dart';
 
-String paysSelectionne = 'Country';
-String paysISO = 'CA';
-
-List<String> selectedItems = [];
 
 class ReglagesFirstTime extends StatefulWidget {
   const ReglagesFirstTime({Key? key}) : super(key: key);
@@ -32,12 +30,12 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
     if (index >= 0 && index < listPaysISO.length) {
       paysISO = listPaysISO[index];
       country = paysISO;
-      print(country);
     }
 
     return Scaffold(
       backgroundColor: Styles.bgColor,
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: const Text('Set your account detail', style: Styles.entete),
@@ -97,12 +95,16 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                                       )),
                                 ))
                             .toList(),
-                        onChanged: (newItem) {
-                          setState(() {
+                        onChanged: (newItem) async {
+                          setState(()  {
+
                             paysSelectionne = newItem.toString();
 
                             dropdownvalues = newItem!;
+
                           });
+                          db.doc(await goodID).update({'pays': paysSelectionne});
+
                         }),
                   ),
                 ),
@@ -149,19 +151,29 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
               Center(
                   child: GestureDetector(
                 onTap: () {
-                  if (isButtonPressed == false) {
-                    isButtonPressed = true;
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const PagePrincipale()),
-                    );
+                  print(results);
+                  if(results == [])
+                    {
+                      print('vide');
+                  }else{
+                    print(results);
                   }
+                  if(paysSelectionne != 'Country' && results != []){
+                    if (isButtonPressed == false) {
+                      isButtonPressed = true;
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const PagePrincipale()),
+                      );
+                    }
+                  }
+
                   isButtonPressed = false;
                 },
                 child: AnimatedContainer(
-                  duration: Duration(milliseconds: 100),
-                  padding: EdgeInsets.all(15),
+                  duration: const Duration(milliseconds: 100),
+                  padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
                       color: Styles.bgColor,
                       borderRadius: BorderRadius.circular(12),
@@ -211,17 +223,21 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
       'Apple TV Plus'
     ];
 
-    final List<String>? results = await showDialog(
+
+      results = await showDialog(
       context: context,
       builder: (BuildContext context) {
         return MultiSelect(items: items);
       },
     );
 
+
     if (results != null) {
       setState(() {
-        selectedItems = results;
+        selectedItems = results!;
       });
+
+      db.doc(await goodID).update({'providers': results!});
     }
   }
 }

@@ -1,4 +1,6 @@
+import 'package:cinechooser/pages/auth_page.dart';
 import 'package:cinechooser/pages/main_page.dart';
+import 'package:cinechooser/pages/register.dart';
 import 'package:cinechooser/pages/reglages_first_time.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -6,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:cinechooser/main.dart';
 import '../widget/MovieCase.dart';
+import 'package:cinechooser/pages/login_page.dart';
 
 final FirebaseAuth auth = FirebaseAuth.instance;
 List<int> listGenre = [];
@@ -30,22 +33,14 @@ Future getDocId() async {
 }
 
 updateUserDetails(List<int> genres) async {
-  final user = FirebaseAuth.instance.currentUser!;
-  List<String> docIDs = await getDocId();
   var db = FirebaseFirestore.instance.collection('users');
-
-  String docID = 'empty';
-  for (var documentId in docIDs) {
-    var collectionReference = await db.doc(documentId).get();
-    var data = collectionReference.data() as Map<String, dynamic>;
-
-    if (data['userID'] == user.uid) {
-      docID = data['docID'];
-    }
-  }
-
-  db.doc(docID).update({'genres ': listGenre});
+  db.doc(await goodID).update({'genres': listGenre});
 }
+
+Future deleteUser() async {
+//delete the just created user
+}
+
 
 class _ChoixState extends State<Choix> {
   @override
@@ -58,12 +53,11 @@ class _ChoixState extends State<Choix> {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            if (listGenre.length >= 3) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const MainPage()),
-              );
-            }
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const AuthPage()),
+            );
+            deleteUser();
           },
           icon: const Icon(Icons.arrow_back_ios_new_outlined,
               color: Colors.white),

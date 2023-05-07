@@ -1,5 +1,7 @@
 import 'package:cinechooser/pages/pagePrincipale.dart';
+import 'package:cinechooser/pages/reglages.dart';
 import 'package:cinechooser/widget/textField.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,43 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cinechooser/main.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'forgotPassewordPage.dart';
+
+var goodID = getGoodID();
+var db = FirebaseFirestore.instance.collection('users');
+
+
+Future getDocId() async {
+  List<String> docIDs = [];
+  await FirebaseFirestore.instance
+      .collection('users')
+      .get()
+      .then((snapshot) => snapshot.docs.forEach((document) {
+            docIDs.add(document.reference.id);
+          }));
+  return docIDs;
+}
+
+getGoodID() async {
+  final user = FirebaseAuth.instance.currentUser!;
+  List<String> docIDs = await getDocId();
+  var db = FirebaseFirestore.instance.collection('users');
+
+  String docID = 'empty';
+  for (var documentId in docIDs) {
+    var collectionReference = await db.doc(documentId).get();
+    var data = collectionReference.data() as Map<String, dynamic>;
+
+    if (data['userID'] == user.uid) {
+      docID = data['docID'];
+      paysSelectionne = data['pays'];
+      selectedItems = data['providers'];
+    }
+
+
+
+  }
+  return docID;
+}
 
 class LoginPage extends StatefulWidget {
   final VoidCallback showRegisterPage;
@@ -30,8 +69,15 @@ class _LoginPageState extends State<LoginPage> {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => PagePrincipale()));
+/*
+      var collectionReference = await db.doc(goodID).get();
+      var data = collectionReference.data() as Map<String, dynamic>;
+      paysSelectionne = data['pays'].toString();
+      selectedItems = data['providers'];
+
+ */
+
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PagePrincipale()));
     } on FirebaseAuthException catch (e) {
       showDialog(
           context: context,

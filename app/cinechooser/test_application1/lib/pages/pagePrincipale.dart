@@ -10,7 +10,12 @@ import '../utils/carte_overlay.dart';
 import 'package:cinechooser/api/movie.dart';
 import 'package:cinechooser/api/api.dart';
 import 'package:cinechooser/main.dart';
+import 'login_page.dart';
 
+/// À bouger dans les infos du comptes
+List<int> likedMovies = [];
+List<int> refusedMovies = [];
+///
 class PagePrincipale extends StatefulWidget {
   const PagePrincipale({Key? key}) : super(key: key);
 
@@ -23,10 +28,7 @@ class _PagePrincipaleState extends State<PagePrincipale> {
 
   final controller = SwipableStackController();
 
-  /// À bouger dans les infos du comptes
-  List<int> likedMovies = [];
-  List<int> refusedMovies = [];
-  ///
+
 
   late final SwipableStackController _controller;
 
@@ -89,12 +91,14 @@ class _PagePrincipaleState extends State<PagePrincipale> {
               },
               controller: _controller,
               stackClipBehaviour: Clip.none,
-              onSwipeCompleted: (index, direction) {
+              onSwipeCompleted: (index, direction) async {
                 if (direction == SwipeDirection.right) {
                   likedMovies.add(displayedMovies.elementAt(index).id);
                   _addRecommendedMovies(displayedMovies.elementAt(index).id, 2);
+                  db.doc(await goodID).update({'likedMovies': likedMovies});
                 } else if (direction == SwipeDirection.left) {
                   refusedMovies.add(displayedMovies.elementAt(index).id);
+                  db.doc(await goodID).update({'dislikedMovies': refusedMovies});
                 }
                 print(likedMovies);
                 if (kDebugMode) {
