@@ -1,3 +1,4 @@
+import 'package:cinechooser/pages/auth_page.dart';
 import 'package:cinechooser/pages/main_page.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
 import 'package:cinechooser/utils/pays_nom.dart';
@@ -126,7 +127,7 @@ class _ProfileState extends State<Profile> {
                   FirebaseAuth.instance.signOut();
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const MainPage()),
+                    MaterialPageRoute(builder: (context) => const AuthPage()),
                   );
                 },
                 color: Colors.red,

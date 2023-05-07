@@ -26,7 +26,6 @@ class _PagePrincipaleState extends State<PagePrincipale> {
   /// À bouger dans les infos du comptes
   List<int> likedMovies = [];
   List<int> refusedMovies = [];
-
   ///
 
   late final SwipableStackController _controller;

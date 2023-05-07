@@ -1,3 +1,5 @@
+import 'package:cinechooser/pages/auth_page.dart';
+import 'package:cinechooser/pages/main_page.dart';
 import 'package:cinechooser/pages/reglages_first_time.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/api/movie.dart';
@@ -51,7 +53,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ReglagesFirstTime(),
+      home: AuthPage(),
     );
   }
 }

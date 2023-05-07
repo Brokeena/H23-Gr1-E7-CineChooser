@@ -73,13 +73,24 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Future addUserDetails(
       String firstName, String lastName, String email, int age) async {
+    String docId = "";
     await FirebaseFirestore.instance.collection('users').add({
       'first name': lastName,
       'last name': firstName,
       'age': age,
       'email': email,
       'genres': []
+    }).then((DocumentReference doc) {
+      docId = doc.id;
     });
+
+    var db = await FirebaseFirestore.instance;
+
+    final user = FirebaseAuth.instance.currentUser!;
+
+    db.collection("users").doc(docId).update({'userID': user.uid});
+
+    db.collection("users").doc(docId).update({'docID': docId});
   }
 
   bool passwordValide() {
@@ -192,11 +203,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const SizedBox(
+                            children: const [
+                              SizedBox(
                                 width: 8,
                               ),
-                              const Text(
+                              Text(
                                 'Sign Up',
                                 style: TextStyle(
                                   color: Styles.white1,
