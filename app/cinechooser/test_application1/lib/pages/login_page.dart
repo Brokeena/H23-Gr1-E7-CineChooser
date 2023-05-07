@@ -39,8 +39,8 @@ getGoodID() async {
 
     if (data['userID'] == user.uid) {
       docID = data['docID'];
-      paysSelectionne = data['pays'];
-      selectedItems = data['providers'];
+      //paysSelectionne = data['pays'];
+      //selectedItems = data['providers'];
     }
 
 

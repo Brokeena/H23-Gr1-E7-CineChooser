@@ -1,6 +1,8 @@
 import 'package:cinechooser/pages/pagePrincipale.dart';
+import 'package:cinechooser/widget/MovieCase.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
+import 'package:flutter/services.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -29,13 +31,27 @@ class _ProfileState extends State<Profile> {
           padding: EdgeInsets.symmetric(vertical: width / 9),
           child: Column(
             children: [
-              Wrap(
-                  spacing: 5,
-                  runSpacing: 5,
-                  direction: Axis.horizontal,
-                  children: likedMovies
-                      .map((e) => Chip(label: Text(e as String)))
-                      .toList())
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: width / 9),
+                child: Row(
+                  children: const [
+                    Text('Liked movies', style: Styles.preTitre),
+                    SizedBox(width: 100),
+                    Text('Disliked movies', style: Styles.preTitre)
+                  ],
+                ),
+              ),
+              Center(
+                child: Wrap(
+                    spacing: 5,
+                    runSpacing: 5,
+                    direction: Axis.horizontal,
+                    children: [
+                      Text(likedMovies.toString(), style: Styles.petittitres)
+
+                    ]),
+              ),
+
             ],
           ),
         ),
