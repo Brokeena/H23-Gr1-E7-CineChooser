@@ -1,20 +1,27 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cinechooser/widget/button_carre.dart';
 import 'package:flutter/material.dart';
-import 'package:cinechooser/pages/choix.dart';
-import '../utils/app_styles.dart';
+
+
+bool pressed = false;
+Color color = Colors.white;
+double border = 0;
+
 
 class MovieCase extends StatelessWidget {
-  const MovieCase({
+  MovieCase({
     super.key,
-    required this.onPressed,
+   // required this.genreId,
     required this.nom,
     required this.image,
+    required this.border,
+   // required this.selectionne,
   });
-  final VoidCallback? onPressed;
+
+  //final int genreId;
   final String nom;
   final String image;
-
+  final double border;
+  // bool selectionne;
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +40,7 @@ class MovieCase extends StatelessWidget {
                     color: Colors.transparent,
                     image: DecorationImage(
                         image: NetworkImage(image), fit: BoxFit.cover),
-                    border: Border.all(
-                        color: Colors.transparent,
-                        width: 1.5)),
+                    border: Border.all(color: color, width: border)),
               ),
             ),
             Positioned(
@@ -58,23 +63,29 @@ class MovieCase extends StatelessWidget {
             ),
           ]),
         ),
-        /*
-        Center(
-          child: AutoSizeText(nom, style: TextStyle(
-            color: Styles.white1
-          )),
-        ),
-         */
-        Button(
-            onPressed: onPressed,
+       /*Button(
+            onPressed: () {
+              if (selectionne) {
+                listGenre.add(genreId);
+                border = 15;
+                selectionne = false;
+              } else {
+                listGenre.remove(genreId);
+                border = 0;
+                selectionne = true;
+              }
+            },
             icone: const Icon(
               Icons.arrow_drop_down,
               color: Colors.transparent,
             ),
             color: Colors.transparent,
             taille: width / 4,
-            borderRadius: 20)
+            borderRadius: 20) */
       ]),
+
+
     );
   }
 }
+

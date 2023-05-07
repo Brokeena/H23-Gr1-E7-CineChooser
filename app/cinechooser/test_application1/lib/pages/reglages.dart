@@ -1,4 +1,3 @@
-import 'package:cinechooser/pages/choix.dart';
 import 'package:cinechooser/pages/login_page.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,13 +6,7 @@ import 'package:cinechooser/utils/app_styles.dart';
 import 'package:cinechooser/api/api.dart';
 import 'package:cinechooser/utils/pays_nom.dart';
 import 'package:cinechooser/utils/pays_iso.dart';
-
 import 'auth_page.dart';
-String paysSelectionne = 'Country';
-String paysISO = 'CA';
-
-List<String> selectedItems = [];
-List<String>? results = [];
 
 class Reglages extends StatefulWidget {
   const Reglages({Key? key}) : super(key: key);

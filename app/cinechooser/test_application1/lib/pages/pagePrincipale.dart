@@ -6,16 +6,11 @@ import 'package:flutter/foundation.dart';
 import 'package:cinechooser/utils/movie_carte.dart';
 import 'package:cinechooser/utils/bottom_buttons_row.dart';
 import '../utils/app_styles.dart';
-import '../utils/carte_overlay.dart';
-import 'package:cinechooser/api/movie.dart';
 import 'package:cinechooser/api/api.dart';
 import 'package:cinechooser/main.dart';
 import 'login_page.dart';
 
-/// À bouger dans les infos du comptes
-List<int> likedMovies = [];
-List<int> refusedMovies = [];
-///
+
 class PagePrincipale extends StatefulWidget {
   const PagePrincipale({Key? key}) : super(key: key);
 
@@ -97,8 +92,8 @@ class _PagePrincipaleState extends State<PagePrincipale> {
                   _addRecommendedMovies(displayedMovies.elementAt(index).id, 2);
                   db.doc(await goodID).update({'likedMovies': likedMovies});
                 } else if (direction == SwipeDirection.left) {
-                  refusedMovies.add(displayedMovies.elementAt(index).id);
-                  db.doc(await goodID).update({'dislikedMovies': refusedMovies});
+                  dislikedMovies.add(displayedMovies.elementAt(index).id);
+                  db.doc(await goodID).update({'dislikedMovies': dislikedMovies});
                 }
                 print(likedMovies);
                 if (kDebugMode) {

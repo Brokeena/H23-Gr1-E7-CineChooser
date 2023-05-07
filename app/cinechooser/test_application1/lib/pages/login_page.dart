@@ -1,5 +1,5 @@
+import 'package:cinechooser/pages/choix.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
-import 'package:cinechooser/pages/reglages.dart';
 import 'package:cinechooser/widget/textField.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,7 +14,13 @@ import 'forgotPassewordPage.dart';
 
 var goodID = getGoodID();
 var db = FirebaseFirestore.instance.collection('users');
-
+String paysSelectionne = 'Country';
+String paysISO = 'CA';
+List<String> selectedItems = [];
+List<String>? results = [];
+List<int> likedMovies = [];
+List<int> dislikedMovies = [];
+var showedList = [];
 
 Future getDocId() async {
   List<String> docIDs = [];
@@ -25,6 +31,21 @@ Future getDocId() async {
             docIDs.add(document.reference.id);
           }));
   return docIDs;
+}
+
+initiateALl() async {
+  var collectionReference = await db.doc(goodID).get();
+  var data = collectionReference.data() as Map<String, dynamic>;
+  print(paysSelectionne);
+  paysSelectionne = await data['pays'].toString();
+  print(paysSelectionne);
+  selectedItems = await data['providers'];
+  likedMovies = await data['likedMovies'];
+  dislikedMovies = await data['dislikedMovies'];
+  print(listGenre);
+  listGenre = await data['genres'];
+  showedList = likedMovies;
+  print(listGenre);
 }
 
 getGoodID() async {
@@ -39,12 +60,7 @@ getGoodID() async {
 
     if (data['userID'] == user.uid) {
       docID = data['docID'];
-      //paysSelectionne = data['pays'];
-      //selectedItems = data['providers'];
     }
-
-
-
   }
   return docID;
 }
@@ -69,21 +85,15 @@ class _LoginPageState extends State<LoginPage> {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
-/*
-      var collectionReference = await db.doc(goodID).get();
-      var data = collectionReference.data() as Map<String, dynamic>;
-      paysSelectionne = data['pays'].toString();
-      selectedItems = data['providers'];
-
- */
-
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PagePrincipale()));
+      initiateALl();
+      Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => const PagePrincipale()));
     } on FirebaseAuthException catch (e) {
       showDialog(
           context: context,
           builder: (BuildContext context) {
-            return const AlertDialog(
-              title: Text('The password or the email is incorrect'),
+            return AlertDialog(
+              content: Text(e.message.toString()),
             );
           });
     }

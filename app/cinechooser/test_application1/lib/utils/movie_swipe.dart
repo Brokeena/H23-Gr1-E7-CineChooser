@@ -1,21 +1,32 @@
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
+import '../api/movie.dart';
+
 class MovieSwipe extends StatelessWidget {
-  const MovieSwipe({
-    required this.name,
-    required this.poster,
+   MovieSwipe({
+    required this.id,
     super.key,
   });
 
+  var poster = '';
+  var name = '';
 
-  final String name;
-  final String poster;
+  Future showMovies(var moviesId) async{
+    Movie movie = await Movie.create(moviesId);
+    poster = movie.poster;
+    name = movie.nom;
+  }
+
+  final int id;
+
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    showMovies(id);
+    print(poster);
     return ClipRRect(
       child: Stack(
         children: [
@@ -31,23 +42,8 @@ class MovieSwipe extends StatelessWidget {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: 150,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.vertical(
-                  bottom: Radius.circular(14),
-                ),
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: <Color>[
-                    Colors.black12.withOpacity(0),
-                    Colors.black12.withOpacity(.4),
-                    Colors.black12.withOpacity(.6),
-                    Colors.black12.withOpacity(.82),
-                  ],
-                ),
-              ),
+              height: height/5,
+              width: width/3,
             ),
           ),
           Padding(

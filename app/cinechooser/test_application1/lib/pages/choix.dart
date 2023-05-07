@@ -1,6 +1,4 @@
 import 'package:cinechooser/pages/auth_page.dart';
-import 'package:cinechooser/pages/main_page.dart';
-import 'package:cinechooser/pages/register.dart';
 import 'package:cinechooser/pages/reglages_first_time.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -40,7 +38,6 @@ updateUserDetails(List<int> genres) async {
 Future deleteUser() async {
 //delete the just created user
 }
-
 
 class _ChoixState extends State<Choix> {
   @override
@@ -105,8 +102,39 @@ class _ChoixState extends State<Choix> {
                 const Text('Choisissez 3 genres ou plus ',
                     style: Styles.informations),
                 const Divider(height: 25),
-                Row(
+                Wrap(
+                    spacing: width / 16,
+                    runSpacing: width / 16,
+                    direction: Axis.horizontal,
+                    children: List.generate(idGenre.length, (index) {
+                      return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              if (selectionne[index]) {
+                                listGenre.add(idGenre[index]);
+                                print(border);
+                                borders[index] = 15;
+                                print(border);
+                                print(listGenre);
+                                selectionne[index] = false;
+                              } else {
+                                listGenre.remove(idGenre[index]);
+                                print(border);
+                                borders[index] = 0;
+                                print(border);
+                                print(listGenre);
+                                selectionne[index] = true;
+                              }
+                            });
+                          },
+                          child: MovieCase(
+                              nom: nomGenre[index],
+                              image: imageGenre[index],
+                              border: borders[index]));
+                    }))
+                /*Row(
                   children: [
+
                     MovieCase(
                         nom: 'Action',
                         image: imageGenre.elementAt(0),
@@ -276,8 +304,10 @@ class _ChoixState extends State<Choix> {
                             listGenre.add(37);
                           }),
                     ),
+
+
                   ],
-                ),
+                ),*/
               ],
             ),
           ),

@@ -1,6 +1,4 @@
 import 'package:cinechooser/pages/auth_page.dart';
-import 'package:cinechooser/pages/main_page.dart';
-import 'package:cinechooser/pages/reglages_first_time.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/api/movie.dart';
 import 'package:cinechooser/api/api.dart';
@@ -31,6 +29,67 @@ List<String> imageGenre = [
   'https://fr.web.img5.acsta.net/newsv7/19/06/06/17/22/1389810.jpg',
   'https://www.rts.ch/2017/07/26/16/42/3200399.image?mw=1280',
 ];
+List<int> idGenre = [
+  28,
+  12,
+  16,
+  35,
+  80,
+  99,
+  18,
+  10751,
+  14,
+  36,
+  27,
+  10402,
+  9648,
+  10749,
+  878,
+  53,
+  10752,
+  37
+];
+List<String> nomGenre = [
+  'Action',
+  'Adventure',
+  'Animation',
+  'Comedy',
+  'Crime',
+  'Documentary',
+  'Drama',
+  'Family',
+  'Fantasy',
+  'History',
+  'Horror',
+  'Music',
+  'Mystery',
+  'Romance',
+  'Science fiction',
+  'Thriller',
+  'War',
+  'Western'
+];
+List<bool> selectionne = [
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true
+];
+List<double> borders = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 void main() async {
   Movie movie = await Movie.create(18491);
