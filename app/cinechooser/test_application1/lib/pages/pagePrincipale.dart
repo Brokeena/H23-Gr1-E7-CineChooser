@@ -95,10 +95,6 @@ class _PagePrincipaleState extends State<PagePrincipale> {
                   dislikedMovies.add(displayedMovies.elementAt(index).id);
                   db.doc(await goodID).update({'dislikedMovies': dislikedMovies});
                 }
-                print(likedMovies);
-                if (kDebugMode) {
-                  print('$index, $direction'); //debug
-                }
               },
               builder: (context, properties) {
                 final indexMovie = properties.index % (displayedMovies.length);

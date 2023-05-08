@@ -50,9 +50,14 @@ import 'api.dart';
 
   int formatDate(String date){
     String dateF = "";
-    for(int i = 0; i < 4; i++){
-      dateF += date[i];
+    if(date.length >= 4){
+      for(int i = 0; i < 4; i++){
+        dateF += date[i];
+      }
+    } else {
+      dateF = "0";
     }
+
     return int.parse(dateF);
   }
 
@@ -63,7 +68,12 @@ import 'api.dart';
     runtime = movieRaw['runtime'];
     score = movieRaw['vote_average'];
     overview = movieRaw['overview'];
-    poster = "https://image.tmdb.org/t/p/original"  + movieRaw['poster_path'];
+    if(movieRaw['poster_path'] != null){
+      poster = "https://image.tmdb.org/t/p/original"  + movieRaw['poster_path'];
+    }else{
+      poster = 'https://live.staticflickr.com/65535/52879592893_618ecf8128_k.jpg';
+    }
+
 
     List<dynamic> genresList = movieRaw['genres'];
     List<int> genresId = [];

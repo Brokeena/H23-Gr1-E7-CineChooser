@@ -1,16 +1,15 @@
 import 'package:cinechooser/pages/pagePrincipale.dart';
-import 'package:cinechooser/utils/movie_swipe.dart';
-import 'package:cinechooser/widget/MovieCase.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
-import 'package:flutter/services.dart';
 import '../api/movie.dart';
+import '../utils/movie_swipe.dart';
 import 'login_page.dart';
 
 var likedPosters = [];
 var likedNames = [];
 var dislikedPosters = [];
 var dislikedNames = [];
+bool type = true;
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -33,6 +32,15 @@ Future addDislikedMovies(var moviesId) async {
   var name = movie.nom;
   dislikedPosters.add(poster);
   dislikedNames.add(name);
+}
+
+Future showMovies(var movieId) async {
+  for (var id in movieId) {
+    Movie movie = await Movie.create(id);
+    showedNames.add(movie.nom);
+    showedPoster.add(movie.poster);
+  }
+  return showedPoster;
 }
 
 class _ProfileState extends State<Profile> {
@@ -61,55 +69,69 @@ class _ProfileState extends State<Profile> {
       ),
       body: SafeArea(
         top: true,
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: width / 9),
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: width / 9),
-                child: Row(
-                  children: [
-                    GestureDetector(
-                        onTap: () {
-                          showLikedMovies();
-                          setState(() {});
-                        },
-                        child:
-                            const Text('Liked movies', style: Styles.preTitre)),
-                    const SizedBox(width: 100),
-                    GestureDetector(
-                        onTap: () {
-                          showDisLikedMovies();
-                          setState(() {});
-                        },
-                        child: const Text('Disliked movies',
-                            style: Styles.preTitre)),
-                  ],
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: width / 9),
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: width / 9),
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                          onTap: () {
+                            showLikedMovies();
+                            setState(() {});
+                          },
+                          child: const Text('Liked movies',
+                              style: Styles.preTitre)),
+                      const SizedBox(width: 100),
+                      GestureDetector(
+                          onTap: () {
+                            showDisLikedMovies();
+                            setState(() {});
+                          },
+                          child: const Text('Disliked movies',
+                              style: Styles.preTitre)),
+                    ],
+                  ),
                 ),
-              ),
-              Center(
-                child: Wrap(
-                    spacing: 5,
-                    runSpacing: 5,
-                    direction: Axis.horizontal,
-                    children: List.generate(showedList.length, (index) {
-                      return Text(showedList[index].toString(),
-                          style: Styles.preTitre);
-                    }))
-                /*Wrap(
-                    spacing: 5,
-                    runSpacing: 5,
-                    direction: Axis.horizontal,
-                    children: List.generate(likedMovies.length, (index) {
-                      return MovieCase(
-                          onPressed: goDisliked(index),
-                          nom: likedNames[index],
-                          image: likedPosters[index]);
-                    }))
-                      */
-                ,
-              ),
-            ],
+                Divider(height: width / 6),
+                Center(
+                  child: Column(
+                    children: [
+                      FutureBuilder(
+                        future: showMovies(showedList),
+                        builder: (context, snaphot) {
+                          if (snaphot.hasData) {
+                            return Wrap(
+                                spacing: width / 9,
+                                runSpacing: width / 9,
+                                direction: Axis.horizontal,
+                                children:
+                                    List.generate(showedList.length, (index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      changeType(index);
+                                      setState(() {});
+                                    },
+                                    child: MovieSwipe(
+                                      id: showedList[index],
+                                      poster: showedPoster[index],
+                                      name: showedNames[index],
+                                    ),
+                                  );
+                                }));
+                          } else {
+                            return const CircularProgressIndicator();
+                          }
+                        },
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -119,22 +141,40 @@ class _ProfileState extends State<Profile> {
 
 showLikedMovies() {
   showedList = likedMovies;
+  showedPoster = likedPosters;
+  showedNames = likedNames;
+  type = true;
 }
 
 showDisLikedMovies() {
   showedList = dislikedMovies;
+  showedPoster = dislikedPosters;
+  showedNames = dislikedNames;
+  type = false;
 }
 
-goDisliked(int index) {
-  dislikedMovies.add(index);
-  likedMovies.remove(index);
+changeType(index) {
+  if (type) {
+    goDisliked(index);
+  } else {
+    goLiked(index);
+  }
+}
+
+goDisliked(int index) async {
+  dislikedMovies.add(likedMovies[index]);
+  likedMovies.remove(likedMovies[index]);
   likedPosters.remove(index);
   likedNames.remove(index);
+  db.doc(await goodID).update({'dislikedMovies': dislikedMovies});
+  db.doc(await goodID).update({'likedMovies': likedMovies});
 }
 
-goLiked(int index) {
-  likedMovies.add(index);
+goLiked(int index) async{
+  likedMovies.add(dislikedMovies[index]);
+  dislikedMovies.remove(dislikedMovies[index]);
   dislikedMovies.remove(index);
   dislikedMovies.remove(index);
-  dislikedMovies.remove(index);
+  db.doc(await goodID).update({'dislikedMovies': dislikedMovies});
+  db.doc(await goodID).update({'likedMovies': likedMovies});
 }

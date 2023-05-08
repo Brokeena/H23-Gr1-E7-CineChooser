@@ -9,7 +9,7 @@ import '../widget/MovieCase.dart';
 import 'package:cinechooser/pages/login_page.dart';
 
 final FirebaseAuth auth = FirebaseAuth.instance;
-List<int> listGenre = [];
+List<dynamic> listGenre = [];
 double tailleBordure = 0;
 
 class Choix extends StatefulWidget {
@@ -30,10 +30,6 @@ Future getDocId() async {
   return docIDs;
 }
 
-updateUserDetails(List<int> genres) async {
-  var db = FirebaseFirestore.instance.collection('users');
-  db.doc(await goodID).update({'genres': listGenre});
-}
 
 Future deleteUser() async {
 //delete the just created user
@@ -72,13 +68,16 @@ class _ChoixState extends State<Choix> {
                 ),
                 child: const Text('Suivant',
                     style: TextStyle(color: Colors.white)),
-                onPressed: () {
+                onPressed: () async {
                   if (listGenre.length >= 3) {
-                    updateUserDetails(listGenre);
+
+                    db.doc(await goodID).update({'genres': listGenre});
+
+                    // ignore: use_build_context_synchronously
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const ReglagesFirstTime()),
+                          builder: (context) =>  const ReglagesFirstTime()),
                     );
                   }
                 },
@@ -112,17 +111,11 @@ class _ChoixState extends State<Choix> {
                             setState(() {
                               if (selectionne[index]) {
                                 listGenre.add(idGenre[index]);
-                                print(border);
                                 colors[index] = Colors.white;
-                                print(border);
-                                print(listGenre);
                                 selectionne[index] = false;
                               } else {
                                 listGenre.remove(idGenre[index]);
-                                print(border);
                                 colors[index] = Colors.transparent;
-                                print(border);
-                                print(listGenre);
                                 selectionne[index] = true;
                               }
                             });
@@ -132,182 +125,6 @@ class _ChoixState extends State<Choix> {
                               image: imageGenre[index],
                               color: colors[index]));
                     }))
-                /*Row(
-                  children: [
-
-                    MovieCase(
-                        nom: 'Action',
-                        image: imageGenre.elementAt(0),
-                        onPressed: () {
-                          listGenre.add(28);
-                        }),
-                    Padding(
-                      padding: EdgeInsets.only(left: width / 16),
-                      child: MovieCase(
-                          nom: 'Adventure',
-                          image: imageGenre.elementAt(1),
-                          onPressed: () {
-                            listGenre.add(12);
-                          }),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: width / 16),
-                      child: MovieCase(
-                          nom: 'Animation',
-                          image: imageGenre.elementAt(2),
-                          onPressed: () {
-                            listGenre.add(16);
-                          }),
-                    ),
-                  ],
-                ),
-                Divider(height: width / 16),
-                Row(
-                  children: [
-                    MovieCase(
-                        nom: 'Comedy',
-                        image: imageGenre.elementAt(3),
-                        onPressed: () {
-                          listGenre.add(35);
-                        }),
-                    Padding(
-                      padding: EdgeInsets.only(left: width / 16),
-                      child: MovieCase(
-                          nom: 'Crime',
-                          image: imageGenre.elementAt(4),
-                          onPressed: () {
-                            listGenre.add(80);
-                          }),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: width / 16),
-                      child: MovieCase(
-                          nom: 'Documentary',
-                          image: imageGenre.elementAt(5),
-                          onPressed: () {
-                            listGenre.add(99);
-                          }),
-                    ),
-                  ],
-                ),
-                Divider(height: width / 16),
-                Row(
-                  children: [
-                    MovieCase(
-                        nom: 'Drama',
-                        image: imageGenre.elementAt(6),
-                        onPressed: () {
-                          listGenre.add(18);
-                        }),
-                    Padding(
-                      padding: EdgeInsets.only(left: width / 16),
-                      child: MovieCase(
-                          nom: 'Family',
-                          image: imageGenre.elementAt(7),
-                          onPressed: () {
-                            listGenre.add(10751);
-                          }),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: width / 16),
-                      child: MovieCase(
-                          nom: 'Fantasy',
-                          image: imageGenre.elementAt(8),
-                          onPressed: () {
-                            listGenre.add(14);
-                          }),
-                    ),
-                  ],
-                ),
-                Divider(height: width / 16),
-                Row(
-                  children: [
-                    MovieCase(
-                        nom: 'History',
-                        image: imageGenre.elementAt(9),
-                        onPressed: () {
-                          listGenre.add(36);
-                        }),
-                    Padding(
-                      padding: EdgeInsets.only(left: width / 16),
-                      child: MovieCase(
-                          nom: 'Horror',
-                          image: imageGenre.elementAt(10),
-                          onPressed: () {
-                            listGenre.add(27);
-                          }),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: width / 16),
-                      child: MovieCase(
-                          nom: 'Music',
-                          image: imageGenre.elementAt(11),
-                          onPressed: () {
-                            listGenre.add(10402);
-                          }),
-                    ),
-                  ],
-                ),
-                Divider(height: width / 16),
-                Row(
-                  children: [
-                    MovieCase(
-                        nom: 'Mystery',
-                        image: imageGenre.elementAt(12),
-                        onPressed: () {
-                          listGenre.add(9648);
-                        }),
-                    Padding(
-                      padding: EdgeInsets.only(left: width / 16),
-                      child: MovieCase(
-                          nom: 'Romance',
-                          image: imageGenre.elementAt(13),
-                          onPressed: () {
-                            listGenre.add(10749);
-                          }),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: width / 16),
-                      child: MovieCase(
-                          nom: 'Science fiction',
-                          image: imageGenre.elementAt(14),
-                          onPressed: () {
-                            listGenre.add(878);
-                          }),
-                    ),
-                  ],
-                ),
-                Divider(height: width / 16),
-                Row(
-                  children: [
-                    MovieCase(
-                        nom: 'Thriller',
-                        image: imageGenre.elementAt(15),
-                        onPressed: () {
-                          listGenre.add(53);
-                        }),
-                    Padding(
-                      padding: EdgeInsets.only(left: width / 16),
-                      child: MovieCase(
-                          nom: 'War',
-                          image: imageGenre.elementAt(16),
-                          onPressed: () {
-                            listGenre.add(10752);
-                          }),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: width / 16),
-                      child: MovieCase(
-                          nom: 'Western',
-                          image: imageGenre.elementAt(17),
-                          onPressed: () {
-                            listGenre.add(37);
-                          }),
-                    ),
-
-
-                  ],
-                ),*/
               ],
             ),
           ),

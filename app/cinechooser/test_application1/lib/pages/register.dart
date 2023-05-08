@@ -80,7 +80,9 @@ class _RegisterPageState extends State<RegisterPage> {
       'last name': firstName,
       'age': age,
       'email': email,
-      'genres': []
+      'genres': [],
+      'dislikedMovies' : [],
+      'likedMovies' : []
     }).then((DocumentReference doc) {
       docId = doc.id;
     });

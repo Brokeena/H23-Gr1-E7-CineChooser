@@ -10,17 +10,20 @@ import 'package:cinechooser/api/api.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cinechooser/main.dart';
 import 'package:cinechooser/utils/app_styles.dart';
+import '../api/movie.dart';
 import 'forgotPassewordPage.dart';
 
 var goodID = getGoodID();
 var db = FirebaseFirestore.instance.collection('users');
 String paysSelectionne = 'Country';
 String paysISO = 'CA';
-List<String> selectedItems = [];
-List<String>? results = [];
-List<int> likedMovies = [];
-List<int> dislikedMovies = [];
+List<dynamic> selectedItems = [];
+List<dynamic>? results = [];
+List<dynamic> likedMovies = [];
+List<dynamic> dislikedMovies = [];
 var showedList = [];
+var showedPoster = [];
+var showedNames =[];
 
 Future getDocId() async {
   List<String> docIDs = [];
@@ -34,18 +37,22 @@ Future getDocId() async {
 }
 
 initiateALl() async {
-  var collectionReference = await db.doc(goodID).get();
+  var collectionReference = await db.doc(await getGoodID()).get();
   var data = collectionReference.data() as Map<String, dynamic>;
-  print(paysSelectionne);
-  paysSelectionne = await data['pays'].toString();
-  print(paysSelectionne);
-  selectedItems = await data['providers'];
-  likedMovies = await data['likedMovies'];
-  dislikedMovies = await data['dislikedMovies'];
-  print(listGenre);
-  listGenre = await data['genres'];
+
+  paysSelectionne =  data['pays'];
+  selectedItems =  data['providers'];
+  likedMovies =  data['likedMovies'];
+  dislikedMovies =  data['dislikedMovies'];
+  listGenre =  data['genres'];
   showedList = likedMovies;
-  print(listGenre);
+
+  for(var id in showedList){
+    Movie movie = await Movie.create(id);
+    showedNames.add(movie.nom);
+    showedPoster.add(movie.poster);
+  }
+
 }
 
 getGoodID() async {
