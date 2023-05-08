@@ -90,6 +90,26 @@ List<bool> selectionne = [
   true
 ];
 List<double> borders = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+List<Color> colors = [
+  Colors.transparent,
+  Colors.transparent,
+  Colors.transparent,
+  Colors.transparent,
+  Colors.transparent,
+  Colors.transparent,
+  Colors.transparent,
+  Colors.transparent,
+  Colors.transparent,
+  Colors.transparent,
+  Colors.transparent,
+  Colors.transparent,
+  Colors.transparent,
+  Colors.transparent,
+  Colors.transparent,
+  Colors.transparent,
+  Colors.transparent,
+  Colors.transparent,
+];
 
 void main() async {
   Movie movie = await Movie.create(18491);

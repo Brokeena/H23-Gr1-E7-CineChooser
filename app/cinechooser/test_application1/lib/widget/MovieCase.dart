@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 
 bool pressed = false;
-Color color = Colors.white;
-double border = 0;
+Color color = Colors.transparent;
+double border = 6;
 
 
 class MovieCase extends StatelessWidget {
@@ -13,14 +13,14 @@ class MovieCase extends StatelessWidget {
    // required this.genreId,
     required this.nom,
     required this.image,
-    required this.border,
+    required this.color,
    // required this.selectionne,
   });
 
   //final int genreId;
   final String nom;
   final String image;
-  final double border;
+  final Color color;
   // bool selectionne;
 
   @override

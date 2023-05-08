@@ -113,14 +113,14 @@ class _ChoixState extends State<Choix> {
                               if (selectionne[index]) {
                                 listGenre.add(idGenre[index]);
                                 print(border);
-                                borders[index] = 15;
+                                colors[index] = Colors.white;
                                 print(border);
                                 print(listGenre);
                                 selectionne[index] = false;
                               } else {
                                 listGenre.remove(idGenre[index]);
                                 print(border);
-                                borders[index] = 0;
+                                colors[index] = Colors.transparent;
                                 print(border);
                                 print(listGenre);
                                 selectionne[index] = true;
@@ -130,7 +130,7 @@ class _ChoixState extends State<Choix> {
                           child: MovieCase(
                               nom: nomGenre[index],
                               image: imageGenre[index],
-                              border: borders[index]));
+                              color: colors[index]));
                     }))
                 /*Row(
                   children: [
