@@ -22,6 +22,8 @@ List<dynamic>? results = [];
 List<dynamic> likedMovies = [];
 List<dynamic> dislikedMovies = [];
 List<dynamic> displayedMoviesId = [];
+List<dynamic> friendList = [];
+List<dynamic> listGenre = [];
 var showedList = [];
 var showedPoster = [];
 var showedNames =[];
@@ -52,7 +54,7 @@ initiateALl() async {
   firstTime = data['firstTime'];
   displayedMoviesId = data['displayedMoviesId'];
   goodID = data['docID'];
-
+  friendList = data['friendList'];
   friendCode = data['docID'];
 
   print('fc');

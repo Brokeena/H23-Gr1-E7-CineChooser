@@ -1,5 +1,6 @@
 import 'package:cinechooser/pages/login_page.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
@@ -8,6 +9,7 @@ import 'package:cinechooser/utils/pays_nom.dart';
 import 'package:cinechooser/utils/pays_iso.dart';
 import 'package:flutter/services.dart';
 import '../widget/button_carre.dart';
+import '../widget/textField.dart';
 import 'auth_page.dart';
 
 class Reglages extends StatefulWidget {
@@ -18,6 +20,7 @@ class Reglages extends StatefulWidget {
 }
 
 bool isButtonPressed = false;
+final _addFriends = TextEditingController();
 
 class _ReglagesState extends State<Reglages> {
   dynamic dropdownvalues;
@@ -87,25 +90,22 @@ class _ReglagesState extends State<Reglages> {
                         ),
                         items: listPaysNom
                             .map((dynamic value) => DropdownMenuItem(
-                          value: value,
-                          child: Text(value,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.normal,
-                                fontSize: 16,
-                                color: Colors.black87,
-                              )),
-                        ))
+                                  value: value,
+                                  child: Text(value,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 16,
+                                        color: Colors.black87,
+                                      )),
+                                ))
                             .toList(),
                         onChanged: (newItem) async {
-                          setState(()  {
-
+                          setState(() {
                             paysSelectionne = newItem.toString();
 
                             dropdownvalues = newItem!;
-
                           });
-                          db.doc(await goodID).update({'pays': paysSelectionne});
-
+                          db.doc(goodID).update({'pays': paysSelectionne});
                         }),
                   ),
                 ),
@@ -134,12 +134,12 @@ class _ReglagesState extends State<Reglages> {
                   style: ButtonStyle(
                     alignment: Alignment.center,
                     shape: MaterialStateProperty.resolveWith(
-                          (states) => RoundedRectangleBorder(
+                      (states) => RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(7),
                       ),
                     ),
                     backgroundColor: MaterialStateProperty.resolveWith(
-                          (states) => Colors.white,
+                      (states) => Colors.white,
                     ),
                   ),
                   onPressed: _showMultiSelect,
@@ -151,8 +151,33 @@ class _ReglagesState extends State<Reglages> {
               Divider(height: height / 25),
               Text('Your friendcode :$friendCode', style: Styles.petittitres),
               Divider(height: height / 25),
-              Button(onPressed: () { _copy(); }, icone: const Icon(Icons.copy, color: Styles.red1), color: Styles.red2, taille: 25, borderRadius: 15),
-              Divider(height: height / 25),
+              MyTextField(
+                  controller: _addFriends,
+                  hintText: "Add friends with their code",
+                  obscureText: false),
+              Divider(height: height / 50),
+              Row(
+                children: [
+                  Button(
+                      onPressed: () {
+                        _copy();
+                      },
+                      icone: const Icon(Icons.copy, color: Styles.red1),
+                      color: Colors.white,
+                      taille: 50,
+                      borderRadius: 15),
+                  SizedBox(width: height/25),
+                  Button(
+                      onPressed: () {
+                        _addFriend();
+                      },
+                      icone: const Icon(Icons.group_add, color: Styles.red1),
+                      color: Colors.white,
+                      taille: 50,
+                      borderRadius: 15)
+                ],
+              ),
+              Divider(height: height / 30),
               MaterialButton(
                 onPressed: () {
                   FirebaseAuth.instance.signOut();
@@ -172,6 +197,12 @@ class _ReglagesState extends State<Reglages> {
     );
   }
 
+  @override
+  void dispose() {
+    _addFriends.dispose();
+    super.dispose();
+  }
+
   void _showMultiSelect() async {
     final List<String> items = [
       'Netflix',
@@ -180,7 +211,6 @@ class _ReglagesState extends State<Reglages> {
       'Apple TV Plus'
     ];
 
-
     results = await showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -188,15 +218,51 @@ class _ReglagesState extends State<Reglages> {
       },
     );
 
-
     if (results != null) {
       setState(() {
         selectedItems = results!;
       });
 
-      db.doc(await goodID).update({'providers': results!});
+      db.doc(goodID).update({'providers': results!});
     }
   }
+}
+
+userExiste() async {
+
+  List<String> docIDs = await getDocId();
+
+  for (var documentId in docIDs) {
+    var collectionReference = await db.doc(documentId).get();
+    var data = collectionReference.data() as Map<String, dynamic>;
+
+    if (data['docID'] == _addFriends.text.trim()) {
+      return true;
+    }
+  }
+  return false;
+}
+
+_addFriend() async{
+
+  if((_addFriends.text.trim().toString() != goodID) && await userExiste() )
+    {
+      friendList.add(_addFriends.text.trim());
+      db.doc(goodID).update({'friendList': friendList});
+    } else {
+    print('invalide friendCode');
+    /*
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return const AlertDialog(
+            content: Text('Friend code is wrong'),
+          );
+        });
+    */
+  }
+
+
 }
 
 _copy() {
@@ -214,8 +280,9 @@ signOut() async {
   dislikedMovies = [];
   showedList = [];
   showedPoster = [];
-  showedNames =[];
+  showedNames = [];
   friendCode = '';
+  friendList = [];
 }
 
 class MultiSelect extends StatefulWidget {
@@ -258,16 +325,16 @@ class _MultiSelectState extends State<MultiSelect> {
         child: ListBody(
           children: widget.items
               .map((item) => CheckboxListTile(
-            activeColor: Styles.red1,
-            value: selectedItems.contains(item),
-            title: Text(item,
-                style: const TextStyle(
-                    fontWeight: FontWeight.normal,
-                    fontSize: 15,
-                    color: Colors.black87)),
-            controlAffinity: ListTileControlAffinity.leading,
-            onChanged: (isChecked) => _itemChange(item, isChecked!),
-          ))
+                    activeColor: Styles.red1,
+                    value: selectedItems.contains(item),
+                    title: Text(item,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 15,
+                            color: Colors.black87)),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    onChanged: (isChecked) => _itemChange(item, isChecked!),
+                  ))
               .toList(),
         ),
       ),
@@ -279,7 +346,7 @@ class _MultiSelectState extends State<MultiSelect> {
           onPressed: _submit,
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.resolveWith(
-                  (states) => Styles.red1,
+              (states) => Styles.red1,
             ),
           ),
           child: const Text('Continue', style: TextStyle(color: Colors.black)),

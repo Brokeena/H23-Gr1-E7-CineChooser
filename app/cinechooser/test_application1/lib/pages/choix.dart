@@ -9,7 +9,7 @@ import '../widget/MovieCase.dart';
 import 'package:cinechooser/pages/login_page.dart';
 
 final FirebaseAuth auth = FirebaseAuth.instance;
-List<dynamic> listGenre = [];
+
 double tailleBordure = 0;
 
 class Choix extends StatefulWidget {

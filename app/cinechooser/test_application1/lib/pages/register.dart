@@ -85,6 +85,7 @@ class _RegisterPageState extends State<RegisterPage> {
       'dislikedMovies': [],
       'likedMovies': [],
       'displayedMoviesId': [],
+      'friendList' : [],
       'firstTime': false
     }).then((DocumentReference doc) {
       docId = doc.id;
