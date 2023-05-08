@@ -26,7 +26,7 @@ class TopButtonsRow extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const Profile()),
                 );
               },
-              icone: const Icon(Icons.person, color: Styles.red1),
+              icone: const Icon(Icons.movie, color: Styles.red1),
               color: Colors.white,
               taille: 64,
               borderRadius: 100),
@@ -38,7 +38,7 @@ class TopButtonsRow extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const Reglages()),
                 );
               },
-              icone: const Icon(Icons.menu, color: Styles.red1),
+              icone: const Icon(Icons.person, color: Styles.red1),
               color: Colors.white,
               taille: 64,
               borderRadius: 15),

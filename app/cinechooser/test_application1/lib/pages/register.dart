@@ -121,6 +121,7 @@ class _RegisterPageState extends State<RegisterPage> {
     } catch (e) {
       return false;
     }
+
   }
 
   @override

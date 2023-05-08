@@ -6,6 +6,8 @@ import 'package:cinechooser/utils/app_styles.dart';
 import 'package:cinechooser/api/api.dart';
 import 'package:cinechooser/utils/pays_nom.dart';
 import 'package:cinechooser/utils/pays_iso.dart';
+import 'package:flutter/services.dart';
+import '../widget/button_carre.dart';
 import 'auth_page.dart';
 
 class Reglages extends StatefulWidget {
@@ -147,16 +149,21 @@ class _ReglagesState extends State<Reglages> {
                           fontSize: 15,
                           color: Colors.black87))),
               Divider(height: height / 25),
+              Text('Your friendcode :$friendCode', style: Styles.petittitres),
+              Divider(height: height / 25),
+              Button(onPressed: () { _copy(); }, icone: const Icon(Icons.copy, color: Styles.red1), color: Styles.red2, taille: 25, borderRadius: 15),
+              Divider(height: height / 25),
               MaterialButton(
                 onPressed: () {
                   FirebaseAuth.instance.signOut();
+                  signOut();
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const AuthPage()),
                   );
                 },
                 color: Colors.red,
-                child: const Text('sign out'),
+                child: const Text('Sign out'),
               )
             ],
           ),
@@ -190,6 +197,25 @@ class _ReglagesState extends State<Reglages> {
       db.doc(await goodID).update({'providers': results!});
     }
   }
+}
+
+_copy() {
+  print(friendCode);
+  var value = ClipboardData(text: friendCode);
+  Clipboard.setData(value);
+}
+
+signOut() async {
+  paysSelectionne = 'Country';
+  paysISO = 'CA';
+  selectedItems = [];
+  results = [];
+  likedMovies = [];
+  dislikedMovies = [];
+  showedList = [];
+  showedPoster = [];
+  showedNames =[];
+  friendCode = '';
 }
 
 class MultiSelect extends StatefulWidget {

@@ -26,6 +26,7 @@ var showedList = [];
 var showedPoster = [];
 var showedNames =[];
 bool firstTime = false;
+var friendCode = '';
 
 Future getDocId() async {
   List<String> docIDs = [];
@@ -52,6 +53,10 @@ initiateALl() async {
   displayedMoviesId = data['displayedMoviesId'];
   goodID = data['docID'];
 
+  friendCode = data['docID'];
+
+  print('fc');
+  print(friendCode);
 
   for(var id in showedList){
     Movie movie = await Movie.create(id);
