@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 bool pressed = false;
 Color color = Colors.transparent;
-double border = 6;
+//double border = 6;
 
 
 class MovieCase extends StatelessWidget {
@@ -39,8 +39,8 @@ class MovieCase extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     color: Colors.transparent,
                     image: DecorationImage(
-                        image: NetworkImage(image), fit: BoxFit.cover),
-                    border: Border.all(color: color, width: border)),
+                        image: AssetImage(image), fit: BoxFit.cover),
+                    border: Border.all(color: color, width: 2)),
               ),
             ),
             Positioned(

@@ -12,6 +12,28 @@ final FirebaseAuth auth = FirebaseAuth.instance;
 
 double tailleBordure = 0;
 
+List<String> imageGenre = [
+  'android/assets/images/genre1.png',
+  'android/assets/images/genre2.png',
+  'android/assets/images/genre3.png',
+  'android/assets/images/genre4.png',
+  'android/assets/images/genre5.png',
+  'android/assets/images/genre6.png',
+  'android/assets/images/genre7.png',
+  'android/assets/images/genre8.png',
+  'android/assets/images/genre9.png',
+  'android/assets/images/genre10.png',
+  'android/assets/images/genre11.png',
+  'android/assets/images/genre12.png',
+  'android/assets/images/genre13.png',
+  'android/assets/images/genre14.png',
+  'android/assets/images/genre15.png',
+  'android/assets/images/genre16.png',
+  'android/assets/images/genre17.png',
+  'android/assets/images/genre18.png',
+];
+
+
 class Choix extends StatefulWidget {
   const Choix({Key? key}) : super(key: key);
 

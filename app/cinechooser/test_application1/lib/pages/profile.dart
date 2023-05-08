@@ -1,9 +1,13 @@
+import 'package:cinechooser/pages/dislikedMovies.dart';
+import 'package:cinechooser/pages/likedMovies.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import '../api/movie.dart';
 import '../utils/movie_swipe.dart';
 import 'login_page.dart';
+import '../widget/bottom_navbar.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 var likedPosters = [];
 var likedNames = [];
@@ -49,7 +53,22 @@ class _ProfileState extends State<Profile> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
+    int _selectedIndex = 0;
+
+    void navigateBottomBar(int index)
+    {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
+
+    final List<Widget> _pages = [
+      const LikedMovies(),
+      const DislikedMovies(),
+    ];
+
     return Scaffold(
+      //bottomNavigationBar: MyBottomNavBar(),
       backgroundColor: Styles.bgColor,
       appBar: AppBar(
         leading: IconButton(
@@ -67,36 +86,40 @@ class _ProfileState extends State<Profile> {
         elevation: 0,
         title: const Text('Your profile', style: Styles.preTitre),
       ),
-      body: SafeArea(
-        top: true,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: width / 9),
+      bottomNavigationBar: Container(
+        color: Colors.transparent,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+          child: GNav(
+            gap: 8,
+            color: Styles.grey1,
+            activeColor: Styles.white1,
+            tabBackgroundColor: Colors.grey.shade900,
+            mainAxisAlignment: MainAxisAlignment.center,
+            tabBorderRadius: 32,
+            padding: EdgeInsets.all(16),
+            onTabChange: (index) => navigateBottomBar(index),
+            tabs: const [
+              GButton(
+                icon: Icons.favorite,
+                text: 'Like',
+              ),
+              GButton(
+                icon: Icons.heart_broken,
+                text: 'Dislike',
+              ),
+            ],
+          ),
+
+        ),
+      ),
+      body: _pages[_selectedIndex],
+
+        /*body: SafeArea(
+          top: true,
+          child: SingleChildScrollView(
             child: Column(
               children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: width / 9),
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                          onTap: () {
-                            showLikedMovies();
-                            setState(() {});
-                          },
-                          child: const Text('Liked movies',
-                              style: Styles.preTitre)),
-                      const SizedBox(width: 100),
-                      GestureDetector(
-                          onTap: () {
-                            showDisLikedMovies();
-                            setState(() {});
-                          },
-                          child: const Text('Disliked movies',
-                              style: Styles.preTitre)),
-                    ],
-                  ),
-                ),
-                Divider(height: width / 6),
                 Center(
                   child: Column(
                     children: [
@@ -132,9 +155,7 @@ class _ProfileState extends State<Profile> {
                 ),
               ],
             ),
-          ),
-        ),
-      ),
+          )),*/
     );
   }
 }
@@ -170,7 +191,7 @@ goDisliked(int index) async {
   db.doc(await goodID).update({'likedMovies': likedMovies});
 }
 
-goLiked(int index) async{
+goLiked(int index) async {
   likedMovies.add(dislikedMovies[index]);
   dislikedMovies.remove(dislikedMovies[index]);
   dislikedMovies.remove(index);
