@@ -5,10 +5,12 @@ import 'package:swipable_stack/swipable_stack.dart';
 import 'package:flutter/foundation.dart';
 import 'package:cinechooser/utils/movie_carte.dart';
 import 'package:cinechooser/utils/bottom_buttons_row.dart';
+import '../api/algorithm.dart';
 import '../utils/app_styles.dart';
 import 'package:cinechooser/api/api.dart';
 import 'package:cinechooser/main.dart';
 import 'login_page.dart';
+import 'package:collection/algorithms.dart';
 
 
 class PagePrincipale extends StatefulWidget {
@@ -35,30 +37,7 @@ class _PagePrincipaleState extends State<PagePrincipale> {
     _controller = SwipableStackController()..addListener(_listenController);
   }
 
-  _addRecommendedMovies(int id, int numberOfRecommendation) async {
-    var similarMovies = await getRecommendedMovies(id);
-    int r = similarMovies.length;
-    if (numberOfRecommendation <= r) {
-      r = numberOfRecommendation;
-    }
 
-    for (int x = 0; x < r; x++) {
-      bool alreadyHere = false;
-      for (int d = 0; d < displayedMovies.length; d++) {
-        if (displayedMovies.elementAt(d).id == similarMovies.elementAt(x).id) {
-          alreadyHere = true;
-        }
-      }
-
-      if (!alreadyHere) {
-        displayedMovies.add(similarMovies.elementAt(x));
-      } else {
-        if (r + 1 <= similarMovies.length) {
-          r += 1;
-        }
-      }
-    }
-  }
 
   @override
   void dispose() {
@@ -89,11 +68,11 @@ class _PagePrincipaleState extends State<PagePrincipale> {
               onSwipeCompleted: (index, direction) async {
                 if (direction == SwipeDirection.right) {
                   likedMovies.add(displayedMovies.elementAt(index).id);
-                  _addRecommendedMovies(displayedMovies.elementAt(index).id, 2);
-                  db.doc(await goodID).update({'likedMovies': likedMovies});
+                  addRecommendedMovies(displayedMovies.elementAt(index).id, 2);
+                  db.doc(goodID).update({'likedMovies': likedMovies});
                 } else if (direction == SwipeDirection.left) {
                   dislikedMovies.add(displayedMovies.elementAt(index).id);
-                  db.doc(await goodID).update({'dislikedMovies': dislikedMovies});
+                  db.doc(goodID).update({'dislikedMovies': dislikedMovies});
                 }
               },
               builder: (context, properties) {
@@ -143,6 +122,7 @@ class _PagePrincipaleState extends State<PagePrincipale> {
             ),
             BottomButtonsRow(
               onSwipe: (direction) {
+                onRewind();
                 _controller.next(swipeDirection: direction);
               },
               onRewindTap: _controller.rewind,

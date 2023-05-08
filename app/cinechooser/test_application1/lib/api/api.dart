@@ -1,3 +1,5 @@
+
+
 import 'package:tmdb_api/tmdb_api.dart';
 import 'movie.dart';
 
@@ -25,7 +27,13 @@ String language_country(){
 /// *********************************
 /// *********************************
 
-
+  Future<List<Movie>> getMoviesWithId(List<dynamic> ListId) async{
+    List<Movie> listMovies = [];
+    for(var id in ListId){
+      listMovies.add(await Movie.create(id));
+    }
+    return listMovies;
+  }
 
   Future<List<String>> getTrendingMoviesImages() async{
   var searchTrending = await tmdb.v3.trending.getTrending(mediaType: MediaType.movie,timeWindow: TimeWindow.day);
@@ -79,7 +87,7 @@ String language_country(){
     return trendingMovies;
   }
 
-Future<List<Movie>> getTopRatedMoviesByGenres(List<Genre> genres, int range) async{
+  Future<List<Movie>> getTopRatedMoviesByGenres(List<Genre> genres, int range) async{
   List<Movie> listMovies = [];
   for(int r = 1; r <= range; r++){
     var searchTopRated = await tmdb.v3.movies.getTopRated(language: language+country, page: r);
@@ -97,15 +105,13 @@ Future<List<Movie>> getTopRatedMoviesByGenres(List<Genre> genres, int range) asy
       }
     }
 
-
-    for(int x = 0; x < topRatedMoviesId.length; x++){
-      listMovies.add(await Movie.create(topRatedMoviesId.elementAt(x)));
-    }
+    listMovies = await getMoviesWithId(topRatedMoviesId);
   }
   return listMovies;
 }
 
-Future<List<Movie>> getRecommendedMovies(int id) async{
+  Future<List<Movie>> getRecommendedMovies(int id) async{
+
   List<Movie> listMovies = [];
   var searchSimilar = await tmdb.v3.movies.getRecommended(id);
   List<dynamic> results = searchSimilar['results'];
@@ -113,9 +119,7 @@ Future<List<Movie>> getRecommendedMovies(int id) async{
   for(int n = 0; n < results.length; n++){
     similarMoviesId.add(results.elementAt(n)['id']);
   }
-  for(int x = 0; x < similarMoviesId.length; x++){
-    listMovies.add(await Movie.create(similarMoviesId.elementAt(x)));
-  }
+  listMovies = await getMoviesWithId(similarMoviesId);
   return listMovies;
 }
 

@@ -1,3 +1,4 @@
+import 'package:cinechooser/pages/login_page.dart';
 import 'package:cinechooser/widget/textField.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -48,8 +49,6 @@ class _RegisterPageState extends State<RegisterPage> {
               );
             });
       }
-
-
     } else {
       if (!passwordValide()) {
         showDialog(
@@ -78,11 +77,15 @@ class _RegisterPageState extends State<RegisterPage> {
     await FirebaseFirestore.instance.collection('users').add({
       'first name': lastName,
       'last name': firstName,
+      'pays': 'Country',
       'age': age,
       'email': email,
       'genres': [],
-      'dislikedMovies' : [],
-      'likedMovies' : []
+      'providers': [],
+      'dislikedMovies': [],
+      'likedMovies': [],
+      'displayedMoviesId': [],
+      'firstTime': false
     }).then((DocumentReference doc) {
       docId = doc.id;
     });
@@ -94,6 +97,8 @@ class _RegisterPageState extends State<RegisterPage> {
     db.collection("users").doc(docId).update({'userID': user.uid});
 
     db.collection("users").doc(docId).update({'docID': docId});
+
+    initiateALl();
   }
 
   bool passwordValide() {
@@ -113,10 +118,9 @@ class _RegisterPageState extends State<RegisterPage> {
       } else {
         return false;
       }
-    } catch (e){
+    } catch (e) {
       return false;
     }
-
   }
 
   @override

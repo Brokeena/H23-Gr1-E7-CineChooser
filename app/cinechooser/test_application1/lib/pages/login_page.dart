@@ -13,7 +13,7 @@ import 'package:cinechooser/utils/app_styles.dart';
 import '../api/movie.dart';
 import 'forgotPassewordPage.dart';
 
-var goodID = getGoodID();
+var goodID = '';
 var db = FirebaseFirestore.instance.collection('users');
 String paysSelectionne = 'Country';
 String paysISO = 'CA';
@@ -21,9 +21,11 @@ List<dynamic> selectedItems = [];
 List<dynamic>? results = [];
 List<dynamic> likedMovies = [];
 List<dynamic> dislikedMovies = [];
+List<dynamic> displayedMoviesId = [];
 var showedList = [];
 var showedPoster = [];
 var showedNames =[];
+bool firstTime = false;
 
 Future getDocId() async {
   List<String> docIDs = [];
@@ -46,6 +48,10 @@ initiateALl() async {
   dislikedMovies =  data['dislikedMovies'];
   listGenre =  data['genres'];
   showedList = likedMovies;
+  firstTime = data['firstTime'];
+  displayedMoviesId = data['displayedMoviesId'];
+  goodID = data['docID'];
+
 
   for(var id in showedList){
     Movie movie = await Movie.create(id);
