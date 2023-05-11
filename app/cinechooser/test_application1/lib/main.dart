@@ -1,4 +1,5 @@
 import 'package:cinechooser/pages/auth_page.dart';
+import 'package:cinechooser/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/api/movie.dart';
 import 'package:cinechooser/api/api.dart';
@@ -94,7 +95,9 @@ List<Color> colors = [
 
 void main() async {
   Movie movie = await Movie.create(18491);
-  displayedMovies = await getTopRatedMoviesByGenres(genres, 2);
+  if(!firstTime){
+    openApp();
+  }
   poster = movie.poster;
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(

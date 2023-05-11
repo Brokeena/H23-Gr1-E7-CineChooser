@@ -22,6 +22,7 @@ List<dynamic>? results = [];
 List<dynamic> likedMovies = [];
 List<dynamic> dislikedMovies = [];
 List<dynamic> displayedMoviesId = [];
+List<dynamic> listGenre = [];
 List<dynamic> friendList = [];
 List<dynamic> listGenre = [];
 var showedList = [];

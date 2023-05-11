@@ -190,8 +190,8 @@ goDisliked(int index) async {
   likedMovies.remove(likedMovies[index]);
   likedPosters.remove(index);
   likedNames.remove(index);
-  db.doc(await goodID).update({'dislikedMovies': dislikedMovies});
-  db.doc(await goodID).update({'likedMovies': likedMovies});
+  db.doc(goodID).update({'dislikedMovies': dislikedMovies});
+  db.doc(goodID).update({'likedMovies': likedMovies});
 }
 
 goLiked(int index) async {
@@ -199,6 +199,6 @@ goLiked(int index) async {
   dislikedMovies.remove(dislikedMovies[index]);
   dislikedMovies.remove(index);
   dislikedMovies.remove(index);
-  db.doc(await goodID).update({'dislikedMovies': dislikedMovies});
-  db.doc(await goodID).update({'likedMovies': likedMovies});
+  db.doc(goodID).update({'dislikedMovies': dislikedMovies});
+  db.doc(goodID).update({'likedMovies': likedMovies});
 }

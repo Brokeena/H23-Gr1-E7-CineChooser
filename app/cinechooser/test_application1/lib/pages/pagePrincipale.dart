@@ -10,7 +10,6 @@ import '../utils/app_styles.dart';
 import 'package:cinechooser/api/api.dart';
 import 'package:cinechooser/main.dart';
 import 'login_page.dart';
-import 'package:collection/algorithms.dart';
 
 class PagePrincipale extends StatefulWidget {
   const PagePrincipale({Key? key}) : super(key: key);
@@ -62,15 +61,14 @@ class _PagePrincipaleState extends State<PagePrincipale> {
               stackClipBehaviour: Clip.none,
               onSwipeCompleted: (index, direction) async {
                 if (direction == SwipeDirection.right) {
-                  likedMovies.add(displayedMovies.elementAt(index).id);
-                  addRecommendedMovies(displayedMovies.elementAt(index).id, 2);
-                  db.doc(goodID).update({'likedMovies': likedMovies});
+                  swipeMovie(displayedMovies.elementAt(index).id, true);
                 } else if (direction == SwipeDirection.left) {
-                  dislikedMovies.add(displayedMovies.elementAt(index).id);
-                  db.doc(goodID).update({'dislikedMovies': dislikedMovies});
+                  swipeMovie(displayedMovies.elementAt(index).id, false);
                 }
+
               },
               builder: (context, properties) {
+                print(displayedMovies.length);
                 final indexMovie = properties.index % (displayedMovies.length);
                 // Créer un String de genre
                 List<String> genreNames = [];

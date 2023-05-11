@@ -1,3 +1,4 @@
+import 'package:cinechooser/api/algorithm.dart';
 import 'package:cinechooser/pages/auth_page.dart';
 import 'package:cinechooser/pages/reglages_first_time.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -5,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:cinechooser/main.dart';
+import '../api/api.dart';
 import '../widget/MovieCase.dart';
 import 'package:cinechooser/pages/login_page.dart';
 
@@ -92,7 +94,8 @@ class _ChoixState extends State<Choix> {
                     style: TextStyle(color: Colors.white)),
                 onPressed: () async {
                   if (listGenre.length >= 3) {
-
+                    print(listGenre);
+                    displayedMovies = await getTopRatedMoviesByGenres(listGenre, 5);
                     db.doc(goodID).update({'genres': listGenre});
                     db.doc(goodID).update({'firstTime': true});
                     // ignore: use_build_context_synchronously

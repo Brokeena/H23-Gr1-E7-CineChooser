@@ -1,3 +1,4 @@
+import 'package:cinechooser/pages/choix.dart';
 import 'package:cinechooser/pages/login_page.dart';
 import 'package:cinechooser/utils/top_buttons_row.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,22 +13,46 @@ import 'package:cinechooser/main.dart';
 
 int lastSwipe = 0;
 
-
 /// What happen when you open the app
-void openApp() async{
-  if(firstTime){
-    displayedMovies = await getTopRatedMoviesByGenres(genres, 2);
+void openApp() async {
+  if (firstTime) {
+    displayedMovies = await getTopRatedMoviesByGenres(listGenre, 3);
     firstTime = false;
   } else {
     displayedMovies = await getMoviesWithId(displayedMoviesId);
-
   }
+  displayedMovies = await getTopRatedMoviesByGenres(listGenre, 3);
 }
 
-void afterALike(){
+void afterALike() {}
 
+
+
+Future<void> swipeMovie(int id, bool liked) async {
+  if (liked) {
+    likedMovies.add(id);
+    db.doc(goodID).update({'likedMovies': likedMovies});
+  } else if (!liked) {
+    dislikedMovies.add(id);
+    db.doc(goodID).update({'dislikedMovies': dislikedMovies});
+  }
+  lastSwipe = id;
+
+
+  if (lastSwipe != 0) {
+    displayedMoviesId.remove(lastSwipe);
+  }
+  db.doc(goodID).update({'dislikedMovies': dislikedMovies});
+
+  addRecommendedMovies(id, 3);
+  updateDisplayedMoviesId();
 }
 
+void onRewind() {
+  dislikedMovies.remove(lastSwipe);
+  likedMovies.remove(lastSwipe);
+  lastSwipe = 0;
+}
 
 addRecommendedMovies(int id, int numberOfRecommendation) async {
   var similarMovies = await getRecommendedMovies(id);
@@ -37,9 +62,10 @@ addRecommendedMovies(int id, int numberOfRecommendation) async {
   }
 
   for (int x = 0; x < r; x++) {
+
     bool alreadyHere = false;
     for (int d = 0; d < displayedMovies.length; d++) {
-      if (displayedMovies.elementAt(d).id == similarMovies.elementAt(x).id) {
+      if (displayedMovies.elementAt(d).id == similarMovies.elementAt(x).id || likedMovies.contains(similarMovies.elementAt(x).id) || dislikedMovies.contains(similarMovies.elementAt(x).id) ) {
         alreadyHere = true;
       }
     }
@@ -51,28 +77,16 @@ addRecommendedMovies(int id, int numberOfRecommendation) async {
         r += 1;
       }
     }
+
   }
 }
 
-Future<void> swipeMovie(int id, bool liked) async {
-  if(liked){
-    likedMovies.add(id);
-    db.doc(goodID).update({'likedMovies': likedMovies});
-  } else if(!liked){
-    dislikedMovies.add(id);
-    db.doc(goodID).update({'dislikedMovies': dislikedMovies});
+updateDisplayedMoviesId() async{
+  displayedMoviesId = [];
+  for(var movie in displayedMovies){
+    if(!(dislikedMovies.contains(movie.id)) && !(likedMovies.contains(movie.id))) {
+      displayedMoviesId.add(movie.id);
+    }
   }
-
-  if(lastSwipe != 0){
-    displayedMoviesId.remove(lastSwipe);
-  }
-  lastSwipe = id;
-
-  db.doc(goodID).update({'dislikedMovies': dislikedMovies});
-}
-
-void onRewind(){
-  dislikedMovies.remove(lastSwipe);
-  likedMovies.remove(lastSwipe);
-  lastSwipe = 0;
+  db.doc(goodID).update({'displayedMoviesId': displayedMoviesId});
 }

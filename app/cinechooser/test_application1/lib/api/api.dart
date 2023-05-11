@@ -87,7 +87,7 @@ String language_country(){
     return trendingMovies;
   }
 
-  Future<List<Movie>> getTopRatedMoviesByGenres(List<Genre> genres, int range) async{
+  Future<List<Movie>> getTopRatedMoviesByGenres(List<dynamic> genres, int range) async{
   List<Movie> listMovies = [];
   for(int r = 1; r <= range; r++){
     var searchTopRated = await tmdb.v3.movies.getTopRated(language: language+country, page: r);
@@ -96,7 +96,7 @@ String language_country(){
     for(int i = 0; i < results.length; i++){
       for(int k = 0; k < genres.length; k++){
         for(int j = 0; j < results.elementAt(i)['genre_ids'].length; j++){
-          if(genres.elementAt(k).id == results.elementAt(i)['genre_ids'].elementAt(j)){
+          if(genres.elementAt(k) == results.elementAt(i)['genre_ids'].elementAt(j)){
             topRatedMoviesId.add(results.elementAt(i)['id']);
             k = genres.length;
             j = results.elementAt(i)['genre_ids'].length;
