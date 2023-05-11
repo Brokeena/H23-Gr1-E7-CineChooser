@@ -48,24 +48,25 @@ Future showMovies(var movieId) async {
 }
 
 class _ProfileState extends State<Profile> {
+
+  int _selectedIndex = 0;
+
+  void navigateBottomBar(int index)
+  {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  final List<Widget> _pages = [
+    const LikedMovies(),
+    const DislikedMovies(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-
-    int _selectedIndex = 0;
-
-    void navigateBottomBar(int index)
-    {
-      setState(() {
-        _selectedIndex = index;
-      });
-    }
-
-    final List<Widget> _pages = [
-      const LikedMovies(),
-      const DislikedMovies(),
-    ];
 
     return Scaffold(
       //bottomNavigationBar: MyBottomNavBar(),
@@ -89,7 +90,7 @@ class _ProfileState extends State<Profile> {
       bottomNavigationBar: Container(
         color: Colors.transparent,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+          padding: const EdgeInsets.symmetric(vertical: 10),
           child: GNav(
             gap: 8,
             color: Styles.grey1,
@@ -97,8 +98,11 @@ class _ProfileState extends State<Profile> {
             tabBackgroundColor: Colors.grey.shade900,
             mainAxisAlignment: MainAxisAlignment.center,
             tabBorderRadius: 32,
+            backgroundColor: Colors.transparent,
             padding: EdgeInsets.all(16),
-            onTabChange: (index) => navigateBottomBar(index),
+            onTabChange: (index) {
+              navigateBottomBar(index);
+            },
             tabs: const [
               GButton(
                 icon: Icons.favorite,
@@ -110,7 +114,6 @@ class _ProfileState extends State<Profile> {
               ),
             ],
           ),
-
         ),
       ),
       body: _pages[_selectedIndex],

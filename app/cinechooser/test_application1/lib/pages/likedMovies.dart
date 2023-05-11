@@ -10,7 +10,10 @@ class LikedMovies extends StatefulWidget {
 class _LikedMoviesState extends State<LikedMovies> {
   @override
   Widget build(BuildContext context) {
-    return Center(child:
-    Text('Jaime bien', style: TextStyle(color: Colors.white),));
+    return Scaffold(
+      backgroundColor: Colors.green,
+      body: Center(
+          child: Text('Jaime bien', style: TextStyle(color: Colors.white),)),
+    );
   }
 }

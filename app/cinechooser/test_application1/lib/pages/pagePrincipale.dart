@@ -12,7 +12,6 @@ import 'package:cinechooser/main.dart';
 import 'login_page.dart';
 import 'package:collection/algorithms.dart';
 
-
 class PagePrincipale extends StatefulWidget {
   const PagePrincipale({Key? key}) : super(key: key);
 
@@ -25,8 +24,6 @@ class _PagePrincipaleState extends State<PagePrincipale> {
 
   final controller = SwipableStackController();
 
-
-
   late final SwipableStackController _controller;
 
   void _listenController() => setState(() {});
@@ -36,8 +33,6 @@ class _PagePrincipaleState extends State<PagePrincipale> {
     super.initState();
     _controller = SwipableStackController()..addListener(_listenController);
   }
-
-
 
   @override
   void dispose() {
