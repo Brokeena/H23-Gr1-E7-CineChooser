@@ -1,4 +1,3 @@
-import 'package:cinechooser/pages/choix.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
 import 'package:cinechooser/widget/textField.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -24,7 +23,6 @@ List<dynamic> dislikedMovies = [];
 List<dynamic> displayedMoviesId = [];
 List<dynamic> listGenre = [];
 List<dynamic> friendList = [];
-List<dynamic> listGenre = [];
 var showedList = [];
 var showedPoster = [];
 var showedNames =[];
