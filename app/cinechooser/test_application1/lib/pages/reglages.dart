@@ -1,6 +1,5 @@
 import 'package:cinechooser/pages/login_page.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
@@ -149,15 +148,11 @@ class _ReglagesState extends State<Reglages> {
                           fontSize: 15,
                           color: Colors.black87))),
               Divider(height: height / 25),
-              Text('Your friendcode :$friendCode', style: Styles.petittitres),
-              Divider(height: height / 25),
-              MyTextField(
-                  controller: _addFriends,
-                  hintText: "Add friends with their code",
-                  obscureText: false),
-              Divider(height: height / 50),
               Row(
                 children: [
+                  Text('Your friendcode :   $friendCode',
+                      style: Styles.petittitres),
+                  SizedBox(width: width / 15),
                   Button(
                       onPressed: () {
                         _copy();
@@ -165,18 +160,24 @@ class _ReglagesState extends State<Reglages> {
                       icone: const Icon(Icons.copy, color: Styles.red1),
                       color: Colors.white,
                       taille: 50,
-                      borderRadius: 15),
-                  SizedBox(width: height/25),
-                  Button(
-                      onPressed: () {
-                        _addFriend();
-                      },
-                      icone: const Icon(Icons.group_add, color: Styles.red1),
-                      color: Colors.white,
-                      taille: 50,
                       borderRadius: 15)
                 ],
               ),
+              Divider(height: height / 25),
+              MyTextField(
+                  controller: _addFriends,
+                  hintText: "Add friends with their code",
+                  obscureText: false),
+              Divider(height: height / 50),
+              SizedBox(width: height / 25),
+              Button(
+                  onPressed: () {
+                    _addFriend();
+                  },
+                  icone: const Icon(Icons.group_add, color: Styles.red1),
+                  color: Colors.white,
+                  taille: 50,
+                  borderRadius: 15),
               Divider(height: height / 30),
               MaterialButton(
                 onPressed: () {
@@ -229,27 +230,34 @@ class _ReglagesState extends State<Reglages> {
 }
 
 userExiste() async {
-
   List<String> docIDs = await getDocId();
 
   for (var documentId in docIDs) {
     var collectionReference = await db.doc(documentId).get();
     var data = collectionReference.data() as Map<String, dynamic>;
-
-    if (data['docID'] == _addFriends.text.trim()) {
+    print(data['docID']);
+    print(_addFriends.text.trim().toString());
+    if (data['docID'] == _addFriends.text.trim().toString()) {
+      for (var friend in friendList) {
+        if (friend == _addFriends.text.trim()) {
+          print('already friends');
+          return false;
+        }
+      }
+      print('existe');
       return true;
     }
   }
+  print('friend code doesnt exist');
   return false;
 }
 
-_addFriend() async{
-
-  if((_addFriends.text.trim().toString() != goodID) && await userExiste() )
-    {
-      friendList.add(_addFriends.text.trim());
-      db.doc(goodID).update({'friendList': friendList});
-    } else {
+_addFriend() async {
+  if ((_addFriends.text.trim().toString() != goodID) && await userExiste()) {
+    print('${_addFriends.text.trim()}is now added');
+    friendList.add(_addFriends.text.trim());
+    db.doc(goodID).update({'friendList': friendList});
+  } else {
     print('invalide friendCode');
     /*
     showDialog(
@@ -261,12 +269,9 @@ _addFriend() async{
         });
     */
   }
-
-
 }
 
 _copy() {
-  print(friendCode);
   var value = ClipboardData(text: friendCode);
   Clipboard.setData(value);
 }
@@ -276,6 +281,7 @@ signOut() async {
   paysISO = 'CA';
   selectedItems = [];
   results = [];
+  listGenre = [];
   likedMovies = [];
   dislikedMovies = [];
   showedList = [];
