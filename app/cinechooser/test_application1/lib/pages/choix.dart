@@ -1,5 +1,6 @@
 import 'package:cinechooser/api/algorithm.dart';
 import 'package:cinechooser/pages/auth_page.dart';
+import 'package:cinechooser/pages/loading_page.dart';
 import 'package:cinechooser/pages/reglages_first_time.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -95,14 +96,13 @@ class _ChoixState extends State<Choix> {
                 onPressed: () async {
                   if (listGenre.length >= 3) {
                     firstTime = true;
-                    await openApp();
                     db.doc(docID).update({'genres': listGenre});
                     db.doc(docID).update({'firstTime': true});
-                    // ignore: use_build_context_synchronously
+                    initiateALl();
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>  const ReglagesFirstTime()),
+                          builder: (context) =>  const LoadingPageRegister()),
                     );
                   }
                 },

@@ -37,12 +37,13 @@ Future<bool> loadingDisplayedMovie() async{
 
 /// Modification de page principale
 Future<void> swipeMovie(int id, bool liked, int index) async {
+  _justSwiped = true;
   if(firstTime){
     firstTime = false;
     db.doc(docID).update({'firstTime': firstTime});
   }
 
-  _justSwiped = true;
+
   if (liked) {
     likedMoviesId.add(id);
     db.doc(docID).update({'likedMovies': likedMoviesId});
@@ -52,16 +53,15 @@ Future<void> swipeMovie(int id, bool liked, int index) async {
     db.doc(docID).update({'dislikedMovies': dislikedMoviesId});
     dislikedMovies.add(displayedMovies.elementAt(index));
   }
+
   lastSwipe = id;
-
-
-
   if (lastSwipe != 0) {
     displayedMoviesId.remove(lastSwipe);
   }
 
 
   addRecommendedMovies(id, 3);
+  friendsMovies();
   updateDisplayedMoviesId();
 }
 
@@ -167,8 +167,14 @@ updateDisplayedMoviesId() async{
 friendsMovies() async{
   if(friendList.isNotEmpty){
     for(var friendCode in friendList){
-      var collectionReference = db.doc(friendCode).get();
-
+      var data = await db.doc(friendCode.toString()).get();
+      var friendListAmi = data['likedMovies'];
+      for(var friendID in friendListAmi){
+        bool alreadyHere = false;
+        if( !(displayedMoviesId.contains(friendID)) || !(likedMoviesId.contains(friendID)) || !(dislikedMoviesId.contains(friendID))){
+          displayedMoviesId.add(friendID);
+        }
+      }
     }
   }
 }

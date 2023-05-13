@@ -46,6 +46,7 @@ Future getDocId() async {
 }
 
 initiateALl() async {
+  hasData.value = false;
   var collectionReference = db.doc(await getActualUserDocId()).get();
   collectionReference.then((collection) {
     var data = collection.data() as Map<String, dynamic>;
@@ -61,18 +62,18 @@ initiateALl() async {
     friendCode = data['docID'];
   }).then((value) async {
     await openApp();
-    openApp().then((value) {
+    openApp().then((value) async {
       hasData.value = true;
       print("HAS DATA");
+      for(var idL in likedMoviesId){
+        likedMovies.add(await Movie.create(idL));
+      }
+      for(var idD in dislikedMoviesId){
+      dislikedMovies.add(await Movie.create(idD));
+      }
       });
   });
 
-  for(var idL in likedMoviesId){
-    likedMovies.add(await Movie.create(idL));
-  }
-  for(var idD in dislikedMoviesId){
-    dislikedMovies.add(await Movie.create(idD));
-  }
 
 }
 
@@ -116,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
           password: _passwordController.text.trim());
       initiateALl();
       Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => const LoadingPage() ));
+          builder: (context) => const LoadingPageLogin() ));
     } on FirebaseAuthException catch (e) {
       showDialog(
           context: context,
