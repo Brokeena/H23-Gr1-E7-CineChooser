@@ -90,12 +90,12 @@ class _ChoixState extends State<Choix> {
                 style: TextButton.styleFrom(
                   backgroundColor: Styles.red1,
                 ),
-                child: const Text('Suivant',
+                child: const Text('Next',
                     style: TextStyle(color: Colors.white)),
                 onPressed: () async {
                   if (listGenre.length >= 3) {
                     print(listGenre);
-                    displayedMovies = await getTopRatedMoviesByGenres(listGenre, 5);
+                    openApp();
                     db.doc(goodID).update({'genres': listGenre});
                     db.doc(goodID).update({'firstTime': true});
                     // ignore: use_build_context_synchronously
@@ -120,10 +120,10 @@ class _ChoixState extends State<Choix> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Divider(height: 25),
-                const Text('Bienvenue sur CineChooser',
+                const Text('Welcome to Cinechooser',
                     style: Styles.nom_de_pages),
                 const Divider(height: 10),
-                const Text('Choisissez 3 genres ou plus ',
+                const Text('Pick 3 genres or more ',
                     style: Styles.informations),
                 const Divider(height: 25),
                 Wrap(

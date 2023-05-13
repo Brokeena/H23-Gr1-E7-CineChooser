@@ -1,3 +1,4 @@
+import 'package:cinechooser/api/movie.dart';
 import 'package:cinechooser/pages/choix.dart';
 import 'package:cinechooser/pages/login_page.dart';
 import 'package:cinechooser/utils/top_buttons_row.dart';
@@ -12,6 +13,7 @@ import 'package:cinechooser/api/api.dart';
 import 'package:cinechooser/main.dart';
 
 int lastSwipe = 0;
+bool _justSwiped = false;
 
 /// What happen when you open the app
 void openApp() async {
@@ -21,14 +23,12 @@ void openApp() async {
   } else {
     displayedMovies = await getMoviesWithId(displayedMoviesId);
   }
-  displayedMovies = await getTopRatedMoviesByGenres(listGenre, 3);
 }
 
-void afterALike() {}
 
-
-
+/// Modification de page principale
 Future<void> swipeMovie(int id, bool liked) async {
+  _justSwiped = true;
   if (liked) {
     likedMovies.add(id);
     db.doc(goodID).update({'likedMovies': likedMovies});
@@ -54,6 +54,7 @@ void onRewind() {
   lastSwipe = 0;
 }
 
+/// Modifier la liste
 addRecommendedMovies(int id, int numberOfRecommendation) async {
   var similarMovies = await getRecommendedMovies(id);
   int r = similarMovies.length;
@@ -81,6 +82,50 @@ addRecommendedMovies(int id, int numberOfRecommendation) async {
   }
 }
 
+void trimDisplayedMovie() {
+  List<Movie> newMovieList = [];
+
+  var lastLikedMovieId = 0;
+  if(likedMovies.isNotEmpty){
+    lastLikedMovieId = likedMovies.elementAt(likedMovies.length-1);
+  }
+  var lastDislikedMovieId = 0;
+  if(dislikedMovies.isNotEmpty){
+    lastDislikedMovieId = dislikedMovies.elementAt(dislikedMovies.length-1);
+  }
+
+  int lastLikedMovieIndex = 0;
+  int lastDislikedMovieIndex = 0;
+
+  for(int x = 0; x < displayedMovies.length; x++){
+    if(lastLikedMovieId == displayedMovies.elementAt(x).id){
+      lastLikedMovieIndex = x;
+    }
+  }
+  for(int y = 0; y < displayedMovies.length; y++){
+    if(lastDislikedMovieId == displayedMovies.elementAt(y).id){
+      lastDislikedMovieIndex = y;
+    }
+  }
+
+  int lastIndex = lastDislikedMovieIndex;
+  if(lastLikedMovieIndex > lastDislikedMovieIndex){
+    lastIndex =lastLikedMovieIndex;
+  }
+  if(_justSwiped){
+    lastIndex+=1;
+  }
+
+  for(int i = lastIndex; i < displayedMovies.length; i++){
+    newMovieList.add(displayedMovies.elementAt(i));
+  }
+  _justSwiped = false;
+
+  displayedMovies = newMovieList;
+}
+
+
+/// Update Firebase
 updateDisplayedMoviesId() async{
   displayedMoviesId = [];
   for(var movie in displayedMovies){

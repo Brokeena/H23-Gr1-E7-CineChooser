@@ -68,7 +68,6 @@ class _PagePrincipaleState extends State<PagePrincipale> {
 
               },
               builder: (context, properties) {
-                print(displayedMovies.length);
                 final indexMovie = properties.index % (displayedMovies.length);
                 // Créer un String de genre
                 List<String> genreNames = [];
@@ -115,7 +114,6 @@ class _PagePrincipaleState extends State<PagePrincipale> {
             ),
             BottomButtonsRow(
               onSwipe: (direction) {
-                onRewind();
                 _controller.next(swipeDirection: direction);
               },
               onRewindTap: _controller.rewind,

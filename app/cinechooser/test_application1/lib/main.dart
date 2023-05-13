@@ -5,11 +5,12 @@ import 'package:cinechooser/api/movie.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'api/algorithm.dart';
+import 'api/api.dart';
 
 String poster = '';
 List<Movie> displayedMovies = [];
 List<Movie> testMovies = [];
-List<Genre> genres = [Genre.Western, Genre.ScienceFiction, Genre.Animation];
+List<dynamic> genres = [28, 12, 16];
 
 
 List<int> idGenre = [
@@ -96,9 +97,6 @@ List<Color> colors = [
 
 void main() async {
   Movie movie = await Movie.create(18491);
-  if(!firstTime){
-    openApp();
-  }
   poster = movie.poster;
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(

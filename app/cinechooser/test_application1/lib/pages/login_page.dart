@@ -9,6 +9,7 @@ import 'package:cinechooser/api/api.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cinechooser/main.dart';
 import 'package:cinechooser/utils/app_styles.dart';
+import '../api/algorithm.dart';
 import '../api/movie.dart';
 import 'forgotPassewordPage.dart';
 
@@ -41,7 +42,7 @@ Future getDocId() async {
 }
 
 initiateALl() async {
-  var collectionReference = await db.doc(await getGoodID()).get();
+  var collectionReference = await db.doc(await getActualUserDocId()).get();
   var data = collectionReference.data() as Map<String, dynamic>;
 
   paysSelectionne =  data['pays'];
@@ -56,8 +57,8 @@ initiateALl() async {
   friendList = data['friendList'];
   friendCode = data['docID'];
 
-  print('fc');
-  print(friendCode);
+
+  openApp();
 
   for(var id in showedList){
     Movie movie = await Movie.create(id);
@@ -67,7 +68,7 @@ initiateALl() async {
 
 }
 
-getGoodID() async {
+getActualUserDocId() async {
   final user = FirebaseAuth.instance.currentUser!;
   List<String> docIDs = await getDocId();
   var db = FirebaseFirestore.instance.collection('users');

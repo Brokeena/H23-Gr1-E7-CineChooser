@@ -1,3 +1,4 @@
+import 'package:cinechooser/api/algorithm.dart';
 import 'package:cinechooser/pages/login_page.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -44,6 +45,7 @@ class _ReglagesState extends State<Reglages> {
         title: const Text('Set your account detail', style: Styles.entete),
         leading: IconButton(
           onPressed: () {
+            trimDisplayedMovie();
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const PagePrincipale()),

@@ -105,7 +105,9 @@ String language_country(){
       }
     }
 
-    listMovies = await getMoviesWithId(topRatedMoviesId);
+    for(int x = 0; x < topRatedMoviesId.length; x++){
+      listMovies.add(await Movie.create(topRatedMoviesId.elementAt(x)));
+    }
   }
   return listMovies;
 }
@@ -119,7 +121,9 @@ String language_country(){
   for(int n = 0; n < results.length; n++){
     similarMoviesId.add(results.elementAt(n)['id']);
   }
-  listMovies = await getMoviesWithId(similarMoviesId);
+  for(int x = 0; x < similarMoviesId.length; x++){
+    listMovies.add(await Movie.create(similarMoviesId.elementAt(x)));
+  }
   return listMovies;
 }
 
