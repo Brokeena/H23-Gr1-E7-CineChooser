@@ -160,9 +160,9 @@ class _ReglagesState extends State<Reglages> {
                         onPressed: () {
                           _copy();
                         },
-                        icone: const Icon(Icons.copy, color: Styles.red1),
+                        icone: const Icon(Icons.copy, color: Styles.red1, size: 10),
                         color: Colors.white,
-                        taille: 50,
+                        taille: 20,
                         borderRadius: 15)
                   ],
                 ),
@@ -176,9 +176,9 @@ class _ReglagesState extends State<Reglages> {
                     onPressed: () {
                       _addFriend();
                     },
-                    icone: const Icon(Icons.group_add, color: Styles.red1),
+                    icone: const Icon(Icons.group_add, color: Styles.red1, size: 10),
                     color: Colors.white,
-                    taille: 50,
+                    taille: 20,
                     borderRadius: 15),
                 Divider(height: height / 30),
                 MaterialButton(
