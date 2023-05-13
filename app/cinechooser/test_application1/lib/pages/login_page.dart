@@ -1,4 +1,6 @@
+import 'package:cinechooser/pages/loading_page.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
+import 'package:cinechooser/pages/reglages.dart';
 import 'package:cinechooser/widget/textField.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -29,7 +31,7 @@ var showedPoster = [];
 var showedNames = [];
 bool firstTime = false;
 var friendCode = '';
-bool hasData = false;
+late ValueNotifier<bool> hasData = ValueNotifier(false);
 
 Future getDocId() async {
   List<String> docIDs = [];
@@ -44,7 +46,7 @@ Future getDocId() async {
 
 initiateALl() async {
   var collectionReference = db.doc(await getActualUserDocId()).get();
-  collectionReference.then((collection) async {
+  collectionReference.then((collection) {
     var data = collection.data() as Map<String, dynamic>;
     paysSelectionne = data['pays'];
     selectedItems = data['providers'];
@@ -57,13 +59,13 @@ initiateALl() async {
     docID = data['docID'];
     friendList = data['friendList'];
     friendCode = data['docID'];
+  }).then((value) async {
     await openApp();
-  }).then((value)  {
-    hasData = true;
-    print("HAS DATA");
+    openApp().then((value) {
+      hasData.value = true;
+      print("HAS DATA");
+      });
   });
-
-
 
   for (var id in showedList) {
     Movie movie = await Movie.create(id);
@@ -105,15 +107,14 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
 
   Future signin() async {
+    hasData.value = false;
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
       initiateALl();
-      if (hasData) {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const PagePrincipale()));
-      }
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => const LoadingPage() ));
     } on FirebaseAuthException catch (e) {
       showDialog(
           context: context,

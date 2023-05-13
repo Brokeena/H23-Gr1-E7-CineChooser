@@ -40,7 +40,6 @@ Future<void> swipeMovie(int id, bool liked) async {
   if(firstTime){
     firstTime = false;
     db.doc(docID).update({'firstTime': firstTime});
-    print("NO MORE FIRST TIME");
   }
 
   _justSwiped = true;
@@ -155,6 +154,7 @@ updateDisplayedMoviesId() async{
 friendsMovies() async{
   if(friendList.isNotEmpty){
     for(var friendCode in friendList){
+      var collectionReference = db.doc(friendCode).get();
 
     }
   }
