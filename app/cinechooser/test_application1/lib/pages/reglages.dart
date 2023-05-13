@@ -158,7 +158,7 @@ class _ReglagesState extends State<Reglages> {
                   children: [
                     AutoSizeText(maxLines: 1,'Your friendcode :   $friendCode',
                         style: Styles.petittitres),
-                    SizedBox(width: width/6),
+                    SizedBox(width: width/10),
                     GestureDetector(
                       onTap: () {
                         _copy();
@@ -168,7 +168,7 @@ class _ReglagesState extends State<Reglages> {
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(1)),
                           child:  Icon(Icons.copy,
-                              color: Styles.red1, size: width/17)),
+                              color: Styles.red1, size: width/19)),
                     )
                   ],
                 ),
@@ -187,7 +187,7 @@ class _ReglagesState extends State<Reglages> {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(1)),
                       child:  Icon(Icons.group_add,
-                          color: Styles.red1, size: width/17)),
+                          color: Styles.red1, size: width/19)),
                 ),
                 Divider(height: height / 30),
                 MaterialButton(
@@ -205,7 +205,6 @@ class _ReglagesState extends State<Reglages> {
                 MaterialButton(
                   onPressed: () {
                     FirebaseAuth.instance.signOut();
-                    signOut();
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => const FriendsList()),
@@ -279,7 +278,9 @@ _addFriend() async {
   var friendListAmi = data['friendList'];
   if ((_addFriends.text.trim().toString() != docID) && await userExiste()) {
     friendListAmi.add(docID);
+    print(friendList);
     friendList.add(_addFriends.text.trim());
+    print(friendList);
     db.doc(docID).update({'friendList': friendList});
     db
         .doc(_addFriends.text.trim().toString())
