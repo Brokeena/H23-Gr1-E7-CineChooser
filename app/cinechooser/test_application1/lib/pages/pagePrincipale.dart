@@ -7,9 +7,8 @@ import 'package:cinechooser/utils/movie_carte.dart';
 import 'package:cinechooser/utils/bottom_buttons_row.dart';
 import '../api/algorithm.dart';
 import '../utils/app_styles.dart';
-import 'package:cinechooser/api/api.dart';
 import 'package:cinechooser/main.dart';
-import 'login_page.dart';
+
 
 class PagePrincipale extends StatefulWidget {
   const PagePrincipale({Key? key}) : super(key: key);

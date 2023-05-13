@@ -59,141 +59,142 @@ class _ReglagesState extends State<Reglages> {
         top: true,
         child: Padding(
           padding: EdgeInsets.all(width / 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Divider(height: height / 40),
-              Container(
-                height: height * 0.06,
-                width: width * 0.9,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12)),
-                child: DropdownButtonHideUnderline(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: DropdownButton(
-                        borderRadius: BorderRadius.circular(7),
-                        hint: Text(
-                          paysSelectionne,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.normal,
-                            fontSize: 16,
-                            color: Colors.black87,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Divider(height: height / 40),
+                Container(
+                  height: height * 0.06,
+                  width: width * 0.9,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12)),
+                  child: DropdownButtonHideUnderline(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: DropdownButton(
+                          borderRadius: BorderRadius.circular(7),
+                          hint: Text(
+                            paysSelectionne,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.normal,
+                              fontSize: 16,
+                              color: Colors.black87,
+                            ),
                           ),
-                        ),
-                        value: dropdownvalues,
-                        dropdownColor: Colors.white,
-                        elevation: 0,
-                        icon: const Icon(
-                          Icons.expand_more,
-                          color: Colors.black,
-                        ),
-                        items: listPaysNom
-                            .map((dynamic value) => DropdownMenuItem(
-                                  value: value,
-                                  child: Text(value,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.normal,
-                                        fontSize: 16,
-                                        color: Colors.black87,
-                                      )),
-                                ))
-                            .toList(),
-                        onChanged: (newItem) async {
-                          setState(() {
-                            paysSelectionne = newItem.toString();
+                          value: dropdownvalues,
+                          dropdownColor: Colors.white,
+                          elevation: 0,
+                          icon: const Icon(
+                            Icons.expand_more,
+                            color: Colors.black,
+                          ),
+                          items: listPaysNom
+                              .map((dynamic value) => DropdownMenuItem(
+                                    value: value,
+                                    child: Text(value,
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.normal,
+                                          fontSize: 16,
+                                          color: Colors.black87,
+                                        )),
+                                  ))
+                              .toList(),
+                          onChanged: (newItem) async {
+                            setState(() {
+                              paysSelectionne = newItem.toString();
 
-                            dropdownvalues = newItem!;
-                          });
-                          db.doc(goodID).update({'pays': paysSelectionne});
-                        }),
+                              dropdownvalues = newItem!;
+                            });
+                            db.doc(goodID).update({'pays': paysSelectionne});
+                          }),
+                    ),
                   ),
                 ),
-              ),
-              Divider(height: height / 20),
-              const Text('Streaming services :', style: Styles.petittitres),
-              Divider(height: height / 40),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text('Your services : ', style: Styles.informations),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Wrap(
-                        spacing: 5,
-                        runSpacing: 5,
-                        direction: Axis.horizontal,
-                        children: selectedItems
-                            .map((e) => Chip(label: Text(e)))
-                            .toList()),
-                  )
-                ],
-              ),
-              Divider(height: height / 40),
-              ElevatedButton(
-                  style: ButtonStyle(
-                    alignment: Alignment.center,
-                    shape: MaterialStateProperty.resolveWith(
-                      (states) => RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(7),
+                Divider(height: height / 20),
+                const Text('Streaming services :', style: Styles.petittitres),
+                Divider(height: height / 40),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text('Your services : ', style: Styles.informations),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Wrap(
+                          spacing: 5,
+                          runSpacing: 5,
+                          direction: Axis.horizontal,
+                          children: selectedItems
+                              .map((e) => Chip(label: Text(e)))
+                              .toList()),
+                    )
+                  ],
+                ),
+                Divider(height: height / 40),
+                ElevatedButton(
+                    style: ButtonStyle(
+                      alignment: Alignment.center,
+                      shape: MaterialStateProperty.resolveWith(
+                        (states) => RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(7),
+                        ),
+                      ),
+                      backgroundColor: MaterialStateProperty.resolveWith(
+                        (states) => Colors.white,
                       ),
                     ),
-                    backgroundColor: MaterialStateProperty.resolveWith(
-                      (states) => Colors.white,
-                    ),
-                  ),
-                  onPressed: _showMultiSelect,
-                  child: const Text('Choose your streaming services',
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 15,
-                          color: Colors.black87))),
-              Divider(height: height / 25),
-              Row(
-                children: [
-                  Text('Your friendcode :   $friendCode',
-                      style: Styles.petittitres),
-                  SizedBox(width: width / 15),
-                  Button(
-                      onPressed: () {
-                        _copy();
-                      },
-                      icone: const Icon(Icons.copy, color: Styles.red1),
-                      color: Colors.white,
-                      taille: 50,
-                      borderRadius: 15)
-                ],
-              ),
-              Divider(height: height / 25),
-              MyTextField(
-                  controller: _addFriends,
-                  hintText: "Add friends with their code",
-                  obscureText: false),
-              Divider(height: height / 50),
-              SizedBox(width: height / 25),
-              Button(
+                    onPressed: _showMultiSelect,
+                    child: const Text('Choose your streaming services',
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 15,
+                            color: Colors.black87))),
+                Divider(height: height / 25),
+                Row(
+                  children: [
+                    Text('Your friendcode :   $friendCode',
+                        style: Styles.petittitres),
+                    SizedBox(width: width / 15),
+                    Button(
+                        onPressed: () {
+                          _copy();
+                        },
+                        icone: const Icon(Icons.copy, color: Styles.red1),
+                        color: Colors.white,
+                        taille: 50,
+                        borderRadius: 15)
+                  ],
+                ),
+                Divider(height: height / 25),
+                MyTextField(
+                    controller: _addFriends,
+                    hintText: "Add friends with their code",
+                    obscureText: false),
+                Divider(height: height / 50),
+                Button(
+                    onPressed: () {
+                      _addFriend();
+                    },
+                    icone: const Icon(Icons.group_add, color: Styles.red1),
+                    color: Colors.white,
+                    taille: 50,
+                    borderRadius: 15),
+                Divider(height: height / 30),
+                MaterialButton(
                   onPressed: () {
-                    _addFriend();
+                    FirebaseAuth.instance.signOut();
+                    signOut();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const AuthPage()),
+                    );
                   },
-                  icone: const Icon(Icons.group_add, color: Styles.red1),
-                  color: Colors.white,
-                  taille: 50,
-                  borderRadius: 15),
-              Divider(height: height / 30),
-              MaterialButton(
-                onPressed: () {
-                  FirebaseAuth.instance.signOut();
-                  signOut();
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const AuthPage()),
-                  );
-                },
-                color: Colors.red,
-                child: const Text('Sign out'),
-              )
-            ],
+                  color: Colors.red,
+                  child: const Text('Sign out'),
+                )
+              ],
+            ),
           ),
         ),
       ),
