@@ -94,7 +94,7 @@ class _ChoixState extends State<Choix> {
                     style: TextStyle(color: Colors.white)),
                 onPressed: () async {
                   if (listGenre.length >= 3) {
-                    print(listGenre);
+                    firstTime = true;
                     openApp();
                     db.doc(goodID).update({'genres': listGenre});
                     db.doc(goodID).update({'firstTime': true});

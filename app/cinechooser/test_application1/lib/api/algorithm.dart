@@ -26,6 +26,8 @@ void openApp() async {
 }
 
 
+
+
 /// Modification de page principale
 Future<void> swipeMovie(int id, bool liked) async {
   _justSwiped = true;
@@ -82,6 +84,7 @@ addRecommendedMovies(int id, int numberOfRecommendation) async {
   }
 }
 
+
 void trimDisplayedMovie() {
   List<Movie> newMovieList = [];
 
@@ -134,4 +137,12 @@ updateDisplayedMoviesId() async{
     }
   }
   db.doc(goodID).update({'displayedMoviesId': displayedMoviesId});
+}
+
+friendsMovies() async{
+  if(friendList.isNotEmpty){
+    for(var friendCode in friendList){
+
+    }
+  }
 }
