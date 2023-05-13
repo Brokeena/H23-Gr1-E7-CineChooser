@@ -25,6 +25,14 @@ void openApp() async {
   }
 }
 
+Future<bool> loadingDisplayedMovie() async{
+  if(displayedMovies.isEmpty){
+    return false;
+  } else {
+    return true;
+  }
+}
+
 
 
 

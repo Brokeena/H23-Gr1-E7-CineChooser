@@ -118,7 +118,7 @@ class _ProfileState extends State<Profile> {
       ),
       body: _pages[_selectedIndex],
 
-        /*body: SafeArea(
+        /* body: SafeArea(
           top: true,
           child: SingleChildScrollView(
             child: Column(
