@@ -3,6 +3,7 @@ import 'package:cinechooser/pages/likedMovies.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
+import '../api/algorithm.dart';
 import '../api/movie.dart';
 import '../utils/movie_swipe.dart';
 import 'login_page.dart';
@@ -74,6 +75,7 @@ class _ProfileState extends State<Profile> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
+            trimDisplayedMovie();
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const PagePrincipale()),
