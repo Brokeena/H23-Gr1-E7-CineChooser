@@ -26,6 +26,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _nameController = TextEditingController();
   final _latNameController = TextEditingController();
   final _ageController = TextEditingController();
+  final _pseudoController = TextEditingController();
 
   Future signUp() async {
     if (passwordValide() && ageValide()) {
@@ -37,7 +38,8 @@ class _RegisterPageState extends State<RegisterPage> {
             _nameController.text.trim(),
             _latNameController.text.trim(),
             _emailController.text.trim(),
-            int.parse(_ageController.text.trim()));
+            int.parse(_ageController.text.trim()),
+            _pseudoController.text.trim());
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => const Choix()));
       } on FirebaseAuthException catch (e) {
@@ -72,9 +74,10 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Future addUserDetails(
-      String firstName, String lastName, String email, int age) async {
+      String firstName, String lastName, String email, int age, String pseudo) async {
     String docId = "";
     await FirebaseFirestore.instance.collection('users').add({
+      'pseudo' : pseudo,
       'first name': lastName,
       'last name': firstName,
       'pays': 'Country',
@@ -133,6 +136,7 @@ class _RegisterPageState extends State<RegisterPage> {
     _nameController.dispose();
     _latNameController.dispose();
     _ageController.dispose();
+    _pseudoController.dispose();
     super.dispose();
   }
 
@@ -181,6 +185,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   MyTextField(
                       controller: _latNameController,
                       hintText: "Last name",
+                      obscureText: false),
+                  SizedBox(height: height * 0.01),
+                  MyTextField(
+                      controller: _pseudoController,
+                      hintText: "Pseudo",
                       obscureText: false),
                   SizedBox(height: height * 0.01),
                   MyTextField(

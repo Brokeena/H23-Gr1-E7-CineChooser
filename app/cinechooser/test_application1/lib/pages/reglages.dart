@@ -1,4 +1,6 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cinechooser/api/algorithm.dart';
+import 'package:cinechooser/pages/friendList.dart';
 import 'package:cinechooser/pages/login_page.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -153,17 +155,20 @@ class _ReglagesState extends State<Reglages> {
                 Divider(height: height / 25),
                 Row(
                   children: [
-                    Text('Your friendcode :   $friendCode',
+                    AutoSizeText(maxLines: 1,'Your friendcode :   $friendCode',
                         style: Styles.petittitres),
-                    SizedBox(width: width / 15),
-                    Button(
-                        onPressed: () {
-                          _copy();
-                        },
-                        icone: const Icon(Icons.copy, color: Styles.red1, size: 10),
-                        color: Colors.white,
-                        taille: 20,
-                        borderRadius: 15)
+                    SizedBox(width: width/6),
+                    GestureDetector(
+                      onTap: () {
+                        _copy();
+                      },
+                      child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(1)),
+                          child:  Icon(Icons.copy,
+                              color: Styles.red1, size: width/17)),
+                    )
                   ],
                 ),
                 Divider(height: height / 25),
@@ -172,14 +177,17 @@ class _ReglagesState extends State<Reglages> {
                     hintText: "Add friends with their code",
                     obscureText: false),
                 Divider(height: height / 50),
-                Button(
-                    onPressed: () {
-                      _addFriend();
-                    },
-                    icone: const Icon(Icons.group_add, color: Styles.red1, size: 10),
-                    color: Colors.white,
-                    taille: 20,
-                    borderRadius: 15),
+                GestureDetector(
+                  onTap: () {
+                   _addFriend();
+                  },
+                  child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(1)),
+                      child:  Icon(Icons.group_add,
+                          color: Styles.red1, size: width/17)),
+                ),
                 Divider(height: height / 30),
                 MaterialButton(
                   onPressed: () {
@@ -192,6 +200,18 @@ class _ReglagesState extends State<Reglages> {
                   },
                   color: Colors.red,
                   child: const Text('Sign out'),
+                ),
+                MaterialButton(
+                  onPressed: () {
+                    FirebaseAuth.instance.signOut();
+                    signOut();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const FriendsList()),
+                    );
+                  },
+                  color: Colors.red,
+                  child: const Text('FriendsList'),
                 )
               ],
             ),
@@ -238,8 +258,6 @@ userExiste() async {
   for (var documentId in docIDs) {
     var collectionReference = await db.doc(documentId).get();
     var data = collectionReference.data() as Map<String, dynamic>;
-    print(data['docID']);
-    print(_addFriends.text.trim().toString());
     if (data['docID'] == _addFriends.text.trim().toString()) {
       for (var friend in friendList) {
         if (friend == _addFriends.text.trim()) {
@@ -256,11 +274,18 @@ userExiste() async {
 }
 
 _addFriend() async {
+  var data = await db.doc(_addFriends.text.trim().toString()).get();
+  var friendListAmi = data['friendList'];
   if ((_addFriends.text.trim().toString() != docID) && await userExiste()) {
-    print('${_addFriends.text.trim()}is now added');
+    friendListAmi.add(docID);
     friendList.add(_addFriends.text.trim());
     db.doc(docID).update({'friendList': friendList});
+    db
+        .doc(_addFriends.text.trim().toString())
+        .update({'friendList': friendListAmi});
+    return true;
   } else {
+    return false;
     print('invalide friendCode');
     /*
     showDialog(

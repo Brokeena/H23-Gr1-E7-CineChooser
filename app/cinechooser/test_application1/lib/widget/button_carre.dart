@@ -21,25 +21,27 @@ class Button extends StatelessWidget {
     return SizedBox(
       height: taille,
       width: taille,
-      child: ElevatedButton(
-        style: ButtonStyle(
-          shape: MaterialStateProperty.resolveWith(
-            (states) => RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(borderRadius),
+      child: Center(
+        child: ElevatedButton(
+          style: ButtonStyle(
+            shape: MaterialStateProperty.resolveWith(
+              (states) => RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(borderRadius),
+              ),
+            ),
+            backgroundColor: MaterialStateProperty.resolveWith(
+              (states) => color,
+            ),
+            overlayColor: MaterialStateProperty.resolveWith(
+              (states) => Colors.red,
+            ),
+            elevation: MaterialStateProperty.resolveWith(
+              (states) => 0.0,
             ),
           ),
-          backgroundColor: MaterialStateProperty.resolveWith(
-            (states) => color,
-          ),
-          overlayColor: MaterialStateProperty.resolveWith(
-            (states) => Colors.red,
-          ),
-          elevation: MaterialStateProperty.resolveWith(
-            (states) => 0.0,
-          ),
+          onPressed: onPressed,
+          child: Center(child: icone),
         ),
-        onPressed: onPressed,
-        child: icone,
       ),
     );
   }
