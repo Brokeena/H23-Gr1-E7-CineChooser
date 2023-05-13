@@ -22,7 +22,7 @@ class Profile extends StatefulWidget {
   @override
   State<Profile> createState() => _ProfileState();
 }
-
+/*
 Future addLikedMovies(var moviesId) async {
   Movie movie = await Movie.create(moviesId);
   var poster = movie.poster;
@@ -48,13 +48,14 @@ Future showMovies(var movieId) async {
   return showedPoster;
 }
 
+ */
+
 class _ProfileState extends State<Profile> {
 
   int _selectedIndex = 0;
 
   void navigateBottomBar(int index)
   {
-
     setState(() {
       _selectedIndex = index;
     });
@@ -67,9 +68,6 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
     return Scaffold(
       //bottomNavigationBar: MyBottomNavBar(),
       backgroundColor: Styles.bgColor,
