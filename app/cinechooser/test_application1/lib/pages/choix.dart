@@ -95,9 +95,9 @@ class _ChoixState extends State<Choix> {
                 onPressed: () async {
                   if (listGenre.length >= 3) {
                     firstTime = true;
-                    openApp();
-                    db.doc(goodID).update({'genres': listGenre});
-                    db.doc(goodID).update({'firstTime': true});
+                    await openApp();
+                    db.doc(docID).update({'genres': listGenre});
+                    db.doc(docID).update({'firstTime': true});
                     // ignore: use_build_context_synchronously
                     Navigator.push(
                       context,

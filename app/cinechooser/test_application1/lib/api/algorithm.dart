@@ -16,10 +16,9 @@ int lastSwipe = 0;
 bool _justSwiped = false;
 
 /// What happen when you open the app
-void openApp() async {
+Future<void> openApp() async {
   if (firstTime) {
     displayedMovies = await getTopRatedMoviesByGenres(listGenre, 3);
-    firstTime = false;
   } else {
     displayedMovies = await getMoviesWithId(displayedMoviesId);
   }
@@ -38,13 +37,19 @@ Future<bool> loadingDisplayedMovie() async{
 
 /// Modification de page principale
 Future<void> swipeMovie(int id, bool liked) async {
+  if(firstTime){
+    firstTime = false;
+    db.doc(docID).update({'firstTime': firstTime});
+    print("NO MORE FIRST TIME");
+  }
+
   _justSwiped = true;
   if (liked) {
     likedMovies.add(id);
-    db.doc(goodID).update({'likedMovies': likedMovies});
+    db.doc(docID).update({'likedMovies': likedMovies});
   } else if (!liked) {
     dislikedMovies.add(id);
-    db.doc(goodID).update({'dislikedMovies': dislikedMovies});
+    db.doc(docID).update({'dislikedMovies': dislikedMovies});
   }
   lastSwipe = id;
 
@@ -52,7 +57,7 @@ Future<void> swipeMovie(int id, bool liked) async {
   if (lastSwipe != 0) {
     displayedMoviesId.remove(lastSwipe);
   }
-  db.doc(goodID).update({'dislikedMovies': dislikedMovies});
+  db.doc(docID).update({'dislikedMovies': dislikedMovies});
 
   addRecommendedMovies(id, 3);
   updateDisplayedMoviesId();
@@ -144,7 +149,7 @@ updateDisplayedMoviesId() async{
       displayedMoviesId.add(movie.id);
     }
   }
-  db.doc(goodID).update({'displayedMoviesId': displayedMoviesId});
+  db.doc(docID).update({'displayedMoviesId': displayedMoviesId});
 }
 
 friendsMovies() async{

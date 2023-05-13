@@ -103,7 +103,7 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                             dropdownvalues = newItem!;
 
                           });
-                          db.doc(await goodID).update({'pays': paysSelectionne});
+                          db.doc(await docID).update({'pays': paysSelectionne});
 
                         }),
                   ),
@@ -237,7 +237,7 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
         selectedItems = results!;
       });
 
-      db.doc(await goodID).update({'providers': results!});
+      db.doc(await docID).update({'providers': results!});
     }
   }
 }

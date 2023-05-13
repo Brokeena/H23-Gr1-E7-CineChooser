@@ -107,7 +107,7 @@ class _ReglagesState extends State<Reglages> {
 
                               dropdownvalues = newItem!;
                             });
-                            db.doc(goodID).update({'pays': paysSelectionne});
+                            db.doc(docID).update({'pays': paysSelectionne});
                           }),
                     ),
                   ),
@@ -227,7 +227,7 @@ class _ReglagesState extends State<Reglages> {
         selectedItems = results!;
       });
 
-      db.doc(goodID).update({'providers': results!});
+      db.doc(docID).update({'providers': results!});
     }
   }
 }
@@ -256,10 +256,10 @@ userExiste() async {
 }
 
 _addFriend() async {
-  if ((_addFriends.text.trim().toString() != goodID) && await userExiste()) {
+  if ((_addFriends.text.trim().toString() != docID) && await userExiste()) {
     print('${_addFriends.text.trim()}is now added');
     friendList.add(_addFriends.text.trim());
-    db.doc(goodID).update({'friendList': friendList});
+    db.doc(docID).update({'friendList': friendList});
   } else {
     print('invalide friendCode');
     /*

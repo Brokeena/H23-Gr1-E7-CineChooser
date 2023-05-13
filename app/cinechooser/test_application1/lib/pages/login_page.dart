@@ -13,7 +13,7 @@ import '../api/algorithm.dart';
 import '../api/movie.dart';
 import 'forgotPassewordPage.dart';
 
-var goodID = '';
+var docID = '';
 var db = FirebaseFirestore.instance.collection('users');
 String paysSelectionne = 'Country';
 String paysISO = 'CA';
@@ -26,9 +26,10 @@ List<dynamic> listGenre = [];
 List<dynamic> friendList = [];
 var showedList = [];
 var showedPoster = [];
-var showedNames =[];
+var showedNames = [];
 bool firstTime = false;
 var friendCode = '';
+bool hasData = false;
 
 Future getDocId() async {
   List<String> docIDs = [];
@@ -42,30 +43,33 @@ Future getDocId() async {
 }
 
 initiateALl() async {
-  var collectionReference = await db.doc(await getActualUserDocId()).get();
-  var data = collectionReference.data() as Map<String, dynamic>;
+  var collectionReference = db.doc(await getActualUserDocId()).get();
+  collectionReference.then((collection) async {
+    var data = collection.data() as Map<String, dynamic>;
+    paysSelectionne = data['pays'];
+    selectedItems = data['providers'];
+    likedMovies = data['likedMovies'];
+    dislikedMovies = data['dislikedMovies'];
+    listGenre = data['genres'];
+    showedList = likedMovies;
+    firstTime = data['firstTime'];
+    displayedMoviesId = data['displayedMoviesId'];
+    docID = data['docID'];
+    friendList = data['friendList'];
+    friendCode = data['docID'];
+    await openApp();
+  }).then((value)  {
+    hasData = true;
+    print("HAS DATA");
+  });
 
-  paysSelectionne =  data['pays'];
-  selectedItems =  data['providers'];
-  likedMovies =  data['likedMovies'];
-  dislikedMovies =  data['dislikedMovies'];
-  listGenre =  data['genres'];
-  showedList = likedMovies;
-  firstTime = data['firstTime'];
-  displayedMoviesId = data['displayedMoviesId'];
-  goodID = data['docID'];
-  friendList = data['friendList'];
-  friendCode = data['docID'];
 
 
-  openApp();
-
-  for(var id in showedList){
+  for (var id in showedList) {
     Movie movie = await Movie.create(id);
     showedNames.add(movie.nom);
     showedPoster.add(movie.poster);
   }
-
 }
 
 getActualUserDocId() async {
@@ -106,8 +110,10 @@ class _LoginPageState extends State<LoginPage> {
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
       initiateALl();
-      Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => const PagePrincipale()));
+      if (hasData) {
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const PagePrincipale()));
+      }
     } on FirebaseAuthException catch (e) {
       showDialog(
           context: context,
