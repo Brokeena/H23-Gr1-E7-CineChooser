@@ -54,6 +54,7 @@ class _ProfileState extends State<Profile> {
 
   void navigateBottomBar(int index)
   {
+
     setState(() {
       _selectedIndex = index;
     });
@@ -166,6 +167,9 @@ class _ProfileState extends State<Profile> {
   }
 }
 
+
+
+/*
 showLikedMovies() {
   showedList = likedMovies;
   showedPoster = likedPosters;
@@ -205,3 +209,5 @@ goLiked(int index) async {
   db.doc(docID).update({'dislikedMovies': dislikedMovies});
   db.doc(docID).update({'likedMovies': likedMovies});
 }
+*/
+

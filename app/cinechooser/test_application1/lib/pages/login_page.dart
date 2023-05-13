@@ -21,17 +21,18 @@ String paysSelectionne = 'Country';
 String paysISO = 'CA';
 List<dynamic> selectedItems = [];
 List<dynamic>? results = [];
-List<dynamic> likedMovies = [];
-List<dynamic> dislikedMovies = [];
+List<dynamic> likedMoviesId = [];
+List<dynamic> dislikedMoviesId = [];
 List<dynamic> displayedMoviesId = [];
 List<dynamic> listGenre = [];
 List<dynamic> friendList = [];
-var showedList = [];
 var showedPoster = [];
 var showedNames = [];
 bool firstTime = false;
 var friendCode = '';
 late ValueNotifier<bool> hasData = ValueNotifier(false);
+List<Movie> likedMovies = [];
+List<Movie> dislikedMovies = [];
 
 Future getDocId() async {
   List<String> docIDs = [];
@@ -50,10 +51,9 @@ initiateALl() async {
     var data = collection.data() as Map<String, dynamic>;
     paysSelectionne = data['pays'];
     selectedItems = data['providers'];
-    likedMovies = data['likedMovies'];
-    dislikedMovies = data['dislikedMovies'];
+    likedMoviesId = data['likedMovies'];
+    dislikedMoviesId = data['dislikedMovies'];
     listGenre = data['genres'];
-    showedList = likedMovies;
     firstTime = data['firstTime'];
     displayedMoviesId = data['displayedMoviesId'];
     docID = data['docID'];
@@ -67,11 +67,13 @@ initiateALl() async {
       });
   });
 
-  for (var id in showedList) {
-    Movie movie = await Movie.create(id);
-    showedNames.add(movie.nom);
-    showedPoster.add(movie.poster);
+  for(var idL in likedMoviesId){
+    likedMovies.add(await Movie.create(idL));
   }
+  for(var idD in dislikedMoviesId){
+    dislikedMovies.add(await Movie.create(idD));
+  }
+
 }
 
 getActualUserDocId() async {

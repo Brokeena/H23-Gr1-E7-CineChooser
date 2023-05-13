@@ -312,9 +312,8 @@ signOut() async {
   selectedItems = [];
   results = [];
   listGenre = [];
-  likedMovies = [];
-  dislikedMovies = [];
-  showedList = [];
+  likedMoviesId = [];
+  dislikedMoviesId = [];
   showedPoster = [];
   showedNames = [];
   friendCode = '';
@@ -360,6 +359,9 @@ signOut() async {
     Colors.transparent,
     Colors.transparent,
   ];
+  likedMovies = [];
+  dislikedMovies = [];
+  hasData = ValueNotifier(false);
 
 }
 
