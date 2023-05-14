@@ -11,7 +11,6 @@ import 'package:cinechooser/utils/pays_nom.dart';
 import 'package:cinechooser/utils/pays_iso.dart';
 import 'package:flutter/services.dart';
 import '../main.dart';
-import '../widget/button_carre.dart';
 import '../widget/textField.dart';
 import 'auth_page.dart';
 
@@ -204,7 +203,6 @@ class _ReglagesState extends State<Reglages> {
                 ),
                 MaterialButton(
                   onPressed: () {
-                    FirebaseAuth.instance.signOut();
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => const FriendsList()),
@@ -242,6 +240,7 @@ class _ReglagesState extends State<Reglages> {
       },
     );
 
+
     if (results != null) {
       setState(() {
         selectedItems = results!;
@@ -278,9 +277,7 @@ _addFriend() async {
   var friendListAmi = data['friendList'];
   if ((_addFriends.text.trim().toString() != docID) && await userExiste()) {
     friendListAmi.add(docID);
-    print(friendList);
     friendList.add(_addFriends.text.trim());
-    print(friendList);
     db.doc(docID).update({'friendList': friendList});
     db
         .doc(_addFriends.text.trim().toString())
@@ -375,6 +372,7 @@ class MultiSelect extends StatefulWidget {
 }
 
 class _MultiSelectState extends State<MultiSelect> {
+
   void _itemChange(String itemValue, bool isSelected) {
     setState(() {
       if (isSelected) {
