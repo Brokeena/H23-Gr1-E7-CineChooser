@@ -65,7 +65,7 @@ class Cartes extends StatelessWidget {
                       Text(name, style: Styles.nom),
                       SizedBox(height: height * 0.01),
                       Text(infos, style: Styles.genres),
-                      SizedBox(height: height * 0.03)
+                      SizedBox(height: height * 0.01)
                     ],
                   ),
                 ),

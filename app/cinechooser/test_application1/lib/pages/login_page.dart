@@ -301,6 +301,7 @@ class _LoginPageState extends State<LoginPage> {
                             child: const Text(
                               'Forgot Password ?',
                               style: TextStyle(
+                                  fontFamily: 'Poppins',
                                   color: Colors.blue,
                                   fontWeight: FontWeight.bold),
                             )),
@@ -333,6 +334,7 @@ class _LoginPageState extends State<LoginPage> {
                               Text(
                                 'Sign In',
                                 style: TextStyle(
+                                  fontFamily: 'Poppins',
                                   color: Styles.white1,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
@@ -350,6 +352,7 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       const Text('Not a member ?',
                           style: TextStyle(
+                              fontFamily: 'Poppins',
                               color: Colors.white,
                               fontWeight: FontWeight.bold)),
                       GestureDetector(
@@ -357,6 +360,7 @@ class _LoginPageState extends State<LoginPage> {
                           child: const Text(
                             ' Register now',
                             style: TextStyle(
+                                fontFamily: 'Poppins',
                                 color: Colors.blue,
                                 fontWeight: FontWeight.bold),
                           ))

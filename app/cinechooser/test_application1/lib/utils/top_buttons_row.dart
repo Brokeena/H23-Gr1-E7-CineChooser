@@ -4,7 +4,6 @@ import 'package:cinechooser/pages/reglages.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/widget/button_carre.dart';
-
 import '../pages/profile.dart';
 
 class TopButtonsRow extends StatelessWidget {

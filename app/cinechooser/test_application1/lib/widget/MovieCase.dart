@@ -53,6 +53,7 @@ class MovieCase extends StatelessWidget {
                   nom,
                   //maxLines: 1,
                   style: const TextStyle(
+                    fontFamily: 'Poppins',
                     fontSize: 13,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,

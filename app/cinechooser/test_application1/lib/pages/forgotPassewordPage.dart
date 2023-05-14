@@ -28,7 +28,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           context: context,
           builder: (context) {
             return const AlertDialog(
-              content: Text('Password reset link sent!'),
+              content: Text('Password reset link sent!', style: Styles.bouton2,),
             );
           });
     } on FirebaseAuthException catch (e) {
@@ -54,7 +54,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-              'Enter your Email and we will send you a you a password reset link ^^',
+              'Enter your Email and we will send you a you a password reset link',
               textAlign: TextAlign.center,
               style: Styles.petittitres),
           Divider(),
@@ -84,12 +84,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       ),
                       Text(
                         'Reset password',
-                        style: TextStyle(
-                          color: Styles.white1,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                        style: Styles.bouton,
                         ),
-                      )
                     ],
                   ),
                 ),

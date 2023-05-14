@@ -90,7 +90,7 @@ class _ChoixState extends State<Choix> {
                   backgroundColor: Styles.red1,
                 ),
                 child:
-                    const Text('Next', style: TextStyle(color: Colors.white)),
+                    const Text('Next', style: Styles.bouton2),
                 onPressed: () async {
                   if (listGenre.length >= 3) {
                     firstTime = true;

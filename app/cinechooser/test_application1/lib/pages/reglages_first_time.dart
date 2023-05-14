@@ -140,6 +140,7 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                   onPressed: _showMultiSelect,
                   child: const Text('Choose your streaming services',
                       style: TextStyle(
+                          fontFamily: 'Poppins',
                           fontWeight: FontWeight.normal,
                           fontSize: 15,
                           color: Colors.black87))),
@@ -197,7 +198,7 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                         SizedBox(
                           width: 8,
                         ),
-                        Text('Start choosing !', style: Styles.bouton),
+                        Text('Start choosing!', style: Styles.bouton),
                       ],
                     ),
                   ),
@@ -268,6 +269,7 @@ class _MultiSelectState extends State<MultiSelect> {
     return AlertDialog(
       title: const Text('Choose your streaming services',
           style: TextStyle(
+              fontFamily: 'Poppins',
               fontWeight: FontWeight.normal,
               fontSize: 20,
               color: Colors.black)),
@@ -279,6 +281,7 @@ class _MultiSelectState extends State<MultiSelect> {
                     value: selectedItems.contains(item),
                     title: Text(item,
                         style: const TextStyle(
+                            fontFamily: 'Poppins',
                             fontWeight: FontWeight.normal,
                             fontSize: 15,
                             color: Colors.black87)),
@@ -291,7 +294,7 @@ class _MultiSelectState extends State<MultiSelect> {
       actions: [
         TextButton(
             onPressed: _cancel,
-            child: const Text('Cancel', style: TextStyle(color: Colors.black))),
+            child: const Text('Cancel', style: TextStyle(fontFamily: 'Poppins', color: Colors.black))),
         ElevatedButton(
           onPressed: _submit,
           style: ButtonStyle(
@@ -299,7 +302,7 @@ class _MultiSelectState extends State<MultiSelect> {
               (states) => Styles.red1,
             ),
           ),
-          child: const Text('Continue', style: TextStyle(color: Colors.black)),
+          child: const Text('Continue', style: TextStyle(fontFamily: 'Poppins', color: Colors.black)),
         )
       ],
     );

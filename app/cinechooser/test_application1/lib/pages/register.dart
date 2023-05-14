@@ -57,7 +57,7 @@ class _RegisterPageState extends State<RegisterPage> {
             context: context,
             builder: (BuildContext context) {
               return const AlertDialog(
-                title: Text('The password is not matching'),
+                title: Text('The password is not matching', style: Styles.bouton2,),
               );
             });
       }
@@ -66,7 +66,7 @@ class _RegisterPageState extends State<RegisterPage> {
             context: context,
             builder: (BuildContext context) {
               return const AlertDialog(
-                title: Text('Your age is not valide'),
+                title: Text('Your age is not valide', style: Styles.bouton2,),
               );
             });
       }
@@ -232,6 +232,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               Text(
                                 'Sign Up',
                                 style: TextStyle(
+                                  fontFamily: 'Poppins',
                                   color: Styles.white1,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
@@ -249,6 +250,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     children: [
                       const Text('Already a member ?',
                           style: TextStyle(
+                              fontFamily: 'Poppins',
                               color: Colors.white,
                               fontWeight: FontWeight.bold)),
                       GestureDetector(
@@ -256,7 +258,9 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: const Text(
                           ' Login now',
                           style: TextStyle(
-                              color: Colors.blue, fontWeight: FontWeight.bold),
+                              fontFamily: 'Poppins',
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold),
                         ),
                       )
                     ],
