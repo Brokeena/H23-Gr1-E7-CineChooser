@@ -1,3 +1,5 @@
+
+
 import 'package:tmdb_api/tmdb_api.dart';
 import 'movie.dart';
 
@@ -97,14 +99,15 @@ Future<List<Movie>> getTopRatedMoviesByGenres(
         await tmdb.v3.movies.getTopRated(language: language + country, page: r);
     List<dynamic> results = searchTopRated['results'];
     List<int> topRatedMoviesId = [];
-    for (int i = 0; i < results.length; i++) {
-      for (int k = 0; k < genres.length; k++) {
-        for (int j = 0; j < results.elementAt(i)['genre_ids'].length; j++) {
-          if (genres.elementAt(k) ==
-              results.elementAt(i)['genre_ids'].elementAt(j)) {
-            topRatedMoviesId.add(results.elementAt(i)['id']);
-            k = genres.length;
-            j = results.elementAt(i)['genre_ids'].length;
+    for(int i = 0; i < results.length; i++){
+      for(int k = 0; k < genres.length; k++){
+        for(int j = 0; j < results.elementAt(i)['genre_ids'].length; j++){
+          if(genres.elementAt(k) == results.elementAt(i)['genre_ids'].elementAt(j)){
+            if(results.elementAt(i)['id'] != 19404){
+              topRatedMoviesId.add(results.elementAt(i)['id']);
+              k = genres.length;
+              j = results.elementAt(i)['genre_ids'].length;
+            }
           }
         }
       }
@@ -117,7 +120,7 @@ Future<List<Movie>> getTopRatedMoviesByGenres(
   return listMovies;
 }
 
-Future<List<Movie>> getRecommendedMovies(int id) async {
+  Future<List<Movie>> getRecommendedMovies(int id) async{
   List<Movie> listMovies = [];
   var searchSimilar = await tmdb.v3.movies.getRecommended(id);
   List<dynamic> results = searchSimilar['results'];
@@ -125,8 +128,11 @@ Future<List<Movie>> getRecommendedMovies(int id) async {
   for (int n = 0; n < results.length; n++) {
     similarMoviesId.add(results.elementAt(n)['id']);
   }
-  for (int x = 0; x < similarMoviesId.length; x++) {
-    listMovies.add(await Movie.create(similarMoviesId.elementAt(x)));
+  for(int x = 0; x < similarMoviesId.length; x++){
+    var movie = await Movie.create(similarMoviesId.elementAt(x));
+    if(movie.score >= 5 && movie.dateDeSortie != 0 && movie.id != 19404){
+      listMovies.add(movie);
+    }
   }
   return listMovies;
 }

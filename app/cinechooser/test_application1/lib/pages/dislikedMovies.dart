@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:cinechooser/pages/login_page.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class DislikedMovies extends StatefulWidget {
   const DislikedMovies({Key? key}) : super(key: key);
@@ -28,10 +29,10 @@ class _DislikedMoviesState extends State<DislikedMovies> {
                   width: width / 3,
                   height: width / 2,
                   decoration: BoxDecoration(
-                      color: Colors.transparent,
+                      color: Colors.black,
                       borderRadius: BorderRadius.circular(12),
                       image: DecorationImage(
-                        image: NetworkImage(movie.poster),
+                        image: CachedNetworkImageProvider(movie.poster, maxWidth: (width/3).toInt(), maxHeight: (width/2).toInt()),
                         fit: BoxFit.cover,
                       )),
                 );

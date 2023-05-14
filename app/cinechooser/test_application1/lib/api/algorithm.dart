@@ -44,6 +44,7 @@ Future<void> swipeMovie(int id, bool liked, int index) async {
     likedMoviesId.add(id);
     db.doc(docID).update({'likedMovies': likedMoviesId});
     likedMovies.add(displayedMovies.elementAt(index));
+    addRecommendedMovies(id, 3);
   } else if (!liked) {
     dislikedMoviesId.add(id);
     db.doc(docID).update({'dislikedMovies': dislikedMoviesId});
@@ -55,23 +56,19 @@ Future<void> swipeMovie(int id, bool liked, int index) async {
     displayedMoviesId.remove(lastSwipe);
   }
 
-  addRecommendedMovies(id, 3);
+
   friendsMovies();
   updateDisplayedMoviesId();
 }
 
-void onRewind() {
-  dislikedMoviesId.remove(lastSwipe);
-  likedMoviesId.remove(lastSwipe);
-  for (var movie in likedMovies) {
-    if (lastSwipe == movie.id) {
-      likedMovies.remove(movie);
-    }
-  }
-  for (var movie in dislikedMovies) {
-    if (lastSwipe == movie.id) {
-      dislikedMovies.remove(movie);
-    }
+Future<void> onRewind() async {
+  if(likedMoviesId.contains(lastSwipe)){
+    likedMovies.removeAt(likedMoviesId.indexOf(lastSwipe));
+    likedMoviesId.remove(lastSwipe);
+
+  } else if(dislikedMoviesId.contains(lastSwipe)){
+    dislikedMovies.removeAt(dislikedMoviesId.indexOf(lastSwipe));
+    dislikedMoviesId.remove(lastSwipe);
   }
   lastSwipe = 0;
 }
@@ -101,8 +98,10 @@ addRecommendedMovies(int id, int numberOfRecommendation) async {
         r += 1;
       }
     }
+
   }
 }
+
 
 void trimDisplayedMovie() {
   List<Movie> newMovieList = [];

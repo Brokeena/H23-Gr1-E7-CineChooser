@@ -113,6 +113,7 @@ class _PagePrincipaleState extends State<PagePrincipale> {
             ),
             BottomButtonsRow(
               onSwipe: (direction) {
+                onRewind();
                 _controller.next(swipeDirection: direction);
               },
               onRewindTap: _controller.rewind,

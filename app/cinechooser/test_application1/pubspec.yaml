@@ -50,6 +50,7 @@ dev_dependencies:
   tmdb_api: ^2.1.4
   carousel_slider: ^4.2.1
   google_nav_bar: ^5.0.6
+  cached_network_image: ^3.2.3
   flutter_test:
     sdk: flutter
   flutter_spinkit: ^5.1.0
