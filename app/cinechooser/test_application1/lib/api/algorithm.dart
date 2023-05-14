@@ -43,12 +43,17 @@ Future<void> swipeMovie(int id, bool liked, int index) async {
   if (liked) {
     likedMoviesId.add(id);
     db.doc(docID).update({'likedMovies': likedMoviesId});
-    likedMovies.add(displayedMovies.elementAt(index));
+    likedMovies.add(await Movie.create(id));
+    var list = [];
+    for(var movie in likedMovies){
+      list.add(movie.id);
+    }
+    print(list);
     addRecommendedMovies(id, 3);
   } else if (!liked) {
     dislikedMoviesId.add(id);
     db.doc(docID).update({'dislikedMovies': dislikedMoviesId});
-    dislikedMovies.add(displayedMovies.elementAt(index));
+    dislikedMovies.add(await Movie.create(id));
   }
 
   lastSwipe = id;

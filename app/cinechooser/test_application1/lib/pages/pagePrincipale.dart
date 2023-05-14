@@ -61,9 +61,9 @@ class _PagePrincipaleState extends State<PagePrincipale> {
               stackClipBehaviour: Clip.none,
               onSwipeCompleted: (index, direction) async {
                 if (direction == SwipeDirection.right) {
-                  swipeMovie(displayedMovies.elementAt(index).id, true, index);
+                  await swipeMovie(displayedMovies.elementAt(index).id, true, index);
                 } else if (direction == SwipeDirection.left) {
-                  swipeMovie(displayedMovies.elementAt(index).id, false, index);
+                  await swipeMovie(displayedMovies.elementAt(index).id, false, index);
                 }
               },
               builder: (context, properties) {
@@ -113,10 +113,9 @@ class _PagePrincipaleState extends State<PagePrincipale> {
             ),
             BottomButtonsRow(
               onSwipe: (direction) {
-                onRewind();
                 _controller.next(swipeDirection: direction);
               },
-              onRewindTap: _controller.rewind,
+              onRewindTap:_controller.rewind,
               canRewind: _controller.canRewind,
             ),
           ],

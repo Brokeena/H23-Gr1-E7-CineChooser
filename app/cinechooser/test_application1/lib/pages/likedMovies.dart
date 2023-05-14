@@ -15,7 +15,6 @@ class _LikedMoviesState extends State<LikedMovies> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    print(likedMovies.length);
 
     return Scaffold(
         backgroundColor: Styles.bgColor,
@@ -33,7 +32,7 @@ class _LikedMoviesState extends State<LikedMovies> {
                     color: Colors.black,
                     borderRadius: BorderRadius.circular(12),
                     image: DecorationImage(
-                      image: CachedNetworkImageProvider(movie.poster, maxWidth: (width/3).toInt(), maxHeight: (width/2).toInt()),
+                      image: CachedNetworkImageProvider(movie.poster, maxWidth: width~/3, maxHeight: width~/2),
                       fit: BoxFit.cover,
                     )
                   ),
