@@ -306,6 +306,7 @@ class _MultiSelectState extends State<MultiSelect> {
     return AlertDialog(
       title: const Text('Choose your streaming services',
           style: TextStyle(
+              fontFamily: 'Poppins',
               fontWeight: FontWeight.normal,
               fontSize: 20,
               color: Colors.black)),
