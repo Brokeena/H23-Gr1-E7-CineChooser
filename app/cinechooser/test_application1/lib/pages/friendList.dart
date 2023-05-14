@@ -104,47 +104,31 @@ class _FriendsListState extends State<FriendsList> {
                 Divider(height: height / 40),
                 SafeArea(
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        FutureBuilder(
-                            future: getFriendsPseudo(),
-                            builder: (context, snaphot) {
-                              if (snaphot.hasData) {
-                                return Wrap(
-                                    spacing: width / 20,
-                                    runSpacing: width / 20,
-                                    direction: Axis.vertical,
-                                    children:
-                                        List.generate(friendList.length, (index) {
-                                      return Row(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Friend(index: index),
-                                          SizedBox(width: width / 40),
-                                          ElevatedButton(
-                                            onPressed: () async {
-                                              setState(() {
-                                              });
-                                            },
-                                            style: ElevatedButton.styleFrom(
-                                                padding: const EdgeInsets.symmetric(),
-                                                fixedSize: Size(width / 19, width / 19),
-                                                elevation: 0,
-                                                backgroundColor: Colors.transparent,
-                                                shape: const StadiumBorder()),
-                                            child: Icon(Icons.group_remove,
-                                                color: Colors.transparent, size: width / 19),
-                                          ),
-
-                                        ],
-                                      );
-                                    }));
-                              } else {
-                                return const CircularProgressIndicator();
-                              }
-                            }),
-                      ],
-                    )),
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    FutureBuilder(
+                        future: getFriendsPseudo(),
+                        builder: (context, snaphot) {
+                          if (snaphot.hasData) {
+                            return Wrap(
+                                spacing: width / 20,
+                                runSpacing: width / 20,
+                                direction: Axis.vertical,
+                                children:
+                                    List.generate(friendList.length, (index) {
+                                  return Friend(
+                                    index: index,
+                                    refresh: () {
+                                      setState(() {});
+                                    },
+                                  );
+                                }));
+                          } else {
+                            return const CircularProgressIndicator();
+                          }
+                        }),
+                  ],
+                )),
               ],
             ),
           ),
@@ -152,9 +136,8 @@ class _FriendsListState extends State<FriendsList> {
   }
 }
 
-
-
 getFriendsPseudo() async {
+  pseudos = [];
   for (var friendId in friendList) {
     var data = await db.doc(friendId).get();
     var pseudo1 = await data['pseudo'];
