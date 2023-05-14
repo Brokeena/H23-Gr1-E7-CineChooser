@@ -28,6 +28,7 @@ class Cartes extends StatelessWidget {
                 Positioned.fill(
                   child: DecoratedBox(
                     decoration: BoxDecoration(
+                      color: Colors.black,
                       borderRadius: BorderRadius.circular(20),
                       image: DecorationImage(
                           image: NetworkImage(poster), fit: BoxFit.cover),

@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="reset choix">
+    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="images like et dislike et listes definitives et non temp.">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/dislikedMovies.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/dislikedMovies.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/likedMovies.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/likedMovies.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/profile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684004181459</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="images like et dislike et listes definitives et non temp.">
+      <created>1684017348705</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1684017348705</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,7 +299,8 @@
     <MESSAGE value="bug Louis" />
     <MESSAGE value="pseudo" />
     <MESSAGE value="reset choix" />
-    <option name="LAST_COMMIT_MESSAGE" value="reset choix" />
+    <MESSAGE value="images like et dislike et listes definitives et non temp." />
+    <option name="LAST_COMMIT_MESSAGE" value="images like et dislike et listes definitives et non temp." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
