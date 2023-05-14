@@ -97,9 +97,11 @@ String language_country(){
       for(int k = 0; k < genres.length; k++){
         for(int j = 0; j < results.elementAt(i)['genre_ids'].length; j++){
           if(genres.elementAt(k) == results.elementAt(i)['genre_ids'].elementAt(j)){
-            topRatedMoviesId.add(results.elementAt(i)['id']);
-            k = genres.length;
-            j = results.elementAt(i)['genre_ids'].length;
+            if(results.elementAt(i)['id'] != 19404){
+              topRatedMoviesId.add(results.elementAt(i)['id']);
+              k = genres.length;
+              j = results.elementAt(i)['genre_ids'].length;
+            }
           }
         }
       }
@@ -113,7 +115,6 @@ String language_country(){
 }
 
   Future<List<Movie>> getRecommendedMovies(int id) async{
-
   List<Movie> listMovies = [];
   var searchSimilar = await tmdb.v3.movies.getRecommended(id);
   List<dynamic> results = searchSimilar['results'];
@@ -122,7 +123,10 @@ String language_country(){
     similarMoviesId.add(results.elementAt(n)['id']);
   }
   for(int x = 0; x < similarMoviesId.length; x++){
-    listMovies.add(await Movie.create(similarMoviesId.elementAt(x)));
+    var movie = await Movie.create(similarMoviesId.elementAt(x));
+    if(movie.score >= 5 && movie.dateDeSortie != 0 && movie.id != 19404){
+      listMovies.add(movie);
+    }
   }
   return listMovies;
 }
