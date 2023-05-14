@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="reset choix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/dislikedMovies.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/dislikedMovies.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/friendList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/friendList.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/likedMovies.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/likedMovies.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/profile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/utils/carte_overlay.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/widget/friend.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/widget/friend.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

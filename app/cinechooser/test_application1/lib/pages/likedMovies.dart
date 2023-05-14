@@ -29,7 +29,7 @@ class _LikedMoviesState extends State<LikedMovies> {
                   width: width / 3,
                   height: width / 2,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.transparent,
                     borderRadius: BorderRadius.circular(12),
                     image: DecorationImage(
                       image: NetworkImage(movie.poster),
