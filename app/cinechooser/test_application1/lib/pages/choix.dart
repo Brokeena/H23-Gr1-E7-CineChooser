@@ -62,6 +62,7 @@ class _ChoixState extends State<Choix> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Styles.bgColor,
       appBar: AppBar(
@@ -78,35 +79,28 @@ class _ChoixState extends State<Choix> {
           icon: const Icon(Icons.arrow_back_ios_new_outlined,
               color: Colors.white),
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(14.0),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
-              ),
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Styles.red1,
-                ),
-                child:
-                    const Text('Next', style: Styles.bouton2),
-                onPressed: () async {
-                  if (listGenre.length >= 3) {
-                    firstTime = true;
-                    db.doc(docID).update({'genres': listGenre});
-                    db.doc(docID).update({'firstTime': true});
-                    initiateALl();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoadingPageRegister()),
-                    );
-                  }
-                },
-              ),
-            ),
-          ),
+        actions: [ ElevatedButton(
+          onPressed: () async {
+            if (listGenre.length >= 3) {
+              firstTime = true;
+              db.doc(docID).update({'genres': listGenre});
+              db.doc(docID).update({'firstTime': true});
+              initiateALl();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const LoadingPageRegister()),
+              );
+            }
+          },
+          style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(),
+              fixedSize: Size(width / 5.5, height / 50),
+              elevation: 0,
+              backgroundColor: Styles.red1,
+              shape: const StadiumBorder()),
+          child: const Text('Next', style: Styles.bouton3),
+        ),
         ],
       ),
       body: SafeArea(

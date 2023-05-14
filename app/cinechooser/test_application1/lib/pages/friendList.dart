@@ -123,18 +123,19 @@ class _FriendsListState extends State<FriendsList> {
                                           SizedBox(width: width / 40),
                                           ElevatedButton(
                                             onPressed: () async {
-                                              await unfriend(index);
-                                              setState(() {});
+                                              setState(() {
+                                              });
                                             },
                                             style: ElevatedButton.styleFrom(
                                                 padding: const EdgeInsets.symmetric(),
                                                 fixedSize: Size(width / 19, width / 19),
                                                 elevation: 0,
-                                                backgroundColor: Colors.white,
+                                                backgroundColor: Colors.transparent,
                                                 shape: const StadiumBorder()),
                                             child: Icon(Icons.group_remove,
-                                                color: Styles.red1, size: width / 19),
+                                                color: Colors.transparent, size: width / 19),
                                           ),
+
                                         ],
                                       );
                                     }));
@@ -151,15 +152,7 @@ class _FriendsListState extends State<FriendsList> {
   }
 }
 
-unfriend(index) async {
-  var data = await db.doc(friendList[index]).get();
-  var friendListAmi = data['friendList'];
-  friendListAmi.remove(docID);
-  await db.doc(friendList[index]).update({'friendList': friendListAmi});
 
-  friendList.remove(friendList[index]);
-  db.doc(docID).update({'friendList': friendList});
-}
 
 getFriendsPseudo() async {
   for (var friendId in friendList) {

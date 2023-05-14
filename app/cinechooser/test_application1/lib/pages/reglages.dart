@@ -158,7 +158,7 @@ class _ReglagesState extends State<Reglages> {
                           elevation: 0,
                           backgroundColor: Colors.white,
                           shape: const StadiumBorder()),
-                      child: const Text('FriendsList', style: Styles.bouton3),
+                      child: const Text('Friends', style: Styles.bouton3),
                     ),
                     SizedBox(width: width * 0.46),
                     ElevatedButton(
