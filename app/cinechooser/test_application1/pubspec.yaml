@@ -41,6 +41,14 @@ dependencies:
   flutter_swipable:
   swipable_stack: any
   auto_size_text: ^3.0.0
+  flutter_native_splash: ^2.2.19
+
+flutter_native_splash:
+  color: "#09080c"
+  image: assets/logoCCrouge.png
+  android12:
+    color: "#09080c"
+    image: assets/logoCCrouge.png
 
 
 
