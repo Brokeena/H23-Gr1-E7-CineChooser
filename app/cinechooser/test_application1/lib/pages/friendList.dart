@@ -25,6 +25,16 @@ class _FriendsListState extends State<FriendsList> {
       return pseudos;
     }
 
+    _unfriend(index) async {
+      var data = await db.doc(friendList[index]).get();
+      var friendListAmi = data['friendList'];
+
+      friendListAmi.remove(docID);
+      friendList.remove(friendList[index]);
+      db.doc(docID).update({'friendList': friendList});
+      db.doc(friendList[index]).update({'friendList': friendListAmi});
+    }
+
     double width = MediaQuery.of(context).size.width;
     print('friendsList :$friendList');
     return Scaffold(
@@ -57,7 +67,25 @@ class _FriendsListState extends State<FriendsList> {
                         children: List.generate(friendList.length, (index) {
                           return Padding(
                             padding: EdgeInsets.only(left: 10),
-                            child: Friend(index: index),
+                            child: Row(
+                              children: [
+                                Friend(index: index),
+                                GestureDetector(
+                                  onTap: () {
+                                    _unfriend(index);
+                                    setState(() {
+
+                                    });
+                                  },
+                                  child: Container(
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(1)),
+                                      child: Icon(Icons.group_remove,
+                                          color: Styles.red1, size: width / 19)),
+                                )
+                              ],
+                            ),
                           );
                         }));
                   } else {
