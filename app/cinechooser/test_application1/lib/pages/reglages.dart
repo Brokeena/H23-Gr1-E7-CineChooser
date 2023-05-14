@@ -67,11 +67,11 @@ class _ReglagesState extends State<Reglages> {
               children: [
                 Divider(height: height / 40),
                 Container(
-                  height: height * 0.06,
-                  width: width * 0.9,
+                  height: height / 20,
+                  width: width * 0.86,
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(12)),
+                      borderRadius: BorderRadius.circular(100)),
                   child: DropdownButtonHideUnderline(
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
@@ -79,11 +79,7 @@ class _ReglagesState extends State<Reglages> {
                           borderRadius: BorderRadius.circular(7),
                           hint: Text(
                             paysSelectionne,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.normal,
-                              fontSize: 16,
-                              color: Colors.black87,
-                            ),
+                            style: Styles.bouton3,
                           ),
                           value: dropdownvalues,
                           dropdownColor: Colors.white,
@@ -95,12 +91,7 @@ class _ReglagesState extends State<Reglages> {
                           items: listPaysNom
                               .map((dynamic value) => DropdownMenuItem(
                                     value: value,
-                                    child: Text(value,
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.normal,
-                                          fontSize: 16,
-                                          color: Colors.black87,
-                                        )),
+                                    child: Text(value, style: Styles.bouton3),
                                   ))
                               .toList(),
                           onChanged: (newItem) async {
@@ -114,68 +105,82 @@ class _ReglagesState extends State<Reglages> {
                     ),
                   ),
                 ),
-                Divider(height: height / 20),
+                Divider(height: height / 30),
                 const Text('Streaming services :', style: Styles.petittitres),
-                Divider(height: height / 40),
+                Divider(height: height / 45),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Your services : ', style: Styles.informations),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.only(left: width / 25),
+                      child: const Text('Your services : ',
+                          style: Styles.informations),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(width / 25),
                       child: Wrap(
                           spacing: 5,
                           runSpacing: 5,
                           direction: Axis.horizontal,
                           children: selectedItems
-                              .map((e) => Chip(label: Text(e)))
+                              .map((e) => Chip(
+                                  label: Text(e, style: Styles.informations2)))
                               .toList()),
                     )
                   ],
                 ),
-                Divider(height: height / 40),
+                Divider(height: height / 45),
                 ElevatedButton(
-                    style: ButtonStyle(
-                      alignment: Alignment.center,
-                      shape: MaterialStateProperty.resolveWith(
-                        (states) => RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(7),
-                        ),
-                      ),
-                      backgroundColor: MaterialStateProperty.resolveWith(
-                        (states) => Colors.white,
-                      ),
-                    ),
-                    onPressed: _showMultiSelect,
-                    child: const Text('Choose your streaming services',
-                        style: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            fontSize: 15,
-                            color: Colors.black87))),
-                Divider(height: height / 25),
-                MaterialButton(
-                  onPressed: () {
-                    FirebaseAuth.instance.signOut();
-                    signOut();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const AuthPage()),
-                    );
-                  },
-                  color: Colors.red,
-                  child: const Text('Sign out'),
+                  onPressed: _showMultiSelect,
+                  style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(),
+                      fixedSize: Size(width * 0.86, height / 20),
+                      elevation: 0,
+                      backgroundColor: Colors.white,
+                      shape: const StadiumBorder()),
+                  child: const Text('Choose your streaming services',
+                      style: Styles.bouton3),
                 ),
-                MaterialButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const FriendsList()),
-                    );
-                  },
-                  color: Colors.red,
-                  child: const Text('FriendsList'),
-                )
+                Divider(height: height / 25),
+                Row(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const FriendsList()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(),
+                          fixedSize: Size(width / 5, height / 20),
+                          elevation: 0,
+                          backgroundColor: Colors.white,
+                          shape: const StadiumBorder()),
+                      child: const Text('FriendsList', style: Styles.bouton3),
+                    ),
+                    SizedBox(width: width * 0.46),
+                    ElevatedButton(
+                      onPressed: () {
+                        FirebaseAuth.instance.signOut();
+                        signOut();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AuthPage()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(),
+                          fixedSize: Size(width / 5, height / 20),
+                          elevation: 0,
+                          backgroundColor: Styles.red1,
+                          shape: const StadiumBorder()),
+                      child: const Text('Sign out', style: Styles.bouton4),
+                    )
+                  ],
+                ),
               ],
             ),
           ),

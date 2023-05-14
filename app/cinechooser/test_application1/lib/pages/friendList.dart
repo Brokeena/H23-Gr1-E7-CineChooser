@@ -6,7 +6,6 @@ import '../utils/app_styles.dart';
 import '../widget/friend.dart';
 import '../widget/textField.dart';
 import 'login_page.dart';
-import 'package:cinechooser/pages/reglages.dart';
 
 List<String> pseudos = [];
 final _addFriends = TextEditingController();
@@ -42,84 +41,112 @@ class _FriendsListState extends State<FriendsList> {
                 color: Colors.white),
           ),
         ),
-        body: Column(
-          children: [
-            Row(
+        body: SafeArea(
+          top: true,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: width / 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AutoSizeText(
-                    maxLines: 1,
-                    'Your friendcode :   $friendCode',
-                    style: Styles.petittitres),
-                SizedBox(width: width / 10),
-                GestureDetector(
-                  onTap: () {
-                    _copy();
-                  },
-                  child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(1)),
-                      child: Icon(Icons.copy,
-                          color: Styles.red1, size: width / 19)),
-                )
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: width / 20),
+                  child: Row(
+                    children: [
+                      AutoSizeText(
+                          maxLines: 1,
+                          'Your friendcode :   $friendCode',
+                          style: Styles.petittitres),
+                      SizedBox(width: width / 40),
+                      ElevatedButton(
+                          onPressed: _copy(),
+                          style: ElevatedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(),
+                              fixedSize: Size(width / 19, width / 19),
+                              elevation: 0,
+                              backgroundColor: Colors.white,
+                              shape: const StadiumBorder()),
+                          child: Icon(Icons.copy,
+                              color: Styles.red1, size: width / 19))
+                    ],
+                  ),
+                ),
+                Divider(height: height / 30),
+                MyTextField(
+                    controller: _addFriends,
+                    hintText: "Add friends with their code",
+                    obscureText: false),
+                Divider(height: height / 50),
+                Padding(
+                  padding: EdgeInsets.only(left: width / 20),
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      await _addFriend();
+                      setState(() {});
+                    },
+                    style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(),
+                        fixedSize: Size(width / 19, width / 19),
+                        elevation: 0,
+                        backgroundColor: Colors.white,
+                        shape: const StadiumBorder()),
+                    child: Icon(Icons.group_add,
+                        color: Styles.red1, size: width / 19),
+                  ),
+                ),
+                Divider(height: height / 30),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: width / 20),
+                  child: const AutoSizeText(
+                      maxLines: 1,
+                      'Your friends : ',
+                      style: Styles.petittitres),
+                ),
+                Divider(height: height / 40),
+                SafeArea(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        FutureBuilder(
+                            future: getFriendsPseudo(),
+                            builder: (context, snaphot) {
+                              if (snaphot.hasData) {
+                                return Wrap(
+                                    spacing: width / 20,
+                                    runSpacing: width / 20,
+                                    direction: Axis.vertical,
+                                    children:
+                                        List.generate(friendList.length, (index) {
+                                      return Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Friend(index: index),
+                                          SizedBox(width: width / 40),
+                                          ElevatedButton(
+                                            onPressed: () async {
+                                              await unfriend(index);
+                                              setState(() {});
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                                padding: const EdgeInsets.symmetric(),
+                                                fixedSize: Size(width / 19, width / 19),
+                                                elevation: 0,
+                                                backgroundColor: Colors.white,
+                                                shape: const StadiumBorder()),
+                                            child: Icon(Icons.group_remove,
+                                                color: Styles.red1, size: width / 19),
+                                          ),
+                                        ],
+                                      );
+                                    }));
+                              } else {
+                                return const CircularProgressIndicator();
+                              }
+                            }),
+                      ],
+                    )),
               ],
             ),
-            Divider(height: height / 25),
-            MyTextField(
-                controller: _addFriends,
-                hintText: "Add friends with their code",
-                obscureText: false),
-            Divider(height: height / 50),
-            GestureDetector(
-              onTap: () async {
-                await _addFriend();
-                setState(() {});
-              },
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(1)),
-                  child: Icon(Icons.group_add,
-                      color: Styles.red1, size: width / 19)),
-            ),
-            SafeArea(
-                child: FutureBuilder(
-                    future: getFriendsPseudo(),
-                    builder: (context, snaphot) {
-                      if (snaphot.hasData) {
-                        return Wrap(
-                            spacing: width / 16,
-                            runSpacing: width / 16,
-                            direction: Axis.vertical,
-                            children: List.generate(friendList.length, (index) {
-                              return Padding(
-                                padding: EdgeInsets.only(left: 10),
-                                child: Row(
-                                  children: [
-                                    Friend(index: index),
-                                    GestureDetector(
-                                      onTap: () async {
-                                        await unfriend(index);
-                                        setState(() {});
-                                      },
-                                      child: Container(
-                                          decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(1)),
-                                          child: Icon(Icons.group_remove,
-                                              color: Styles.red1,
-                                              size: width / 19)),
-                                    )
-                                  ],
-                                ),
-                              );
-                            }));
-                      } else {
-                        return const CircularProgressIndicator();
-                      }
-                    })),
-          ],
+          ),
         ));
   }
 }

@@ -15,8 +15,11 @@ class Styles
   static const TextStyle preTitre = TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.normal, fontSize: 20, color: Colors.white);
   static const TextStyle titre = TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold, fontSize: 36, color: Styles.red2);
   static const TextStyle informations = TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.normal, fontSize: 15, color: Colors.white38);
+  static const TextStyle informations2 = TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.normal, fontSize: 10, color: Colors.black);
   static const TextStyle bouton = TextStyle(fontFamily: 'Poppins', fontWeight:  FontWeight.w800, fontSize: 20, color: Styles.red1);
   static const TextStyle bouton2 = TextStyle(fontFamily: 'Poppins', fontWeight:  FontWeight.w800, fontSize: 20, color: Styles.white1);
+  static const TextStyle bouton3 = TextStyle(fontFamily: 'Poppins', fontWeight:  FontWeight.w800, fontSize: 15, color: Colors.black);
+  static const TextStyle bouton4 = TextStyle(fontFamily: 'Poppins', fontWeight:  FontWeight.w800, fontSize: 15, color: Colors.white);
   static TextStyle nom = const TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w600, fontSize: 20, color: white1);
   static TextStyle genres = const TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w600, fontSize: 15, color: red1);
 

@@ -13,11 +13,11 @@ class Friend extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Padding(
-        padding: EdgeInsets.only(left: width / 4),
+        padding: EdgeInsets.only(left: width / 20),
         child: AutoSizeText(
           maxLines: 1,
           pseudos[index],
-          style: Styles.titre,
+          style: Styles.preTitre,
         ));
   }
 }
