@@ -1,10 +1,15 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cinechooser/pages/reglages.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../utils/app_styles.dart';
 import '../widget/friend.dart';
+import '../widget/textField.dart';
 import 'login_page.dart';
+import 'package:cinechooser/pages/reglages.dart';
 
 List<String> pseudos = [];
+final _addFriends = TextEditingController();
 
 class FriendsList extends StatefulWidget {
   const FriendsList({Key? key}) : super(key: key);
@@ -16,27 +21,9 @@ class FriendsList extends StatefulWidget {
 class _FriendsListState extends State<FriendsList> {
   @override
   Scaffold build(BuildContext context) {
-    getFriendsPseudo() async {
-      for (var friendId in friendList) {
-        var data = await db.doc(friendId).get();
-        var pseudo1 = await data['pseudo'];
-        pseudos.add(pseudo1);
-      }
-      return pseudos;
-    }
-
-    _unfriend(index) async {
-      var data = await db.doc(friendList[index]).get();
-      var friendListAmi = data['friendList'];
-
-      friendListAmi.remove(docID);
-      friendList.remove(friendList[index]);
-      db.doc(docID).update({'friendList': friendList});
-      db.doc(friendList[index]).update({'friendList': friendListAmi});
-    }
-
     double width = MediaQuery.of(context).size.width;
-    print('friendsList :$friendList');
+    double height = MediaQuery.of(context).size.height;
+
     return Scaffold(
         backgroundColor: Styles.bgColor,
         appBar: AppBar(
@@ -55,42 +42,145 @@ class _FriendsListState extends State<FriendsList> {
                 color: Colors.white),
           ),
         ),
-        body: SafeArea(
-            child: FutureBuilder(
-                future: getFriendsPseudo(),
-                builder: (context, snaphot) {
-                  if (snaphot.hasData) {
-                    return Wrap(
-                        spacing: width / 16,
-                        runSpacing: width / 16,
-                        direction: Axis.vertical,
-                        children: List.generate(friendList.length, (index) {
-                          return Padding(
-                            padding: EdgeInsets.only(left: 10),
-                            child: Row(
-                              children: [
-                                Friend(index: index),
-                                GestureDetector(
-                                  onTap: () {
-                                    _unfriend(index);
-                                    setState(() {});
-                                  },
-                                  child: Container(
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(1)),
-                                      child: Icon(Icons.group_remove,
-                                          color: Styles.red1,
-                                          size: width / 19)),
-                                )
-                              ],
-                            ),
-                          );
-                        }));
-                  } else {
-                    return const CircularProgressIndicator();
-                  }
-                })));
+        body: Column(
+          children: [
+            Row(
+              children: [
+                AutoSizeText(
+                    maxLines: 1,
+                    'Your friendcode :   $friendCode',
+                    style: Styles.petittitres),
+                SizedBox(width: width / 10),
+                GestureDetector(
+                  onTap: () {
+                    _copy();
+                  },
+                  child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(1)),
+                      child: Icon(Icons.copy,
+                          color: Styles.red1, size: width / 19)),
+                )
+              ],
+            ),
+            Divider(height: height / 25),
+            MyTextField(
+                controller: _addFriends,
+                hintText: "Add friends with their code",
+                obscureText: false),
+            Divider(height: height / 50),
+            GestureDetector(
+              onTap: () async {
+                await _addFriend();
+                setState(() {});
+              },
+              child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(1)),
+                  child: Icon(Icons.group_add,
+                      color: Styles.red1, size: width / 19)),
+            ),
+            SafeArea(
+                child: FutureBuilder(
+                    future: getFriendsPseudo(),
+                    builder: (context, snaphot) {
+                      if (snaphot.hasData) {
+                        return Wrap(
+                            spacing: width / 16,
+                            runSpacing: width / 16,
+                            direction: Axis.vertical,
+                            children: List.generate(friendList.length, (index) {
+                              return Padding(
+                                padding: EdgeInsets.only(left: 10),
+                                child: Row(
+                                  children: [
+                                    Friend(index: index),
+                                    GestureDetector(
+                                      onTap: () async {
+                                        await unfriend(index);
+                                        setState(() {});
+                                      },
+                                      child: Container(
+                                          decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(1)),
+                                          child: Icon(Icons.group_remove,
+                                              color: Styles.red1,
+                                              size: width / 19)),
+                                    )
+                                  ],
+                                ),
+                              );
+                            }));
+                      } else {
+                        return const CircularProgressIndicator();
+                      }
+                    })),
+          ],
+        ));
   }
+}
+
+unfriend(index) async {
+  var data = await db.doc(friendList[index]).get();
+  var friendListAmi = data['friendList'];
+  friendListAmi.remove(docID);
+  await db.doc(friendList[index]).update({'friendList': friendListAmi});
+
+  friendList.remove(friendList[index]);
+  db.doc(docID).update({'friendList': friendList});
+}
+
+getFriendsPseudo() async {
+  for (var friendId in friendList) {
+    var data = await db.doc(friendId).get();
+    var pseudo1 = await data['pseudo'];
+    pseudos.add(pseudo1);
+  }
+  return pseudos;
+}
+
+userExiste() async {
+  List<String> docIDs = await getDocId();
+
+  for (var documentId in docIDs) {
+    var collectionReference = await db.doc(documentId).get();
+    var data = collectionReference.data() as Map<String, dynamic>;
+    if (data['docID'] == _addFriends.text.trim().toString()) {
+      for (var friend in friendList) {
+        if (friend == _addFriends.text.trim()) {
+          print('already friends');
+          return false;
+        }
+      }
+      print('existe');
+      return true;
+    }
+  }
+  print('friend code doesnt exist');
+  return false;
+}
+
+_addFriend() async {
+  var data = await db.doc(_addFriends.text.trim().toString()).get();
+  var friendListAmi = data['friendList'];
+  if ((_addFriends.text.trim().toString() != docID) && await userExiste()) {
+    friendListAmi.add(docID);
+    friendList.add(_addFriends.text.trim());
+    db.doc(docID).update({'friendList': friendList});
+    db
+        .doc(_addFriends.text.trim().toString())
+        .update({'friendList': friendListAmi});
+    return true;
+  } else {
+    return false;
+  }
+}
+
+_copy() {
+  var value = ClipboardData(text: friendCode);
+  Clipboard.setData(value);
 }

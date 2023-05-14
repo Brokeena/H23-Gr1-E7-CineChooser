@@ -153,44 +153,6 @@ class _ReglagesState extends State<Reglages> {
                             fontSize: 15,
                             color: Colors.black87))),
                 Divider(height: height / 25),
-                Row(
-                  children: [
-                    AutoSizeText(
-                        maxLines: 1,
-                        'Your friendcode :   $friendCode',
-                        style: Styles.petittitres),
-                    SizedBox(width: width / 10),
-                    GestureDetector(
-                      onTap: () {
-                        _copy();
-                      },
-                      child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(1)),
-                          child: Icon(Icons.copy,
-                              color: Styles.red1, size: width / 19)),
-                    )
-                  ],
-                ),
-                Divider(height: height / 25),
-                MyTextField(
-                    controller: _addFriends,
-                    hintText: "Add friends with their code",
-                    obscureText: false),
-                Divider(height: height / 50),
-                GestureDetector(
-                  onTap: () {
-                    _addFriend();
-                  },
-                  child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(1)),
-                      child: Icon(Icons.group_add,
-                          color: Styles.red1, size: width / 19)),
-                ),
-                Divider(height: height / 30),
                 MaterialButton(
                   onPressed: () {
                     FirebaseAuth.instance.signOut();
@@ -251,58 +213,6 @@ class _ReglagesState extends State<Reglages> {
       db.doc(docID).update({'providers': results!});
     }
   }
-}
-
-userExiste() async {
-  List<String> docIDs = await getDocId();
-
-  for (var documentId in docIDs) {
-    var collectionReference = await db.doc(documentId).get();
-    var data = collectionReference.data() as Map<String, dynamic>;
-    if (data['docID'] == _addFriends.text.trim().toString()) {
-      for (var friend in friendList) {
-        if (friend == _addFriends.text.trim()) {
-          print('already friends');
-          return false;
-        }
-      }
-      print('existe');
-      return true;
-    }
-  }
-  print('friend code doesnt exist');
-  return false;
-}
-
-_addFriend() async {
-  var data = await db.doc(_addFriends.text.trim().toString()).get();
-  var friendListAmi = data['friendList'];
-  if ((_addFriends.text.trim().toString() != docID) && await userExiste()) {
-    friendListAmi.add(docID);
-    friendList.add(_addFriends.text.trim());
-    db.doc(docID).update({'friendList': friendList});
-    db
-        .doc(_addFriends.text.trim().toString())
-        .update({'friendList': friendListAmi});
-    return true;
-  } else {
-    return false;
-    print('invalide friendCode');
-    /*
-    showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return const AlertDialog(
-            content: Text('Friend code is wrong'),
-          );
-        });
-    */
-  }
-}
-
-_copy() {
-  var value = ClipboardData(text: friendCode);
-  Clipboard.setData(value);
 }
 
 signOut() async {
