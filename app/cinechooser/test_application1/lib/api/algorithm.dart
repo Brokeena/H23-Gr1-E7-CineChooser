@@ -14,6 +14,7 @@ import 'package:cinechooser/main.dart';
 
 int lastSwipe = 0;
 bool _justSwiped = false;
+int _almostFinish = 1;
 
 /// What happen when you open the app
 Future<void> openApp() async {
@@ -48,7 +49,6 @@ Future<void> swipeMovie(int id, bool liked, int index) async {
     for(var movie in likedMovies){
       list.add(movie.id);
     }
-    print(list);
     addRecommendedMovies(id, 3);
   } else if (!liked) {
     dislikedMoviesId.add(id);
@@ -61,6 +61,14 @@ Future<void> swipeMovie(int id, bool liked, int index) async {
     displayedMoviesId.remove(lastSwipe);
   }
 
+
+  if(displayedMovies.length <= 6){
+    var listTopMovie = await getTopRatedMovies(_almostFinish);
+    for(var movie in listTopMovie){
+      displayedMovies.add(movie);
+    }
+    _almostFinish++;
+  }
 
   friendsMovies();
   updateDisplayedMoviesId();
@@ -165,6 +173,7 @@ updateDisplayedMoviesId() async {
 
 friendsMovies() async {
   if (friendList.isNotEmpty) {
+    var listId = [];
     for (var friendCode in friendList) {
       var data = await db.doc(friendCode.toString()).get();
       var friendListAmi = data['likedMovies'];
@@ -173,9 +182,14 @@ friendsMovies() async {
         if (!(displayedMoviesId.contains(friendID)) ||
             !(likedMoviesId.contains(friendID)) ||
             !(dislikedMoviesId.contains(friendID))) {
-          displayedMoviesId.add(friendID);
+          listId.add(friendID);
         }
       }
+    }
+
+    for(int i = 0; i < listId.length; i++){
+      displayedMoviesId.add(listId.elementAt(i));
+      displayedMovies.add(await Movie.create(listId.elementAt(i)));
     }
   }
 }

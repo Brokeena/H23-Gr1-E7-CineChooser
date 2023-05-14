@@ -1,5 +1,6 @@
 
 
+import 'package:cinechooser/pages/login_page.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 import 'movie.dart';
 
@@ -48,6 +49,7 @@ Future<List<String>> getTrendingMoviesImages() async {
   return trendingMoviesImages;
 }
 
+
 Future<List<Movie>> getTrendingMovies() async {
   List<Movie> trendingMovies = [];
   var searchTrending = await tmdb.v3.trending
@@ -91,6 +93,24 @@ Future<List<Movie>> getTrendingMoviesByGenres(List<Genre> genres) async {
   return trendingMovies;
 }
 
+
+Future<List<Movie>> getTopRatedMovies(int r) async{
+  List<Movie> listMovies = [];
+  List<int> topRatedMoviesId = [];
+  var searchTopRated = await tmdb.v3.movies.getTopRated(language: language + country, page: r);
+  List<dynamic> results = searchTopRated['results'];
+  for(int i = 0; i < results.length; i++){
+    if(results.elementAt(i) != 19404 && !(displayedMoviesId.contains(results.elementAt(i))) && !(likedMoviesId.contains(results.elementAt(i))) && !(dislikedMoviesId.contains(results.elementAt(i)))){
+      topRatedMoviesId.add(results.elementAt(i));
+    }
+  }
+  for (int x = 0; x < topRatedMoviesId.length; x++) {
+    listMovies.add(await Movie.create(topRatedMoviesId.elementAt(x)));
+  }
+
+  return listMovies;
+}
+
 Future<List<Movie>> getTopRatedMoviesByGenres(
     List<dynamic> genres, int range) async {
   List<Movie> listMovies = [];
@@ -119,6 +139,7 @@ Future<List<Movie>> getTopRatedMoviesByGenres(
   }
   return listMovies;
 }
+
 
   Future<List<Movie>> getRecommendedMovies(int id) async{
   List<Movie> listMovies = [];
