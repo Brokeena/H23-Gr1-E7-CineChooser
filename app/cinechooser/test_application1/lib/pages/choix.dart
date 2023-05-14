@@ -36,7 +36,6 @@ List<String> imageGenre = [
   'android/assets/images/genre18.png',
 ];
 
-
 class Choix extends StatefulWidget {
   const Choix({Key? key}) : super(key: key);
 
@@ -54,7 +53,6 @@ Future getDocId() async {
           }));
   return docIDs;
 }
-
 
 Future deleteUser() async {
 //delete the just created user
@@ -91,8 +89,8 @@ class _ChoixState extends State<Choix> {
                 style: TextButton.styleFrom(
                   backgroundColor: Styles.red1,
                 ),
-                child: const Text('Next',
-                    style: TextStyle(color: Colors.white)),
+                child:
+                    const Text('Next', style: TextStyle(color: Colors.white)),
                 onPressed: () async {
                   if (listGenre.length >= 3) {
                     firstTime = true;
@@ -102,7 +100,7 @@ class _ChoixState extends State<Choix> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>  const LoadingPageRegister()),
+                          builder: (context) => const LoadingPageRegister()),
                     );
                   }
                 },

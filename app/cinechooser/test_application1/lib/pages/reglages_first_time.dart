@@ -8,7 +8,6 @@ import 'package:cinechooser/api/api.dart';
 import 'package:cinechooser/utils/pays_nom.dart';
 import 'package:cinechooser/utils/pays_iso.dart';
 
-
 class ReglagesFirstTime extends StatefulWidget {
   const ReglagesFirstTime({Key? key}) : super(key: key);
 
@@ -96,15 +95,12 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                                 ))
                             .toList(),
                         onChanged: (newItem) async {
-                          setState(()  {
-
+                          setState(() {
                             paysSelectionne = newItem.toString();
 
                             dropdownvalues = newItem!;
-
                           });
                           db.doc(await docID).update({'pays': paysSelectionne});
-
                         }),
                   ),
                 ),
@@ -152,13 +148,12 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                   child: GestureDetector(
                 onTap: () {
                   print(results);
-                  if(results == [])
-                    {
-                      print('vide');
-                  }else{
+                  if (results == []) {
+                    print('vide');
+                  } else {
                     print(results);
                   }
-                  if(paysSelectionne != 'Country' && results != []){
+                  if (paysSelectionne != 'Country' && results != []) {
                     if (isButtonPressed == false) {
                       isButtonPressed = true;
                       Navigator.push(
@@ -223,14 +218,12 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
       'Apple TV Plus'
     ];
 
-
-      results = await showDialog(
+    results = await showDialog(
       context: context,
       builder: (BuildContext context) {
         return MultiSelect(items: items);
       },
     );
-
 
     if (results != null) {
       setState(() {

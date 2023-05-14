@@ -24,7 +24,6 @@ class Cartes extends StatelessWidget {
           return ClipRRect(
             child: Stack(
               children: [
-
                 Positioned.fill(
                   child: DecoratedBox(
                     decoration: BoxDecoration(
@@ -72,7 +71,7 @@ class Cartes extends StatelessWidget {
               ],
             ),
           );
-        }else {
+        } else {
           return const CircularProgressIndicator();
         }
       },

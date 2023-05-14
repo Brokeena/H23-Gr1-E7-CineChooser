@@ -24,25 +24,21 @@ Future<void> openApp() async {
   }
 }
 
-Future<bool> loadingDisplayedMovie() async{
-  if(displayedMovies.isEmpty){
+Future<bool> loadingDisplayedMovie() async {
+  if (displayedMovies.isEmpty) {
     return false;
   } else {
     return true;
   }
 }
 
-
-
-
 /// Modification de page principale
 Future<void> swipeMovie(int id, bool liked, int index) async {
   _justSwiped = true;
-  if(firstTime){
+  if (firstTime) {
     firstTime = false;
     db.doc(docID).update({'firstTime': firstTime});
   }
-
 
   if (liked) {
     likedMoviesId.add(id);
@@ -59,7 +55,6 @@ Future<void> swipeMovie(int id, bool liked, int index) async {
     displayedMoviesId.remove(lastSwipe);
   }
 
-
   addRecommendedMovies(id, 3);
   friendsMovies();
   updateDisplayedMoviesId();
@@ -68,13 +63,13 @@ Future<void> swipeMovie(int id, bool liked, int index) async {
 void onRewind() {
   dislikedMoviesId.remove(lastSwipe);
   likedMoviesId.remove(lastSwipe);
-  for(var movie in likedMovies){
-    if(lastSwipe == movie.id){
+  for (var movie in likedMovies) {
+    if (lastSwipe == movie.id) {
       likedMovies.remove(movie);
     }
   }
-  for(var movie in dislikedMovies){
-    if(lastSwipe == movie.id){
+  for (var movie in dislikedMovies) {
+    if (lastSwipe == movie.id) {
       dislikedMovies.remove(movie);
     }
   }
@@ -90,10 +85,11 @@ addRecommendedMovies(int id, int numberOfRecommendation) async {
   }
 
   for (int x = 0; x < r; x++) {
-
     bool alreadyHere = false;
     for (int d = 0; d < displayedMovies.length; d++) {
-      if (displayedMovies.elementAt(d).id == similarMovies.elementAt(x).id || likedMoviesId.contains(similarMovies.elementAt(x).id) || dislikedMoviesId.contains(similarMovies.elementAt(x).id) ) {
+      if (displayedMovies.elementAt(d).id == similarMovies.elementAt(x).id ||
+          likedMoviesId.contains(similarMovies.elementAt(x).id) ||
+          dislikedMoviesId.contains(similarMovies.elementAt(x).id)) {
         alreadyHere = true;
       }
     }
@@ -105,46 +101,45 @@ addRecommendedMovies(int id, int numberOfRecommendation) async {
         r += 1;
       }
     }
-
   }
 }
-
 
 void trimDisplayedMovie() {
   List<Movie> newMovieList = [];
 
   var lastLikedMovieId = 0;
-  if(likedMoviesId.isNotEmpty){
-    lastLikedMovieId = likedMoviesId.elementAt(likedMoviesId.length-1);
+  if (likedMoviesId.isNotEmpty) {
+    lastLikedMovieId = likedMoviesId.elementAt(likedMoviesId.length - 1);
   }
   var lastDislikedMovieId = 0;
-  if(dislikedMoviesId.isNotEmpty){
-    lastDislikedMovieId = dislikedMoviesId.elementAt(dislikedMoviesId.length-1);
+  if (dislikedMoviesId.isNotEmpty) {
+    lastDislikedMovieId =
+        dislikedMoviesId.elementAt(dislikedMoviesId.length - 1);
   }
 
   int lastLikedMovieIndex = 0;
   int lastDislikedMovieIndex = 0;
 
-  for(int x = 0; x < displayedMovies.length; x++){
-    if(lastLikedMovieId == displayedMovies.elementAt(x).id){
+  for (int x = 0; x < displayedMovies.length; x++) {
+    if (lastLikedMovieId == displayedMovies.elementAt(x).id) {
       lastLikedMovieIndex = x;
     }
   }
-  for(int y = 0; y < displayedMovies.length; y++){
-    if(lastDislikedMovieId == displayedMovies.elementAt(y).id){
+  for (int y = 0; y < displayedMovies.length; y++) {
+    if (lastDislikedMovieId == displayedMovies.elementAt(y).id) {
       lastDislikedMovieIndex = y;
     }
   }
 
   int lastIndex = lastDislikedMovieIndex;
-  if(lastLikedMovieIndex > lastDislikedMovieIndex){
-    lastIndex =lastLikedMovieIndex;
+  if (lastLikedMovieIndex > lastDislikedMovieIndex) {
+    lastIndex = lastLikedMovieIndex;
   }
-  if(_justSwiped){
-    lastIndex+=1;
+  if (_justSwiped) {
+    lastIndex += 1;
   }
 
-  for(int i = lastIndex; i < displayedMovies.length; i++){
+  for (int i = lastIndex; i < displayedMovies.length; i++) {
     newMovieList.add(displayedMovies.elementAt(i));
   }
   _justSwiped = false;
@@ -152,26 +147,28 @@ void trimDisplayedMovie() {
   displayedMovies = newMovieList;
 }
 
-
 /// Update Firebase
-updateDisplayedMoviesId() async{
+updateDisplayedMoviesId() async {
   displayedMoviesId = [];
-  for(var movie in displayedMovies){
-    if(!(dislikedMoviesId.contains(movie.id)) && !(likedMoviesId.contains(movie.id))) {
+  for (var movie in displayedMovies) {
+    if (!(dislikedMoviesId.contains(movie.id)) &&
+        !(likedMoviesId.contains(movie.id))) {
       displayedMoviesId.add(movie.id);
     }
   }
   db.doc(docID).update({'displayedMoviesId': displayedMoviesId});
 }
 
-friendsMovies() async{
-  if(friendList.isNotEmpty){
-    for(var friendCode in friendList){
+friendsMovies() async {
+  if (friendList.isNotEmpty) {
+    for (var friendCode in friendList) {
       var data = await db.doc(friendCode.toString()).get();
       var friendListAmi = data['likedMovies'];
-      for(var friendID in friendListAmi){
+      for (var friendID in friendListAmi) {
         bool alreadyHere = false;
-        if( !(displayedMoviesId.contains(friendID)) || !(likedMoviesId.contains(friendID)) || !(dislikedMoviesId.contains(friendID))){
+        if (!(displayedMoviesId.contains(friendID)) ||
+            !(likedMoviesId.contains(friendID)) ||
+            !(dislikedMoviesId.contains(friendID))) {
           displayedMoviesId.add(friendID);
         }
       }

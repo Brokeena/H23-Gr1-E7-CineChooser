@@ -33,8 +33,7 @@ class _DislikedMoviesState extends State<DislikedMovies> {
                       image: DecorationImage(
                         image: NetworkImage(movie.poster),
                         fit: BoxFit.cover,
-                      )
-                  ),
+                      )),
                 );
               }).toList(),
             ),

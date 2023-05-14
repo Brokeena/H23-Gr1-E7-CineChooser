@@ -11,7 +11,6 @@ import 'package:cinechooser/main.dart';
 
 import 'login_page.dart';
 
-
 class PagePrincipale extends StatefulWidget {
   const PagePrincipale({Key? key}) : super(key: key);
 
@@ -66,7 +65,6 @@ class _PagePrincipaleState extends State<PagePrincipale> {
                 } else if (direction == SwipeDirection.left) {
                   swipeMovie(displayedMovies.elementAt(index).id, false, index);
                 }
-
               },
               builder: (context, properties) {
                 final indexMovie = properties.index % (displayedMovies.length);

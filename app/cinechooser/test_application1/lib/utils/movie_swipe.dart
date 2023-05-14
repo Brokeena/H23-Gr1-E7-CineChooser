@@ -28,8 +28,7 @@ class MovieSwipe extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(
                     image: NetworkImage(poster), fit: BoxFit.cover),
-              )
-                  ))
+              )))
         ],
       ),
     );

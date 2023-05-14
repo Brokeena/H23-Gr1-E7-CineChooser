@@ -73,11 +73,11 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
-  Future addUserDetails(
-      String firstName, String lastName, String email, int age, String pseudo) async {
+  Future addUserDetails(String firstName, String lastName, String email,
+      int age, String pseudo) async {
     String docId = "";
     await FirebaseFirestore.instance.collection('users').add({
-      'pseudo' : pseudo,
+      'pseudo': pseudo,
       'first name': lastName,
       'last name': firstName,
       'pays': 'Country',
@@ -88,7 +88,7 @@ class _RegisterPageState extends State<RegisterPage> {
       'dislikedMovies': [],
       'likedMovies': [],
       'displayedMoviesId': [],
-      'friendList' : [],
+      'friendList': [],
       'firstTime': false
     }).then((DocumentReference doc) {
       docId = doc.id;
@@ -125,7 +125,6 @@ class _RegisterPageState extends State<RegisterPage> {
     } catch (e) {
       return false;
     }
-
   }
 
   @override

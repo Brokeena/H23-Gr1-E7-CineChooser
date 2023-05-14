@@ -73,16 +73,16 @@ class _FriendsListState extends State<FriendsList> {
                                 GestureDetector(
                                   onTap: () {
                                     _unfriend(index);
-                                    setState(() {
-
-                                    });
+                                    setState(() {});
                                   },
                                   child: Container(
                                       decoration: BoxDecoration(
                                           color: Colors.white,
-                                          borderRadius: BorderRadius.circular(1)),
+                                          borderRadius:
+                                              BorderRadius.circular(1)),
                                       child: Icon(Icons.group_remove,
-                                          color: Styles.red1, size: width / 19)),
+                                          color: Styles.red1,
+                                          size: width / 19)),
                                 )
                               ],
                             ),

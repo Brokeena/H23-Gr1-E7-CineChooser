@@ -51,11 +51,9 @@ Future showMovies(var movieId) async {
  */
 
 class _ProfileState extends State<Profile> {
-
   int _selectedIndex = 0;
 
-  void navigateBottomBar(int index)
-  {
+  void navigateBottomBar(int index) {
     setState(() {
       _selectedIndex = index;
     });
@@ -118,94 +116,6 @@ class _ProfileState extends State<Profile> {
         ),
       ),
       body: _pages[_selectedIndex],
-
-        /* body: SafeArea(
-          top: true,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Center(
-                  child: Column(
-                    children: [
-                      FutureBuilder(
-                        future: showMovies(showedList),
-                        builder: (context, snaphot) {
-                          if (snaphot.hasData) {
-                            return Wrap(
-                                spacing: width / 9,
-                                runSpacing: width / 9,
-                                direction: Axis.horizontal,
-                                children:
-                                    List.generate(showedList.length, (index) {
-                                  return GestureDetector(
-                                    onTap: () {
-                                      changeType(index);
-                                      setState(() {});
-                                    },
-                                    child: MovieSwipe(
-                                      id: showedList[index],
-                                      poster: showedPoster[index],
-                                      name: showedNames[index],
-                                    ),
-                                  );
-                                }));
-                          } else {
-                            return const CircularProgressIndicator();
-                          }
-                        },
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          )),*/
-
     );
   }
 }
-
-
-
-/*
-showLikedMovies() {
-  showedList = likedMovies;
-  showedPoster = likedPosters;
-  showedNames = likedNames;
-  type = true;
-}
-
-showDisLikedMovies() {
-  showedList = dislikedMovies;
-  showedPoster = dislikedPosters;
-  showedNames = dislikedNames;
-  type = false;
-}
-
-changeType(index) {
-  if (type) {
-    goDisliked(index);
-  } else {
-    goLiked(index);
-  }
-}
-
-goDisliked(int index) async {
-  dislikedMovies.add(likedMovies[index]);
-  likedMovies.remove(likedMovies[index]);
-  likedPosters.remove(index);
-  likedNames.remove(index);
-  db.doc(docID).update({'dislikedMovies': dislikedMovies});
-  db.doc(docID).update({'likedMovies': likedMovies});
-}
-
-goLiked(int index) async {
-  likedMovies.add(dislikedMovies[index]);
-  dislikedMovies.remove(dislikedMovies[index]);
-  dislikedMovies.remove(index);
-  dislikedMovies.remove(index);
-  db.doc(docID).update({'dislikedMovies': dislikedMovies});
-  db.doc(docID).update({'likedMovies': likedMovies});
-}
-*/
-

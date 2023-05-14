@@ -29,13 +29,12 @@ class _LikedMoviesState extends State<LikedMovies> {
                   width: width / 3,
                   height: width / 2,
                   decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.circular(12),
-                    image: DecorationImage(
-                      image: NetworkImage(movie.poster),
-                      fit: BoxFit.cover,
-                    )
-                  ),
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(12),
+                      image: DecorationImage(
+                        image: NetworkImage(movie.poster),
+                        fit: BoxFit.cover,
+                      )),
                 );
               }).toList(),
             ),

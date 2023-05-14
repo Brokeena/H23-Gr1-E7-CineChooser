@@ -1,26 +1,25 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
-
 bool pressed = false;
 Color color = Colors.transparent;
 //double border = 6;
 
-
 class MovieCase extends StatelessWidget {
   MovieCase({
     super.key,
-   // required this.genreId,
+    // required this.genreId,
     required this.nom,
     required this.image,
     required this.color,
-   // required this.selectionne,
+    // required this.selectionne,
   });
 
   //final int genreId;
   final String nom;
   final String image;
   final Color color;
+
   // bool selectionne;
 
   @override
@@ -63,7 +62,7 @@ class MovieCase extends StatelessWidget {
             ),
           ]),
         ),
-       /*Button(
+        /*Button(
             onPressed: () {
               if (selectionne) {
                 listGenre.add(genreId);
@@ -83,9 +82,6 @@ class MovieCase extends StatelessWidget {
             taille: width / 4,
             borderRadius: 20) */
       ]),
-
-
     );
   }
 }
-

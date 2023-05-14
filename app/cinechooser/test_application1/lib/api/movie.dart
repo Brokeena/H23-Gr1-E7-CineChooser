@@ -1,6 +1,6 @@
 import 'api.dart';
 
- class  Movie{
+class Movie {
   late String nom;
   late int dateDeSortie;
   late String poster;
@@ -14,10 +14,9 @@ import 'api.dart';
   List<Genre> genres = [];
   late bool inCinema = false;
 
-
-  static Future<List<Movie>> createList (List<int> idList) async{
+  static Future<List<Movie>> createList(List<int> idList) async {
     List<Movie> movies = [];
-    for(int i in idList){
+    for (int i in idList) {
       var movie = Movie._create(i);
       await movie._complexAsyncInit();
       movies.add(movie);
@@ -28,19 +27,18 @@ import 'api.dart';
 
   Movie._create(this.id);
 
-  static Future<Movie> create(int id) async{
+  static Future<Movie> create(int id) async {
     var movie = Movie._create(id);
     await movie._complexAsyncInit();
     return movie;
   }
 
-  _complexAsyncInit() async{
+  _complexAsyncInit() async {
     await setBasicsDetails(id);
     await setDirector(id);
     await setActors(id);
     await setWatchProviders(id);
   }
-
 
   /// Méthode pour créer correctement un film
   /// *********************************
@@ -48,10 +46,10 @@ import 'api.dart';
   /// *********************************
   /// *********************************
 
-  int formatDate(String date){
+  int formatDate(String date) {
     String dateF = "";
-    if(date.length >= 4){
-      for(int i = 0; i < 4; i++){
+    if (date.length >= 4) {
+      for (int i = 0; i < 4; i++) {
         dateF += date[i];
       }
     } else {
@@ -68,29 +66,28 @@ import 'api.dart';
     runtime = movieRaw['runtime'];
     score = movieRaw['vote_average'];
     overview = movieRaw['overview'];
-    if(movieRaw['poster_path'] != null){
-      poster = "https://image.tmdb.org/t/p/original"  + movieRaw['poster_path'];
-    }else{
-      poster = 'https://live.staticflickr.com/65535/52879592893_618ecf8128_k.jpg';
+    if (movieRaw['poster_path'] != null) {
+      poster = "https://image.tmdb.org/t/p/original" + movieRaw['poster_path'];
+    } else {
+      poster =
+          'https://live.staticflickr.com/65535/52879592893_618ecf8128_k.jpg';
     }
-
 
     List<dynamic> genresList = movieRaw['genres'];
     List<int> genresId = [];
-    for(int i = 0; i < genresList.length; i++){
+    for (int i = 0; i < genresList.length; i++) {
       genresId.add(genresList.elementAt(i)['id']);
     }
     await attribuerGenre(genresId);
-
   }
 
   Future<void> setDirector(int id) async {
     Map creditsDetails = await tmdb.v3.movies.getCredits(id);
     List crew = creditsDetails['crew'];
     List<String> directorsFound = ["unknown"];
-    for(int i = 0; i < crew.length ; i++){
-      if(crew.elementAt(i)['job'] == "Director"){
-        if(directorsFound.elementAt(0) == "unknown"){
+    for (int i = 0; i < crew.length; i++) {
+      if (crew.elementAt(i)['job'] == "Director") {
+        if (directorsFound.elementAt(0) == "unknown") {
           directorsFound.clear();
         }
         directorsFound.add(crew.elementAt(i)['name']);
@@ -98,26 +95,24 @@ import 'api.dart';
     }
 
     directors = directorsFound;
-
   }
 
   Future<void> setActors(int id) async {
     Map creditsDetails = await tmdb.v3.movies.getCredits(id);
     List cast = creditsDetails['cast'];
     List<String> actorsFound = ["Unknown"];
-    if(cast.isNotEmpty){
+    if (cast.isNotEmpty) {
       int x = 3;
-      if(cast.length < 3){
+      if (cast.length < 3) {
         x = cast.length;
       }
-      for(int i = 0; i < x; i++){
-        if(actorsFound.elementAt(0) == "Unknown"){
+      for (int i = 0; i < x; i++) {
+        if (actorsFound.elementAt(0) == "Unknown") {
           actorsFound.clear();
         }
         actorsFound.add(cast.elementAt(i)['name']);
       }
     }
-
 
     actors = actorsFound;
   }
@@ -125,21 +120,21 @@ import 'api.dart';
   Future<void> setWatchProviders(int id) async {
     Map searchWatchProviders = await tmdb.v3.movies.getWatchProviders(id);
     List<dynamic> providersFound = [];
-    if(searchWatchProviders['results'][country] == Null || searchWatchProviders['results'][country] == null){
+    if (searchWatchProviders['results'][country] == Null ||
+        searchWatchProviders['results'][country] == null) {
       providers = ["Unavailable"];
     } else {
-      if(searchWatchProviders['results'][country]['flatrate'] == Null || searchWatchProviders['results'][country]['flatrate'] == null){
+      if (searchWatchProviders['results'][country]['flatrate'] == Null ||
+          searchWatchProviders['results'][country]['flatrate'] == null) {
         providersFound = [];
       } else {
         providersFound = searchWatchProviders['results'][country]['flatrate'];
       }
     }
 
-
-
-    if(providersFound.isNotEmpty){
+    if (providersFound.isNotEmpty) {
       List<String> providersNames = [];
-      for( var value in providersFound){
+      for (var value in providersFound) {
         providersNames.add(value['provider_name']);
       }
       providers = providersNames;
@@ -147,19 +142,16 @@ import 'api.dart';
       List<String> none = ["Not available on streaming"];
       providers = none;
     }
-
-
   }
 
-  Future<void> attribuerGenre(List<int> genresId) async{
-    for(var value in Genre.values ){
-      for(var id in genresId){
-        if(value.id == id){
+  Future<void> attribuerGenre(List<int> genresId) async {
+    for (var value in Genre.values) {
+      for (var id in genresId) {
+        if (value.id == id) {
           genres.add(value);
         }
       }
     }
-
   }
 
   @override
@@ -174,15 +166,13 @@ import 'api.dart';
       ' \n watch on: $providers'
       ' \n poster: $poster'
       ' \n id TMDB: $id ';
-
-
 }
 
 enum Genre {
   Action(id: 28, name: 'Action'),
   Adventure(id: 12, name: 'Adventure'),
-  Animation(id: 16, name:'Animation'),
-  Comedy(id: 35, name:'Comedy'),
+  Animation(id: 16, name: 'Animation'),
+  Comedy(id: 35, name: 'Comedy'),
   Crime(id: 80, name: 'Crime'),
   Documentary(id: 99, name: 'Documentary'),
   Drama(id: 18, name: 'Drama'),
@@ -196,9 +186,8 @@ enum Genre {
   ScienceFiction(id: 878, name: 'Science fiction'),
   TVMovie(id: 10770, name: 'Tv movie'),
   Thriller(id: 53, name: 'Thriller'),
-  War(id: 10752, name:'War'),
+  War(id: 10752, name: 'War'),
   Western(id: 37, name: 'Western');
-
 
   const Genre({
     required this.id,
@@ -207,19 +196,4 @@ enum Genre {
 
   final int id;
   final String name;
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

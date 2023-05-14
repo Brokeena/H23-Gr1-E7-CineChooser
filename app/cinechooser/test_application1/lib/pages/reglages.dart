@@ -155,9 +155,11 @@ class _ReglagesState extends State<Reglages> {
                 Divider(height: height / 25),
                 Row(
                   children: [
-                    AutoSizeText(maxLines: 1,'Your friendcode :   $friendCode',
+                    AutoSizeText(
+                        maxLines: 1,
+                        'Your friendcode :   $friendCode',
                         style: Styles.petittitres),
-                    SizedBox(width: width/10),
+                    SizedBox(width: width / 10),
                     GestureDetector(
                       onTap: () {
                         _copy();
@@ -166,8 +168,8 @@ class _ReglagesState extends State<Reglages> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(1)),
-                          child:  Icon(Icons.copy,
-                              color: Styles.red1, size: width/19)),
+                          child: Icon(Icons.copy,
+                              color: Styles.red1, size: width / 19)),
                     )
                   ],
                 ),
@@ -179,14 +181,14 @@ class _ReglagesState extends State<Reglages> {
                 Divider(height: height / 50),
                 GestureDetector(
                   onTap: () {
-                   _addFriend();
+                    _addFriend();
                   },
                   child: Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(1)),
-                      child:  Icon(Icons.group_add,
-                          color: Styles.red1, size: width/19)),
+                      child: Icon(Icons.group_add,
+                          color: Styles.red1, size: width / 19)),
                 ),
                 Divider(height: height / 30),
                 MaterialButton(
@@ -205,7 +207,8 @@ class _ReglagesState extends State<Reglages> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const FriendsList()),
+                      MaterialPageRoute(
+                          builder: (context) => const FriendsList()),
                     );
                   },
                   color: Colors.red,
@@ -239,7 +242,6 @@ class _ReglagesState extends State<Reglages> {
         return MultiSelect(items: items);
       },
     );
-
 
     if (results != null) {
       setState(() {
@@ -359,7 +361,6 @@ signOut() async {
   likedMovies = [];
   dislikedMovies = [];
   hasData = ValueNotifier(false);
-
 }
 
 class MultiSelect extends StatefulWidget {
@@ -372,7 +373,6 @@ class MultiSelect extends StatefulWidget {
 }
 
 class _MultiSelectState extends State<MultiSelect> {
-
   void _itemChange(String itemValue, bool isSelected) {
     setState(() {
       if (isSelected) {

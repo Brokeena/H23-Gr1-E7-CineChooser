@@ -65,16 +65,14 @@ initiateALl() async {
     openApp().then((value) async {
       hasData.value = true;
       print("HAS DATA");
-      for(var idL in likedMoviesId){
+      for (var idL in likedMoviesId) {
         likedMovies.add(await Movie.create(idL));
       }
-      for(var idD in dislikedMoviesId){
-      dislikedMovies.add(await Movie.create(idD));
+      for (var idD in dislikedMoviesId) {
+        dislikedMovies.add(await Movie.create(idD));
       }
-      });
+    });
   });
-
-
 }
 
 getActualUserDocId() async {
@@ -116,8 +114,8 @@ class _LoginPageState extends State<LoginPage> {
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
       initiateALl();
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => const LoadingPageLogin() ));
+      Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => const LoadingPageLogin()));
     } on FirebaseAuthException catch (e) {
       showDialog(
           context: context,

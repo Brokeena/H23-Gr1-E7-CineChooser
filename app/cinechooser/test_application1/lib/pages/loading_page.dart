@@ -13,7 +13,6 @@ class LoadingPageLogin extends StatefulWidget {
   State<LoadingPageLogin> createState() => _LoadingPageLoginState();
 }
 
-
 class _LoadingPageLoginState extends State<LoadingPageLogin> {
   @override
   Widget build(BuildContext context) {
@@ -29,7 +28,7 @@ class _LoadingPageLoginState extends State<LoadingPageLogin> {
             backgroundColor: Styles.bgColor,
             body: Center(
               child: SpinKitThreeBounce(
-                size: width/10,
+                size: width / 10,
                 color: Styles.red1,
                 duration: const Duration(seconds: 1),
               ),
@@ -38,7 +37,6 @@ class _LoadingPageLoginState extends State<LoadingPageLogin> {
         }
       },
     );
-
   }
 }
 
@@ -64,7 +62,7 @@ class _LoadingPageRegisterState extends State<LoadingPageRegister> {
             backgroundColor: Styles.bgColor,
             body: Center(
               child: SpinKitThreeBounce(
-                size: width/10,
+                size: width / 10,
                 color: Styles.red1,
                 duration: const Duration(seconds: 1),
               ),
@@ -75,5 +73,3 @@ class _LoadingPageRegisterState extends State<LoadingPageRegister> {
     );
   }
 }
-
-
