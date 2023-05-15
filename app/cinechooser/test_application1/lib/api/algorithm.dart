@@ -176,8 +176,8 @@ friendsMovies() async {
       var data = await db.doc(friendCode.toString()).get();
       var friendListAmi = data['likedMovies'];
       for (var friendID in friendListAmi) {
-        if (!(displayedMoviesId.contains(friendID)) ||
-            !(likedMoviesId.contains(friendID)) ||
+        if (!(displayedMoviesId.contains(friendID)) &&
+            !(likedMoviesId.contains(friendID)) &&
             !(dislikedMoviesId.contains(friendID))) {
           listId.add(friendID);
         }
