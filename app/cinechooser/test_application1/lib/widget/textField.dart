@@ -23,6 +23,7 @@ class MyTextField extends StatelessWidget {
       child: TextField(
         controller: controller,
         style: const TextStyle(
+          fontFamily: 'Poppins',
           color: Colors.white,
         ),
         obscureText: obscureText,
@@ -41,7 +42,9 @@ class MyTextField extends StatelessWidget {
             //couleur interieur
             filled: true,
             hintText: hintText,
-            hintStyle: TextStyle(color: Colors.grey.shade700),
+            hintStyle: TextStyle(
+                fontFamily: 'Poppins',
+                color: Colors.grey.shade700),
             contentPadding: EdgeInsets.all(16)),
       ),
     );

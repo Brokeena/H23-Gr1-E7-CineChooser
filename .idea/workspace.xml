@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="Pages des friendsLikedMovies.dart">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/friendList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/friendList.dart" afterDir="false" />
-    </list>
+    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="petites modifs" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -283,7 +280,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684114371571</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="petites modifs">
+      <created>1684121511090</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1684121511090</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -328,7 +332,8 @@
     <MESSAGE value="control + alt + L v2" />
     <MESSAGE value="+" />
     <MESSAGE value="Pages des friendsLikedMovies.dart" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pages des friendsLikedMovies.dart" />
+    <MESSAGE value="petites modifs" />
+    <option name="LAST_COMMIT_MESSAGE" value="petites modifs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
