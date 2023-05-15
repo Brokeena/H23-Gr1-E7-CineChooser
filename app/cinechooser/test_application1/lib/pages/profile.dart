@@ -141,12 +141,24 @@ getSimilarsMoviesLikedPerFriend() async{
 }
 
 getFriendsNames() async{
+  List<String> tempList = [];
   for (var friendCode in friendList) {
     var data = await db.doc(friendCode.toString()).get();
     var friendName = data['pseudo'];
     if(!(friendListName.contains(friendName))){
       friendListName.add(friendName);
     }
+    tempList.add(friendName);
   }
+  List<String> elementsToRemove = [];
+  for(int t = 0; t < friendListName.length;t++){
+    if(!(tempList.contains(friendListName.elementAt(t)))){
+      elementsToRemove.add(friendListName.elementAt(t));
+    }
+  }
+  for(var element in elementsToRemove){
+    friendListName.remove(element);
+  }
+
 
 }

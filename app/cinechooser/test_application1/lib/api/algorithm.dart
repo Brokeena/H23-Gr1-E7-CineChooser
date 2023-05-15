@@ -63,7 +63,6 @@ Future<void> swipeMovie(int id, bool liked, int index) async {
 
 
   if((displayedMovies.length-index) <= 10){
-    print("in");
     getTopRatedMovies(_almostFinish);
     _almostFinish++;
   }
@@ -176,7 +175,13 @@ friendsMovies() async {
       var data = await db.doc(friendCode.toString()).get();
       var friendListAmi = data['likedMovies'];
       for (var friendID in friendListAmi) {
-        if (!(displayedMoviesId.contains(friendID)) &&
+        bool alReadyHere = false;
+        for(var movie in displayedMovies){
+          if(movie.id == friendID){
+            alReadyHere = true;
+          }
+        }
+        if (!alReadyHere &&!(displayedMoviesId.contains(friendID)) &&
             !(likedMoviesId.contains(friendID)) &&
             !(dislikedMoviesId.contains(friendID))) {
           listId.add(friendID);
@@ -195,7 +200,7 @@ Future<List<Movie>> similarLike(String fDocId) async {
   List<Movie> commonMovies = [];
   var data = await db.doc(fDocId).get();
   var friendLikes = data['likedMovies'];
-  for(var liked in friendLikes){
+  for(int liked in friendLikes){
     if(likedMoviesId.contains(liked)){
       for(var movie in likedMovies){
         if(movie.id == liked){

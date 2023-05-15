@@ -74,12 +74,3 @@ class _FriendLikedMoviesState extends State<FriendLikedMovies> {
   }
 }
 
-getFriendsPseudo() async {
-  pseudos = [];
-  for (var friendId in friendList) {
-    var data = await db.doc(friendId).get();
-    var pseudo1 = await data['pseudo'];
-    pseudos.add(pseudo1);
-  }
-  return pseudos;
-}
