@@ -1,5 +1,6 @@
 import 'package:cinechooser/pages/dislikedMovies.dart';
 import 'package:cinechooser/pages/likedMovies.dart';
+import 'package:cinechooser/pages/friendsLikedMovies.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
@@ -61,7 +62,7 @@ class _ProfileState extends State<Profile> {
 
   final List<Widget> _pages = [
     const LikedMovies(),
-    const LikedMovies(),//a changer
+    const FriendLikedMovies(),
     const DislikedMovies(),
   ];
 
