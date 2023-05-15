@@ -92,7 +92,7 @@ class _ProfileState extends State<Profile> {
         centerTitle: true,
         backgroundColor: Styles.bgColor,
         elevation: 0,
-        title: const Text('Your profile', style: Styles.preTitre),
+        title: const Text('Catalogue', style: Styles.preTitre),
       ),
       bottomNavigationBar: Container(
         color: Colors.transparent,

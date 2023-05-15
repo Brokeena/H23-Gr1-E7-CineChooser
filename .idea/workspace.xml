@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="petits trucs par-ci par la">
+    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="Pages des friendsLikedMovies.dart">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/friendsLikedMovies.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/friendsLikedMovies.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/profile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/friendList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/pages/friendList.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684101398203</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Pages des friendsLikedMovies.dart">
+      <created>1684114371571</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1684114371571</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,7 +327,8 @@
     <MESSAGE value="fix" />
     <MESSAGE value="control + alt + L v2" />
     <MESSAGE value="+" />
-    <option name="LAST_COMMIT_MESSAGE" value="+" />
+    <MESSAGE value="Pages des friendsLikedMovies.dart" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pages des friendsLikedMovies.dart" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

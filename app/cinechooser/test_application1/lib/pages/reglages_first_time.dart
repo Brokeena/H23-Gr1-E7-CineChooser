@@ -37,7 +37,7 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('Set your account detail', style: Styles.entete),
+        title: const Text('Set your account details', style: Styles.entete),
         leading: IconButton(
           onPressed: () {
             Navigator.push(

@@ -44,7 +44,7 @@ class _ReglagesState extends State<Reglages> {
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('Set your account detail', style: Styles.entete),
+        title: const Text('Account details', style: Styles.entete),
         leading: IconButton(
           onPressed: () {
             trimDisplayedMovie();
