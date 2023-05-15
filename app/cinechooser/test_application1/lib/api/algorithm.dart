@@ -178,7 +178,6 @@ friendsMovies() async {
       var data = await db.doc(friendCode.toString()).get();
       var friendListAmi = data['likedMovies'];
       for (var friendID in friendListAmi) {
-        bool alreadyHere = false;
         if (!(displayedMoviesId.contains(friendID)) ||
             !(likedMoviesId.contains(friendID)) ||
             !(dislikedMoviesId.contains(friendID))) {
@@ -190,6 +189,21 @@ friendsMovies() async {
     for(int i = 0; i < listId.length; i++){
       displayedMoviesId.add(listId.elementAt(i));
       displayedMovies.add(await Movie.create(listId.elementAt(i)));
+    }
+  }
+}
+
+similarLike(String fDocId) async {
+  var commonMovies = [];
+  var data = await db.doc(fDocId).get();
+  var friendLikes = data['likedMovies'];
+  for(var liked in friendLikes){
+    if(likedMoviesId.contains(liked)){
+      for(var movie in likedMovies){
+        if(movie.id == liked){
+          commonMovies.add(movie);
+        }
+      }
     }
   }
 }
