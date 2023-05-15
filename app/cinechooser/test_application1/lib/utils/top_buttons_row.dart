@@ -25,10 +25,10 @@ class TopButtonsRow extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const Profile()),
                 );
               },
-              icone: const Icon(Icons.movie, color: Styles.red1),
+              icone: const Icon(Icons.thumbs_up_down, color: Styles.red1,size: 40),
               color: Colors.white,
-              taille: 64,
-              borderRadius: 100),
+              taille: 70,
+              borderRadius: 25),
           Button(
               onPressed: () {
                 var x = docID;
@@ -37,10 +37,10 @@ class TopButtonsRow extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const Reglages()),
                 );
               },
-              icone: const Icon(Icons.person, color: Styles.red1),
+              icone: const Icon(Icons.person, color: Styles.red1, size: 40),
               color: Colors.white,
-              taille: 64,
-              borderRadius: 15),
+              taille: 70,
+              borderRadius: 25),
         ],
       ),
     );
