@@ -11,6 +11,8 @@ import 'login_page.dart';
 import '../widget/bottom_navbar.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
+List<String> friendListName = [];
+List<List<Movie>> friendListLike = [];
 var likedPosters = [];
 var likedNames = [];
 var dislikedPosters = [];
@@ -55,6 +57,10 @@ class _ProfileState extends State<Profile> {
   int _selectedIndex = 0;
 
   void navigateBottomBar(int index) {
+    if(index == 1){
+      getFriendsNames();
+      getSimilarsMoviesLikedPerFriend();
+    }
     setState(() {
       _selectedIndex = index;
     });
@@ -124,4 +130,21 @@ class _ProfileState extends State<Profile> {
       body: _pages[_selectedIndex],
     );
   }
+}
+
+getSimilarsMoviesLikedPerFriend() async{
+  if(friendList.isNotEmpty){
+    for(var friend in friendList){
+      friendListLike.add(await similarLike(friend.toString()));
+    }
+  }
+}
+
+getFriendsNames() async{
+  for (var friendCode in friendList) {
+    var data = await db.doc(friendCode.toString()).get();
+    var friendName = data['pseudo'];
+    friendListName.add(friendName);
+  }
+
 }

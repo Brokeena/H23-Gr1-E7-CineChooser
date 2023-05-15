@@ -62,11 +62,9 @@ Future<void> swipeMovie(int id, bool liked, int index) async {
   }
 
 
-  if(displayedMovies.length <= 6){
-    var listTopMovie = await getTopRatedMovies(_almostFinish);
-    for(var movie in listTopMovie){
-      displayedMovies.add(movie);
-    }
+  if((displayedMovies.length-index) <= 10){
+    print("in");
+    getTopRatedMovies(_almostFinish);
     _almostFinish++;
   }
 
@@ -193,8 +191,8 @@ friendsMovies() async {
   }
 }
 
-similarLike(String fDocId) async {
-  var commonMovies = [];
+Future<List<Movie>> similarLike(String fDocId) async {
+  List<Movie> commonMovies = [];
   var data = await db.doc(fDocId).get();
   var friendLikes = data['likedMovies'];
   for(var liked in friendLikes){
@@ -206,4 +204,5 @@ similarLike(String fDocId) async {
       }
     }
   }
+  return commonMovies;
 }

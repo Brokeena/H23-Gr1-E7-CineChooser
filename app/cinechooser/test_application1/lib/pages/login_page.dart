@@ -65,11 +65,11 @@ initiateALl() async {
     openApp().then((value) async {
       hasData.value = true;
       print("HAS DATA");
-      for (var idL in likedMoviesId) {
-        likedMovies.add(await Movie.create(idL));
+      for (int l = 0; l < likedMoviesId.length; l++) {
+        likedMovies.add(await Movie.create(likedMoviesId.elementAt(l)));
       }
-      for (var idD in dislikedMoviesId) {
-        dislikedMovies.add(await Movie.create(idD));
+      for (int d = 0; d < dislikedMoviesId.length; d++) {
+        dislikedMovies.add(await Movie.create(dislikedMoviesId.elementAt(d)));
       }
     });
   });

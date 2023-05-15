@@ -90,25 +90,25 @@ Future<List<Movie>> getTrendingMoviesByGenres(List<Genre> genres) async {
   return trendingMovies;
 }
 
-Future<List<Movie>> getTopRatedMovies(int r) async {
+void getTopRatedMovies(int r) async {
   List<Movie> listMovies = [];
   List<int> topRatedMoviesId = [];
   var searchTopRated =
       await tmdb.v3.movies.getTopRated(language: language + country, page: r);
   List<dynamic> results = searchTopRated['results'];
   for (int i = 0; i < results.length; i++) {
-    if (results.elementAt(i) != 19404 &&
-        !(displayedMoviesId.contains(results.elementAt(i))) &&
-        !(likedMoviesId.contains(results.elementAt(i))) &&
-        !(dislikedMoviesId.contains(results.elementAt(i)))) {
-      topRatedMoviesId.add(results.elementAt(i));
+    if (results.elementAt(i)['id'] != 19404 &&
+        !(displayedMoviesId.contains(results.elementAt(i)['id'])) &&
+        !(likedMoviesId.contains(results.elementAt(i)['id'])) &&
+        !(dislikedMoviesId.contains(results.elementAt(i)['id']))) {
+      topRatedMoviesId.add(results.elementAt(i)['id']);
     }
   }
   for (int x = 0; x < topRatedMoviesId.length; x++) {
-    listMovies.add(await Movie.create(topRatedMoviesId.elementAt(x)));
+    displayedMoviesId.add(topRatedMoviesId.elementAt(x));
+    displayedMoviesId.add(await Movie.create(topRatedMoviesId.elementAt(x)));
   }
 
-  return listMovies;
 }
 
 Future<List<Movie>> getTopRatedMoviesByGenres(

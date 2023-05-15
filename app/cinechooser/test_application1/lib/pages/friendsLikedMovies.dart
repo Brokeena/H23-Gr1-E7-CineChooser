@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:cinechooser/pages/login_page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cinechooser/pages/profile.dart';
 
 class FriendLikedMovies extends StatefulWidget {
   const FriendLikedMovies({Key? key}) : super(key: key);
@@ -21,14 +22,21 @@ class _FriendLikedMoviesState extends State<FriendLikedMovies> {
       backgroundColor: Styles.bgColor,
       body: SingleChildScrollView(
         child: Column(
-          children: likedMovies.map((movie) { //liste amis
+          children: friendListName.map((name) {
+            int pos = 0;
+            for(int x =0; x < friendListName.length;x++){
+              if(name == friendListName.elementAt(x)){
+                pos = x;
+              }
+            }
+            //liste amis
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Text(
-                    'Friends',
+                    name,
                     style: Styles.preTitre,
                   ),
                 ),
@@ -37,7 +45,7 @@ class _FriendLikedMoviesState extends State<FriendLikedMovies> {
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                      children: likedMovies.reversed.map((movie) { // liste de films des amis
+                      children: friendListLike.elementAt(pos).reversed.map((movie) { // liste de films des amis
                         return Padding(
                           padding: EdgeInsets.symmetric(horizontal: width/50),
                           child: Container(
