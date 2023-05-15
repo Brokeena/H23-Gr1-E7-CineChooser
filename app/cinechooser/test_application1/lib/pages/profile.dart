@@ -61,6 +61,7 @@ class _ProfileState extends State<Profile> {
 
   final List<Widget> _pages = [
     const LikedMovies(),
+    const LikedMovies(),//a changer
     const DislikedMovies(),
   ];
 
@@ -106,6 +107,10 @@ class _ProfileState extends State<Profile> {
               GButton(
                 icon: Icons.favorite,
                 text: 'Like',
+              ),
+              GButton(
+                icon: Icons.diversity_1,
+                text: 'Friends',
               ),
               GButton(
                 icon: Icons.heart_broken,

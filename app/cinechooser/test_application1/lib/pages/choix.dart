@@ -79,28 +79,31 @@ class _ChoixState extends State<Choix> {
           icon: const Icon(Icons.arrow_back_ios_new_outlined,
               color: Colors.white),
         ),
-        actions: [ ElevatedButton(
-          onPressed: () async {
-            if (listGenre.length >= 3) {
-              firstTime = true;
-              db.doc(docID).update({'genres': listGenre});
-              db.doc(docID).update({'firstTime': true});
-              initiateALl();
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const LoadingPageRegister()),
-              );
-            }
-          },
-          style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(),
-              fixedSize: Size(width / 5.5, height / 50),
-              elevation: 0,
-              backgroundColor: Styles.red1,
-              shape: const StadiumBorder()),
-          child: const Text('Next', style: Styles.bouton3),
-        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+              onPressed: () async {
+                if (listGenre.length >= 3) {
+                  firstTime = true;
+                  db.doc(docID).update({'genres': listGenre});
+                  db.doc(docID).update({'firstTime': true});
+                  initiateALl();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LoadingPageRegister()),
+                  );
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                  fixedSize: Size(width / 6, height / 50),
+                  elevation: 0,
+                  backgroundColor: Styles.red1,
+                  shape: const StadiumBorder()),
+              child: const Text('Next', style: Styles.bouton3),
+            ),
+          ),
         ],
       ),
       body: SafeArea(
@@ -111,7 +114,6 @@ class _ChoixState extends State<Choix> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Divider(height: 25),
                 const Text('Welcome to Cinechooser',
                     style: Styles.nom_de_pages),
                 const Divider(height: 10),

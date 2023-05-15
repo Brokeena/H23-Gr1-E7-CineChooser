@@ -90,9 +90,9 @@ class _ReglagesState extends State<Reglages> {
                           ),
                           items: listPaysNom
                               .map((dynamic value) => DropdownMenuItem(
-                                    value: value,
-                                    child: Text(value, style: Styles.bouton3),
-                                  ))
+                            value: value,
+                            child: Text(value, style: Styles.bouton3),
+                          ))
                               .toList(),
                           onChanged: (newItem) async {
                             setState(() {
@@ -107,7 +107,6 @@ class _ReglagesState extends State<Reglages> {
                 ),
                 Divider(height: height / 30),
                 const Text('Streaming services :', style: Styles.petittitres),
-                Divider(height: height / 45),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -117,19 +116,18 @@ class _ReglagesState extends State<Reglages> {
                           style: Styles.informations),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(width / 25),
+                      padding: EdgeInsets.symmetric(horizontal :width / 25),
                       child: Wrap(
                           spacing: 5,
                           runSpacing: 5,
                           direction: Axis.horizontal,
                           children: selectedItems
                               .map((e) => Chip(
-                                  label: Text(e, style: Styles.informations2)))
+                              label: Text(e, style: Styles.informations2)))
                               .toList()),
                     )
                   ],
                 ),
-                Divider(height: height / 45),
                 ElevatedButton(
                   onPressed: _showMultiSelect,
                   style: ElevatedButton.styleFrom(

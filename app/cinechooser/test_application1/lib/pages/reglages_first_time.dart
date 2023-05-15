@@ -58,11 +58,11 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
             children: [
               Divider(height: height / 40),
               Container(
-                height: height * 0.06,
-                width: width * 0.9,
+                height: height / 20,
+                width: width * 0.86,
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(100)),
                 child: DropdownButtonHideUnderline(
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
@@ -70,11 +70,7 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                         borderRadius: BorderRadius.circular(7),
                         hint: Text(
                           paysSelectionne,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.normal,
-                            fontSize: 16,
-                            color: Colors.black87,
-                          ),
+                          style: Styles.bouton3,
                         ),
                         value: dropdownvalues,
                         dropdownColor: Colors.white,
@@ -86,12 +82,7 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                         items: listPaysNom
                             .map((dynamic value) => DropdownMenuItem(
                                   value: value,
-                                  child: Text(value,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.normal,
-                                        fontSize: 16,
-                                        color: Colors.black87,
-                                      )),
+                                  child: Text(value, style: Styles.bouton3),
                                 ))
                             .toList(),
                         onChanged: (newItem) async {
@@ -100,51 +91,48 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
 
                             dropdownvalues = newItem!;
                           });
-                          db.doc(await docID).update({'pays': paysSelectionne});
+                          db.doc(docID).update({'pays': paysSelectionne});
                         }),
                   ),
                 ),
               ),
-              Divider(height: height / 20),
+              Divider(height: height / 30),
               const Text('Streaming services :', style: Styles.petittitres),
-              Divider(height: height / 40),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('Your services : ', style: Styles.informations),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.only(left: width / 25),
+                    child: const Text('Your services : ',
+                        style: Styles.informations),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: width / 25),
                     child: Wrap(
                         spacing: 5,
                         runSpacing: 5,
                         direction: Axis.horizontal,
                         children: selectedItems
-                            .map((e) => Chip(label: Text(e)))
+                            .map((e) => Chip(
+                                label: Text(e, style: Styles.informations2)))
                             .toList()),
                   )
                 ],
               ),
-              Divider(height: height / 40),
               ElevatedButton(
-                  style: ButtonStyle(
-                    alignment: Alignment.center,
-                    shape: MaterialStateProperty.resolveWith(
-                      (states) => RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(7),
-                      ),
-                    ),
-                    backgroundColor: MaterialStateProperty.resolveWith(
-                      (states) => Colors.white,
-                    ),
-                  ),
-                  onPressed: _showMultiSelect,
-                  child: const Text('Choose your streaming services',
-                      style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.normal,
-                          fontSize: 15,
-                          color: Colors.black87))),
-              Divider(height: height / 25),
+                onPressed: _showMultiSelect,
+                style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(),
+                    fixedSize: Size(width * 0.86, height / 20),
+                    elevation: 0,
+                    backgroundColor: Colors.white,
+                    shape: const StadiumBorder()),
+                child: const Text('Choose your streaming services',
+                    style: Styles.bouton3),
+              ),
+              Divider(
+                height: height / 12,
+                color: Colors.grey.shade800,),
               Center(
                   child: GestureDetector(
                 onTap: () {
@@ -179,17 +167,17 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                             ]
                           : [
                               const BoxShadow(
-                                color: Color(0xff1C1825),
+                                color: Color(0xffB62B32),
                                 offset: Offset(4, 4),
                                 blurRadius: 10,
-                                spreadRadius: 1,
+                                spreadRadius: 1 / 8,
                               ),
                               const BoxShadow(
-                                color: Color(0xff1C1825),
+                                color: Color(0xffB62B32),
                                 offset: Offset(-4, -4),
                                 blurRadius: 10,
-                                spreadRadius: 1,
-                              )
+                                spreadRadius: 1 / 8,
+                              ),
                             ]),
                   child: Center(
                     child: Row(
@@ -198,7 +186,7 @@ class _ReglagesFirstTimeState extends State<ReglagesFirstTime> {
                         SizedBox(
                           width: 8,
                         ),
-                        Text('Start choosing!', style: Styles.bouton),
+                        Text('Start choosing!', style: Styles.bouton2),
                       ],
                     ),
                   ),
@@ -294,7 +282,8 @@ class _MultiSelectState extends State<MultiSelect> {
       actions: [
         TextButton(
             onPressed: _cancel,
-            child: const Text('Cancel', style: TextStyle(fontFamily: 'Poppins', color: Colors.black))),
+            child: const Text('Cancel',
+                style: TextStyle(fontFamily: 'Poppins', color: Colors.black))),
         ElevatedButton(
           onPressed: _submit,
           style: ButtonStyle(
@@ -302,7 +291,8 @@ class _MultiSelectState extends State<MultiSelect> {
               (states) => Styles.red1,
             ),
           ),
-          child: const Text('Continue', style: TextStyle(fontFamily: 'Poppins', color: Colors.black)),
+          child: const Text('Continue',
+              style: TextStyle(fontFamily: 'Poppins', color: Colors.black)),
         )
       ],
     );
