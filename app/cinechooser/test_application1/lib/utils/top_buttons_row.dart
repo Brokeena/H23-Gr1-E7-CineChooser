@@ -13,8 +13,11 @@ class TopButtonsRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double heigth = MediaQuery.of(context).size.height;
+
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: EdgeInsets.symmetric(horizontal: width/20, vertical: width/20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -28,7 +31,7 @@ class TopButtonsRow extends StatelessWidget {
               icone: const Icon(Icons.thumbs_up_down, color: Styles.red1,size: 40),
               color: Colors.white,
               taille: 70,
-              borderRadius: 25),
+              borderRadius: 20),
           Button(
               onPressed: () {
                 var x = docID;
@@ -40,7 +43,7 @@ class TopButtonsRow extends StatelessWidget {
               icone: const Icon(Icons.person, color: Styles.red1, size: 40),
               color: Colors.white,
               taille: 70,
-              borderRadius: 25),
+              borderRadius: 20),
         ],
       ),
     );

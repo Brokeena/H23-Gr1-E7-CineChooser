@@ -91,19 +91,16 @@ class _PagePrincipaleState extends State<PagePrincipale> {
                 }
                 return Stack(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 25),
-                      child: Center(
-                        child: SizedBox(
-                          height: heigth * 0.65,
-                          width: width * 0.9,
-                          child: Cartes(
-                            name: displayedMovies.elementAt(indexMovie).nom,
-                            infos:
-                                "${displayedMovies.elementAt(indexMovie).dateDeSortie} - ${displayedMovies.elementAt(indexMovie).directors.elementAt(0)}" /*genreNames.join(", ")*/,
-                            poster:
-                                displayedMovies.elementAt(indexMovie).poster,
-                          ),
+                    Center(
+                      child: SizedBox(
+                        height: heigth * 0.65,
+                        width: width * 0.9,
+                        child: Cartes(
+                          name: displayedMovies.elementAt(indexMovie).nom,
+                          infos:
+                              "${displayedMovies.elementAt(indexMovie).dateDeSortie} - ${displayedMovies.elementAt(indexMovie).directors.elementAt(0)}" /*genreNames.join(", ")*/,
+                          poster:
+                              displayedMovies.elementAt(indexMovie).poster,
                         ),
                       ),
                     ),
