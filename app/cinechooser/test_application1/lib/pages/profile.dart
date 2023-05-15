@@ -144,7 +144,9 @@ getFriendsNames() async{
   for (var friendCode in friendList) {
     var data = await db.doc(friendCode.toString()).get();
     var friendName = data['pseudo'];
-    friendListName.add(friendName);
+    if(!(friendListName.contains(friendName))){
+      friendListName.add(friendName);
+    }
   }
 
 }
