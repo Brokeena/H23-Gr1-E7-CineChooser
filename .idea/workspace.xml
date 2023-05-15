@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="polices">
+    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="hihi^^">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/utils/bottom_buttons_row.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/utils/bottom_buttons_row.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/utils/top_buttons_row.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/utils/top_buttons_row.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -296,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684121683633</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="hihi^^">
+      <created>1684123286119</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1684123286119</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -318,7 +327,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/DartAPI/untitled - Copie" />
     </ignored-roots>
-    <MESSAGE value="lmao" />
     <MESSAGE value="Test github push" />
     <MESSAGE value="Test github push puch" />
     <MESSAGE value="encore un commit fait par Marius... Ca fait beaucoup quand meme." />
@@ -343,7 +351,8 @@
     <MESSAGE value="Pages des friendsLikedMovies.dart" />
     <MESSAGE value="petites modifs" />
     <MESSAGE value="polices" />
-    <option name="LAST_COMMIT_MESSAGE" value="polices" />
+    <MESSAGE value="hihi^^" />
+    <option name="LAST_COMMIT_MESSAGE" value="hihi^^" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

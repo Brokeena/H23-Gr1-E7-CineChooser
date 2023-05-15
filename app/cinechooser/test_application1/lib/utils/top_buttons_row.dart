@@ -34,7 +34,6 @@ class TopButtonsRow extends StatelessWidget {
               borderRadius: 20),
           Button(
               onPressed: () {
-                var x = docID;
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const Reglages()),
