@@ -36,7 +36,7 @@ class BottomButtonsRow extends StatelessWidget {
                 borderRadius: 100,
               ),
 
-              ElevatedButton(
+              /*ElevatedButton(
                 onPressed: () {
                   onSwipe(SwipeDirection.right);
                 },
@@ -64,9 +64,7 @@ class BottomButtonsRow extends StatelessWidget {
                     ],
                   ),
                 ),
-              ),
-
-              /*
+              ),*/
               Button(
                 color: Styles.red1,
                 onPressed: () {
@@ -97,7 +95,7 @@ class BottomButtonsRow extends StatelessWidget {
                 taille: 96,
                 borderRadius: 100,
               ),
-              */
+
 
 
             ],

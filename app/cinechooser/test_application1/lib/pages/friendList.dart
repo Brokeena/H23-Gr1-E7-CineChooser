@@ -57,7 +57,7 @@ class _FriendsListState extends State<FriendsList> {
                     children: [
                       AutoSizeText(
                           maxLines: 1,
-                          'Your friendcode :   $friendCode',
+                          'Your friendcode: $friendCode',
                           style: Styles.petittitres),
                       SizedBox(width: width / 40),
                     ],
