@@ -14,6 +14,7 @@ class Movie {
   List<Genre> genres = [];
   late bool inCinema = false;
 
+  //Never used
   static Future<List<Movie>> createList(List<int> idList) async {
     List<Movie> movies = [];
     for (int i in idList) {
@@ -25,8 +26,8 @@ class Movie {
     return movies;
   }
 
+  //Pour créer un film qui a des composants Future
   Movie._create(this.id);
-
   static Future<Movie> create(int id) async {
     var movie = Movie._create(id);
     await movie._complexAsyncInit();
@@ -40,11 +41,8 @@ class Movie {
     await setWatchProviders(id);
   }
 
-  /// Méthode pour créer correctement un film
-  /// *********************************
-  /// *********************************
-  /// *********************************
-  /// *********************************
+  /// Méthodes pour créer correctement un film
+
 
   int formatDate(String date) {
     String dateF = "";

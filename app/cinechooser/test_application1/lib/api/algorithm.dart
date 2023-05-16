@@ -16,7 +16,7 @@ int lastSwipe = 0;
 bool _justSwiped = false;
 int _almostFinish = 1;
 
-/// What happen when you open the app
+// Ce qu'il se passe lorsqu'on doit charger des films quand l'app s'ouvre
 Future<void> openApp() async {
   if (firstTime) {
     displayedMovies = await getTopRatedMoviesByGenres(listGenre, 3);
@@ -25,6 +25,7 @@ Future<void> openApp() async {
   }
 }
 
+//Attendre que les films affichés soit loaded
 Future<bool> loadingDisplayedMovie() async {
   if (displayedMovies.isEmpty) {
     return false;
@@ -33,8 +34,8 @@ Future<bool> loadingDisplayedMovie() async {
   }
 }
 
-/// Modification de page principale
-Future<void> swipeMovie(int id, bool liked, int index) async {
+/// Qu'est ce qu'il se passe après avoir swipe un film
+Future<void> afterSwipeMovie(int id, bool liked, int index) async {
   _justSwiped = true;
   if (firstTime) {
     firstTime = false;
@@ -67,7 +68,7 @@ Future<void> swipeMovie(int id, bool liked, int index) async {
     _almostFinish++;
   }
 
-  friendsMovies();
+  addFriendsMovies();
   updateDisplayedMoviesId();
 }
 
@@ -83,7 +84,6 @@ Future<void> onRewind() async {
   lastSwipe = 0;
 }
 
-/// Modifier la liste
 addRecommendedMovies(int id, int numberOfRecommendation) async {
   var similarMovies = await getRecommendedMovies(id);
   int r = similarMovies.length;
@@ -112,7 +112,7 @@ addRecommendedMovies(int id, int numberOfRecommendation) async {
   }
 }
 
-
+//Raccourcir la liste des films affichés quand on change de page
 void trimDisplayedMovie() {
   List<Movie> newMovieList = [];
 
@@ -156,7 +156,7 @@ void trimDisplayedMovie() {
   displayedMovies = newMovieList;
 }
 
-/// Update Firebase
+// Update les infos Firebase
 updateDisplayedMoviesId() async {
   displayedMoviesId = [];
   for (var movie in displayedMovies) {
@@ -168,7 +168,7 @@ updateDisplayedMoviesId() async {
   db.doc(docID).update({'displayedMoviesId': displayedMoviesId});
 }
 
-friendsMovies() async {
+addFriendsMovies() async {
   if (friendList.isNotEmpty) {
     var listId = [];
     for (var friendCode in friendList) {
@@ -196,7 +196,7 @@ friendsMovies() async {
   }
 }
 
-Future<List<Movie>> similarLike(String fDocId) async {
+Future<List<Movie>> getSimilarLike(String fDocId) async {
   List<Movie> commonMovies = [];
   var data = await db.doc(fDocId).get();
   var friendLikes = data['likedMovies'];

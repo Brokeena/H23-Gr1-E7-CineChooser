@@ -19,11 +19,12 @@ var dislikedPosters = [];
 var dislikedNames = [];
 bool type = true;
 
-class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+/// Catalogue de films déjà swipe
+class Catalogue extends StatefulWidget {
+  const Catalogue({Key? key}) : super(key: key);
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<Catalogue> createState() => _CatalogueState();
 }
 /*
 Future addLikedMovies(var moviesId) async {
@@ -53,11 +54,11 @@ Future showMovies(var movieId) async {
 
  */
 
-class _ProfileState extends State<Profile> {
+class _CatalogueState extends State<Catalogue> {
   int _selectedIndex = 0;
 
   void navigateBottomBar(int index) {
-    if(index == 1){
+    if (index == 1) {
       getFriendsNames();
       getSimilarsMoviesLikedPerFriend();
     }
@@ -132,33 +133,31 @@ class _ProfileState extends State<Profile> {
   }
 }
 
-getSimilarsMoviesLikedPerFriend() async{
-  if(friendList.isNotEmpty){
-    for(var friend in friendList){
-      friendListLike.add(await similarLike(friend.toString()));
+getSimilarsMoviesLikedPerFriend() async {
+  if (friendList.isNotEmpty) {
+    for (var friend in friendList) {
+      friendListLike.add(await getSimilarLike(friend.toString()));
     }
   }
 }
 
-getFriendsNames() async{
+getFriendsNames() async {
   List<String> tempList = [];
   for (var friendCode in friendList) {
     var data = await db.doc(friendCode.toString()).get();
     var friendName = data['pseudo'];
-    if(!(friendListName.contains(friendName))){
+    if (!(friendListName.contains(friendName))) {
       friendListName.add(friendName);
     }
     tempList.add(friendName);
   }
   List<String> elementsToRemove = [];
-  for(int t = 0; t < friendListName.length;t++){
-    if(!(tempList.contains(friendListName.elementAt(t)))){
+  for (int t = 0; t < friendListName.length; t++) {
+    if (!(tempList.contains(friendListName.elementAt(t)))) {
       elementsToRemove.add(friendListName.elementAt(t));
     }
   }
-  for(var element in elementsToRemove){
+  for (var element in elementsToRemove) {
     friendListName.remove(element);
   }
-
-
 }

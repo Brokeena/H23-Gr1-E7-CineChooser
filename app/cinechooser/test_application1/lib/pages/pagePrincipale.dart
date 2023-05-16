@@ -61,9 +61,9 @@ class _PagePrincipaleState extends State<PagePrincipale> {
               stackClipBehaviour: Clip.none,
               onSwipeCompleted: (index, direction) async {
                 if (direction == SwipeDirection.right) {
-                  await swipeMovie(displayedMovies.elementAt(index).id, true, index);
+                  await afterSwipeMovie(displayedMovies.elementAt(index).id, true, index);
                 } else if (direction == SwipeDirection.left) {
-                  await swipeMovie(displayedMovies.elementAt(index).id, false, index);
+                  await afterSwipeMovie(displayedMovies.elementAt(index).id, false, index);
                 }
               },
               builder: (context, properties) {

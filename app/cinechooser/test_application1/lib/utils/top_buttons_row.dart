@@ -4,7 +4,7 @@ import 'package:cinechooser/pages/reglages.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/widget/button_carre.dart';
-import '../pages/profile.dart';
+import '../pages/catalogue.dart';
 
 class TopButtonsRow extends StatelessWidget {
   const TopButtonsRow({
@@ -25,7 +25,7 @@ class TopButtonsRow extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Profile()),
+                  MaterialPageRoute(builder: (context) => const Catalogue()),
                 );
               },
               icone: const Icon(Icons.thumbs_up_down, color: Styles.red1,size: 40),

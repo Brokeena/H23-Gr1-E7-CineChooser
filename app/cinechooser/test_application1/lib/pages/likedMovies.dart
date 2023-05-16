@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cinechooser/pages/login_page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
+/// Page des films liker
 class LikedMovies extends StatefulWidget {
   const LikedMovies({Key? key}) : super(key: key);
 
@@ -29,13 +30,13 @@ class _LikedMoviesState extends State<LikedMovies> {
                   width: width / 3,
                   height: width / 2,
                   decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(12),
-                    image: DecorationImage(
-                      image: CachedNetworkImageProvider(movie.poster, maxWidth: width~/3, maxHeight: width~/2),
-                      fit: BoxFit.cover,
-                    )
-                  ),
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(12),
+                      image: DecorationImage(
+                        image: CachedNetworkImageProvider(movie.poster,
+                            maxWidth: width ~/ 3, maxHeight: width ~/ 2),
+                        fit: BoxFit.cover,
+                      )),
                 );
               }).toList(),
             ),

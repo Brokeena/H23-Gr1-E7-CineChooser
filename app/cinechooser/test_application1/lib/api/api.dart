@@ -5,6 +5,7 @@ import 'movie.dart';
 const String language = 'en-';
 String country = 'CA';
 
+//Créer l'outil pour récupérer l'API
 final tmdb = TMDB(
   //TMDB instance
   ApiKeys('e99858b3004ef91a1e786cc7f99fde94',
@@ -20,11 +21,8 @@ String language_country() {
   return language + country;
 }
 
-/// Récuperer listes de films
-/// *********************************
-/// *********************************
-/// *********************************
-/// *********************************
+/// Récuperer des listes de films
+
 
 Future<List<Movie>> getMoviesWithId(List<dynamic> ListId) async {
   List<Movie> listMovies = [];
@@ -90,11 +88,11 @@ Future<List<Movie>> getTrendingMoviesByGenres(List<Genre> genres) async {
   return trendingMovies;
 }
 
-void getTopRatedMovies(int r) async {
+void getTopRatedMovies(int page) async {
   List<Movie> listMovies = [];
   List<int> topRatedMoviesId = [];
   var searchTopRated =
-      await tmdb.v3.movies.getTopRated(language: language + country, page: r);
+      await tmdb.v3.movies.getTopRated(language: language + country, page: page);
   List<dynamic> results = searchTopRated['results'];
   for (int i = 0; i < results.length; i++) {
     if (results.elementAt(i)['id'] != 19404 &&
@@ -112,9 +110,9 @@ void getTopRatedMovies(int r) async {
 }
 
 Future<List<Movie>> getTopRatedMoviesByGenres(
-    List<dynamic> genres, int range) async {
+    List<dynamic> genres, int numberOfPage) async {
   List<Movie> listMovies = [];
-  for (int r = 1; r <= range; r++) {
+  for (int r = 1; r <= numberOfPage; r++) {
     var searchTopRated =
         await tmdb.v3.movies.getTopRated(language: language + country, page: r);
     List<dynamic> results = searchTopRated['results'];
