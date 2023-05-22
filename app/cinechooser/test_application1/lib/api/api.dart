@@ -21,8 +21,9 @@ String language_country() {
   return language + country;
 }
 
-/// Récuperer des listes de films
-
+/// Récupérer des listes de films
+///
+///
 
 Future<List<Movie>> getMoviesWithId(List<dynamic> ListId) async {
   List<Movie> listMovies = [];

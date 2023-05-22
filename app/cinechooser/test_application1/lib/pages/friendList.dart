@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import '../utils/app_styles.dart';
 import '../widget/friend.dart';
 import '../widget/textField.dart';
-import 'login_page.dart';
 
 List<String> pseudos = [];
 final _addFriends = TextEditingController();

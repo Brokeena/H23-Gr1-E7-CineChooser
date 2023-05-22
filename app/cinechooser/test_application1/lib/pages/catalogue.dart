@@ -6,9 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import '../api/algorithm.dart';
 import '../api/movie.dart';
-import '../utils/movie_swipe.dart';
 import 'login_page.dart';
-import '../widget/bottom_navbar.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 List<String> friendListName = [];
@@ -26,33 +24,6 @@ class Catalogue extends StatefulWidget {
   @override
   State<Catalogue> createState() => _CatalogueState();
 }
-/*
-Future addLikedMovies(var moviesId) async {
-  Movie movie = await Movie.create(moviesId);
-  var poster = movie.poster;
-  var name = movie.nom;
-  likedPosters.add(poster);
-  likedNames.add(name);
-}
-
-Future addDislikedMovies(var moviesId) async {
-  Movie movie = await Movie.create(moviesId);
-  var poster = movie.poster;
-  var name = movie.nom;
-  dislikedPosters.add(poster);
-  dislikedNames.add(name);
-}
-
-Future showMovies(var movieId) async {
-  for (var id in movieId) {
-    Movie movie = await Movie.create(id);
-    showedNames.add(movie.nom);
-    showedPoster.add(movie.poster);
-  }
-  return showedPoster;
-}
-
- */
 
 class _CatalogueState extends State<Catalogue> {
   int _selectedIndex = 0;

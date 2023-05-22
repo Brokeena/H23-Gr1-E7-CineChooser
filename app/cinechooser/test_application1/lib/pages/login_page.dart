@@ -1,6 +1,4 @@
 import 'package:cinechooser/pages/loading_page.dart';
-import 'package:cinechooser/pages/pagePrincipale.dart';
-import 'package:cinechooser/pages/reglages.dart';
 import 'package:cinechooser/widget/textField.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -191,85 +189,6 @@ class _LoginPageState extends State<LoginPage> {
                       style: Styles.titre, maxLines: 1),
 
                   SizedBox(height: height * 0.01),
-
-                  /*
-                  SizedBox(
-                      height: height * 0.03), //s'adapte a differentes tailles
-                  const AutoSizeText(
-                    'Bienvenue sur',
-                    style: Styles.preTitre,
-                    maxLines: 1,
-                  ),
-
-                  const AutoSizeText('CineChooser', style: Styles.titre,maxLines: 1,),
-
-                   Icon(
-                    Icons.live_tv,
-                    size: height*0.1,
-                    color: Colors.white,
-                  ),
-
-                  SizedBox(height: height * 0.01),
-                  //texte de bienvenue
-                   Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: width*0.05, vertical: height*0.01),
-                    child: const AutoSizeText (
-                        'CineChooser recommande des films en fonction de vos '
-                        'critères et aide votre groupe à trouver un film qui plait à '
-                        'tous. Découvrez de nouveaux films passionnants à '
-                        'regarder ensemble !',
-                        maxLines: 3,
-                        textAlign: TextAlign.center,
-                        style: Styles.informations),
-                  ),
-                  SizedBox(height: height * 0.01),
-                  // Boutton Commencer
-                  Padding(
-                    padding:  EdgeInsets.symmetric(horizontal: width*0.05),
-                    child: GestureDetector(
-                      onTap: buttonPressed,
-                      //(){_navigateToNextScreen(context);},
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 100),
-                        padding: EdgeInsets.all(width*0.04),
-                        decoration: BoxDecoration(
-                            color: Styles.bgColor,
-                            borderRadius: BorderRadius.circular(12),
-                            boxShadow: isButtonPressed
-                                ? [
-                                    //aucune ombre
-                                  ]
-                                : [
-                                    const BoxShadow(
-                                      color: Color(0xff1C1825),
-                                      offset: Offset(4, 4),
-                                      blurRadius: 10,
-                                      spreadRadius: 1,
-                                    ),
-                                    const BoxShadow(
-                                      color: Color(0xff1C1825),
-                                      offset: Offset(-4, -4),
-                                      blurRadius: 10,
-                                      spreadRadius: 1,
-                                    )
-                                  ]),
-                        child: Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              //const Icon(CupertinoIcons.arrow_right, color: Color(0xffC4C0CA)),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              const Text('Commencer', style: Styles.bouton),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                   */
 
                   SizedBox(height: height * 0.05),
 

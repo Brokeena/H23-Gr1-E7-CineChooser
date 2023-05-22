@@ -1,7 +1,6 @@
-import 'package:cinechooser/pages/friendList.dart';
+
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
-import 'package:cinechooser/pages/login_page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cinechooser/pages/catalogue.dart';
 
