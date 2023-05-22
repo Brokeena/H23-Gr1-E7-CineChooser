@@ -1,5 +1,5 @@
-import 'package:cinechooser/pages/login_page.dart';
-import 'package:cinechooser/pages/register.dart';
+import 'package:cinechooser/pages/Connexions/login_page.dart';
+import 'package:cinechooser/pages/Inscription/register.dart';
 import 'package:flutter/material.dart';
 
 class AuthPage extends StatefulWidget {

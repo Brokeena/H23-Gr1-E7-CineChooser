@@ -1,7 +1,6 @@
-import 'package:cinechooser/pages/choix.dart';
-import 'package:cinechooser/pages/login_page.dart';
+import 'package:cinechooser/pages/Inscription/choix.dart';
+import 'package:cinechooser/pages/Connexions/login_page.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
-import 'package:cinechooser/pages/reglages.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:cinechooser/api/api.dart';

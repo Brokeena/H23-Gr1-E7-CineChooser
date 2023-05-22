@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:flutter/material.dart';
-import '../pages/friendList.dart';
-import '../pages/login_page.dart';
+import '../pages/Réglages/friendList.dart';
+import '../pages/Connexions/login_page.dart';
 
 class Friend extends StatelessWidget {
   const Friend({required this.index, required this.refresh, Key? key})

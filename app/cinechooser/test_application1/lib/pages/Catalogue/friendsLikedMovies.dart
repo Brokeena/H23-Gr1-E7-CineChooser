@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cinechooser/pages/catalogue.dart';
+import 'package:cinechooser/pages/Catalogue/catalogue.dart';
 
 class FriendLikedMovies extends StatefulWidget {
   const FriendLikedMovies({Key? key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:swipable_stack/swipable_stack.dart';
-import 'package:cinechooser/widget/button_carre.dart';
+import 'package:cinechooser/widget/Boutons/button_carre.dart';
 
 class BottomButtonsRow extends StatelessWidget {
   const BottomButtonsRow({
@@ -36,35 +36,7 @@ class BottomButtonsRow extends StatelessWidget {
                 borderRadius: 100,
               ),
 
-              /*ElevatedButton(
-                onPressed: () {
-                  onSwipe(SwipeDirection.right);
-                },
-                style: ElevatedButton.styleFrom(
-                  //backgroundColor: null,
-                  shape: const CircleBorder(),
-                  padding: EdgeInsets.zero,
-                  minimumSize: const Size(96, 96),
-                  elevation: 5,
-                  side: const BorderSide(color: Color(0xffD44950), width: 2),
-                ),
-                child: const SizedBox(
-                  width: 96,
-                  height: 96,
-                  child: Icon(
-                    Icons.favorite,
-                    color: Styles.white1,
-                    size: 45,
-                    shadows: [
-                      BoxShadow(
-                        color: Styles.grey1,
-                        blurRadius: 15,
-                        spreadRadius: 10,
-                      )
-                    ],
-                  ),
-                ),
-              ),*/
+
               Button(
                 color: Styles.red1,
                 onPressed: () {

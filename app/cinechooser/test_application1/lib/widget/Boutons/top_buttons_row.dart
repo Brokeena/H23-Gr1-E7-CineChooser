@@ -1,10 +1,9 @@
-import 'package:cinechooser/pages/login_page.dart';
-import 'package:cinechooser/pages/main_page.dart';
-import 'package:cinechooser/pages/reglages.dart';
+
+import 'package:cinechooser/pages/R%C3%A9glages/reglages.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:cinechooser/widget/button_carre.dart';
-import '../pages/catalogue.dart';
+import 'package:cinechooser/widget/Boutons/button_carre.dart';
+import '../../pages/Catalogue/catalogue.dart';
 
 class TopButtonsRow extends StatelessWidget {
   const TopButtonsRow({

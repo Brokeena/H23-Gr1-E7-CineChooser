@@ -1,7 +1,7 @@
-import 'package:auto_size_text/auto_size_text.dart';
+
 import 'package:cinechooser/api/algorithm.dart';
-import 'package:cinechooser/pages/friendList.dart';
-import 'package:cinechooser/pages/login_page.dart';
+import 'package:cinechooser/pages/R%C3%A9glages/friendList.dart';
+import 'package:cinechooser/pages/Connexions/login_page.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -10,9 +10,10 @@ import 'package:cinechooser/api/api.dart';
 import 'package:cinechooser/utils/pays_nom.dart';
 import 'package:cinechooser/utils/pays_iso.dart';
 import 'package:flutter/services.dart';
-import '../main.dart';
-import '../widget/textField.dart';
-import 'auth_page.dart';
+import '../../../main.dart';
+import '../../main.dart';
+import '../Connexions/auth_page.dart';
+import 'friendList.dart';
 
 class Reglages extends StatefulWidget {
   const Reglages({Key? key}) : super(key: key);
@@ -250,7 +251,6 @@ signOut() async {
     true,
     true
   ];
-  borders = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   colors = [
     Colors.transparent,
     Colors.transparent,

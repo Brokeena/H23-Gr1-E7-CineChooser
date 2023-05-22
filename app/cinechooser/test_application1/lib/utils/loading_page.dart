@@ -1,9 +1,9 @@
 import 'package:cinechooser/pages/pagePrincipale.dart';
-import 'package:cinechooser/pages/reglages_first_time.dart';
+import 'package:cinechooser/pages/R%C3%A9glages/reglages_first_time.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'login_page.dart';
+import '../pages/Connexions/login_page.dart';
 
 class LoadingPageLogin extends StatefulWidget {
   const LoadingPageLogin({Key? key}) : super(key: key);

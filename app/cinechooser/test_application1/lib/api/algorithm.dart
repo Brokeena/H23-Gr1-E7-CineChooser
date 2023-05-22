@@ -1,5 +1,5 @@
 import 'package:cinechooser/api/movie.dart';
-import 'package:cinechooser/pages/login_page.dart';
+import 'package:cinechooser/pages/Connexions/login_page.dart';
 import 'package:cinechooser/api/api.dart';
 import 'package:cinechooser/main.dart';
 

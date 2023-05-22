@@ -1,15 +1,15 @@
-import 'package:cinechooser/utils/top_buttons_row.dart';
+import 'package:cinechooser/widget/Boutons/top_buttons_row.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:swipable_stack/swipable_stack.dart';
 import 'package:flutter/foundation.dart';
-import 'package:cinechooser/utils/movie_carte.dart';
-import 'package:cinechooser/utils/bottom_buttons_row.dart';
+import 'package:cinechooser/widget/movie_carte.dart';
+import 'package:cinechooser/widget/Boutons/bottom_buttons_row.dart';
 import '../api/algorithm.dart';
 import '../utils/app_styles.dart';
 import 'package:cinechooser/main.dart';
 
-import 'login_page.dart';
+import 'Connexions/login_page.dart';
 
 class PagePrincipale extends StatefulWidget {
   const PagePrincipale({Key? key}) : super(key: key);

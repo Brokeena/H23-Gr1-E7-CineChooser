@@ -1,12 +1,12 @@
-import 'package:cinechooser/pages/dislikedMovies.dart';
-import 'package:cinechooser/pages/likedMovies.dart';
-import 'package:cinechooser/pages/friendsLikedMovies.dart';
+import 'package:cinechooser/pages/Catalogue/dislikedMovies.dart';
+import 'package:cinechooser/pages/Catalogue/likedMovies.dart';
+import 'package:cinechooser/pages/Catalogue/friendsLikedMovies.dart';
 import 'package:cinechooser/pages/pagePrincipale.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
-import '../api/algorithm.dart';
-import '../api/movie.dart';
-import 'login_page.dart';
+import '../../api/algorithm.dart';
+import '../../api/movie.dart';
+import '../Connexions/login_page.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 List<String> friendListName = [];

@@ -1,11 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cinechooser/pages/reglages.dart';
-import 'package:cinechooser/pages/login_page.dart';
+import 'package:cinechooser/pages/R%C3%A9glages/reglages.dart';
+import 'package:cinechooser/pages/Connexions/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../utils/app_styles.dart';
-import '../widget/friend.dart';
-import '../widget/textField.dart';
+import '../../utils/app_styles.dart';
+import '../../widget/friend.dart';
+import '../../widget/textField.dart';
 
 List<String> pseudos = [];
 final _addFriends = TextEditingController();

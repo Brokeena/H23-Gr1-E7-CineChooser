@@ -1,4 +1,4 @@
-import 'package:cinechooser/pages/loading_page.dart';
+import 'package:cinechooser/utils/loading_page.dart';
 import 'package:cinechooser/widget/textField.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,8 +9,8 @@ import 'package:cinechooser/api/api.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cinechooser/main.dart';
 import 'package:cinechooser/utils/app_styles.dart';
-import '../api/algorithm.dart';
-import '../api/movie.dart';
+import '../../api/algorithm.dart';
+import '../../api/movie.dart';
 import 'forgotPassewordPage.dart';
 
 var docID = '';

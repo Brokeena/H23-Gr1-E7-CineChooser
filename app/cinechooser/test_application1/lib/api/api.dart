@@ -1,4 +1,4 @@
-import 'package:cinechooser/pages/login_page.dart';
+import 'package:cinechooser/pages/Connexions/login_page.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 import 'movie.dart';
 
