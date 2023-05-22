@@ -1,6 +1,8 @@
 # H23-Gr1-E7-CineChooser
 
-Cinechooser est une application mobile vous recommandant des films à vous et vos amis pour vous permettres de trouver le film convenant à tous. L'application se base sur un modèle de "swipe" qui facilite l'utilisation. L'application est actuellement en développement dans le cadre d'un projet d'intégration en Sciences informatiques et mathématiques au Collège de Bois-de-Boulogne.
+Cinechooser est une application mobile vous recommandant des films à vous et vos amis pour vous permettres de trouver le film convenant à tous. L'application se base sur un modèle de "swipe" qui facilite l'utilisation. L'application est actuellement en développement dans le cadre d'un projet d'intégration en Sciences informatiques et mathématiques au Collège de Bois-de-Boulogne.<br />
+Le projet marche sur Android (voir APK) ou sur un émulateur sur Android studio.
+<br />
 
 ## Download links
 Android (.APK): https://drive.google.com/file/d/1XvHZ-ZjACyXOd6Q5qFys5SS9anBh7Ua9/view?usp=sharing <br />
@@ -28,7 +30,7 @@ https://youtu.be/IvI1zik3YGs
 <br />
 
 
-## À noter
+## À noter 
 Notre application utilise l'API de The Movie DB, nous sommes dans aucun cas affilié à ces derniers et vice-versa <br />
 <br />
 <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_2-9665a76b1ae401a510ec1e0ca40ddcb3b0cfe45f1d51b77a308fea0845885648.svg" width="500">
