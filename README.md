@@ -7,15 +7,11 @@ https://youtu.be/IvI1zik3YGs
 
 ## Capture d'écrans
 
-
-
 <img src="https://github.com/Brokeena/H23-Gr1-E7-CineChooser/assets/62453047/7290a652-6633-4b5a-8d45-d545464bd9ea" width="500"><br />
 <br />
 <img src="https://github.com/Brokeena/H23-Gr1-E7-CineChooser/assets/62453047/949a5b57-19b5-4cb7-be5b-53aaee4cdf15" width="500"><br />
 <br />
-<img src="https://github.com/Brokeena/H23-Gr1-E7-CineChooser/assets/62453047/d422f43d-4a32-4f9b-b532-7fb8eb164978" width="500"><br />
-<br />
-<img src="https://github.com/Brokeena/H23-Gr1-E7-CineChooser/assets/62453047/82d6de8e-4a6c-4a86-aa4e-e8a2f2aeff2b" width="500"><br />
+<img src="https://github.com/Brokeena/H23-Gr1-E7-CineChooser/assets/62453047/3b28a041-3181-45e0-b7d5-b80a9dbcf1a5" width="500"><br />
 <br />
 
 
