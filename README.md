@@ -1,9 +1,8 @@
 # H23-Gr1-E7-CineChooser
 
-Cinechooser est une application mobile vous recommandant des films à vous et vos amis pour vous permettres de trouver le film convenant à tous. L'application se base sur un modèle de "swipe" qui facilite l'utilisation. L'application est actuellement en développement dans le cadre d'un projet d'intégration en Sciences informatiques et mathématiques au Collège de Bois-de-Boulogne.<br />
-<br /><br />
-Le projet marche sur Android (voir APK) ou sur un émulateur sur Android studio.
-<br />
+Cinechooser est une application mobile vous recommandant des films à vous et vos amis pour vous permettres de trouver le film convenant à tous. L'application se base sur un modèle de "swipe" qui facilite l'utilisation. L'application est actuellement en développement dans le cadre d'un projet d'intégration en Sciences informatiques et mathématiques au Collège de Bois-de-Boulogne.
+
+##Le projet marche sur Android (voir APK) ou sur un émulateur sur Android studio.
 
 ## Download links
 Android (.APK): https://drive.google.com/file/d/1XvHZ-ZjACyXOd6Q5qFys5SS9anBh7Ua9/view?usp=sharing <br />
