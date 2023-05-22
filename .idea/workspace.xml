@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="hihi^^">
+    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="Re arrange folder">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/utils/bottom_buttons_row.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/utils/bottom_buttons_row.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/utils/top_buttons_row.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/utils/top_buttons_row.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/widget/friend.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/widget/friend.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/pubspec.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,9 +54,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Louis\Documents\GitHub\H23-Gr1-E7-CineChooser\app\cinechooser\test_application1\lib\widget" />
-      <recent name="C:\Users\Louis\Documents\GitHub\H23-Gr1-E7-CineChooser\app\cinechooser\test_application1\lib" />
-      <recent name="D:\Users\2154470\Documents\GitHub\H23-Gr1-E7-CineChooser\DartAPI" />
+      <recent name="C:\Users\chobs\Documents\GitHub\H23-Gr1-E7-CineChooser\app\cinechooser\test_application1\lib\widget\Boutons" />
+      <recent name="C:\Users\chobs\Documents\GitHub\H23-Gr1-E7-CineChooser\app\cinechooser\test_application1\lib\widget" />
+      <recent name="C:\Users\chobs\Documents\GitHub\H23-Gr1-E7-CineChooser\app\cinechooser\test_application1\lib\pages" />
+      <recent name="C:\Users\chobs\Documents\GitHub\H23-Gr1-E7-CineChooser\app\cinechooser\test_application1\lib\pages\PagePrincipale" />
+      <recent name="C:\Users\chobs\Documents\GitHub\H23-Gr1-E7-CineChooser\app\cinechooser\test_application1\lib\pages\Réglages" />
     </key>
   </component>
   <component name="RunManager">
@@ -291,21 +299,35 @@
       <option name="project" value="LOCAL" />
       <updated>1684121511090</updated>
     </task>
-    <task id="LOCAL-00031" summary="polices">
-      <created>1684121683633</created>
+    <task id="LOCAL-00031" summary="Polishing">
+      <created>1684206960198</created>
       <option name="number" value="00031" />
       <option name="presentableId" value="LOCAL-00031" />
       <option name="project" value="LOCAL" />
-      <updated>1684121683633</updated>
+      <updated>1684206960198</updated>
     </task>
-    <task id="LOCAL-00032" summary="hihi^^">
-      <created>1684123286119</created>
+    <task id="LOCAL-00032" summary="Better name V1">
+      <created>1684208488662</created>
       <option name="number" value="00032" />
       <option name="presentableId" value="LOCAL-00032" />
       <option name="project" value="LOCAL" />
-      <updated>1684123286119</updated>
+      <updated>1684208488662</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Better comments">
+      <created>1684783463817</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1684783463817</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Re arrange folder">
+      <created>1684784662223</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1684784662223</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,8 +349,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/DartAPI/untitled - Copie" />
     </ignored-roots>
-    <MESSAGE value="Test github push" />
-    <MESSAGE value="Test github push puch" />
     <MESSAGE value="encore un commit fait par Marius... Ca fait beaucoup quand meme." />
     <MESSAGE value="Wow wow wow &lt;3" />
     <MESSAGE value="réglages" />
@@ -350,9 +370,11 @@
     <MESSAGE value="+" />
     <MESSAGE value="Pages des friendsLikedMovies.dart" />
     <MESSAGE value="petites modifs" />
-    <MESSAGE value="polices" />
-    <MESSAGE value="hihi^^" />
-    <option name="LAST_COMMIT_MESSAGE" value="hihi^^" />
+    <MESSAGE value="Polishing" />
+    <MESSAGE value="Better name V1" />
+    <MESSAGE value="Better comments" />
+    <MESSAGE value="Re arrange folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="Re arrange folder" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
