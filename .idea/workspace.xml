@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="Doc">
+    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="Cleaner">
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -331,7 +331,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684788021631</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Cleaner">
+      <created>1684788388281</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1684788388281</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,7 +360,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/DartAPI/untitled - Copie" />
     </ignored-roots>
-    <MESSAGE value="Wow wow wow &lt;3" />
     <MESSAGE value="réglages" />
     <MESSAGE value="Swipe !!!! ^^" />
     <MESSAGE value="update data :))))))))))" />
@@ -378,7 +384,8 @@
     <MESSAGE value="Better comments" />
     <MESSAGE value="Re arrange folder" />
     <MESSAGE value="Doc" />
-    <option name="LAST_COMMIT_MESSAGE" value="Doc" />
+    <MESSAGE value="Cleaner" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaner" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
