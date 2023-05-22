@@ -6,10 +6,12 @@ Cinechooser est une application mobile vous recommandant des films à vous et vo
 https://drive.google.com/file/d/1XvHZ-ZjACyXOd6Q5qFys5SS9anBh7Ua9/view?usp=sharing
 
 ## Directory
-### Code principale
+### Code source
 app/cinechooser/test_application1/lib
 ### Documentation
 app/cinechooser/test_application1/documentation/api
+### APK
+release/APK
 
 ## Démonstration
 https://youtu.be/IvI1zik3YGs
