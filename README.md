@@ -8,11 +8,12 @@ https://youtu.be/IvI1zik3YGs
 ## Capture d'écrans
 
 
-<img src="https://user-images.githubusercontent.com/62453047/235269801-b43ae15a-2e81-466e-b5d6-9207cefc3398.png" width="500"><br />
+
+<img src="https://github.com/Brokeena/H23-Gr1-E7-CineChooser/assets/62453047/7290a652-6633-4b5a-8d45-d545464bd9ea" width="500"><br />
 <br />
-<img src="https://user-images.githubusercontent.com/62453047/235269820-f6c47e78-3153-4926-98c1-98a3af3a0016.png" width="500"><br />
+<img src="https://github.com/Brokeena/H23-Gr1-E7-CineChooser/assets/62453047/949a5b57-19b5-4cb7-be5b-53aaee4cdf15" width="500"><br />
 <br />
-<img src="https://github.com/Brokeena/H23-Gr1-E7-CineChooser/assets/62453047/420ea5e6-06ff-41eb-95e6-9c09795e815b" width="500"><br />
+<img src="https://github.com/Brokeena/H23-Gr1-E7-CineChooser/assets/62453047/d422f43d-4a32-4f9b-b532-7fb8eb164978" width="500"><br />
 <br />
 <img src="https://github.com/Brokeena/H23-Gr1-E7-CineChooser/assets/62453047/82d6de8e-4a6c-4a86-aa4e-e8a2f2aeff2b" width="500"><br />
 <br />
