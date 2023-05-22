@@ -3,7 +3,7 @@
 Cinechooser est une application mobile vous recommandant des films à vous et vos amis pour vous permettres de trouver le film convenant à tous. L'application se base sur un modèle de "swipe" qui facilite l'utilisation. L'application est actuellement en développement dans le cadre d'un projet d'intégration en Sciences informatiques et mathématiques au Collège de Bois-de-Boulogne.
 
 ## Download APK (Android)
-https://drive.google.com/file/d/1lUlMXUqKXh6cz9ReVJrLdRqxl9DBA4Jo/view?usp=sharing
+https://drive.google.com/file/d/1XvHZ-ZjACyXOd6Q5qFys5SS9anBh7Ua9/view?usp=sharing
 
 ## Directory
 app/cinechooser/test_application1/lib
