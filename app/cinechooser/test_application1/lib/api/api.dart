@@ -90,7 +90,6 @@ Future<List<Movie>> getTrendingMoviesByGenres(List<Genre> genres) async {
 }
 
 void getTopRatedMovies(int page) async {
-  List<Movie> listMovies = [];
   List<int> topRatedMoviesId = [];
   var searchTopRated =
       await tmdb.v3.movies.getTopRated(language: language + country, page: page);

@@ -9,8 +9,6 @@ import '../api/algorithm.dart';
 import '../utils/app_styles.dart';
 import 'package:cinechooser/main.dart';
 
-import 'Connexions/login_page.dart';
-
 class PagePrincipale extends StatefulWidget {
   const PagePrincipale({Key? key}) : super(key: key);
 

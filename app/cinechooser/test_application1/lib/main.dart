@@ -1,11 +1,7 @@
 import 'package:cinechooser/pages/Connexions/auth_page.dart';
-import 'package:cinechooser/pages/Connexions/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/api/movie.dart';
 import 'package:firebase_core/firebase_core.dart';
-
-import 'api/algorithm.dart';
-import 'api/api.dart';
 
 String poster = '';
 List<Movie> displayedMovies = [];

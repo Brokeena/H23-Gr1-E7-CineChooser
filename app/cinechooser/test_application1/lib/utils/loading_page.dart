@@ -16,7 +16,6 @@ class _LoadingPageLoginState extends State<LoadingPageLogin> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double heigth = MediaQuery.of(context).size.height;
     return ValueListenableBuilder<bool>(
       valueListenable: hasData,
       builder: (context, value, child) {
@@ -50,7 +49,6 @@ class _LoadingPageRegisterState extends State<LoadingPageRegister> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double heigth = MediaQuery.of(context).size.height;
     return ValueListenableBuilder<bool>(
       valueListenable: hasData,
       builder: (context, value, child) {

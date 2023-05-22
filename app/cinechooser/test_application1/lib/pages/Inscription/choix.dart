@@ -1,13 +1,11 @@
-import 'package:cinechooser/api/algorithm.dart';
+
 import 'package:cinechooser/pages/Connexions/auth_page.dart';
 import 'package:cinechooser/utils/loading_page.dart';
-import 'package:cinechooser/pages/R%C3%A9glages/reglages_first_time.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cinechooser/utils/app_styles.dart';
 import 'package:cinechooser/main.dart';
-import '../../api/api.dart';
 import '../../widget/MovieCase.dart';
 import 'package:cinechooser/pages/Connexions/login_page.dart';
 

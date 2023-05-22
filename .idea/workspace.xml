@@ -9,11 +9,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="Re arrange folder">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/widget/friend.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/lib/widget/friend.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cinechooser/test_application1/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/app/cinechooser/test_application1/pubspec.lock" afterDir="false" />
+    <list default="true" id="bb9f1478-fd18-4c0e-9c02-516156691799" name="Changes" comment="Doc">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -327,7 +324,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684784662223</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Doc">
+      <created>1684788021631</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1684788021631</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -349,7 +353,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/DartAPI/untitled - Copie" />
     </ignored-roots>
-    <MESSAGE value="encore un commit fait par Marius... Ca fait beaucoup quand meme." />
     <MESSAGE value="Wow wow wow &lt;3" />
     <MESSAGE value="réglages" />
     <MESSAGE value="Swipe !!!! ^^" />
@@ -374,7 +377,8 @@
     <MESSAGE value="Better name V1" />
     <MESSAGE value="Better comments" />
     <MESSAGE value="Re arrange folder" />
-    <option name="LAST_COMMIT_MESSAGE" value="Re arrange folder" />
+    <MESSAGE value="Doc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Doc" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

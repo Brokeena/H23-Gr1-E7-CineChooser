@@ -11,9 +11,7 @@ import 'package:cinechooser/utils/pays_nom.dart';
 import 'package:cinechooser/utils/pays_iso.dart';
 import 'package:flutter/services.dart';
 import '../../../main.dart';
-import '../../main.dart';
 import '../Connexions/auth_page.dart';
-import 'friendList.dart';
 
 class Reglages extends StatefulWidget {
   const Reglages({Key? key}) : super(key: key);
